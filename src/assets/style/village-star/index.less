@@ -1,0 +1,267 @@
+.village-star{
+  width: 100%;
+  background:#F0F1F2;
+  padding-bottom: 40px;
+  &-content{
+    width: 1000px;
+    height: auto;
+    margin:0 auto;
+  }
+  li{
+    background: white;
+    margin:10px 0;
+  }
+  .top{
+      width: 100%;
+  }
+  .search{
+    width: 100%;
+    height:80px;
+    .title{
+      font-size:24px;
+      font-family:PingFang SC;
+      font-weight:600;
+      color:rgba(50,51,51,1);
+      line-height:80px;
+      float: left;
+      margin-left: 20px;
+    }
+    .filter{
+      width: 540px;
+      height: 40px;
+      float: right;
+      line-height: 80px;
+      color:rgba(177,178,179,1);
+      font-size:16px;
+      font-family:PingFang SC;
+      font-weight:300;
+      .ivu-select{
+        width: 200px;
+      }
+    }
+  }
+//  资讯
+  .news{
+    padding:23px 19px;
+
+    .ivu-col{
+      width: calc(50% - 15px);
+      height: 40px;
+      font-size:14px;
+      font-family:PingFang SC;
+      line-height: 40px;
+      color:rgba(76,76,77,1);
+
+    }
+    .addBorder{
+      border-bottom:1px dashed rgba(164,165,166,1)
+    }
+    .ivu-col:nth-child(odd){
+      margin-right: 15px;
+    }
+    .ivu-col:nth-child(even){
+     margin-left: 15px;
+    }
+    a{
+      font-family: PingFang SC;
+      font-weight: 400;
+      color: #979899;
+      .circle{
+        width:4px;
+        height:4px;
+        background:#979899;
+        border-radius:50%;
+        display: inline-block;
+        margin-bottom: 18px;
+      }
+      .time{
+        float: right;
+      }
+      .title{
+        width: calc(100% - 100px);
+        display: inline-block;
+        text-overflow : ellipsis;
+        white-space: nowrap;
+        overflow: auto;
+        margin:0 9px;
+      }
+    }
+  }
+
+  //魅力村宝
+  .volunteer-video{
+    padding:23px 0px 10px 20px;
+    >div{
+      margin-right: 20px;
+      margin-bottom: 20px;
+      width: 140px;
+      height: 110px;
+      display: inline-block;
+      cursor: pointer;
+      &:hover{
+        .play-cover{display:block;}
+        .video-title{opacity: 0}
+      }
+      p{
+        position: relative;
+        z-index: 100;
+        top: -32px;
+        margin:0 6px;
+        font-size: 14px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        color: rgba(255,255,255,1);
+        display: inline-block;
+        text-overflow : ellipsis;
+        white-space: nowrap;
+      }
+      >img{
+        width: 140px;
+        height: 110px;
+
+      }
+      .hidden{
+        opacity: 0;
+      }
+      .play-cover{
+        position: relative;
+        z-index: 199;
+        top: -137px;
+        width: 100%;
+        height: 100%;
+        background:rgba(0,0,0,1);
+        opacity:0.6;
+        display: none;
+        img{
+          width: 24px;
+          margin-left: 56px;
+          margin-top: 40px;
+          position: absolute;
+        }
+      }
+    }
+
+    .more{
+      margin-right: 20px;
+    }
+  }
+//  志愿者投票
+  .volunteer-vote{
+    background:#F0F1F2;
+    .ivu-col{
+      background: white;
+      padding-bottom: 20px;
+      width:32.4%;
+      margin-right: 1.4%;
+      &:last-child{
+        margin-right: 0px;
+      }
+    }
+    .title{
+      font-size:18px;
+      font-family:PingFang SC;
+      font-weight:600;
+      color:rgba(50,51,51,1);
+      margin-top: 30px;
+      text-align: center;
+    }
+    .desc{
+      font-size:20px;
+      font-family:PingFang SC;
+      font-weight:400;
+      color:rgba(38,38,38,1);
+      width: 100%;
+      overflow: hidden;
+      >div{
+        float: left;
+        margin-top: 49px;
+      }
+      img{
+        width: 84px;
+        height: 84px;
+        border-radius: 42px;
+        margin:30px 30px 10px 43px;
+        float: left;
+      }
+      p{
+        line-height: 18px;
+      }
+      span{
+        font-size:16px;
+        font-family:PingFang SC;
+        font-weight:400;
+        color:rgba(41,158,212,1);
+        cursor: pointer;
+      }
+    }
+  }
+  .block-title{
+    font-size:18px;
+    font-family:PingFang SC;
+    font-weight:600;
+    color:rgba(50,51,51,1);
+    margin-bottom: 7px;
+    span{
+      font-size:14px;
+      font-family:PingFang SC;
+      font-weight:400;
+      color:rgba(151,152,153,1);
+      margin-left: 20px;
+    }
+    .more{
+      font-size:14px;
+      font-family:PingFang SC;
+      font-weight:300;
+      color:rgba(50,51,51,1);
+      float: right;
+    }
+  }
+  //  志愿者风采
+  .volunteer
+  {
+    padding:30px 20px 10px 20px;
+  }
+}
+
+//  志愿者风采
+.volunteer-video-info .volunteer,.village-star .volunteer{
+  >div{
+    width: 215px;
+    height: 230px;
+    display: inline-block;
+    background: #F0F1F2;
+    margin-bottom: 20px;
+    cursor: pointer;
+    p{
+      font-size:16px;
+      font-family:PingFang SC;
+      font-weight:400;
+      color:rgba(0,0,0,1);
+      text-overflow : ellipsis;
+      white-space: nowrap;
+      overflow: auto;
+      display: block;
+      margin: 0 10px;
+      line-height: 30px;
+    }
+    span{
+      font-size:14px;
+      font-family:PingFang SC;
+      font-weight:300;
+      color:rgba(101,101,102,1);
+      margin-left: 10px;
+    }
+
+    img{
+      width: 215px;
+      height: 160px;
+    }
+
+  }
+  .right33{
+    margin-right: 33px;
+  }
+  .right46{
+    margin-right: 46px;
+  }
+}
