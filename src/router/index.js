@@ -29,6 +29,11 @@ const routes = [
         path: '/videoList',
         name: 'videoList',
         component:(resolve) => require(['../views/found-villageStar/video-list/index.vue'], resolve)
+      },
+      {
+        path: '/volunteerInfo',
+        name: 'volunteerInfo',
+        component:(resolve) => require(['../views/found-villageStar/volunteer-info/index.vue'], resolve)
       }
     ]
   },
