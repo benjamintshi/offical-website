@@ -157,7 +157,6 @@ export default {
     },
   methods:{
     watchVideo(item){
-      debugger
       this.$router.push({
         name:"volunteerVideo",
         params:item

@@ -31,7 +31,6 @@ export default {
     }
   },
   mounted(){
-    debugger
     this.info = this.$route.params;
     this.info.url = "http://culturetv.hanyastar.com.cn/standard/nationalculturecloud/res/live/huikanliushanghai.mp4"
   }
