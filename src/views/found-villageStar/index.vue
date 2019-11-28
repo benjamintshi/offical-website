@@ -11,13 +11,13 @@
         <Row class="filter">
           <i-col span="4" >地区筛选</i-col>
           <i-col span="10">
-            <Select v-model="model1" >
-              <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            <Select  v-model="indexId">
+              <Option v-for="item in select01" :value="item.id" :key="item.id">{{ item.name }}</Option>
             </Select>
           </i-col>
           <i-col span="10">
-            <Select v-model="model2" >
-              <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            <Select v-model="indexId2" >
+              <Option v-for="item in select02" :value="item.id" :key="item.id">{{ item.name }}</Option>
             </Select>
           </i-col>
         </Row>
