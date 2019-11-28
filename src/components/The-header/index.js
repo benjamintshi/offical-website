@@ -5,7 +5,7 @@ export default {
       menelist:[
         {
           name:"首页",
-          to:""
+          to:"/"
         },
         {
           name:"新时代文明实践中心",
@@ -25,7 +25,7 @@ export default {
         },
         {
           name:"品牌项目",
-          to:""
+          to:"/villageStar"
         },
         {
           name:"学习园地",
@@ -33,7 +33,7 @@ export default {
         }
       ],
       //当前页面
-      activeMenu:"品牌项目",
+      activeMenu:"首页",
       areaList:[
         {
           name:"全部",
@@ -75,6 +75,7 @@ export default {
         }
       ],
       activeArea:"all",
+      activeAreaName:"站点切换",
       showArea:false
 
     }
@@ -82,7 +83,13 @@ export default {
   methods:{
     swtichArea (item) {
       this.activeArea = item.value;
+      this.activeAreaName = item.name;
       this.showArea = false;
+    },
+    swtichMenu(item){
+
+      this.$router.push(item.to);
+      this.activeMenu = item.name;
     }
   }
 

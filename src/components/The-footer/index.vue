@@ -3,7 +3,7 @@
     <ul class="The-footer-link">
        <li class="area">
          <p>友情链接</p>
-         <span v-for="(item,index) in areaList" :key="index"> {{item.name}}</span>
+         <router-link to="/" v-for="(item,index) in areaList" :key="index"> {{item.name}}</router-link>
        </li>
         <li class="area-line"></li>
         <li class = "about">

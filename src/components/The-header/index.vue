@@ -4,9 +4,11 @@
         <div class="top-link">
 
           <ul class="top-link-nav">
-            <li @click="showArea=true" :class="showArea?'swtich-area-btn':''">
-              站点切换
-              <Icon type="ios-arrow-down" />
+            <li @click="showArea=true;" :class="showArea?'swtich-area-btn':''">
+              {{activeAreaName}}
+
+              <Icon type="ios-arrow-up" v-if="showArea"/>
+              <Icon type="ios-arrow-down" v-else/>
             </li>
             <!--站点切换-->
             <div class="swtich-area" v-show="showArea" @mouseleave="showArea = false" >
@@ -54,7 +56,7 @@
         <!--菜单-->
       <div class="top-menu">
         <ul>
-          <li v-for="(item,index) in menelist" :key="index" :class="activeMenu == item.name?'top-menu-active':''">
+          <li v-for="(item,index) in menelist" :key="index" :class="activeMenu == item.name?'top-menu-active':''" @click="swtichMenu(item)">
             {{item.name}}
           </li>
         </ul>
