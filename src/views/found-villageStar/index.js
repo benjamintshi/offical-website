@@ -161,6 +161,12 @@ export default {
         name:"volunteerVideo",
         params:item
       })
+    },
+    vlounteerDetail(item){
+      this.$router.push({
+        name:"volunteerInfo",
+        params:item
+      })
     }
   }
 

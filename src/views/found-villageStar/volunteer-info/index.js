@@ -1,12 +1,7 @@
 export default {
   data() {
     return {
-      info: {
-        name: "河南省志愿服务活动",
-        img: "/static/images/villageStar/zhiyuan.jpg",
-        id: "",
-        time:"2019-08-01  10:33"
-      },//this.route.params
+      info: {},//this.route.params
       content:"<p> " +
       "      为进一步激发广大家长和孩子诵读经典的兴趣，感受阅读乐趣，7月6日早上司马迁图书馆携手养正学堂在禹甸园南广场举办了以“感恩孝亲”为主题的亲子经典诵读活动。活动邀请了60对亲子家庭参加。<br /> \n" +
       "      <br /> \n" +
@@ -39,6 +34,10 @@ export default {
         }
       ]
     }
+  },
+  mounted(){
+    this.info = this.$route.params;
+    this.info.time = "2019-08-01  10:33"
   },
   methods:{
     // 点击推荐链接

@@ -1,11 +1,11 @@
 <template>
   <section>
     <!--志愿风采-->
-    <div class="info-list video-list">
+    <div class="info-list">
       <ul class="info-list-top">
-        <p class="nav">品牌项目 > 河南 > 村宝 > 魅力村宝</p>
+        <p class="nav">品牌项目 > 河南 > 村宝 > 志愿风采</p>
         <li class="search">
-          <p>魅力村宝</p>
+          <p>志愿风采</p>
           <div class="search-input">
             <Icon type="ios-search"  size="20"/>
             <input type="text" placeholder="输入关键字" v-model="inputValue" @change="changeValue()">
@@ -21,9 +21,7 @@
             <img :src="item.img" alt="">
             <p>{{item.title}}</p>
             <span>{{item.name}}</span>
-            <div class="play-cover">
-              <img src="/static/images/villageStar/playVideo.png" alt="">
-            </div>
+
           </div>
           <Page v-if="total>16" :total="total" prev-text="上一页" next-text="下一页" :current="pageNum" @on-change="changePage"/>
         </li>
