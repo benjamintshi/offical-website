@@ -63,7 +63,7 @@
       <li class="volunteer">
         <p class="block-title">志愿风采
           <span>共221条</span>
-          <span class="more">更多</span>
+          <span class="more" @click="$router.push('/videoList')">更多</span>
         </p>
         <div  v-for="(item,index) in volunteers" :key="index" :class="(index+1)%4 !=0 ?'right33':''">
           <img :src="item.img" alt="">

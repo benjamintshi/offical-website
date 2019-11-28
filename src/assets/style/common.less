@@ -27,3 +27,27 @@ a:active{text-decoration: none }
 .ivu-select-single .ivu-select-selection .ivu-select-selected-value{
   line-height: 38px !important;
 }
+// 超找输入框
+.search-input{
+  background:rgba(255, 255, 255, 0.6);
+  width: 340px;
+  height: 50px;
+  float: right;
+  margin:15px 10px 0 0;
+  .ivu-icon-ios-search{
+    vertical-align: middle;
+    float: left;
+    margin: 15px;
+  }
+  input{
+    border:none;
+    width: calc(100% - 54px);
+    float: left;
+    height: 50px;
+    background:none;
+    color: rgba(177, 178, 179, 1);
+    &:focus{
+      outline: none;
+    }
+  }
+}
