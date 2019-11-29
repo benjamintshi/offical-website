@@ -5,10 +5,16 @@ import Home from '../views/Home.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  //首页
   {
     path: '/',
-    name: 'home',
-    component: Home,
+    name: 'index',
+    component:(resolve) => require(['../views/index/index.vue'], resolve)
+  },
+  {
+    path: '/homepage',
+    // name: 'homepage',
+    component:(resolve) => require(['../views/Home.vue'], resolve),
     children:[
       {
         path: '/villageStar',
