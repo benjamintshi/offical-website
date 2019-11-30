@@ -1,0 +1,58 @@
+<template>
+
+   <div class="register-content" >
+      <p class="title-tip">
+        注册
+        <span>已有账号？</span>
+        <span class="a-hover-style">去登陆</span>
+      </p>
+     <div class="fisrt-step" v-if="show.firstStep">
+       <!--账号-->
+       <Row>
+         <i-col span="4" >
+          <p ><span style="margin-right:28px;">账</span>号：</p>
+         </i-col>
+         <i-col span="20">
+           <input type="text" placeholder="身份证/手机号/邮箱号" v-model="formData.account">
+         </i-col>
+       </Row>
+       <!--验证码-->
+       <Row class="vertify-code">
+         <i-col span="17">
+           <input type="text" v-model="formData.code">
+         </i-col>
+         <i-col span="7" >
+          <button class="a-hover-style" @click="sendCode">
+            {{send}}
+          </button>
+         </i-col>
+
+       </Row>
+       <!--设置密码-->
+       <Row>
+         <i-col span="4" >
+           设置密码：
+         </i-col>
+         <i-col span="20">
+           <input type="text" v-model="formData.secret">
+           <p class="tips">请设置不少于8位的密码，必须包含字母、数字</p>
+         </i-col>
+       </Row>
+       <button class="send a-hover-style" @click="submitFirst">确定</button>
+     </div>
+     <div class="second-step " v-else-if="show.secondStep">
+          <p @click="selectRole('1')" :class="role == '1' ?'selected a-hover-style':'a-hover-style'"><span>我是<br/>普通用户</span></p>
+         <p @click="selectRole('2')" :class="role == '2' ?'selected a-hover-style':'a-hover-style'"><span>我要<br/>成为志愿者</span></p>
+       <button :class="role  ?' a-hover-style':'a-hover-style btn-gray'" @click="next">下一步</button>
+     </div>
+   </div>
+
+
+
+
+</template>
+
+
+<script src="./index.js">
+
+</script>

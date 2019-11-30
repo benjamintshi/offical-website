@@ -45,6 +45,10 @@ const routes = [
         path: '/volunteerInfo',
         name: 'volunteerInfo',
         component:(resolve) => require(['../views/found-villageStar/volunteer-info/index.vue'], resolve)
+      },{
+        path: '/register',
+        name: 'register',
+        component:(resolve) => require(['../views/register/index.vue'], resolve)
       }
     ]
   },
