@@ -12,12 +12,12 @@
           <i-col span="4" >地区筛选</i-col>
           <i-col span="10">
             <Select  v-model="indexId">
-              <Option v-for="item in select01" :value="item.id" :key="item.id">{{ item.name }}</Option>
+              <Option v-for="item in select01" :value="item.areaCode" :key="item.id">{{ item.areaName }}</Option>
             </Select>
           </i-col>
           <i-col span="10">
             <Select v-model="indexId2" >
-              <Option v-for="item in select02" :value="item.id" :key="item.id">{{ item.name }}</Option>
+              <Option v-for="item in select02" :value="item.areaCode" :key="item.id">{{ item.areaName }}</Option>
             </Select>
           </i-col>
         </Row>
@@ -27,7 +27,7 @@
       <li class="news">
         <p class="block-title">
           村宝资讯
-          <span>共221条</span>
+          <span>共{{infoNum}}条</span>
           <span class="more">更多</span>
         </p>
         <Row class="filter">
@@ -46,8 +46,8 @@
        <!--魅力村宝-->
       <li class="volunteer-video">
         <p class="block-title">
-          村宝资讯
-          <span>共221条</span>
+          魅力村宝
+          <span>共{{charmNum}}条</span>
           <span class="more"  @click="$router.push('/videoList')">更多</span>
         </p>
         <div  v-for="(item,index) in videos" :key="index" @click="watchVideo(item)">
@@ -62,10 +62,10 @@
       <!--志愿者风采-->
       <li class="volunteer">
         <p class="block-title">志愿风采
-          <span>共221条</span>
+          <span>共{{volunteerNum}}条</span>
           <span class="more" @click="$router.push('/infoList')">更多</span>
         </p>
-        <div  v-for="(item,index) in volunteers" :key="index" :class="(index+1)%4 !=0 ?'right33':''" @click="vlounteerDetail(item)">
+        <div  v-for="(item,index) in volunteerList" :key="index" :class="(index+1)%4 !=0 ?'right33':''" @click="vlounteerDetail(item)">
           <img :src="item.img" alt="">
           <p>{{item.title}}</p>
           <span>{{item.name}}</span>

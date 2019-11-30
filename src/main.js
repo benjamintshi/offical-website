@@ -5,6 +5,9 @@ import store from './store'
 import './assets/style/index.less';
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
+import http from './utils/http.js'
+
+Vue.prototype.http = http   //放入全局
 Vue.use(ViewUI);
 Vue.config.productionTip = false;
 
