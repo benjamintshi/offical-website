@@ -121,7 +121,7 @@ module.exports = {
 
   devServer: {
 
-    port: 3000,
+    port: 8000,
 
     host: "0.0.0.0",
 
@@ -131,7 +131,17 @@ module.exports = {
 
     open: true,
 
-    proxy: null
+    proxy: {
+      '/api': {     //这里最好有一个 /
+        target: 'http://cultrual.bbwhm.com:8087/api',  // 后台接口域名
+        ws: true,        //如果要代理 websockets，配置这个参数
+        secure: false,  // 如果是https接口，需要配置这个参数
+        changeOrigin: true,  //是否跨域
+        pathRewrite:{
+          '^/api':''
+        }
+      }
+    }
 
   },
   lintOnSave: true,
