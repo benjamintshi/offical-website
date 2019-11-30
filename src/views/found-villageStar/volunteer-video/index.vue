@@ -19,7 +19,7 @@
           <p class="title">
             相关视频
           </p>
-          <div  v-for="(item,index) in volunteers" :key="index" :class="(index+1)%4 !=0 ?'right46':''">
+          <div  v-for="(item,index) in volunteers" :key="index" :class="(index+1)%4 !=0 ?'right46 a-hover-style':'a-hover-style'">
             <img :src="item.img" alt="">
             <p>{{item.title}}</p>
             <span>{{item.name}}</span>

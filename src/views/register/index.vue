@@ -40,11 +40,14 @@
        </Row>
        <button class="send a-hover-style" @click="submitFirst">确定</button>
      </div>
+     <!--第二步-->
      <div class="second-step " v-else-if="show.secondStep">
           <p @click="selectRole('1')" :class="role == '1' ?'selected a-hover-style':'a-hover-style'"><span>我是<br/>普通用户</span></p>
          <p @click="selectRole('2')" :class="role == '2' ?'selected a-hover-style':'a-hover-style'"><span>我要<br/>成为志愿者</span></p>
        <button :class="role  ?' a-hover-style':'a-hover-style btn-gray'" @click="next">下一步</button>
      </div>
+     <!-- 第三步-->
+     <BaseInfo v-else-if="show.thirdStep"></BaseInfo>
    </div>
 
 

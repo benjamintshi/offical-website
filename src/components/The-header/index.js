@@ -76,7 +76,8 @@ export default {
       ],
       activeArea:"all",
       activeAreaName:"站点切换",
-      showArea:false
+      showArea:false,
+
 
     }
   },

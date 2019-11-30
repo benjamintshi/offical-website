@@ -1,7 +1,7 @@
 <template>
   <div class="volunteer-info">
     <div class="star-info-nav">
-      品牌项目 > 地方品牌项目 > 河南 > 志愿风采 > 正文详情
+      品牌项目 > 地方品牌项目 > 河南 > {{info.nav}} > 正文详情
     </div>
     <ul class="volunteer-info-left">
 

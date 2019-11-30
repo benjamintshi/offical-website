@@ -1,5 +1,6 @@
-
+import BaseInfo from "./input-base-info/index.vue";
 export default {
+  components: {BaseInfo} ,
   data() {
     return {
       send:"发送验证码",
@@ -11,8 +12,9 @@ export default {
         secret:""
       },
       show:{
-        firstStep:true,
-        secondStep:false
+        firstStep:false,
+        secondStep:false,
+        thirdStep:true
 
       },
       role:""
@@ -51,7 +53,8 @@ export default {
   //
     next(){
       if(this.role){
-
+        this.show.secondStep = false;
+        this.show.thirdStep = true;
       }else{
         return;
       }

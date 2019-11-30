@@ -47,7 +47,8 @@ export default {
         params:item
       })
     },
-    vlounteerDetail(item){
+    vlounteerDetail(item,nav){
+      item.nav = nav;
       this.$router.push({
         name:"volunteerInfo",
         params:item
