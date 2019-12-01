@@ -15,9 +15,9 @@
       <ul class="info-list-content">
         <li class="volunteer">
           <p class="filter" @click="filter">
-            按时间排序 <img :class="desc?'transfer180':''" src="/static/images/villageStar/filter.png" alt="">
+            按时间排序 <img  :class="desc?'transfer180':''" src="/static/images/villageStar/filter.png" alt="">
           </p>
-          <div  v-for="(item,index) in volunteers" :key="index" :class="(index+1)%4 !=0 ?'right14':''">
+          <div  @click="watchVideo(item)" v-for="(item,index) in videos" :key="index" :class="(index+1)%4 !=0 ?'right14':''">
             <img :src="item.img" alt="">
             <p>{{item.title}}</p>
             <span>{{item.name}}</span>

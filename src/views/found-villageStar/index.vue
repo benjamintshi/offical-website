@@ -67,8 +67,9 @@
           <span>共{{volunteerNum}}条</span>
           <span class="more" @click="$router.push('/infoList')">更多</span>
         </p>
+
         <div  v-for="(item,index) in volunteerList" :key="index" :class="(index+1)%4 !=0 ?'right33':''" @click="vlounteerDetail(item)">
-          <img :src="item.img" alt="">
+          <img :src="item.img" alt="" onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'">
           <p>{{item.title}}</p>
           <span>{{item.name}}</span>
         </div>

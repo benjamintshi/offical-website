@@ -76,6 +76,12 @@ export default {
         params:item
       })
     },
+    starNewsDetail(item){
+      this.$router.push({
+        name:"starNewsDetail",
+        params:item
+      })
+    },
     searchPage() {
       this.getInformation();
       this.getCharm();

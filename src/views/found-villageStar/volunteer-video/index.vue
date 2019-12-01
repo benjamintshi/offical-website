@@ -14,13 +14,14 @@
       <ul class="volunteer-video-content">
         <p class="title">{{info.title}}</p>
         <p class="time">发布时间： {{info.time}}</p>
+        <p class="content">{{info.content}}</p>
         <p v-html="info.desc"></p>
         <li class="volunteer">
           <p class="title">
             相关视频
           </p>
-          <div  v-for="(item,index) in volunteers" :key="index" :class="(index+1)%4 !=0 ?'right46 a-hover-style':'a-hover-style'">
-            <img :src="item.img" alt="">
+          <div  @click="watchVideo(item)" v-for="(item,index) in volunteers" :key="index" :class="(index+1)%4 !=0 ?'right46 a-hover-style':'a-hover-style'">
+            <img :src="item.img"  alt="">
             <p>{{item.title}}</p>
             <span>{{item.name}}</span>
           </div>
