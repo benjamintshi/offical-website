@@ -35,7 +35,7 @@
         <Row class="filter">
 
           <i-col span="12" v-for="(item,index) in newsList" :key="index" :class="index==newsList.length-1||index==newsList.length-2?'':'addBorder'">
-            <div class="news-list a-hover-style" @click="vlounteerDetail(item,'村宝资讯')" >
+            <div class="news-list a-hover-style" @click="vlounteerDetail(item)" >
               <span class="circle"></span>
               <span class="title">{{item.title}}</span>
               <span class="time">{{item.time}}</span>
@@ -68,7 +68,7 @@
           <span class="more" @click="$router.push('/infoList')">更多</span>
         </p>
         <div  v-for="(item,index) in volunteerList" :key="index" :class="(index+1)%4 !=0 ?'right33':''" @click="vlounteerDetail(item,'志愿风采')">
-          <img :src="item.img" alt="">
+          <img :src="item.img" alt="" onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'">
           <p>{{item.title}}</p>
           <span>{{item.name}}</span>
         </div>

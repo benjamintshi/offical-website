@@ -1,7 +1,8 @@
+import format from '@/utils/format.js'
 export default {
   data() {
     return {
-      info: {},//this.route.params
+      newsInfo:{},//this.route.params
       content:"<p> " +
       "      为进一步激发广大家长和孩子诵读经典的兴趣，感受阅读乐趣，7月6日早上司马迁图书馆携手养正学堂在禹甸园南广场举办了以“感恩孝亲”为主题的亲子经典诵读活动。活动邀请了60对亲子家庭参加。<br /> \n" +
       "      <br /> \n" +
@@ -36,13 +37,49 @@ export default {
     }
   },
   mounted(){
-    this.info = this.$route.params;
-    this.info.time = "2019-08-01  10:33"
+    this.newsInfo.projectId = this.$route.query.projectId;
+    this.getVProjectAchieveById();
   },
   methods:{
     // 点击推荐链接
     toRecommend(item){
+      this.newsInfo.projectId = item.id;
+      this.getVProjectAchieveById();
+    },
+    getVProjectAchieveById(){
+      this.http.get('/vProjectAchieve/getVProjectAchieveById/'+ this.newsInfo.projectId).then(res=>{
+        this.newsInfo.title = res.data.data.projectName;
+        this.content = res.data.data.projectInfo;
+        this.newsInfo.time = format(res.data.data.createDate,'YYYY/MM/DD HH:mm');
+        console.log(this.newsInfo);
+        this.getGoodVolunteerShows();
+      })
+    },
+    vlounteerDetail(item){
+      // this.$router.push({
+      //   name:"volunteerInfo",
+      //   query:{'projectId':item.id}
+      // })
+    },
+    getGoodVolunteerShows(){
+      var params ={
+        'pageNum':1,
+        'pageSize':5
+      }
+      this.newsList= [];
+      this.http.get('/vProjectAchieve/getGoodVolunteerShows/41',params).then(res=>{
+        this.recommend = [];
+        res.data.data.list.forEach(item => {
+          var volunteer ={};
+          console.log(item);
+          volunteer.id = item.projectId;
+          volunteer.name = item.projectName;
+          volunteer.time = format(item.createDate,'YYYY.MM.DD');
 
+          this.recommend.push(volunteer);
+        })
+        console.log(this.recommend);
+      })
     }
   }
 
