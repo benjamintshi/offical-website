@@ -19,37 +19,37 @@ const routes = [
       {
         path: '/villageStar',
         name: 'villageStar',
-        component:(resolve) => require(['../views/found-villageStar/index.vue'], resolve)
+        component:(resolve) => require(['../views/brand-project/found-villageStar/index.vue'], resolve)
       },
       {
         path: '/starInfo',
         name: 'starInfo',
-        component:(resolve) => require(['../views/found-villageStar/star-info/index.vue'], resolve)
+        component:(resolve) => require(['../views/brand-project/found-villageStar/star-info/index.vue'], resolve)
       },
       {
         path: '/volunteerVideo',
         name: 'volunteerVideo',
-        component:(resolve) => require(['../views/found-villageStar/volunteer-video/index.vue'], resolve)
+        component:(resolve) => require(['../views/brand-project/found-villageStar/volunteer-video/index.vue'], resolve)
       },
       {
         path: '/starNewsDetail',
         name: 'starNewsDetail',
-        component:(resolve) => require(['../views/found-villageStar/star-detail/index.vue'], resolve)
+        component:(resolve) => require(['../views/brand-project/found-villageStar/star-detail/index.vue'], resolve)
       },
       {
         path: '/infoList',
         name: 'infoList',
-        component:(resolve) => require(['../views/found-villageStar/info-list/index.vue'], resolve)
+        component:(resolve) => require(['../views/brand-project/found-villageStar/info-list/index.vue'], resolve)
       },
       {
         path: '/videoList',
         name: 'videoList',
-        component:(resolve) => require(['../views/found-villageStar/video-list/index.vue'], resolve)
+        component:(resolve) => require(['../views/brand-project/found-villageStar/video-list/index.vue'], resolve)
       },
       {
         path: '/volunteerInfo',
         name: 'volunteerInfo',
-        component:(resolve) => require(['../views/found-villageStar/volunteer-info/index.vue'], resolve)
+        component:(resolve) => require(['../views/brand-project/found-villageStar/volunteer-info/index.vue'], resolve)
       },{
         path: '/register',
         name: 'register',
