@@ -25,7 +25,7 @@ export default {
         },
         {
           name:"品牌项目",
-          to:"/villageStar"
+          to:"/brandProject"
         },
         {
           name:"学习园地",

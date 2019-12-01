@@ -32,6 +32,11 @@ const routes = [
         component:(resolve) => require(['../views/found-villageStar/volunteer-video/index.vue'], resolve)
       },
       {
+        path: '/starNewsDetail',
+        name: 'starNewsDetail',
+        component:(resolve) => require(['../views/found-villageStar/star-detail/index.vue'], resolve)
+      },
+      {
         path: '/infoList',
         name: 'infoList',
         component:(resolve) => require(['../views/found-villageStar/info-list/index.vue'], resolve)
@@ -59,6 +64,11 @@ const routes = [
         path: '/forgetPassword',
         name: 'forgetPassword',
         component:(resolve) => require(['../views/forget-password/index.vue'], resolve)
+      },
+      {
+        path: '/brandProject',
+        name: 'brandProject',
+        component:(resolve) => require(['../views/brand-project/index.vue'], resolve)
       }
     ]
   },

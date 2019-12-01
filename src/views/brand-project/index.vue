@@ -1,0 +1,35 @@
+<template>
+  <div class="brand-project">
+    <img src="/static/images/villageStar/top4.png" alt="">
+    <p>国家级示范项目</p>
+    <div class="project">
+      <Row>
+        <i-col span="8" v-for="(item,index) in projectList" :key="index">
+          <div >
+            <div class="icon">
+              <img :src="'/static/images/villageStar/icon'+(index+1)+'.png'" alt="">
+            </div>
+            <p>{{item.name}}</p>
+            <p> {{item.desc}}</p>
+
+          </div>
+        </i-col>
+
+      </Row>
+    </div>
+    <p>
+      地方品牌项目
+      <Select  v-model="area" style="width: 100px;display: inline-block;margin-left: 23px;">
+        <Option v-for="item in select01" :value="item.areaCode" :key="item.areaCode">{{ item.areaName }}</Option>
+      </Select>
+    </p>
+    <div class="local-project">
+      <img src="/static/images/villageStar/pic1.jpg" alt="">
+      <router-link to="villageStar"> <img src="/static/images/villageStar/pic2.jpg" alt=""></router-link>
+    </div>
+
+  </div>
+</template>
+<script src="./index.js">
+
+</script>
