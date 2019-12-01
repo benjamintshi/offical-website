@@ -14,7 +14,8 @@ export default {
       show:{
         firstStep:false,
         secondStep:false,
-        thirdStep:true
+        thirdStep:true,
+        fourStep:false
 
       },
       role:""
@@ -58,6 +59,10 @@ export default {
       }else{
         return;
       }
+    },
+    submitSuccess(){
+      this.show.thirdStep = false;
+      this.show.fourStep = true;
     }
   }
 }

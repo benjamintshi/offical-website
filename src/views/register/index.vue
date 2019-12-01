@@ -1,7 +1,7 @@
 <template>
 
    <div class="register-content" >
-      <p class="title-tip">
+      <p class="title-tip" v-show="!show.fourStep">
         注册
         <span>已有账号？</span>
         <span class="a-hover-style">去登陆</span>
@@ -46,8 +46,15 @@
          <p @click="selectRole('2')" :class="role == '2' ?'selected a-hover-style':'a-hover-style'"><span>我要<br/>成为志愿者</span></p>
        <button :class="role  ?' a-hover-style':'a-hover-style btn-gray'" @click="next">下一步</button>
      </div>
-     <!-- 第三步-->
-     <BaseInfo v-else-if="show.thirdStep"></BaseInfo>
+     <!-- 第三步 填写注册信息-->
+     <BaseInfo v-else-if="show.thirdStep" @success="submitSuccess"></BaseInfo>
+
+     <!-- 注册成功-->
+     <div v-else class="success">
+       <img src="/static/images/top/success.png" alt="">
+       <p>个人信息已提交成功，请耐心等待审核结果</p>
+       <router-link to="/">返回首页</router-link>
+     </div>
    </div>
 
 
