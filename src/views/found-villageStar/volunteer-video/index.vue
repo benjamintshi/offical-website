@@ -14,7 +14,7 @@
       <ul class="volunteer-video-content">
         <p class="title">{{info.title}}</p>
         <p class="time">发布时间： {{info.time}}</p>
-        <p class="info">{{info.desc}}</p>
+        <p v-html="info.desc"></p>
         <li class="volunteer">
           <p class="title">
             相关视频

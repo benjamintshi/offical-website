@@ -30,7 +30,8 @@ export default {
       ],
       pageNum:1,//当前页码
       total:180,// 超过16时显示页码
-      inputValue:""
+      inputValue:"",
+      desc:false //降序
     }
   },
   mounted(){
@@ -46,7 +47,7 @@ export default {
       //this.inputValue为当前数据
     },
     filter(){
-
+      this.desc = true;// true为降序 false为升序
     }
   }
 }
