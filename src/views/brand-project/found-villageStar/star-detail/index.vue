@@ -7,8 +7,8 @@
 
 
       <li class="base-info">
-        <p>{{info.title}}</p><br/>
-        <span class="time">发布时间：{{info.time}}</span>
+        <p>{{newsInfo.title}}</p><br/>
+        <span class="time">发布时间：{{newsInfo.time}}</span>
       </li>
       <img style="height: 6px;width: 100%" src="/static/images/villageStar/line.png" alt="">
       <div v-html="content" class="info-content">

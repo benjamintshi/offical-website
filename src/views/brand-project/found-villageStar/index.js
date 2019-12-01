@@ -24,7 +24,6 @@ export default {
       }
     },
   mounted(){
-      this.isfirst = true;
     localStorage.setItem('cityCode',this.cityCode);
     localStorage.setItem('cityCode2',this.cityCode2);
       this.http.get('/vArea/getAllAreas/'+ this.provinceCode).then(res=>{
@@ -67,19 +66,19 @@ export default {
     watchVideo(item){
       this.$router.push({
         name:"volunteerVideo",
-        params:item
+        query:{'itemId':item.id}
       })
     },
     vlounteerDetail(item){
       this.$router.push({
         name:"volunteerInfo",
-        params:item
+        query:{'itemId':item.id}
       })
     },
     starNewsDetail(item){
       this.$router.push({
         name:"starNewsDetail",
-        params:item
+        query:{'itemId':item.id}
       })
     },
     searchPage() {
@@ -113,11 +112,11 @@ export default {
         'cCode':this.cityCode,
         'xCode':this.cityCode2,
       }
-      var news ={};
       this.newsList= [];
       this.http.get('/vCunbaoNews/getCunbaoNewses',params).then(res=>{
           this.infoNum = res.data.data.total;
           res.data.data.list.forEach(item => {
+            var news ={};
             news.id = item.id;
             news.title = item.title;
             news.time = format(item.createDatetime,'YYYY.MM.DD');
@@ -133,12 +132,12 @@ export default {
         'cCode':this.cityCode,
         'xCode':this.cityCode2,
       }
-      var video = {
-      }
       this.videos= [];
       this.http.get('/vCunbaoVideo/getCunbaoVideos',params).then(res=>{
         this.charmNum = res.data.data.total;
         res.data.data.list.forEach(item => {
+          var video = {
+          }
           video.id = item.id;
           video.title = item.title;
           if(item.cover == "http://封面.jpg"){
@@ -157,12 +156,11 @@ export default {
         'cCode':this.cityCode,
         'xCode':this.cityCode2,
       }
-      var volunteer = {}
-
       this.http.get('/vProjectAchieve/getProvinceVolunteerShows/'+ this.provinceCode,params).then(res=>{
         this.volunteerNum = res.data.data.total;
         this.volunteerList= [];
         res.data.data.list.forEach(item => {
+          var volunteer = {}
           volunteer.id = item.projectId;
           volunteer.title = item.projectName;
           if(item.attachments.length > 0){
