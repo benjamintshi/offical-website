@@ -54,6 +54,11 @@ const routes = [
         path: '/login',
         name: 'login',
         component:(resolve) => require(['../views/login/index.vue'], resolve)
+      },
+      {
+        path: '/forgetPassword',
+        name: 'forgetPassword',
+        component:(resolve) => require(['../views/forget-password/index.vue'], resolve)
       }
     ]
   },

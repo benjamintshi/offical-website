@@ -6,13 +6,13 @@
         <span>已有账号？</span>
         <span class="a-hover-style">去登陆</span>
       </p>
-     <div class="fisrt-step" v-if="show.firstStep">
+     <div class="first-step" v-if="show.firstStep">
        <!--账号-->
        <Row>
-         <i-col span="4" >
+         <i-col span="5" >
           <p ><span style="margin-right:28px;">账</span>号：</p>
          </i-col>
-         <i-col span="20">
+         <i-col span="19">
            <input type="text" placeholder="身份证/手机号/邮箱号" v-model="formData.account">
          </i-col>
        </Row>
@@ -30,15 +30,15 @@
        </Row>
        <!--设置密码-->
        <Row>
-         <i-col span="4" >
+         <i-col span="5" >
            设置密码：
          </i-col>
-         <i-col span="20">
+         <i-col span="19">
            <input type="text" v-model="formData.secret">
            <p class="tips">请设置不少于8位的密码，必须包含字母、数字</p>
          </i-col>
        </Row>
-       <button class="send a-hover-style" @click="submitFirst">确定</button>
+       <button class="send" @click="submitFirst">确定</button>
      </div>
      <!--第二步-->
      <div class="second-step " v-else-if="show.secondStep">
