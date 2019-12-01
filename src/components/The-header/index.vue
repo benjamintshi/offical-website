@@ -27,7 +27,7 @@
               <router-link to="/" class="right-50">信息查询</router-link>
               <router-link to="/" class="right-40">联系我们</router-link>
               <span class="right-40" style="font-weight: 500">|</span>
-              <router-link to="/" class="right-40">登陆</router-link>
+              <router-link to="login" class="right-40">登陆</router-link>
               <router-link to="register">免费注册</router-link>
             </li>
 

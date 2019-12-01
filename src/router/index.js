@@ -49,6 +49,11 @@ const routes = [
         path: '/register',
         name: 'register',
         component:(resolve) => require(['../views/register/index.vue'], resolve)
+      },
+      {
+        path: '/login',
+        name: 'login',
+        component:(resolve) => require(['../views/login/index.vue'], resolve)
       }
     ]
   },
