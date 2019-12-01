@@ -12,9 +12,9 @@ export default {
         secret:""
       },
       show:{
-        firstStep:false,
+        firstStep:true,
         secondStep:false,
-        thirdStep:true,
+        thirdStep:false,
         fourStep:false
 
       },

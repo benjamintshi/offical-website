@@ -15,7 +15,7 @@
             <input type="text" placeholder="请输入手机号/身份证号/邮箱" v-model="login.account">
             <input type="password" placeholder="请输入密码" v-model="login.password">
             <button @click="login">登录</button>
-            <router-link to="/">忘记密码</router-link>
+            <router-link to="forgetPassword">忘记密码</router-link>
           </div>
         </li>
         <li class="center " v-else>
