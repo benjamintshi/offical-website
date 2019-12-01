@@ -3,8 +3,8 @@
     <div class="login-content">
       <ul class="login-content-info">
         <li class="top">
-          <p v-if="loginByAccount"> 扫码登录 
-            <span @click="loginByAccount=false" class="a-hover-style"> <img src="/static/images/scanIcon.png" alt=""></span> 
+          <p v-if="loginByAccount"> 扫码登录
+            <span @click="loginByAccount=false" class="a-hover-style"> <img src="/static/images/scanIcon.png" alt=""></span>
           </p>
           <p v-else> 密码登录
             <span @click="loginByAccount=true" class="a-hover-style">密码登录 </span>
@@ -26,7 +26,7 @@
           </div>
         </li>
         <li class="bottom">
-          <p><span>微信登录</span> 没有账号？ <router-link to="/"> 立即注册</router-link></p>
+          <p><span>微信登录</span> 没有账号？ <router-link to="register"> 立即注册</router-link></p>
         </li>
       </ul>
     </div>
