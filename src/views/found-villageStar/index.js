@@ -6,8 +6,8 @@ export default {
         query:"全部",
         select01: [],//获取的一级数组数据
         select02: [],//获取的二级数组数据
-        indexId:'选择一级菜单',//定义分类一的默认值
-        indexId2:'选择二级菜单',
+        cityCode:'undefined',//定义分类一的默认值
+        cityCode2:'undefined',
         indexNum:0,//定义一级菜单的下标
         infoNum:0,
         charmNum:0,
@@ -15,29 +15,52 @@ export default {
         subject: [],
         model1: 'all',
         model2:"all",
-
-        newsList:[  //资讯
-        ],
-        volunteerList:[
-      ],
-        videos:[ //视频
-        ],
-        currentPlay:""//当前播放的视频index
-
-
+        provinceCode:41,
+        newsList:[],  //资讯
+        volunteerList:[],
+        videos:[],//视频,
+        isfirst:true,
+        currentPlay:"",//当前播放的视频index
       }
     },
   mounted(){
-    this.http.get('/vArea/getAllAreas/41').then(res=>{
-      this.subject = res.data.data;
-      this.select01 =this.subject;
-      this.indexSelect01();
+      this.isfirst = true;
+    localStorage.setItem('cityCode',this.cityCode);
+    localStorage.setItem('cityCode2',this.cityCode2);
+      this.http.get('/vArea/getAllAreas/'+ this.provinceCode).then(res=>{
+        this.subject = res.data.data;
+        this.select01 = this.subject;
+        // this.indexSelect01();
+        // var cityCode = localStorage.getItem('cityCode');
+        // if(cityCode != undefined && cityCode != 'undefined'){
+        //   let i = 0;
+        //   for (i = 0;i<this.select01.length;i++) {
+        //     if (this.select01[i].areaCode == cityCode){
+        //       this.cityCode =this.select01[i].areaCode;
+        //       break
+        //     }
+        //   }
+        // }
+        this.searchPage();
     })
-    this.searchPage();
   },
   watch:{
-    indexId(val,oldVal){
+    cityCode(val,oldVal){
       this.indexSelect01();
+      if(oldVal != undefined && oldVal != 'undefined'){
+        this.cityCode2=undefined;
+      }
+      this.searchPage();
+      if(typeof(this.cityCode) == "undefined" || this.cityCode == "undefined"){
+        this.select02 = [];
+      }
+      localStorage.setItem('cityCode',this.cityCode);
+    },
+    cityCode2(val,oldVal){
+      if(this.cityCode2){
+        this.searchPage();
+      }
+      localStorage.setItem('cityCode2',this.cityCode2);
     }
   },
   methods:{
@@ -62,24 +85,31 @@ export default {
     indexSelect01(){
       let i = 0;
       for (i = 0;i<this.select01.length;i++) {
-        if (this.select01[i].areaCode == this.indexId){
+        if (this.select01[i].areaCode == this.cityCode){
           this.indexNum = i;
           break
         }
       }
       this.select02 = this.select01[this.indexNum].areas;
+      // var cityCode2 = localStorage.getItem('cityCode2');
+      // if(cityCode2 != undefined && cityCode2 != 'undefined') {
+      //   for (i = 0; i < this.select02.length; i++) {
+      //     if (this.select02[i].areaCode == cityCode2) {
+      //       this.cityCode2 = this.select02[i].areaCode;
+      //       break
+      //     }
+      //   }
+      // }
     },
     getInformation(){
       var params ={
         'pageNum':1,
         'pageSize':6,
+        'cCode':this.cityCode,
+        'xCode':this.cityCode2,
       }
-      var news ={
-        title:"河南省文化和旅游志愿者走进新疆河南省文化和旅游志愿者走进新疆",
-        time:"2019.08.22",
-        to:"/",
-        id:""
-      };
+      var news ={};
+      this.newsList= [];
       this.http.get('/vCunbaoNews/getCunbaoNewses',params).then(res=>{
           this.infoNum = res.data.data.total;
           res.data.data.list.forEach(item => {
@@ -94,10 +124,13 @@ export default {
     getCharm(){
       var params ={
         'pageNum':1,
-        'pageSize':6,
+        'pageSize':12,
+        'cCode':this.cityCode,
+        'xCode':this.cityCode2,
       }
       var video = {
       }
+      this.videos= [];
       this.http.get('/vCunbaoVideo/getCunbaoVideos',params).then(res=>{
         this.charmNum = res.data.data.total;
         res.data.data.list.forEach(item => {
@@ -115,12 +148,15 @@ export default {
     getVolunteerList(){
       var params ={
         'pageNum':1,
-        'pageSize':6,
+        'pageSize':8,
+        'cCode':this.cityCode,
+        'xCode':this.cityCode2,
       }
-      var volunteer = {
-      }
-      this.http.get('/vProjectAchieve/getProvinceVolunteerShows/41',params).then(res=>{
+      var volunteer = {}
+
+      this.http.get('/vProjectAchieve/getProvinceVolunteerShows/'+ this.provinceCode,params).then(res=>{
         this.volunteerNum = res.data.data.total;
+        this.volunteerList= [];
         res.data.data.list.forEach(item => {
           volunteer.id = item.projectId;
           volunteer.title = item.projectName;
@@ -136,5 +172,4 @@ export default {
       })
     }
   }
-
 }
