@@ -16,39 +16,65 @@ const routes = [
     component:(resolve) => require(['../views/Home.vue'], resolve),
     children:[
       {
+        path: '/brandProject',
+        name: 'brandProject',
+        component:(resolve) => require(['../views/brand-project/index.vue'], resolve)
+      },
+      {
         path: '/villageStar',
         name: 'villageStar',
-        component:(resolve) => require(['../views/brand-project/found-villageStar/index.vue'], resolve)
+        component:(resolve) => require(['../views/brand-project/found-villageStar/index.vue'], resolve),
+        meta: {
+          parentName: "brandProject"
+        }
       },
       {
         path: '/starInfo',
         name: 'starInfo',
-        component:(resolve) => require(['../views/brand-project/found-villageStar/star-info/index.vue'], resolve)
+        component:(resolve) => require(['../views/brand-project/found-villageStar/star-info/index.vue'], resolve),
+        meta: {
+          parentName: "brandProject"
+        }
       },
       {
         path: '/volunteerVideo',
         name: 'volunteerVideo',
-        component:(resolve) => require(['../views/brand-project/found-villageStar/volunteer-video/index.vue'], resolve)
+        component:(resolve) => require(['../views/brand-project/found-villageStar/volunteer-video/index.vue'], resolve),
+        meta: {
+          parentName: "brandProject"
+        }
       },
       {
         path: '/starNewsDetail',
         name: 'starNewsDetail',
-        component:(resolve) => require(['../views/brand-project/found-villageStar/star-detail/index.vue'], resolve)
+        component:(resolve) => require(['../views/brand-project/found-villageStar/star-detail/index.vue'], resolve),
+        meta: {
+          parentName: "brandProject"
+        }
       },
       {
         path: '/infoList',
         name: 'infoList',
-        component:(resolve) => require(['../views/brand-project/found-villageStar/info-list/index.vue'], resolve)
+        component:(resolve) => require(['../views/brand-project/found-villageStar/info-list/index.vue'], resolve),
+        meta: {
+          parentName: "brandProject"
+        }
       },
       {
         path: '/videoList',
         name: 'videoList',
-        component:(resolve) => require(['../views/brand-project/found-villageStar/video-list/index.vue'], resolve)
+        component:(resolve) => require(['../views/brand-project/found-villageStar/video-list/index.vue'], resolve),
+        meta: {
+          parentName: "brandProject"
+        }
       },
       {
         path: '/volunteerInfo',
         name: 'volunteerInfo',
-        component:(resolve) => require(['../views/brand-project/found-villageStar/volunteer-info/index.vue'], resolve)
+        component:(resolve) => require(['../views/brand-project/found-villageStar/volunteer-info/index.vue'], resolve),
+        meta: {
+          parentName: "brandProject"
+        }
       },{
         path: '/register',
         name: 'register',
@@ -64,15 +90,36 @@ const routes = [
         name: 'forgetPassword',
         component:(resolve) => require(['../views/forget-password/index.vue'], resolve)
       },
-      {
-        path: '/brandProject',
-        name: 'brandProject',
-        component:(resolve) => require(['../views/brand-project/index.vue'], resolve)
-      },
+
       {
         path: '/volunteerNews',
         name: 'volunteerNews',
         component:(resolve) => require(['../views/volunteer-news/index.vue'], resolve)
+      },
+      {
+        path: '/newsDetail',
+        name: 'newsDetail',
+        component:(resolve) => require(['../views/volunteer-news/news-detail/index.vue'], resolve),
+        meta: {
+          parentName: "volunteerNews"
+        }
+      },
+      {
+        path: '/trainDetail',
+        name: 'trainDetail',
+        component:(resolve) => require(['../views/volunteer-news/train-detail/index.vue'], resolve),
+        meta: {
+          parentName: "volunteerNews"
+        }
+
+      },
+      {
+        path: '/policyFileDetail',
+        name: 'policyFileDetail',
+        component:(resolve) => require(['../views/volunteer-news/file-detail/index.vue'], resolve),
+        meta: {
+          parentName: "volunteerNews"
+        }
       }
     ]
   },

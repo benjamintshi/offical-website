@@ -56,11 +56,11 @@
         <!--菜单-->
       <div class="top-menu">
         <ul>
-          <li v-for="(item,index) in menelist" :key="index" :class="activeMenu == item.name?'top-menu-active':''"
-              @click="swtichMenu(item)" @mousemove="hoverMenu = item.value">
+          <li v-for="(item,index) in menelist" :key="index" :class="activeMenu === item.value?'top-menu-active':''"
+              @click.stop="swtichMenu(item)" @mousemove="hoverMenu = item.value" @mouseleave="hoverMenu =''">
             {{item.name}}
             <div class="sub-menu" v-if="item.children" v-show="hoverMenu == item.value"  @mouseleave="hoverMenu =''">
-              <div v-for="(item1,index1) in item.children" :key="index1">
+              <div v-for="(item1,index1) in item.children" :key="index1" @click.stop="subMenu(item,item1)">
                 {{item1.name}}
                 <div class="line" v-if="index1 !=item.children.length-1"></div>
               </div>

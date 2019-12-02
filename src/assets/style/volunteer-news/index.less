@@ -13,7 +13,8 @@
      padding:80px 0 20px;
    }
     .filter-tool{
-      height:97px;
+      height:auto;
+      padding-top: 40px;
       background:rgba(255,255,255,0.9);
       margin-bottom: 10px;
       p{
@@ -21,8 +22,8 @@
         font-family:PingFang SC;
         font-weight:600;
         color:rgba(38,38,38,1);
-        line-height: 97px;
         text-indent: 20px;
+        padding-bottom:40px ;
         span{
           font-size:18px;
           font-family:PingFang SC;
@@ -68,7 +69,9 @@
           display: inline-block;
           color: white;
           margin:22px 0 8px;
+          font-size: 12px;
         }
+
        .content{
          font-size:14px;
          font-family:PingFang SC;
@@ -90,7 +93,7 @@
     }
     .hot-news{
       background: white;
-      padding:20px 10px;
+      padding:20px 10px 0px;
       .title{
         font-size:18px;
         font-family:PingFang SC;
@@ -111,7 +114,7 @@
         }
       }
       .after-news{
-        margin-bottom: 20px;
+        padding-bottom: 20px;
         img{
           width: 122px;
           height: 70px;
@@ -139,6 +142,8 @@
       float: right;
       background: white;
       padding:20px 10px;
+      width: 100%;
+      margin: 20px 0;
       p{
         font-size:18px;
         font-family:PingFang SC;
@@ -155,7 +160,7 @@
         display: inline-block;
         text-overflow : ellipsis;
         white-space: nowrap;
-        overflow: auto;
+        overflow: hidden;
         margin-top: 30px;
         cursor: pointer;
         span{
@@ -167,6 +172,41 @@
           margin-right: 10px;
           margin-left: 5px;
         }
+      }
+    }
+    .policy-files-list{
+      background: #fff;
+      margin-right: 20px;
+      >li{
+        width: 100%;
+        padding:30px 30px 20px 20px;
+        border-bottom: 2px solid;
+        border-image: linear-gradient(90deg, #fff 0%, rgba(0,0,0,0.098) 50%, #fff 100%) 2 2 2 2;
+        border-image: -webkit-linear-gradient(90deg,  #fff 0%, rgba(0,0,0,0.098) 50%, #fff 100%) 2 2 2 2;
+        border-image: -moz-linear-gradient(90deg,  #fff 0%, rgba(0,0,0,0.098) 50%, #fff 100%) 2 2 2 2;
+        &:nth-child(10){
+          border:none;
+        }
+      }
+
+      p{
+        width: 100%;
+
+        font-size:18px;
+        font-family:PingFang SC;
+        font-weight:500;
+        color:rgba(50,51,51,1);
+        &:nth-child(2){
+          font-size:14px;
+          font-weight:500;
+          color:rgba(177,178,179,1);
+          span{
+            margin-left: 30px;
+          }
+        }
+      }
+      .ivu-page{
+        margin-top: 40px;
       }
     }
   }

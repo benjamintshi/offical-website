@@ -15,17 +15,20 @@ export default {
         },
         {
           name:"志愿快讯",
-          to:"",
+          to:"volunteerNews",
           value:"volunteerNews",
           children:[
             {
-              name:"活动快讯"
+              name:"活动快讯",
+              id:0
             },
             {
-              name:"政策文件"
+              name:"政策文件",
+              id:1
             },
             {
-              name:"培训快讯"
+              name:"培训快讯",
+              id:2
             }
           ]
         },
@@ -39,7 +42,8 @@ export default {
         },
         {
           name:"品牌项目",
-          to:"/brandProject"
+          to:"brandProject",
+          value:"brandProject"
         },
         {
           name:"学习园地",
@@ -47,7 +51,7 @@ export default {
         }
       ],
       //当前页面
-      activeMenu:"首页",
+      activeMenu:"index",
       areaList:[
         {
           name:"全部",
@@ -95,6 +99,12 @@ export default {
 
     }
   },
+  mounted(){
+    let activeMenu = localStorage.getItem("activeMenu");
+    if(activeMenu){
+      this.activeMenu = activeMenu;
+    }
+  },
   methods:{
     swtichArea (item) {
       this.activeArea = item.value;
@@ -102,10 +112,21 @@ export default {
       this.showArea = false;
     },
     swtichMenu(item){
-
+      if(this.activeMenu ==item.to || !item.to) return false;
+      this.activeMenu = item.value;
       this.$router.push(item.to);
-      this.activeMenu = item.name;
+      localStorage.setItem("activeMenu",this.activeMenu);
+
+    },
+    subMenu(menuItem,subMenuItem){
+      this.$router.push({
+        name:subMenuItem.to ? subMenu.to : menuItem.to,
+        query:subMenuItem.id? {'id':subMenuItem.id}:"",
+      });
+      this.activeMenu = menuItem.value;
+      localStorage.setItem("activeMenu",this.activeMenu);
     }
-  }
+  },
+
 
 }
