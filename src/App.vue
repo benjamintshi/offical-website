@@ -4,9 +4,15 @@
 
     <router-view>
       </router-view>
+    <scroll-top />
   </div>
 </template>
-
+<script>
+  import ScrollTop from "./components/ScrollTopCom.vue";
+  export default {
+    components: {ScrollTop }
+  }
+</script>
 <!--<script>-->
 <!--import Header from "./components/The-header/index.vue";-->
 <!--export default {-->
