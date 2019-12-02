@@ -109,7 +109,23 @@
       background:rgba(119,15,19,1);
       cursor: pointer;
     }
-
+    .sub-menu{
+      position: absolute;
+      z-index: 1000;
+      background: rgba(119, 15, 19, 0.85);
+      padding:0 20px;
+      margin-left: -20px;
+      >div{
+        height: 50px;
+        line-height: 50px;
+        .line{
+          width: 50%;
+          height: 1px;
+          background: rgba(255, 255, 255, 0.2);;
+          margin: 0 auto;
+        }
+      }
+    }
   }
   ul{
     width: 1000px;

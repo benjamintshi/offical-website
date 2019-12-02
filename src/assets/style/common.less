@@ -63,6 +63,7 @@ button:hover,a:hover{
   text-overflow : ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  width: 100%;
 }
 //悬浮手形
 .a-hover-style{
@@ -71,4 +72,23 @@ button:hover,a:hover{
 // 旋转180
 .transfer180{
   transform: rotate(180deg);
+}
+.ivu-page{
+  text-align: center;
+  padding-bottom: 20px;
+  .ivu-page-item{
+    border-radius: 16px !important;
+    border:none !important;
+    a:hover,&:hover a{
+      color:  #D94A36 !important;
+    }
+    &-active{
+      background: #D94A36 !important;
+      a,&:hover a{
+        color: white !important;
+      }
+    }
+
+
+  }
 }

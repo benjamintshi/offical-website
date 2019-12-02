@@ -5,15 +5,29 @@ export default {
       menelist:[
         {
           name:"首页",
-          to:"/"
+          to:"/",
+          value:"index"
         },
         {
           name:"新时代文明实践中心",
-          to:""
+          to:"",
+          value:""
         },
         {
           name:"志愿快讯",
-          to:""
+          to:"",
+          value:"volunteerNews",
+          children:[
+            {
+              name:"活动快讯"
+            },
+            {
+              name:"政策文件"
+            },
+            {
+              name:"培训快讯"
+            }
+          ]
         },
         {
           name:"活动招募",
@@ -77,7 +91,7 @@ export default {
       activeArea:"all",
       activeAreaName:"站点切换",
       showArea:false,
-
+      hoverMenu:""
 
     }
   },

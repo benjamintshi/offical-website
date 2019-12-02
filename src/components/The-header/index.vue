@@ -15,8 +15,7 @@
                 <p>
                   <span v-for="(item,index) in areaList" :key="index"
                         :class="activeArea == item.value?'active':''"
-                        @click="swtichArea(item)"
-                  >
+                        @click="swtichArea(item)">
                     {{item.name}}
                   </span>
                 </p>
@@ -56,9 +55,17 @@
         <!--菜单-->
       <div class="top-menu">
         <ul>
-          <li v-for="(item,index) in menelist" :key="index" :class="activeMenu == item.name?'top-menu-active':''" @click="swtichMenu(item)">
+          <li v-for="(item,index) in menelist" :key="index" :class="activeMenu == item.name?'top-menu-active':''"
+              @click="swtichMenu(item)" @mousemove="hoverMenu = item.value">
             {{item.name}}
+            <div class="sub-menu" v-if="item.children" v-show="hoverMenu == item.value"  @mouseleave="hoverMenu =''">
+              <div v-for="(item1,index1) in item.children" :key="index1">
+                {{item1.name}}
+                <div class="line" v-if="index1 !=item.children.length-1"></div>
+              </div>
+            </div>
           </li>
+
         </ul>
 
       </div>
