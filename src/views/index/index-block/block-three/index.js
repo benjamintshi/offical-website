@@ -7,7 +7,7 @@ export default {
       // 从上往下，模块一
 
         left:{
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           title:"山西省文化和旅游志愿者走进新疆",
           to:""
         },
@@ -98,14 +98,14 @@ export default {
       selected:"1",
       recruitList:[//招募活动
         {
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           title:"黑龙江省文旅厅开展文明旅游宣传活动",
           address:"陕西省渭南市韩城市",
           status:"1",
           time:"2018.12.01 -2019.09.01  "
         },
         {
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           title:"黑龙江省文旅厅开展文明旅游宣传活动",
           address:"陕西省渭南市韩城市",
           status:"2",
@@ -114,13 +114,13 @@ export default {
       ],
       serviceList:[
         {
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           title:"黑龙江省文旅厅开展文明旅游宣传活动",
           style:"北京市西城区",
           number:"10"
         },
         {
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           title:"黑龙江省文旅厅开展文明旅游宣传活动",
           style:"北京市西城区",
           number:"10"

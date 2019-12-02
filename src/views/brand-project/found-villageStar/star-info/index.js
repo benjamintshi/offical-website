@@ -3,7 +3,7 @@ export default {
     return {
       info: {
         name: "陈信宏",
-        img: "/static/images/villageStar/zhiyuan.jpg",
+        img: "static/images/villageStar/zhiyuan.jpg",
         id: ""
       },//this.route.params
       content:"<p> " +

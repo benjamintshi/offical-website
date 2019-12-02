@@ -1,13 +1,13 @@
 <template>
   <div class="brand-project">
-    <img src="/static/images/villageStar/top4.png" alt="">
+    <img src="static/images/villageStar/top4.png" alt="">
     <p>国家级示范项目</p>
     <div class="project">
       <Row>
         <i-col span="8" v-for="(item,index) in projectList" :key="index">
           <div >
             <div class="icon">
-              <img :src="'/static/images/villageStar/icon'+(index+1)+'.png'" alt="">
+              <img :src="'static/images/villageStar/icon'+(index+1)+'.png'" alt="">
             </div>
             <p>{{item.name}}</p>
             <p> {{item.desc}}</p>
@@ -24,8 +24,8 @@
       </Select>
     </p>
     <div class="local-project">
-      <img src="/static/images/villageStar/pic1.jpg" alt="">
-      <router-link to="villageStar"> <img src="/static/images/villageStar/pic2.jpg" alt=""></router-link>
+      <img src="static/images/villageStar/pic1.jpg" alt="">
+      <router-link to="villageStar"> <img src="static/images/villageStar/pic2.jpg" alt=""></router-link>
     </div>
 
   </div>

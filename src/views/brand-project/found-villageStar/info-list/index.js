@@ -67,7 +67,7 @@ export default {
             // console.log(item.attachments[0].l);
             volunteer.img = item.attachments[0].attachmentUrl;
           }else{
-            volunteer.img = "/static/images/villageStar/zhiyuan.jpg";
+            volunteer.img = "static/images/villageStar/zhiyuan.jpg";
           }
           volunteer.name = item.vuser.userName;
           this.volunteers.push(volunteer);

@@ -141,7 +141,7 @@ export default {
           video.id = item.id;
           video.title = item.title;
           if(item.cover == "http://封面.jpg"){
-            video.cover = "/static/images/villageStar/zhiyuan.jpg";
+            video.cover = "static/images/villageStar/zhiyuan.jpg";
           }else{
             video.cover = item.cover;
           }
@@ -167,7 +167,7 @@ export default {
             // console.log(item.attachments[0].l);
             volunteer.img = item.attachments[0].attachmentUrl;
           }else{
-            volunteer.img = "/static/images/villageStar/zhiyuan.jpg";
+            volunteer.img = "static/images/villageStar/zhiyuan.jpg";
           }
           volunteer.name = item.vuser.userName;
           this.volunteerList.push(volunteer);

@@ -6,25 +6,25 @@ export default {
       cityCode2:'',
       volunteers:[ //志愿者风采
         {
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           title:"河南省志愿服务活动",
           name:"李黄梁",
           id:""
         },
         {
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           title:"河南省志愿服务活动",
           name:"李黄梁",
           id:""
         },
         {
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           title:"河南省志愿服务活动",
           name:"李黄梁",
           id:""
         },
         {
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           title:"河南省志愿服务活动河南省志愿服务活动河南省志愿服务活动",
           name:"李黄梁",
           id:""
@@ -76,7 +76,7 @@ export default {
           video.title = item.title;
           video.name = item.publishUserName;
           if(item.cover == "http://封面.jpg"){
-            video.img = "/static/images/villageStar/zhiyuan.jpg";
+            video.img = "static/images/villageStar/zhiyuan.jpg";
           }else{
             video.img = item.cover;
           }

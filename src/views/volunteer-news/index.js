@@ -9,42 +9,42 @@ export default {
           title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
           content:"来自双阳区城中小学来自双阳区城中小学、长春市红领巾宣讲团的26名小学生在吉林外国语大学26名大学生志愿者的陪同下，走进联合国教科文组织世走进联合国教科文组织世走进联合国教科文组织世",
           tag:"陕西省渭南市韩城市",
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           id:"1"
         },
         {
           title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
           content:"来自双阳区城中小学来自双阳区城中小学、长春市红领巾宣讲团的26名小学生在吉林外国语大学26名大学生志愿者的陪同下，走进联合国教科文组织世走进联合国教科文组织世走进联合国教科文组织世",
           tag:"陕西省渭南市韩城市",
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           id:"1"
         },
         {
           title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
           content:"来自双阳区城中小学来自双阳区城中小学、长春市红领巾宣讲团的26名小学生在吉林外国语大学26名大学生志愿者的陪同下，走进联合国教科文组织世走进联合国教科文组织世走进联合国教科文组织世",
           tag:"陕西省渭南市韩城市",
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           id:"1"
         },
         {
           title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
           content:"来自双阳区城中小学来自双阳区城中小学、长春市红领巾宣讲团的26名小学生在吉林外国语大学26名大学生志愿者的陪同下，走进联合国教科文组织世走进联合国教科文组织世走进联合国教科文组织世",
           tag:"陕西省渭南市韩城市",
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           id:"1"
         },
         {
           title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
           content:"来自双阳区城中小学来自双阳区城中小学、长春市红领巾宣讲团的26名小学生在吉林外国语大学26名大学生志愿者的陪同下，走进联合国教科文组织世走进联合国教科文组织世走进联合国教科文组织世",
           tag:"陕西省渭南市韩城市",
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           id:"1"
         },
         {
           title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
           content:"来自双阳区城中小学来自双阳区城中小学、长春市红领巾宣讲团的26名小学生在吉林外国语大学26名大学生志愿者的陪同下，走进联合国教科文组织世走进联合国教科文组织世走进联合国教科文组织世",
           tag:"陕西省渭南市韩城市",
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           id:"1"
         },
 

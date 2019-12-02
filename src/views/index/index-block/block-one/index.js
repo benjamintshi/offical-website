@@ -6,7 +6,7 @@ export default {
       // 从上往下，模块一
 
         left:{
-          img:"/static/images/villageStar/zhiyuan.jpg",
+          img:"static/images/villageStar/zhiyuan.jpg",
           title:"山西省文化和旅游志愿者走进新疆",
           to:""
         },

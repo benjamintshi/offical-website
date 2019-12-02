@@ -8,7 +8,7 @@
                 活动信息
                 <span class="more a-hover-style"> 更多</span>
               </p>
-              <img style="height: 6px" src="/static/images/villageStar/line.png" alt="">
+              <img style="height: 6px" src="static/images/villageStar/line.png" alt="">
               <div class="recruit" v-for="(item,index) in recruitList" :key="index">
                 <img :src="item.img" alt="">
                 <p class="title">
@@ -33,7 +33,7 @@
                 志愿团队
                 <span class="more a-hover-style"> 更多</span>
               </p>
-              <img style="height: 6px" src="/static/images/villageStar/line.png" alt="">
+              <img style="height: 6px" src="static/images/villageStar/line.png" alt="">
               <Row class="service-info">
                  <i-col span="12" v-for="(item,index) in serviceList" :key="index">
                    <img :src="item.img" alt="">

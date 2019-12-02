@@ -15,7 +15,7 @@
       <ul class="info-list-content">
         <li class="volunteer">
           <p class="filter" @click="filter">
-            按时间排序 <img :class="desc?'transfer180':''"  src="/static/images/villageStar/filter.png" alt="">
+            按时间排序 <img :class="desc?'transfer180':''"  src="static/images/villageStar/filter.png" alt="">
           </p>
           <div  @click="vlounteerDetail(item,'志愿风采')" v-for="(item,index) in volunteers" :key="index" :class="(index+1)%4 !=0 ?'right14':''">
             <img :src="item.img" alt="" onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'">

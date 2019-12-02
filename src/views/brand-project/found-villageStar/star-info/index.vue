@@ -7,7 +7,7 @@
       <img :src="info.img" alt="">
       <span>{{info.name}}</span>
     </li>
-    <img style="height: 6px" src="/static/images/villageStar/line.png" alt="">
+    <img style="height: 6px" src="static/images/villageStar/line.png" alt="">
     <div v-html="content" class="info-content">
 
     </div>

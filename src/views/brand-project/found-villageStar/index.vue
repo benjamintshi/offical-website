@@ -1,7 +1,7 @@
 <template>
   <div class="village-star">
     <ul class="village-star-content">
-      <img class="top" src="/static/images/villageStar/top.png" alt="">
+      <img class="top" src="static/images/villageStar/top.png" alt="">
        <!--筛选地区-->
       <li class="search">
         <p class="title">
@@ -56,7 +56,7 @@
             <img :src="item.cover" alt="">
             <p class="video-title">{{ item.title}}</p>
             <div class="play-cover">
-              <img src="/static/images/villageStar/playVideo.png" alt="">
+              <img src="static/images/villageStar/playVideo.png" alt="">
             </div>
         </div>
 
@@ -81,7 +81,7 @@
           <i-col span="8" >
             <p class="title">最震撼村宝</p>
             <div class="desc">
-              <img src="/static/images/villageStar/zhiyuan.jpg" alt="">
+              <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
                 <span @click="$router.push('starInfo')">点击详情</span>
@@ -89,7 +89,7 @@
 
             </div>
             <div class="desc">
-              <img src="/static/images/villageStar/zhiyuan.jpg" alt="">
+              <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
                 <span>点击详情</span>
@@ -97,7 +97,7 @@
 
             </div>
             <div class="desc">
-              <img src="/static/images/villageStar/zhiyuan.jpg" alt="">
+              <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
                 <span>点击详情</span>
@@ -108,7 +108,7 @@
           <i-col span="8" >
             <p class="title">最出彩村宝</p>
             <div class="desc">
-              <img src="/static/images/villageStar/zhiyuan.jpg" alt="">
+              <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
                 <span>点击详情</span>
@@ -116,7 +116,7 @@
 
             </div>
             <div class="desc">
-              <img src="/static/images/villageStar/zhiyuan.jpg" alt="">
+              <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
                 <span>点击详情</span>
@@ -124,7 +124,7 @@
 
             </div>
             <div class="desc">
-              <img src="/static/images/villageStar/zhiyuan.jpg" alt="">
+              <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
                 <span>点击详情</span>
@@ -135,7 +135,7 @@
           <i-col span="8" >
             <p class="title">最感动村宝</p>
             <div class="desc">
-              <img src="/static/images/villageStar/zhiyuan.jpg" alt="">
+              <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
                 <span>点击详情</span>
@@ -143,7 +143,7 @@
 
             </div>
             <div class="desc">
-              <img src="/static/images/villageStar/zhiyuan.jpg" alt="">
+              <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
                 <span>点击详情</span>
@@ -151,7 +151,7 @@
 
             </div>
             <div class="desc">
-              <img src="/static/images/villageStar/zhiyuan.jpg" alt="">
+              <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
                 <span>点击详情</span>

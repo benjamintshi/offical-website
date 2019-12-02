@@ -51,7 +51,7 @@
 
      <!-- 注册成功-->
      <div v-else class="success">
-       <img src="/static/images/top/success.png" alt="">
+       <img src="static/images/top/success.png" alt="">
        <p>个人信息已提交成功，请耐心等待审核结果</p>
        <router-link to="/">返回首页</router-link>
      </div>
