@@ -10,8 +10,8 @@ export default {
         },
         {
           name:"新时代文明实践中心",
-          to:"",
-          value:""
+          to:"practiceCenter",
+          value:"practiceCenter"
         },
         {
           name:"志愿快讯",

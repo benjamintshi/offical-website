@@ -128,6 +128,11 @@ const routes = [
         meta: {
           parentName: "volunteerNews"
         }
+      },
+      {//新时代文明实践中心
+        path: '/practiceCenter',
+        name: 'practiceCenter',
+        component:(resolve) => require(['../views/practice-center/index.vue'], resolve),
       }
     ]
   },
