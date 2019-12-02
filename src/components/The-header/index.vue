@@ -36,8 +36,9 @@
         <div class="top-logo">
           <img class="top-logo-bg" src="static/images/top/top-bg.png" alt="">
           <ul>
-
+            <img   style="width: 342px;" src="static/images/top/logo2.png" alt="">
             <p>
+
               <span>
                 奉献
               </span>
