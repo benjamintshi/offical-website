@@ -34,7 +34,7 @@
         </div>
       <!--  中间logo部分 -->
         <div class="top-logo">
-          <img class="top-logo-bg" src="/static/images/top/top-bg.png" alt="">
+          <img class="top-logo-bg" src="static/images/top/top-bg.png" alt="">
           <ul>
 
             <p>

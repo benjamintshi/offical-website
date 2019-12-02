@@ -18,8 +18,8 @@
             <router-link to="/">免责声明</router-link>
           </p>
           <div class="link-img">
-            <img src="/static/images/top/weChat.png" alt="">
-            <img src="/static/images/top/App.png" alt="">
+            <img src="static/images/top/weChat.png" alt="">
+            <img src="static/images/top/App.png" alt="">
           </div>
         </li>
 
