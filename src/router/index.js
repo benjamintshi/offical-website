@@ -53,6 +53,14 @@ const routes = [
         }
       },
       {
+        path: '/starNewsList',
+        name: 'starNewsList',
+        component:(resolve) => require(['../views/brand-project/found-villageStar/star-news-list/index.vue'], resolve),
+        meta: {
+          parentName: "brandProject"
+        }
+      },
+      {
         path: '/infoList',
         name: 'infoList',
         component:(resolve) => require(['../views/brand-project/found-villageStar/info-list/index.vue'], resolve),

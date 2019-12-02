@@ -30,7 +30,7 @@
         <p class="block-title">
           村宝资讯
           <span>共{{infoNum}}条</span>
-          <span class="more">更多</span>
+          <span class="more a-hover-style" @click="$router.push('/starNewsList')">更多</span>
         </p>
         <Row class="filter">
 
@@ -50,11 +50,11 @@
         <p class="block-title">
           魅力村宝
           <span>共{{charmNum}}条</span>
-          <span class="more"  @click="$router.push('/videoList')">更多</span>
+          <span class="more a-hover-style"  @click="$router.push('/videoList')">更多</span>
         </p>
-        <div  v-for="(item,index) in videos" :key="index" @click="watchVideo(item)">
+        <div  v-for="(item,index) in videos" :key="index" @click="watchVideo(item)" class="a-hover-style">
             <img :src="item.cover" alt="">
-            <p class="video-title">{{ item.title}}</p>
+            <p class="video-title word">{{ item.title}}</p>
             <div class="play-cover">
               <img src="static/images/villageStar/playVideo.png" alt="">
             </div>

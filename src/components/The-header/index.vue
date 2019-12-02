@@ -56,7 +56,7 @@
         <!--菜单-->
       <div class="top-menu">
         <ul>
-          <li v-for="(item,index) in menelist" :key="index" :class="activeMenu === item.value?'top-menu-active':''"
+          <li v-for="(item,index) in menelist" :key="index" :class="activeMenu === item.value?'top-menu-active a-hover-style':'a-hover-style'"
               @click.stop="swtichMenu(item)" @mousemove="hoverMenu = item.value" @mouseleave="hoverMenu =''">
             {{item.name}}
             <div class="sub-menu" v-if="item.children" v-show="hoverMenu == item.value"  @mouseleave="hoverMenu =''">

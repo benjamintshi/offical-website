@@ -112,7 +112,7 @@ export default {
       this.showArea = false;
     },
     swtichMenu(item){
-      if(this.activeMenu ==item.to || !item.to) return false;
+      if(this.$route.name==item.to || !item.to) return false;
       this.activeMenu = item.value;
       this.$router.push(item.to);
       localStorage.setItem("activeMenu",this.activeMenu);

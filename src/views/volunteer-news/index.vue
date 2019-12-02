@@ -4,12 +4,12 @@
     <ul class="volunteer-news-content">
       <p class="title">志愿快讯</p>
       <li class="filter-tool">
-        <p> 类 <span style="margin-left: 30px;"></span> 型：
+        <div class="tool">类 <span style="margin-left: 30px;"></span> 型：
           <span v-for="(item,index) in filterList" :key="index" @click="changeFilter(index)"
                 :class="selectedIndex ==index?'active a-hover-style':'a-hover-style'" >
             {{item}}
           </span>
-        </p>
+        </div>
         <p v-if="selectedIndex === 1"> 分<span style="margin-left: 30px;"></span> 类：
           <span v-for="(item,index) in typeList" :key="index" @click="changeType(item)"
                 :class="selectType ==item.value?'active a-hover-style':'a-hover-style'" >
