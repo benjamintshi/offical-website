@@ -3,7 +3,8 @@
     <!--志愿风采-->
     <div class="info-list video-list">
       <ul class="info-list-top">
-        <p class="nav">品牌项目 > 河南 > 村宝 > 魅力村宝</p>
+        <p class="nav a-hover-style"> <span @click="$router.push('brandProject')">品牌项目 > 河南 </span> >
+          <span @click="$router.push('villageStar')">村宝</span> > 魅力村宝</p>
         <li class="search">
           <p>魅力村宝</p>
           <div class="search-input">

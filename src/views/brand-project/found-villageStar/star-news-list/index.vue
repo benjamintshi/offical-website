@@ -2,7 +2,8 @@
 
   <div class="volunteer-news star-news-list">
     <ul class="volunteer-news-content">
-      <p class="nav">品牌项目 > 河南 > 村宝 > 村宝资讯</p>
+      <p class="nav a-hover-style"> <span @click="$router.push('brandProject')"> 品牌项目 > 河南 </span> >
+        <span @click="$router.push('villageStar')">村宝</span> > 村宝资讯</p>
       <li >
         <div class="search-tool">
           <p>村宝资讯</p>

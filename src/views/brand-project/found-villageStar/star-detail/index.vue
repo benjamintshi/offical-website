@@ -1,7 +1,8 @@
 <template>
   <div class="volunteer-info">
-    <div class="star-info-nav">
-      品牌项目 > 地方品牌项目 > 河南 > 村宝资讯 > 正文详情
+    <div class="star-info-nav a-hover-style">
+      <span @click="$router.push('brandProject')"> 品牌项目 > 地方品牌项目 > 河南 ></span>
+      <span @click="$router.push('villageStar')">村宝资讯</span> > 正文详情
     </div>
     <ul class="volunteer-info-left">
 

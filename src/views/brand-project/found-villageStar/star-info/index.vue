@@ -1,7 +1,8 @@
 <template>
   <ul class="star-info">
-      <li class="star-info-nav">
-        品牌项目 > 河南 > 村宝 > 最美村宝
+      <li class="star-info-nav a-hover-style">
+        <span @click="$router.push('brandProject')"> 品牌项目 > 河南</span> >
+        <span @click="$router.push('villageStar')">村宝</span> > 最美村宝
       </li>
     <li class="base-info">
       <img :src="info.img" alt="">

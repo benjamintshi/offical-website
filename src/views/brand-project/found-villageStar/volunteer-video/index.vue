@@ -1,8 +1,9 @@
 <template>
   <div class="volunteer-video">
     <ul class="volunteer-video-content" v-show="info">
-      <li class="volunteer-video-nav">
-        品牌项目 > 地方品牌项目 > 河南 > 魅力村宝 > 详情
+      <li class="volunteer-video-nav a-hover-style">
+        <span @click="$router.push('brandProject')"> 品牌项目 > 地方品牌项目 > 河南 </span> >
+       <span @click="$router.push('villageStar')"> 魅力村宝 </span>  > 详情
       </li>
       <li class="video">
         <video :src="info.url" :poster="info.cover" controls>
