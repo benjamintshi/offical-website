@@ -133,6 +133,19 @@ const routes = [
         path: '/practiceCenter',
         name: 'practiceCenter',
         component:(resolve) => require(['../views/practice-center/index.vue'], resolve),
+      },
+      {//学习园地cultivate-list
+        path: '/studyCenter',
+        name: 'studyCenter',
+        component:(resolve) => require(['../views/study-center/index.vue'], resolve),
+      },
+      {//学习园地-线下培训
+        path: '/cultivateList',
+        name: 'cultivateList',
+        component:(resolve) => require(['../views/study-center/cultivate-list/index.vue'], resolve),
+        meta: {
+          parentName: "studyCenter"
+        }
       }
     ]
   },

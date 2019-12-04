@@ -47,7 +47,8 @@ export default {
         },
         {
           name:"学习园地",
-          to:""
+          to:"studyCenter",
+          value:"studyCenter"
         }
       ],
       //当前页面

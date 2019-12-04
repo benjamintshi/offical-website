@@ -1,0 +1,99 @@
+
+export default {
+
+  data(){
+    return{
+      value1:0,
+      topList:[
+        {
+          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
+          tag:"陕西省渭南市韩城市",
+          img:"static/images/villageStar/zhiyuan.jpg",
+          id:"2"
+        },
+        {
+          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
+          tag:"陕西省渭南市韩城市",
+          img:"static/images/villageStar/zhiyuan.jpg",
+          id:"1"
+        },
+        {
+          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
+          tag:"陕西省渭南市韩城市",
+          img:"static/images/villageStar/zhiyuan.jpg",
+          id:"3"
+        },
+      ],
+      literatureList:[  //资讯
+      {
+        title:"河南省文化和旅游志愿者走进新疆河南省文化和旅游志愿者走进新疆",
+        status:"1",
+        to:"/"
+      },
+      {
+        title:"河南省文化和旅游志愿者走进新疆",
+        status:"1",
+        to:"/"
+      },
+      {
+        title:"河南省文化和旅游志愿者走进新疆",
+        status:"3",
+        to:"/"
+      },
+      {
+        title:"河南省文化和旅游志愿者走进新疆",
+        status:"3",
+        to:"/"
+      },
+      {
+        title:"河南省文化和旅游志愿者走进新疆",
+        status:"2",
+        to:"/"
+      },
+      {
+        title:"河南省文化和旅游志愿者走进新疆",
+        status:"2",
+        to:"/"
+      }
+
+    ],
+      trainList:[
+        {
+          title:"河南省文化和旅游志愿者走进新疆",
+          status:"3",
+          to:"/",
+          address:"安徽省黄山市歙县文化馆",
+
+          timeStart:"2019.08.01",
+          timeEnd:"2019.09.01",
+          img:"static/images/villageStar/zhiyuan.jpg",
+        },
+        {
+          title:"河南省文化和旅游志愿者走进新疆",
+          status:"1",
+          to:"/",
+          address:"安徽省黄山市歙县文化馆",
+
+          timeStart:"2019.08.01",
+          timeEnd:"2019.09.01",
+          img:"static/images/villageStar/zhiyuan.jpg",
+        },
+        {
+          title:"河南省文化和旅游志愿者走进新疆",
+          status:"2",
+          to:"/",
+          address:"安徽省黄山市歙县文化馆",
+          timeStart:"2019.08.01",
+          timeEnd:"2019.09.01",
+          img:"static/images/villageStar/zhiyuan.jpg",
+        }
+      ]
+    }
+  },
+  mounted(){
+
+  },
+  methods:{
+
+  }
+}

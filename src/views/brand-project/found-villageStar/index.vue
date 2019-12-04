@@ -92,7 +92,7 @@
               <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
-                <span>点击详情</span>
+                <span @click="$router.push('starInfo')">点击详情</span>
               </div>
 
             </div>
@@ -100,7 +100,7 @@
               <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
-                <span>点击详情</span>
+                <span @click="$router.push('starInfo')">点击详情</span>
               </div>
 
             </div>
@@ -111,7 +111,7 @@
               <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
-                <span>点击详情</span>
+                <span @click="$router.push('starInfo')">点击详情</span>
               </div>
 
             </div>
@@ -119,7 +119,7 @@
               <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
-                <span>点击详情</span>
+                <span @click="$router.push('starInfo')">点击详情</span>
               </div>
 
             </div>
@@ -127,7 +127,7 @@
               <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
-                <span>点击详情</span>
+                <span @click="$router.push('starInfo')">点击详情</span>
               </div>
 
             </div>
@@ -138,7 +138,7 @@
               <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
-                <span>点击详情</span>
+                <span @click="$router.push('starInfo')">点击详情</span>
               </div>
 
             </div>
@@ -146,7 +146,7 @@
               <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
-                <span>点击详情</span>
+                <span @click="$router.push('starInfo')">点击详情</span>
               </div>
 
             </div>
@@ -154,7 +154,7 @@
               <img src="static/images/villageStar/zhiyuan.jpg" alt="">
               <div>
                 <p>第一名  杨宏宇</p>
-                <span>点击详情</span>
+                <span @click="$router.push('starInfo')">点击详情</span>
               </div>
 
             </div>
