@@ -10,7 +10,7 @@
             {{item}}
           </span>
         </div>
-        <p v-if="selectedIndex === 1"> 分<span style="margin-left: 30px;"></span> 类：
+        <p class="tool" v-if="selectedIndex === 1"> 分<span style="margin-left: 30px;"></span> 类：
           <span v-for="(item,index) in typeList" :key="index" @click="changeType(item)"
                 :class="selectType ==item.value?'active a-hover-style':'a-hover-style'" >
             {{item.name}}

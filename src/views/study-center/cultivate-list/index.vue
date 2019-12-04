@@ -6,15 +6,33 @@
       <li class="filter-tool">
         <div>
           <p> <span style="margin-right: 35px">区</span>域：</p>
-          <div></div>
+          <div class="selectCity ">
+            <span v-for="(item,index) in areaList" :key="index" @click="swtichCity(item)"
+                  :class="cityCode ==item.value?'a-hover-style active':'a-hover-style'">
+              {{item.name}}
+            </span>
+            <p class="control a-hover-style" v-if="showAll">收起</p>
+            <p class="control a-hover-style" v-else>展开</p>
+          </div>
+
         </div>
         <div>
           <p> <span style="margin-right: 35px">状</span>态：</p>
-          <div></div>
+          <div>
+            <span :class="currentState ==item.value?'a-hover-style active':'a-hover-style'"
+                  v-for="(item,index) in states" :key="index" @click="swtichStatus(item)">
+              {{item.name}}
+            </span>
+          </div>
         </div>
         <div>
           <p> 培训人数：</p>
-          <div></div>
+          <div>
+            <span :class="selectNumber ==item.value?'a-hover-style active':'a-hover-style'"
+                  v-for="(item,index) in number" :key="index" @click="swtichNumber(item)">
+              {{item.name}}
+            </span>
+          </div>
         </div>
       </li>
     </ul>

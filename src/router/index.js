@@ -146,6 +146,30 @@ const routes = [
         meta: {
           parentName: "studyCenter"
         }
+      },
+      {//学习园地-理论文献
+        path: '/literatureLst',
+        name: 'literatureLst',
+        component:(resolve) => require(['../views/study-center/literature-list/index.vue'], resolve),
+        meta: {
+          parentName: "studyCenter"
+        }
+      },
+      {//学习园地-培训详情
+        path: '/cultivateDetail',
+        name: 'cultivateDetail',
+        component:(resolve) => require(['../views/study-center/cultivate-detail/index.vue'], resolve),
+        meta: {
+          parentName: "studyCenter"
+        }
+      },
+      {//学习园地-文献正文
+        path: '/literatureDetail',
+        name: 'literatureDetail',
+        component:(resolve) => require(['../views/study-center/literature-detail/index.vue'], resolve),
+        meta: {
+          parentName: "studyCenter"
+        }
       }
     ]
   },

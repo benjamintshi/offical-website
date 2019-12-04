@@ -30,16 +30,39 @@
       height: auto;
       background: rgba(255, 255, 255, 0.9);
       margin-bottom: 10px;
-      padding:40px 20px;
+      padding:40px 20px 10px;
       >div{
         margin-bottom: 20px;
-       > p{
+        width: 100%;
+        overflow: hidden;
+       >p{
           font-size:18px;
           font-weight:600;
           color:rgba(38,38,38,1);
+          float: left;
         }
         >div{
-
+          width: calc(100% - 120px);
+          height: auto;
+          float: right;
+          font-size:14px;
+          font-weight:400;
+          color:rgba(76,76,77,1);
+          line-height: 27px;
+          span{
+            margin-right: 40px;
+            margin-bottom: 10px;
+            display: inline-block;
+          }
+          .active{
+            color:#9B171B;
+          }
+          .control{
+            font-size:14px;
+            font-weight:400;
+            color:rgba(177,178,179,1);
+            text-align: center;
+          }
         }
       }
 
