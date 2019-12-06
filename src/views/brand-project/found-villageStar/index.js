@@ -20,6 +20,9 @@ export default {
         volunteerList:[],
         videos:[],//视频,
         isfirst:true,
+        villageTreasure1:[], // 最震撼村宝
+        villageTreasure2:[], // 最出彩村宝
+        villageTreasure3:[], // 最感动村宝
         currentPlay:"",//当前播放的视频index
       }
     },
@@ -42,6 +45,7 @@ export default {
         // }
         this.searchPage();
     })
+    this.getVillageTreasure();
   },
   watch:{
     cityCode(val,oldVal){
@@ -66,6 +70,12 @@ export default {
     watchVideo(item){
       this.$router.push({
         name:"volunteerVideo",
+        query:{'itemId':item.id}
+      })
+    },
+    watchVill(item){
+      this.$router.push({
+        name:"starInfo",
         query:{'itemId':item.id}
       })
     },
@@ -172,6 +182,68 @@ export default {
           volunteer.name = item.vuser.userName;
           this.volunteerList.push(volunteer);
         })
+      })
+    },
+    getVillageTreasure() {
+      //最震撼村宝
+      var params = {
+        'pageNum': 1,
+        'pageSize': 3,
+        'type': 1,
+      }
+      var indexArr = ['一','二','三'];
+      this.http.get('/vCunbaoVolunteer/getPageVCunbaoVolunteerByType',params).then(res => {
+        this.villageTreasure1 = [];
+        var i = 0;
+        res.data.data.list.forEach(item => {
+          var village = {}
+          village.avatarUrl = item.avatarUrl;
+          village.name = item.name;
+          village.id = item.id;
+          village.indexNum = indexArr[i]
+          i = i +1;
+          this.villageTreasure1.push(village)
+        })
+        console.log(this.villageTreasure1)
+      })
+      // 最出彩
+      var params2 = {
+        'pageNum': 1,
+        'pageSize': 3,
+        'type': 2,
+      }
+      this.http.get('/vCunbaoVolunteer/getPageVCunbaoVolunteerByType',params2).then(res => {
+        this.villageTreasure2 = [];
+        var i = 0;
+        res.data.data.list.forEach(item => {
+          var village = {}
+          village.avatarUrl = item.avatarUrl;
+          village.name = item.name;
+          village.id = item.id;
+          village.indexNum = indexArr[i]
+          i = i +1;
+          this.villageTreasure2.push(village)
+        })
+      })
+      // 最感动
+      var params3 = {
+        'pageNum': 1,
+        'pageSize': 3,
+        'type': 3,
+      }
+      this.http.get('/vCunbaoVolunteer/getPageVCunbaoVolunteerByType',params3).then(res => {
+        this.villageTreasure3 = [];
+        var i = 0;
+        res.data.data.list.forEach(item => {
+          var village = {}
+          village.avatarUrl = item.avatarUrl;
+          village.name = item.name;
+          village.id = item.id;
+          village.indexNum = indexArr[i]
+          i = i +1;
+          this.villageTreasure3.push(village)
+        })
+        console.log(this.villageTreasure1)
       })
     }
   }
