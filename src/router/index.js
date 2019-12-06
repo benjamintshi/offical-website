@@ -170,7 +170,21 @@ const routes = [
         meta: {
           parentName: "studyCenter"
         }
-      }
+      },
+      {//活动信息
+        path: '/activityInfo',
+        name: 'activityInfo',
+        component:(resolve) => require(['../views/activity-info/index.vue'], resolve),
+
+      },
+      {//活动信息详情
+        path: '/activityDetail',
+        name: 'activityDetail',
+        component:(resolve) => require(['../views/activity-info/detail/index.vue'], resolve),
+        meta: {
+          parentName: "activityInfo"
+        }
+      },
     ]
   },
 

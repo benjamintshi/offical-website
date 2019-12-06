@@ -149,30 +149,8 @@ export default {
           value:"e"
         }
       ],
-      number:[
-        {
-          name:"全部",
-          value:"all"
-        },
-        {
-          name:"0",
-          value:"b"
-        },
-        {
-          name:"0 - 100",
-          value:"c"
-        },
-        {
-          name:"101 - 200",
-          value:"d"
-        },
-        {
-          name:"201 - 500",
-          value:"e"
-        }
-      ],
       currentState:"all",
-      selectNumber:"all"
+
     }
   },
   mounted(){
@@ -193,7 +171,7 @@ export default {
     },
     toDetail(item){
       this.$router.push({
-        name:"cultivateDetail",
+        name:"activityDetail",
         query:{'itemId':item.id}
       })
 

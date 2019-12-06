@@ -38,7 +38,8 @@ export default {
         },
         {
           name:"活动信息",
-          to:""
+          to:"activityInfo",
+          value:"activityInfo"
         },
         {
           name:"品牌项目",

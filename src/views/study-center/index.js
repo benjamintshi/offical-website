@@ -94,6 +94,12 @@ export default {
 
   },
   methods:{
+    toDetail(item){
+      this.$router.push({
+        name:"cultivateDetail",
+        query:{'itemId':item.id}
+      })
 
+    },
   }
 }

@@ -1,7 +1,6 @@
 <template>
   <div class="cultivate-list">
     <ul class="cultivate-list-content">
-      <p class="nav">学习园地 > 线下培训</p>
       <p class="title">线下培训</p>
       <li class="filter-tool">
         <div>
@@ -25,22 +24,13 @@
             </span>
           </div>
         </div>
-        <div>
-          <p> 培训人数：</p>
-          <div>
-            <span :class="selectNumber ==item.value?'a-hover-style active':'a-hover-style'"
-                  v-for="(item,index) in number" :key="index" @click="swtichNumber(item)">
-              {{item.name}}
-            </span>
-          </div>
-        </div>
       </li>
     </ul>
     <ul style="    width: 1040px;padding-left: 20px;">
       <li >
         <Row>
           <i-col span="8" v-for="(item,index) in trainList" :key="index" class="block-list" >
-            <div @click="toDetail(item)" class="a-hover-style">
+            <div class="a-hover-style" @click="toDetail(item)">
               <img :src="item.img" alt="">
               <p class="title">{{item.title}}</p>
               <p class="address">{{item.address}}
