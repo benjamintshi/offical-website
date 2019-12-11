@@ -42,8 +42,8 @@
         </i-col>
         <i-col span="12" class="block4">
           <p class="block-title" >最新报名
-            <span >计划培训：  100人</span>
             <span >实际报名：  100人</span>
+            <span >计划培训：  100人</span>
           </p>
           <img style="height: 6px;width: 100%;" src="static/images/villageStar/line.png" alt="">
           <Table :columns="columns1" :data="data1"></Table>

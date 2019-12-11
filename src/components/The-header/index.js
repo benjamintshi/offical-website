@@ -34,7 +34,19 @@ export default {
         },
         {
           name:"活动招募",
-          to:""
+          to:"activityRecruit",
+          value:"activityRecruit",
+          children:[
+            {
+              name:"活动招募",
+              id:0
+            },
+            {
+              name:"志愿团队",
+              id:1,
+              to:"volunteerTeam"
+            }
+          ]
         },
         {
           name:"活动信息",
@@ -122,7 +134,7 @@ export default {
     },
     subMenu(menuItem,subMenuItem){
       this.$router.push({
-        name:subMenuItem.to ? subMenu.to : menuItem.to,
+        name:subMenuItem.to ? subMenuItem.to : menuItem.to,
         query:subMenuItem.id? {'id':subMenuItem.id}:"",
       });
       this.activeMenu = menuItem.value;

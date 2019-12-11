@@ -28,7 +28,7 @@
             <p>服务方式：现场</p>
             <p>详细地址：河北省保定市阜平县</p>
 
-            <p class="apply a-hover-style">我要参加</p>
+            <p class="apply a-hover-style" @clicj="showModal = true">我要参加</p>
             <p class="toDetail a-hover-style">查看招募要求</p>
           </div>
 

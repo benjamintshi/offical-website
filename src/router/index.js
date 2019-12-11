@@ -180,11 +180,49 @@ const routes = [
       {//活动信息详情
         path: '/activityDetail',
         name: 'activityDetail',
-        component:(resolve) => require(['../views/activity-info/detail/index.vue'], resolve),
+        component: (resolve) => require(['../views/activity-info/detail/index.vue'], resolve),
         meta: {
           parentName: "activityInfo"
         }
       },
+      {//活动招募
+        path: '/activityRecruit',
+        name: 'activityRecruit',
+        component:(resolve) => require(['../views/activity-recruit/index.vue'], resolve),
+      },
+      {//活动招募详情
+        path: '/volunteerRecruitDetail',
+        name: 'volunteerRecruitDetail',
+        component: (resolve) => require(['../views/activity-recruit/detail/index.vue'], resolve),
+        meta: {
+          parentName: "activityRecruit"
+        }
+      },
+      {//志愿团队
+        path: '/volunteerTeam',
+        name: 'volunteerTeam',
+        component:(resolve) => require(['../views/activity-recruit/volunteer-team/index.vue'], resolve),
+        meta: {
+          parentName: "activityRecruit"
+        }
+      },
+      {//志愿团队详情
+        path: '/volunteerTeamDetail',
+        name: 'volunteerTeamDetail',
+        component:(resolve) => require(['../views/activity-recruit/team-detail/index.vue'], resolve),
+        meta: {
+          parentName: "activityRecruit"
+        }
+      },
+      {//志愿团队详情
+        path: '/volunteerApply',
+        name: 'volunteerApply',
+        component:(resolve) => require(['../views/activity-recruit/apply/index.vue'], resolve),
+        meta: {
+          parentName: "activityRecruit"
+        }
+      },
+
     ]
   },
 
