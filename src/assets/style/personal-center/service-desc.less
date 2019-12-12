@@ -1,0 +1,105 @@
+.service-desc{
+  background: #fff;
+  overflow: hidden;
+  .base-info{
+    padding:30px 39px 30px 30px;
+    background: #fff;
+    overflow: hidden;
+    &-left{
+      width: 90px;
+      float: left;
+      margin-right: 20px;
+      img{
+        width: 100%;
+      }
+    }
+    &-right{
+      width: calc(100% - 110px);
+      float: left;
+      .title{
+        font-size:18px;
+        font-family:PingFang SC;
+        font-weight:600;
+        color:rgba(50,51,51,1);
+        margin-bottom: 30px;
+        span{
+          float: right;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  .modify-info{
+    width: 700px;
+    margin:0 auto;
+    text-align: center;
+    button{
+      margin:30px auto 40px;
+    }
+    li{
+      text-align: left;
+      font-size:18px;
+      font-family:PingFang SC;
+      font-weight:400;
+      color:rgba(0,0,0,1);
+      margin-top: 30px;
+      textarea{
+        background:rgba(247,249,250,1);
+        border:1px solid rgba(227,228,230,1);
+        margin:10px 15px;
+        width: 670px;
+        height: 280px;
+        resize:none;
+        font-size:16px;
+        text-indent: 10px;
+        &:focus{
+          outline: none;
+        }
+      }
+    }
+    .upload{
+      display: inline-block;
+      position: relative;
+      .ivu-upload-list{
+        display:none;
+      }
+      img{
+        width: 100px;
+        vertical-align: text-top;
+
+      }
+
+      .upload-cover{
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,.6);
+        color: #fff;
+        text-align: center;
+        line-height: 100px;
+      }
+    }
+    .upload:hover{
+      .upload-cover{
+        display: block;
+
+      }
+    }
+  }
+  .empty-content{
+    font-size:16px;
+    font-family:PingFang SC;
+    color:rgba(38,38,38,1);
+    text-align: center !important;
+    p:nth-child(2){
+      color:rgba(151,152,153,1);
+    }
+    hr{
+      background:rgba(227,228,230,1);
+      margin-top: 30px;
+    }
+  }
+}

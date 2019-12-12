@@ -222,6 +222,30 @@ const routes = [
           parentName: "activityRecruit"
         }
       },
+      {//个人中心
+        path: '/personalCenter',
+        // name: 'personalCenter',
+        component:(resolve) => require(['../views/personal-center/index.vue'], resolve),
+        children:[
+          {
+            path: '/personalInfo',
+            name: 'personalInfo',
+            component:(resolve) => require(['../views/personal-center/personal-info/index.vue'], resolve),
+            meta: {
+              parentName: "personalCenter"
+            }
+          },
+          // 个人服务介绍
+          {
+            path: '/serviceDesc',
+            name: 'serviceDesc',
+            component:(resolve) => require(['../views/personal-center/service-desc/index.vue'], resolve),
+            meta: {
+              parentName: "personalCenter"
+            }
+          },
+        ]
+      },
 
     ]
   },
