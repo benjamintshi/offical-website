@@ -13,35 +13,35 @@ export default {
         },
         {
           name: "参加过的团队",
-          to:"",
+          to:"joinedTeam",
         },
         {
           name: "志愿服务记录",
-          to:"",
+          to:"serviceRecord",
         },
         {
           name: "参与活动记录",
-          to:"",
+          to:"activityRecord",
         },
         {
           name: "接受培训记录",
-          to:"",
+          to:"trainRecord",
         },
         {
           name: "积分累计记录",
-          to:"",
+          to:"integralRecord",
         },
         {
           name: "表彰记录",
-          to:"",
+          to:"honourRecord",
         },
         {
           name: "评价投诉记录",
-          to:"",
+          to:"evaluationRecord",
         },
         {
           name: "志愿服务证书",
-          to:"",
+          to:"certificate",
         }
       ],
       activeMenu:"personalInfo"
@@ -54,7 +54,7 @@ export default {
   methods:{
 
     swtichMenu(item){
-      if( this.activeMenu == this.$route.name) return;
+      if( item.to == this.$route.name) return;
       this.activeMenu = item.to;
       this.$router.push(item.to)
     }

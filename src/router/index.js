@@ -244,6 +244,78 @@ const routes = [
               parentName: "personalCenter"
             }
           },
+          // 参加过的团队
+          {
+            path: '/joinedTeam',
+            name: 'joinedTeam',
+            component:(resolve) => require(['../views/personal-center/joined-team/index.vue'], resolve),
+            meta: {
+              parentName: "personalCenter"
+            }
+          },
+          // 服务记录
+          {
+            path: '/serviceRecord',
+            name: 'serviceRecord',
+            component:(resolve) => require(['../views/personal-center/service-record/index.vue'], resolve),
+            meta: {
+              parentName: "personalCenter"
+            }
+          },
+          // 参与活动记录
+          {
+            path: '/activityRecord',
+            name: 'activityRecord',
+            component:(resolve) => require(['../views/personal-center/activity-record/index.vue'], resolve),
+            meta: {
+              parentName: "personalCenter"
+            }
+          },
+          // 积分累计记录honour-record
+          {
+            path: '/integralRecord',
+            name: 'integralRecord',
+            component:(resolve) => require(['../views/personal-center/integral-record/index.vue'], resolve),
+            meta: {
+              parentName: "personalCenter"
+            }
+          },
+          // 表彰记录
+          {
+            path: '/honourRecord',
+            name: 'honourRecord',
+            component:(resolve) => require(['../views/personal-center/honour-record/index.vue'], resolve),
+            meta: {
+              parentName: "personalCenter"
+            }
+          },
+          // 评价反馈记录certificate
+          {
+            path: '/evaluationRecord',
+            name: 'evaluationRecord',
+            component:(resolve) => require(['../views/personal-center/evaluation-record/index.vue'], resolve),
+            meta: {
+              parentName: "personalCenter"
+            }
+          },
+          // 证书
+          {
+            path: '/certificate',
+            name: 'certificate',
+            component:(resolve) => require(['../views/personal-center/certificate/index.vue'], resolve),
+            meta: {
+              parentName: "personalCenter"
+            }
+          },
+          // 证书
+          {
+            path: '/trainRecord',
+            name: 'trainRecord',
+            component:(resolve) => require(['../views/personal-center/train-record/index.vue'], resolve),
+            meta: {
+              parentName: "personalCenter"
+            }
+          },
         ]
       },
 

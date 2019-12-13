@@ -5,7 +5,7 @@
           <p class="base-info">
             <span class="title font26">王菲菲</span>
             <span class="tag"> 阳光工程</span>
-            <span class="modify" @click="modifyInfo">修改</span>
+            <span class="modify right" @click="modifyInfo ">修改</span>
            <span class="integral">200积分</span>
           </p>
 
@@ -18,8 +18,13 @@
           <Row>
             <i-col span="5">注册时间</i-col>
             <i-col span="7">ygzy12364849503</i-col>
-            <i-col span="5" >认证时间</i-col>
-            <i-col span="7">在职</i-col>
+            <i-col span="5" >
+              认证时间
+            </i-col>
+            <i-col span="7">
+              在职
+              <span class="downLoad" @click="downloadCodeImg">下载证书</span>
+            </i-col>
           </Row>
           <Row>
             <i-col span="5">服务区域</i-col>
