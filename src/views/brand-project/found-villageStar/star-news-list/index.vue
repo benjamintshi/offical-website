@@ -23,7 +23,7 @@
                 <div>
                   <p class="title text-ellipsis">{{item.title}}</p>
                   <p class="tag">{{item.tag}}</p>
-                  <p class="content">{{item.content}}</p>
+                  <p class="content" v-html="item.content"></p>
                 </div>
 
               </li>
@@ -34,7 +34,7 @@
           <i-col span="8">
             <ul class="recomend">
               <p>精选推荐</p>
-              <li v-for="(item,index) in recommend" :key="index" @click="toRecommend(item)">
+              <li v-for="(item,index) in recommend" :key="index" @click="toRecommend(item)" >
                 <span></span>
                 {{item.name}}
               </li>

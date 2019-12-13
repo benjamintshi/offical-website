@@ -4,52 +4,11 @@ export default {
   data() {
     return {
       newslist:[
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          content:"来自双阳区城中小学来自双阳区城中小学、长春市红领巾宣讲团的26名小学生在吉林外国语大学26名大学生志愿者的陪同下，走进联合国教科文组织世走进联合国教科文组织世走进联合国教科文组织世",
-          tag:"陕西省渭南市韩城市",
-          img:"static/images/villageStar/zhiyuan.jpg",
-          id:"1"
-        },
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          content:"来自双阳区城中小学来自双阳区城中小学、长春市红领巾宣讲团的26名小学生在吉林外国语大学26名大学生志愿者的陪同下，走进联合国教科文组织世走进联合国教科文组织世走进联合国教科文组织世",
-          tag:"陕西省渭南市韩城市",
-          img:"static/images/villageStar/zhiyuan.jpg",
-          id:"1"
-        },
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          content:"来自双阳区城中小学来自双阳区城中小学、长春市红领巾宣讲团的26名小学生在吉林外国语大学26名大学生志愿者的陪同下，走进联合国教科文组织世走进联合国教科文组织世走进联合国教科文组织世",
-          tag:"陕西省渭南市韩城市",
-          img:"static/images/villageStar/zhiyuan.jpg",
-          id:"1"
-        },
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          content:"来自双阳区城中小学来自双阳区城中小学、长春市红领巾宣讲团的26名小学生在吉林外国语大学26名大学生志愿者的陪同下，走进联合国教科文组织世走进联合国教科文组织世走进联合国教科文组织世",
-          tag:"陕西省渭南市韩城市",
-          img:"static/images/villageStar/zhiyuan.jpg",
-          id:"1"
-        },
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          content:"来自双阳区城中小学来自双阳区城中小学、长春市红领巾宣讲团的26名小学生在吉林外国语大学26名大学生志愿者的陪同下，走进联合国教科文组织世走进联合国教科文组织世走进联合国教科文组织世",
-          tag:"陕西省渭南市韩城市",
-          img:"static/images/villageStar/zhiyuan.jpg",
-          id:"1"
-        },
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          content:"来自双阳区城中小学来自双阳区城中小学、长春市红领巾宣讲团的26名小学生在吉林外国语大学26名大学生志愿者的陪同下，走进联合国教科文组织世走进联合国教科文组织世走进联合国教科文组织世",
-          tag:"陕西省渭南市韩城市",
-          img:"static/images/villageStar/zhiyuan.jpg",
-          id:"1"
-        },
 
       ],
       pageNum:1,//当前页码
       pageSize:6,
+      inputValue:'',
       total:16,// 超过16时显示页码
       recommend:[
         {
@@ -74,18 +33,55 @@ export default {
 
   },
   mounted(){
-
-
+    this.cityCode = localStorage.getItem('cityCode');
+    this.cityCode2 = localStorage.getItem('cityCode2');
+    this.getCunbaoNewses();
   },
   methods:{
-    changePage(){
-
+    changePage(page){
+      this.pageNum = page;
+      this.getCunbaoNewses();
     },
-    toRecommend(){
-
+    getCunbaoNewses(){
+      console.log("页面开始检索。。。");
+      var params ={
+        'pageNum':this.pageNum ,
+        'pageSize':6,
+        'title':this.inputValue,
+        'sortType':this.sortType,
+        'cCode':this.cityCode,
+        'xCode':this.cityCode2,
+      }
+      var video = {
+      }
+      this.videos= [];
+      this.http.get('/vCunbaoNews/getCunbaoNewses',params).then(res=>{
+        this.total = res.data.data.total;
+        console.log(res.data.data);
+        this.newslist =[];
+        res.data.data.list.forEach(item => {
+          var news ={};
+          news.id = item.id;
+          news.title = item.title;
+          news.tag = item.cityName + item.countyName;
+          if(item.cover == "http://封面.jpg"){
+            news.img = "static/images/villageStar/zhiyuan.jpg";
+          }else{
+            news.img = item.cover;
+          }
+          news.content = item.content;
+          this.newslist.push(news);
+        })
+      })
+    },
+    toRecommend(item){
+      this.$router.push({
+        name:"starNewsDetail",
+        query:{'itemId':100027 }
+      })
     },
     search(){
-
+      this.getCunbaoNewses();
     },
     toNewsDetail(item){
       this.$router.push({
