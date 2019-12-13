@@ -318,7 +318,21 @@ const routes = [
           },
         ]
       },
-
+      {//个人消息
+        path: '/news',
+        name: 'news',
+        component:(resolve) => require(['../views/other/news/index.vue'], resolve),
+      },
+      {//个人消息
+        path: '/inform',
+        name: 'inform',
+        component:(resolve) => require(['../views/other/inform/index.vue'], resolve),
+      },
+      {//联系我们
+        path: '/contactUs',
+        name: 'contactUs',
+        component:(resolve) => require(['../views/other/contact-us/index.vue'], resolve),
+      },
     ]
   },
 
