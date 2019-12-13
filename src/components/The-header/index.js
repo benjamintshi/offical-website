@@ -109,7 +109,11 @@ export default {
       activeArea:"all",
       activeAreaName:"站点切换",
       showArea:false,
-      hoverMenu:""
+      hoverMenu:"",
+      isLogin:true,
+      userInfo:{
+        name:"小丽"
+      }
 
     }
   },

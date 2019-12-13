@@ -27,7 +27,11 @@
               <router-link to="/" class="right-40">联系我们</router-link>
               <span class="right-40" style="font-weight: 500">|</span>
               <router-link to="login" class="right-40">登陆</router-link>
-              <router-link to="register">免费注册</router-link>
+              <router-link to="personalInfo" v-if="isLogin">
+                {{userInfo.name}}
+                <span><Icon type="md-arrow-dropdown" size="16"/></span>
+              </router-link>
+              <router-link to="register" v-else>免费注册</router-link>
             </li>
 
           </ul>
