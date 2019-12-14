@@ -49,8 +49,8 @@
               <span>友爱</span>
               <span>互助</span>
               <span>进步</span>
-              <router-link to="/">
-                <Icon type="ios-search" color="#888"/>
+              <router-link to="search" v-if="$route.name !='search'">
+                <Icon  type="ios-search" color="#888"/>
               </router-link>
             </p>
           </ul>

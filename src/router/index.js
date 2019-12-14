@@ -338,6 +338,11 @@ const routes = [
         name: 'queryInfo',
         component:(resolve) => require(['../views/query-info/index.vue'], resolve),
       },
+      {//搜索
+        path: '/search',
+        name: 'search',
+        component:(resolve) => require(['../views/search/index.vue'], resolve),
+      },
     ]
   },
 
