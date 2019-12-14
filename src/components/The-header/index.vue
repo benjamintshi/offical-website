@@ -21,7 +21,7 @@
                 </p>
 
             </div>
-            <li>
+            <li @click="swtichTopMenu">
               <router-link to="news" class="right-50">个人消息</router-link>
               <router-link to="inform" class="right-50">通知公告</router-link>
               <router-link to="queryInfo" class="right-50">信息查询</router-link>

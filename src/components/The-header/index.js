@@ -113,15 +113,17 @@ export default {
       isLogin:true,
       userInfo:{
         name:"小丽"
-      }
-
+      },
     }
+
   },
   mounted(){
     let activeMenu = localStorage.getItem("activeMenu");
     if(activeMenu){
       this.activeMenu = activeMenu;
     }
+
+
   },
   methods:{
     swtichArea (item) {
@@ -143,6 +145,9 @@ export default {
       });
       this.activeMenu = menuItem.value;
       localStorage.setItem("activeMenu",this.activeMenu);
+    },
+    swtichTopMenu(){
+      this.activeMenu = "";
     }
   },
 

@@ -72,7 +72,7 @@ export default {
     },
     toNewsDetail(item){
       this.$router.push({
-        name:"starNewsDetail",
+        name:"practiceCenterDetail",
         query:{'itemId':item.id}
       })
     },

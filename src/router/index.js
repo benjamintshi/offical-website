@@ -134,6 +134,11 @@ const routes = [
         name: 'practiceCenter',
         component:(resolve) => require(['../views/practice-center/index.vue'], resolve),
       },
+      {//新时代文明实践中心
+        path: '/practiceCenterDetail',
+        name: 'practiceCenterDetail',
+        component:(resolve) => require(['../views/practice-center/detail/index.vue'], resolve),
+      },
       {//学习园地cultivate-list
         path: '/studyCenter',
         name: 'studyCenter',
