@@ -1,0 +1,141 @@
+.query-info{
+  width: 100%;
+  .query-input{
+    width: 500px;
+    margin:0 auto;
+    min-height: 400px;
+    padding:60px 0 30px;
+    .ivu-row{
+      margin-bottom: 40px;
+      .menu{
+        font-size:18px;
+        font-family:PingFang SC;
+        font-weight:400;
+        color:rgba(177,178,179,1);
+        padding:0 12px;
+        display: inline-block;;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 10px;
+      }
+      .active{
+        color:#323333;
+        border-bottom: 2px solid #DA463B;
+      }
+      input{
+        width: 370px;
+        height: 50px;
+        text-indent: 20px;
+        background: #f5f6f7;
+        border: 1px solid #e3e4e6;
+      }
+      label{
+        font-size:16px;
+        font-family:PingFang SC;
+        font-weight:400;
+        color:rgba(126,127,128,1);
+        line-height: 50px;
+        text-indent: 10px;
+      }
+    }
+    button{
+      width:250px;
+      height:60px;
+      background:rgba(57,189,222,1);
+      border-radius:4px;
+      margin-left: 125px;
+      margin-top:10px;
+      color: white;
+      font-size: 20px;
+    }
+
+  }
+  .query-result{
+    width: 100%;
+    background: #F0F1F2;
+    min-height: 440px;
+    &-content{
+      .empty{
+        font-size:18px;
+        font-weight:400;
+        color:rgba(76,76,77,1);
+        text-align: center;
+        img{
+          width: 248px;
+          margin:60px 30px;
+        }
+      }
+      .volunteer-info{
+        width: 600px;
+        margin: 0 auto;
+        .base-info{
+          padding: 40px 0;
+          .tag{
+            width: 83px;
+            height: 20px;
+            display: inline-block;
+            background: url("../../../public/static/images/common/tag.png") no-repeat;
+            background-size: 100% 100%;
+            margin-left: 24px;
+            font-size:12px;
+            font-family:PingFang SC;
+            font-weight:400;
+            color:rgba(50,51,51,1);
+            text-indent: 26px;
+            line-height: 20px;
+            vertical-align: super;
+          }
+          .modify{
+            font-size:18px;
+            font-family:PingFang SC;
+            font-weight:400;
+            color:rgba(50,51,51,1);
+            cursor: pointer;
+            line-height: 40px;
+          }
+          .right{
+            float: right;
+          }
+          .integral{
+            display: block;
+            font-size:14px;
+            font-family:PingFang SC;
+            font-weight:400;
+            color:rgba(177,178,179,1);
+          }
+        }
+        .title{
+          font-family:PingFang SC;
+          font-weight:600;
+          color:rgba(50,51,51,1);
+          font-size: 20px;
+          padding:30px 0;
+        }
+
+        .font26{
+          font-size: 26px;
+        }
+        .ivu-row{
+          margin-bottom: 30px;
+          .downLoad{
+            color: #549CE3;
+            float: right;
+            cursor: pointer;
+          }
+          .ivu-col:nth-child(odd){
+            font-weight:600;
+            color:rgba(50,51,51,1);
+            font-size: 16px;
+          }
+          .ivu-col:nth-child(even){
+            font-weight:400;
+            color:rgba(177,178,179,1);
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+  }
+}
+

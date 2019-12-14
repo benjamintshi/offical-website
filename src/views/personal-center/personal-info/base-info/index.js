@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      isVolunteer:false,
+      isVolunteer:true,
       info:{
         zsUrl:"static/images/common/zs.jpg"//证书的url
       },

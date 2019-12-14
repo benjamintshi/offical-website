@@ -333,6 +333,11 @@ const routes = [
         name: 'contactUs',
         component:(resolve) => require(['../views/other/contact-us/index.vue'], resolve),
       },
+      {//信息查询
+        path: '/queryInfo',
+        name: 'queryInfo',
+        component:(resolve) => require(['../views/query-info/index.vue'], resolve),
+      },
     ]
   },
 

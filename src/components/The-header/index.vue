@@ -22,8 +22,9 @@
 
             </div>
             <li>
+              <router-link to="news" class="right-50">个人消息</router-link>
               <router-link to="inform" class="right-50">通知公告</router-link>
-              <router-link to="news" class="right-50">信息查询</router-link>
+              <router-link to="queryInfo" class="right-50">信息查询</router-link>
               <router-link to="contactUs" class="right-40">联系我们</router-link>
               <span class="right-40" style="font-weight: 500">|</span>
               <router-link to="login" class="right-40">登陆</router-link>
