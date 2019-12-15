@@ -40,7 +40,7 @@
       <!--  中间logo部分 -->
         <div class="top-logo">
           <img class="top-logo-bg" src="static/images/top/top-bg.png" alt="">
-          <ul>
+          <ul style="position: relative">
             <img   style="width: 342px;" src="static/images/top/logo.png" alt="">
             <p>
               <span>
@@ -49,7 +49,7 @@
               <span>友爱</span>
               <span>互助</span>
               <span>进步</span>
-              <router-link to="search" v-if="$route.name !='search'">
+              <router-link to="search"  v-if="$route.name !='search'">
                 <Icon  type="ios-search" color="#888"/>
               </router-link>
             </p>
