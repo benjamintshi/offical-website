@@ -159,7 +159,7 @@ export default {
     getProvinces(){
       this.http.get('/vArea/getProvinces/1').then(res=>{
         this.areaList = [];
-        console.log(res.data.data)
+        // console.log(res.data.data)
         res.data.data.forEach(item => {
           var area = {};
           area.value = item.areaCode;

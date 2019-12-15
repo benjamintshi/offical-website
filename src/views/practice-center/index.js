@@ -57,18 +57,46 @@ export default {
 
   },
   mounted(){
-
+    this.getPageVCultureNews();
 
   },
   methods:{
-    changePage(){
-
+    changePage(page){
+      this.pageNum = page;
+      this.getPageVCultureNews();
     },
     toRecommend(){
 
     },
     search(){
 
+    },
+    getPageVCultureNews(){
+      console.log("页面开始检索。。。");
+      var params ={
+        'pageNum':this.pageNum ,
+        'pageSize':this.pageSize
+      }
+
+      this.videos= [];
+      this.http.get('/vCultureNews/getPageVCultureNews',params).then(res=>{
+        this.total = res.data.data.total;
+        this.newslist = [];
+        // console.log(res.data.data.list);
+        res.data.data.list.forEach(item => {
+          var news ={};
+          news.id = item.id;
+          news.title = item.title;
+          news.tag = item.createDatetime;
+          if(news.cover == "http://封面.jpg"){
+            news.img = "static/images/villageStar/zhiyuan.jpg";
+          }else{
+            news.img = item.cover;
+          }
+          news.content = item.content;
+          this.newslist.push(news);
+        })
+      })
     },
     toNewsDetail(item){
       this.$router.push({
