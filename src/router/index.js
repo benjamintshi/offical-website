@@ -8,7 +8,12 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component:(resolve) => require(['../views/index/index.vue'], resolve)
+    component:(resolve) => require(['../views/index/index.vue'], resolve),
+  },
+  {
+    path: '/map',
+    name: 'map',
+    component:(resolve) => require(['../views/index/map/index.vue'], resolve),
   },
   {
     path: '/homepage',
