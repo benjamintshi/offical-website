@@ -107,8 +107,9 @@ export default {
     changeFilter(index){
         this.selectedIndex = index;
     },
-    changeType(index){
-      this.selectedIndex = index;
+    changeType(item){
+      this.selectType = item.value;
+      //this.newslist = [];
     },
     changePage(){
 
