@@ -51,5 +51,42 @@ export default {
             })
 
         })
+    },
+  post(url, param) {
+    for (let i in param) {
+      if (param[i] === ''  || typeof (param[i]) == "undefined" || param[i] === 'undefined') {
+        delete param[i]
+      }
     }
+    return new Promise((cback, reject) => {
+      service({
+        method: 'post',
+        url,
+        params: param,
+      }).then(res => {
+        //axios返回的是一个promise对象
+        var res_code = res.status.toString();
+        if (res_code.charAt(0) == 2) {
+          cback(res);   //cback在promise执行器内部
+        } else {
+          console.log(res, '异常1')
+        }
+      }).catch(err => {
+        if (!err.response) {
+          console.log('请求错误:'+ url)
+          console.log(err)
+          //Message是element库的组件，可以去掉
+          // Message({
+          //     showClose: true,
+          //     message: '请求错误',
+          //     type: 'error'
+          // });
+        } else {
+          reject(err.response);
+          console.log(err.response, '异常2')
+        }
+      })
+
+    })
+  }
 }
