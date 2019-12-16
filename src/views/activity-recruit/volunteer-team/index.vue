@@ -5,15 +5,15 @@
       <li class="filter-tool">
         <div>
           <p> <span style="margin-right: 35px">区</span>域：</p>
-          <div class="selectCity ">
+          <div :class="showAll?'selectCity':'selectCity retract' ">
             <span v-for="(item,index) in areaList" :key="index" @click="swtichCity(item)"
                   :class="cityCode ==item.value?'a-hover-style active':'a-hover-style'">
               {{item.name}}
             </span>
-            <p class="control a-hover-style" v-if="showAll">收起</p>
-            <p class="control a-hover-style" v-else>展开</p>
-          </div>
 
+          </div>
+          <div class="control a-hover-style" v-if="showAll" @click="showAll = false">收起</div>
+          <div class="control a-hover-style" v-else @click="showAll = true">展开</div>
         </div>
         <div>
           <p> <span style="margin-right: 35px">状</span>态：</p>
@@ -35,6 +35,7 @@
         </div>
       </li>
     </ul>
+    <img src="static/images/common/top14.png" style="width: 1000px; margin:10px auto;display: block" alt="">
     <ul style="    width: 1040px;padding-left: 20px;">
       <li >
         <Row>

@@ -41,7 +41,7 @@
           color:rgba(38,38,38,1);
           float: left;
         }
-        >div{
+        >div:nth-child(2){
           width: calc(100% - 120px);
           height: auto;
           float: right;
@@ -57,15 +57,22 @@
           .active{
             color:#9B171B;
           }
-          .control{
-            font-size:14px;
-            font-weight:400;
-            color:rgba(177,178,179,1);
-            text-align: center;
-          }
+
+        }
+        .control{
+          font-size:14px;
+          font-weight:400;
+          color:#B1B2B3;
+          text-align: center;
+          float: left;
+          width: 100%;
         }
         .selectCity{
 
+        }
+        .retract{
+          height: 115px !important;
+          overflow: hidden;
         }
 
       }
