@@ -122,8 +122,15 @@ export default {
     if(activeMenu){
       this.activeMenu = activeMenu;
     }
-
-
+    let activeAreaName = localStorage.getItem("activeAreaName");
+    if(activeAreaName){
+      this.activeAreaName = activeAreaName;
+      let activeArea = localStorage.getItem("activeArea");
+      if(activeArea){
+        this.activeArea = activeArea;
+      }
+    }
+    this.getProvinces();
   },
   methods:{
     swtichArea (item) {
@@ -148,8 +155,18 @@ export default {
     },
     swtichTopMenu(){
       this.activeMenu = "";
-    }
-  },
-
-
+    },
+    getProvinces(){
+      this.http.get('/vArea/getProvinces/1').then(res=>{
+        this.areaList = [];
+        // console.log(res.data.data)
+        res.data.data.forEach(item => {
+          var area = {};
+          area.value = item.areaCode;
+          area.name = item.areaName;
+          this.areaList.push(area);
+        })
+      })
+    },
+  }
 }
