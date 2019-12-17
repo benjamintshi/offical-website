@@ -117,7 +117,7 @@ export default {
     },
     getIndexStatistics(){
       this.http.get('/contentStatistic/getIndexStatistics/'+this.pCode).then(res=>{
-        console.log(res.data);
+        // console.log(res.data);
         var item = res.data.data;
         this.volunteerCnt = item.volunteerCnt;
         this.activityCnt = item.activityCnt;
