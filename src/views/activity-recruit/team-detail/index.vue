@@ -19,7 +19,7 @@
           <p>服务区域：陕西省 韩城市</p>
           <p>服务详细地点：韩城市太史大街文化馆</p>
           <p>计划服务人次：10万人次
-            <span class="active-link" style="float: right">志愿服务须知</span>
+            <span class="active-link a-hover-style" style="float: right" @click="agreement.show = true;">志愿服务须知</span>
           </p>
         </i-col>
       </Row>
@@ -51,10 +51,23 @@
         </i-col>
       </Row>
     </div>
+    <Modal v-model="agreement.show" width="600" class="agreement">
+      <p slot="header" >
+        <span>志愿服务须知</span>
+      </p>
+      <div v-html="agreement.content">
 
+      </div>
+      <div slot="footer">
+      </div>
+    </Modal>
   </div>
 </template>
 <script src="./index.js">
 
 </script>
-
+<style >
+  .agreement .ivu-modal-footer{
+    display: none;
+  }
+</style>
