@@ -39,11 +39,11 @@ export default {
     },
     getVCunbaoNewsById(){
       this.http.get('/vCunbaoNews/getVCunbaoNewsById/'+ this.newsInfo.itemId).then(res=>{
-        console.log(res.data.data);
+        // console.log(res.data.data);
         this.newsInfo.title = res.data.data.title;
         this.content = res.data.data.content;
         this.newsInfo.time = format(res.data.data.createDatetime,'YYYY/MM/DD HH:mm');
-        console.log(this.newsInfo);
+        // console.log(this.newsInfo);
       })
     },
     getGoodVolunteerShows(){

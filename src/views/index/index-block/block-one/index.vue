@@ -8,10 +8,10 @@
             </i-col>
             <i-col span="12" style="padding-left:20px;">
               <Menu mode="horizontal" theme="light" active-name="1" on-select="swtichOne">
-                <MenuItem name="1">
+                <MenuItem name="1" @click.native="selectMenu1(1)">
                   志愿快讯
                 </MenuItem>
-                <MenuItem name="2">
+                <MenuItem name="2" @click.native="selectMenu1(2)">
                   政策文件
                 </MenuItem>
               </Menu>

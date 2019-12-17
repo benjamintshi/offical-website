@@ -34,13 +34,17 @@ export default {
       this.newsInfo.projectId = item.id;
       this.getVProjectAchieveById();
     },
+
     getVProjectAchieveById(){
-      this.http.get('/vProjectAchieve/getVProjectAchieveById/'+ this.newsInfo.projectId).then(res=>{
-        this.newsInfo.title = res.data.data.projectName;
-        this.content = res.data.data.projectInfo;
-        this.newsInfo.time = format(res.data.data.createDate,'YYYY/MM/DD HH:mm');
-        console.log(this.newsInfo);
-        this.getGoodVolunteerShows();
+      var params ={
+        'id':this.newsInfo.projectId
+      }
+      this.http.post('/vCultureNews/queryVCultureNewsList',params).then(res=>{
+        var item = res.data.data[0];
+        this.newsInfo.title = item.title;
+        this.content = item.content;
+        this.newsInfo.time = format(item.createDatetime,'YYYY/MM/DD HH:mm');
+        // console.log(item);
       })
     },
     vlounteerDetail(item){

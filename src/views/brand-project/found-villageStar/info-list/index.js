@@ -53,11 +53,11 @@ export default {
         'cCode':this.cityCode,
         'xCode':this.cityCode2,
       }
-      console.log(params)
+      // console.log(params)
       var volunteer = {}
       this.http.get('/vProjectAchieve/getProvinceVolunteerShows/41',params).then(res=>{
         this.total = res.data.data.total;
-        console.log(res.data)
+        // console.log(res.data)
         this.volunteers= [];
         res.data.data.list.forEach(item => {
           var volunteer = {}
@@ -72,7 +72,7 @@ export default {
           volunteer.name = item.vuser.userName;
           this.volunteers.push(volunteer);
         })
-        console.log(this.volunteers);
+        // console.log(this.volunteers);
       })
     }
   }

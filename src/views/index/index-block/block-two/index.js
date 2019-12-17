@@ -4,6 +4,10 @@ export default {
   components: { Header,Footer },
   data() {
     return {
+      pCode :'0',
+      volunteerCnt :'0',
+      activityCnt :'0',
+      teamCnt :'0',
       // 从上往下，模块一
 
         left:{
@@ -100,12 +104,26 @@ export default {
 
   },
   mounted(){
-
+    let activeArea = localStorage.getItem("activeArea");
+    if(activeArea){
+      this.pCode = activeArea;
+    }
+    this.getIndexStatistics();
   },
   methods:{
     // 首页切换志愿快讯和政策文件，name为菜单名字
     swtichOne(name){
 
+    },
+    getIndexStatistics(){
+      this.http.get('/contentStatistic/getIndexStatistics/'+this.pCode).then(res=>{
+        console.log(res.data);
+        var item = res.data.data;
+        this.volunteerCnt = item.volunteerCnt;
+        this.activityCnt = item.activityCnt;
+        this.teamCnt = item.teamCnt;
+
+      })
     }
   }
 }
