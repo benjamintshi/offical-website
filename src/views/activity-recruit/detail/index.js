@@ -43,7 +43,11 @@ export default {
           title: '志愿者',
           date: '2016-10-04'
         }
-      ]
+      ],
+      agreement:{
+        content:"用户须知用户须知用户须知",
+        show:false
+      }
     }
   },
   methods:{
