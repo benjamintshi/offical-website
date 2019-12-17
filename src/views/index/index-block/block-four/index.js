@@ -36,7 +36,7 @@ export default {
     },
     // 编写自定义函数,创建标注
     addMarker(map,point){
-      debugger
+      // debugger
       let marker = new BMap.Marker(point);
       map.addOverlay(marker);
     }

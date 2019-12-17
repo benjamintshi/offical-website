@@ -45,6 +45,10 @@ export default {
 
   },
   mounted(){
+    let activeArea = localStorage.getItem("activeArea");
+    if(activeArea){
+      this.pCode = activeArea;
+    }
     this.getNews();
   },
   methods:{

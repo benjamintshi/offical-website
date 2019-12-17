@@ -1,5 +1,6 @@
 
 export default {
+  inject:['reload'],
   data (){
     return{
       menelist:[
@@ -137,6 +138,9 @@ export default {
       this.activeArea = item.value;
       this.activeAreaName = item.name;
       this.showArea = false;
+      localStorage.setItem('activeAreaName',this.activeAreaName)
+      localStorage.setItem('activeArea',this.activeArea)
+      this.reload();
     },
     swtichMenu(item){
       if(this.$route.name==item.to || !item.to) return false;
