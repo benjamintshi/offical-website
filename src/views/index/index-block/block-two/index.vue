@@ -5,15 +5,15 @@
             <i-col span="6" class="number-info">
               <p>
                 <span>志愿者总人数</span>
-                <span>224678</span>
+                <span>{{volunteerCnt}}</span>
               </p>
               <p>
                 <span>志愿团队总数</span>
-                <span>224678</span>
+                <span>{{teamCnt}}</span>
               </p>
               <p>
                 <span>志愿活动总数</span>
-                <span>224678</span>
+                <span>{{activityCnt}}</span>
               </p>
 
             </i-col>

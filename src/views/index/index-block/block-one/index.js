@@ -56,6 +56,9 @@ export default {
     swtichOne(name){
 
     },
+    selectMenu1(index){
+
+    },
     getNews(){
       this.http.get('/news/getNews/'+this.pCode).then(res=>{
         this.total = res.data.data.total;
