@@ -1,7 +1,7 @@
 <template>
   <div class="volunteer-info">
     <div class="star-info-nav">
-      志愿快讯 > 政策文件 > 正文
+      <span @click="$router.push('volunteerNews')"> 志愿快讯 </span>  > 政策文件 > 正文
     </div>
     <ul class="volunteer-info-left">
       <li class="base-info">
