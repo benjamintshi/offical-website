@@ -1,0 +1,74 @@
+<!--培训详情-->
+<html>
+<header>
+    <meta charset="utf-8" >
+    <meta http-equiv="content-type" content="text/html" >
+    <meta   HTTP-EQUIV="Pragma"   CONTENT="no-cache">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="app-mobile-web-app-capable"  content="yes" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <script src="../js/index.aio.js"></script>
+    <script src="../js/rem.js"></script>
+</header>
+<body>
+<div id="content">
+
+</div>
+<script type="text/html" id="template">
+    <ul class="detail-content">
+        <li >
+            <img src="<%=obj.img%>" alt="">
+        </li>
+        <li class="desc line25">
+            <p class="title">基层公共数字文化培训推广项目</p>
+            <p>培训类型：岗前培训</p>
+            <p>开讲时间：9：00 - 12：00</p>
+            <p>培训方式：面授</p>
+            <p>培训对象：亲子</p>
+            <p>培训区域：陕西省 韩城市  </p>
+            <p>培训详细地点：韩城市太史大街文化馆</p>
+            <p>培训讲师：李思佳</p>
+            <p>报名日期：2019.04.24 - 2019.06.19</p>
+        </li>
+        <li class="desc">
+            <p class="title">详情介绍</p>
+            <p class="sub-title">培训描述：</p>
+            <!--富文本显示 <%:=字段%>-->
+            <p><%:=obj.desc%></p>
+            <p class="sub-title">志愿保障：</p>
+            <p>
+                <% for(var i = 0;i < obj.zybz.length; i++){ %>
+                <span><%=obj.zybz[i]%></span>
+                <% } %>
+            </p>
+
+        </li>
+        <li class="desc line25">
+            <p class="title">联系方式</p>
+            <p class="sub-title">
+                <span>中国旅游志愿者大连中山支队 </span>
+                <span>栾胜刚</span>
+            </p>
+            <!--富文本显示 <%:=字段%>-->
+            <p>地址：辽宁省大连市中山区一德街83号</p>
+            <p >手机：13940938832</p>
+            <p>邮箱：luanshenggang@126.com</p>
+
+        </li>
+    </ul>
+</script>
+</body>
+
+<script>
+    var data = {
+        img:"../images/top.jpg",
+        desc:"1. 主要负责管理图书馆秩序、规则;<br/>" +
+        "2. 帮助参与活动的亲子完成诵读活动",
+        zybz:["专项培训","其他"]
+
+    };
+    var template1 = document.getElementById('template').innerHTML;
+    document.getElementById('content').innerHTML = template(template1,{obj:data});
+</script>
+</html>

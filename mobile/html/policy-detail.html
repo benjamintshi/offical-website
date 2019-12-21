@@ -1,0 +1,53 @@
+<!--政策文件详情-->
+<html>
+<header>
+    <meta charset="utf-8" >
+    <meta http-equiv="content-type" content="text/html" >
+    <meta   HTTP-EQUIV="Pragma"   CONTENT="no-cache">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="app-mobile-web-app-capable"  content="yes" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <script src="../js/index.aio.js"></script>
+    <script src="../js/rem.js"></script>
+</header>
+<body>
+<div id="content">
+
+</div>
+<script type="text/html" id="template">
+    <ul class="detail-content white-bg">
+        <li >
+            <p class="detail-title"><%=obj.title%></p>
+            <div class="detail-time">出台日期：<%=obj.time%></div>
+
+        </li>
+
+        <li class="desc detail-block" >
+            <%=obj.content%>
+            <div class="split-line space"></div>
+            <div class="downLoad-file">
+                <div class="file-icon">
+                    <img src="../images/file.png" alt="" >
+                </div>
+                <p>
+                    书写国家级生态区建设的新篇章.相关附件 <br/>
+                    <span>下载</span>
+                </p>
+            </div>
+        </li>
+    </ul>
+</script>
+</body>
+
+<script>
+    var data = {
+        title:"书写国家级文化生态保护区建设的新篇章",
+        time:"2019.04.25",
+        content:"自我评价：本人性格开朗、稳重、有活力，待人热情、真诚；工作认真负责，积极主动，能吃苦耐劳，用于承受压力，勇于创新；有很强的组织能力和团队协作精神，具有较强的适应能力；纪律性强，工作积极配合；意志坚强，具有较强的无私奉献精神。"
+
+    };
+    var template1 = document.getElementById('template').innerHTML;
+    document.getElementById('content').innerHTML = template(template1,{obj:data});
+</script>
+</html>

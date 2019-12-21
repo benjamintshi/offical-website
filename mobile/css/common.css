@@ -1,0 +1,202 @@
+body,div,ul,li{
+    padding:0;
+    margin:0;
+}
+ul,li,button,input{
+    list-style: none;
+}
+
+body{
+    width: 100%;
+    background:#EDEFF0;
+}
+.white-bg{
+    width: 100%;
+    height:auto ;
+    background: #ffffff;
+    min-height: calc(100% - .2rem);
+}
+.detail-content{
+    width: 100%;
+
+}
+.detail-content li{
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+    text-align: justify;
+
+}
+.detail-content img{
+    max-width: 100%;
+}
+.detail-content .desc{
+    width: calc(100% - 0.56rem);
+    padding:0 0.28rem .1rem;
+    font-size:0.3rem;
+    font-weight:300;
+    color:rgba(101,101,102,1);
+    margin-bottom: 0.1rem;
+}
+.detail-content .desc .title{
+    font-size:0.36rem;
+    color: #262626;
+    font-weight:900;
+}
+.detail-content .desc .sub-title{
+    color:#262626;
+    font-weight: 400;
+}
+.detail-content .desc p span{
+    margin-right: 0.6rem;
+}
+.detail-content .desc p{
+
+}
+.detail-content .detail-title{
+    font-size:0.34rem;
+    font-weight:500;
+    color:rgba(38,38,38,1);
+    margin:0.48rem 0.28rem 0.2rem;
+}
+.detail-content .detail-time{
+    margin:0 0.28rem 0.56rem;
+    font-size:0.26rem;
+    font-weight:300;
+    color:rgba(151,152,153,1);
+    padding:0.12rem 0.24rem;
+    background: #F0F0F2;
+    display: inline-block;
+}
+.detail-content .detail-sub-title{
+    font-size:.26rem;
+    font-weight:300;
+    color:rgba(177,178,179,1);
+    margin:0 .28rem .36rem;
+
+}
+.detail-content .detail-sub-title span{
+    margin-left: .6rem;
+}
+.detail-content .detail-block img{
+   max-width: 100%;
+
+}
+.detail-content .detail-block hr,.space{
+    margin:0.5rem 0 ;
+}
+.detail-content .detail-block .file-icon{
+    width: 1.1rem;
+    height:1.1rem ;
+    background: #F2F5F7;
+    border-radius:.51rem;
+    display: inline-block;
+    float: left;
+}
+.detail-content .detail-block .file-icon img{
+    width: .44rem;
+    padding:.29rem .33rem;
+}
+.detail-content .detail-block .downLoad-file p{
+    font-size:0.3rem;
+    font-weight:300;
+    color:rgba(151,152,153,1);
+    width: calc(100% - 1.2rem);
+    float: left;
+    padding-left: .1rem;
+    line-height: 0.5rem;
+    margin:0
+}
+.detail-content .detail-block .downLoad-file p span{
+    font-size: .26rem;
+    color: #498DC9;
+}
+.detail-content>li:first-child hr{
+    margin:0 .25rem .46rem .25rem;
+}
+.detail-content .desc .base-info{
+    width: calc(100% - 0.4rem);
+    height: auto;
+    background: url("../images/bg.png") no-repeat;
+    padding:.2rem;
+    background-size: 100% 100%;
+    line-height: .2rem;
+}
+.detail-content .desc .base-info img{
+    width: .22rem;
+}
+.detail-content .desc .base-info span{
+    color:#2A7FD7
+}
+.detail-content .desc .font400{
+    font-weight: 400;
+}
+.detail-content .desc .green{
+    height: .06rem;
+    background: #31CE9C;
+    border: none;
+}
+.detail-content .desc .blue{
+    height: .06rem;
+    background: #318DCE;
+    border: none;
+}
+.detail-content .desc .scroll-detail{
+    width: auto;
+    overflow-x: scroll;
+    white-space: nowrap;
+    margin-bottom: .4rem;
+}
+.detail-content .desc .scroll-detail>div:not(.hidden-block){
+    display: inline-block;
+    margin-right: .5rem;
+    width: 2.3rem;
+    word-break: break-all;
+    vertical-align: text-top;
+}
+.detail-content .desc .scroll-detail>div p{
+    margin:0;
+    white-space: initial;
+}
+
+.hidden-block{
+    position: fixed;
+    width: 1.5rem;
+    height: 1rem;
+    right: 0;
+    opacity: 0.5;
+    background: #fff;
+    z-index: 1000;
+}
+.detail-content .desc .scroll-detail>div p:nth-child(1){
+    font-size:.24rem;
+    font-weight:400;
+    color:rgba(38,38,38,1);
+}
+.detail-content .desc .scroll-detail>div p:nth-child(2){
+    font-size:.18rem;
+    font-weight:400;
+    color:#979899;
+}
+.detail-content .desc .scroll-detail>div p:nth-child(3){
+    font-size:.18rem;
+    font-weight:400;
+    color:#CACBCC;
+}
+.detail-content .desc .scroll-detail>div:last-child{
+    margin-right: 1.2rem;
+}
+
+.scroll-detail::-webkit-scrollbar {  display: none; }
+.scroll-detail { -ms-overflow-style: none; }
+.scroll-detail  { overflow: -moz-scrollbars-none; }
+.scroll-detail scrollbar { height: 0 !important; }
+.split-line{
+    width:100%;
+    height:1px;
+    background: #E3E4E6;
+
+}
+.line25{
+    line-height: .25rem;
+}
