@@ -8,7 +8,7 @@
             <img :src="item.img" alt="">
             <div>
               <p class="title text-ellipsis">{{item.title}}</p>
-              <p class="tag">{{item.tag}}</p>
+              <p class="tag" v-show="item.tagShow">{{item.tag}}</p>
               <p class="content" v-html="item.content"></p>
             </div>
 
