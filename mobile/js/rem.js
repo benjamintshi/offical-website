@@ -11,6 +11,6 @@ function getRem(pwidth,prem){
 
     var html = document.getElementsByTagName("html")[0];
     var oWidth = document.body.clientWidth || document.documentElement.clientWidth;
-    debugger
+    // debugger// 调试模式
     html.style.fontSize = oWidth/pwidth*prem + "px";
 }
