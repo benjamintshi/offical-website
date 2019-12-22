@@ -10,31 +10,43 @@
     <link rel="stylesheet" href="../css/common.css" />
     <script src="../js/index.aio.js"></script>
     <script src="../js/rem.js"></script>
+    <!-- 项目依次引入 STR -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/axios.util.js"></script>
+    <script src="../custom-js/constant.js"></script>
+    <script src="../custom-js/common.local.js"></script>
+    <!-- 项目依次引入 END -->
 </head>
 <body>
-<div id="content">
-
-</div>
+<div id="content"></div>
 <script type="text/html" id="template">
     <ul class="detail-content white-bg">
         <li >
-            <p class="detail-title"><%=obj.name%></p>
+            <p class="detail-title"><%=obj.userName%></p>
         </li>
 
         <li class="desc detail-block" >
-            <%=obj.content%>
+        <%if (obj.volunteer) {%>
+            <%=obj.volunteer.introduce%>
+        <%}%>
         </li>
     </ul>
 </script>
 </body>
 
 <script>
-    var data = {
-        name:"张三",
-        content:"自我评价：本人性格开朗、稳重、有活力，待人热情、真诚；工作认真负责，积极主动，能吃苦耐劳，用于承受压力，勇于创新；有很强的组织能力和团队协作精神，具有较强的适应能力；纪律性强，工作积极配合；意志坚强，具有较强的无私奉献精神。"
+    function render_page(data) {
+        let template1 = document.getElementById('template').innerHTML;
+        document.getElementById('content').innerHTML = template(template1,{obj:data});
+    }
 
-    };
-    var template1 = document.getElementById('template').innerHTML;
-    document.getElementById('content').innerHTML = template(template1,{obj:data});
+    ajax_get(api_base_url + '/vUser/getVUserById/' + url_variable('id'), null, function (data) {
+        if (data.code !== '200') {
+            alert(data.msg);
+            return;
+        }
+        render_page(data.data);
+    });
 </script>
 </html>
