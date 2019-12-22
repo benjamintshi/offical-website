@@ -5,46 +5,27 @@ export default {
       newsInfo:{},//this.route.params
       content:"<p> ",
       recommend:[
-        {
-          name:"民族舞《春天中国》 培训班培训班培训班培训班",
-          id:"1"
-        },
-        {
-          name:"民族舞《春天中国》 培训班培",
-          id:"2"
-        },
-        {
-          name:"民族舞《春天中国》 培训班培训班培训班培训班",
-          id:"3"
-        },
-        {
-          name:"民族舞《春天中国》 培训班培训班",
-          id:"4"
-        }
       ]
     }
   },
   mounted(){
     this.newsInfo.projectId = this.$route.query.itemId;
-    this.getVProjectAchieveById();
+    this.getVCultureNewsById();
   },
   methods:{
     // 点击推荐链接
     toRecommend(item){
       this.newsInfo.projectId = item.id;
-      this.getVProjectAchieveById();
+      this.getVCultureNewsById();
+      // this.$route.query.itemId = item.id;
     },
-
-    getVProjectAchieveById(){
-      var params ={
-        'id':this.newsInfo.projectId
-      }
-      this.http.post('/vCultureNews/queryVCultureNewsList',params).then(res=>{
-        var item = res.data.data[0];
+    getVCultureNewsById(){
+      this.http.get('/vCultureNews//getVCultureNewsById/'+ this.newsInfo.projectId).then(res=>{
+        var item = res.data.data;
         this.newsInfo.title = item.title;
         this.content = item.content;
         this.newsInfo.time = format(item.createDatetime,'YYYY/MM/DD HH:mm');
-        // console.log(item);
+        this.getPageVCultureNews();
       })
     },
     vlounteerDetail(item){
@@ -53,26 +34,23 @@ export default {
       //   query:{'projectId':item.id}
       // })
     },
-    getGoodVolunteerShows(){
+    getPageVCultureNews(){
       var params ={
-        'pageNum':1,
+        'pageNum':1 ,
         'pageSize':5
       }
-      this.newsList= [];
-      this.http.get('/vProjectAchieve/getGoodVolunteerShows/41',params).then(res=>{
+      this.http.get('/vCultureNews/getPageVCultureNews',params).then(res=>{
+        this.total = res.data.data.total;
         this.recommend = [];
+        // console.log(res.data.data.list);
         res.data.data.list.forEach(item => {
-          var volunteer ={};
-          console.log(item);
-          volunteer.id = item.projectId;
-          volunteer.name = item.projectName;
-          volunteer.time = format(item.createDate,'YYYY.MM.DD');
-
-          this.recommend.push(volunteer);
+          var news ={};
+          news.id = item.id;
+          news.name = item.title;
+          this.recommend.push(news);
         })
-        console.log(this.recommend);
       })
-    }
+    },
   }
 
 }

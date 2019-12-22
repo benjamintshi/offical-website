@@ -82,12 +82,16 @@ export default {
       this.http.get('/vCultureNews/getPageVCultureNews',params).then(res=>{
         this.total = res.data.data.total;
         this.newslist = [];
-        // console.log(res.data.data.list);
+        console.log(res.data.data.list);
         res.data.data.list.forEach(item => {
           var news ={};
           news.id = item.id;
           news.title = item.title;
-          news.tag = item.createDatetime;
+          news.tag = item.provinceName + item.cityName + item.countyName;
+          news.tagShow = true
+          if(news.tag ==  '0'){
+            news.tagShow = false
+          }
           if(news.cover == "http://封面.jpg"){
             news.img = "static/images/villageStar/zhiyuan.jpg";
           }else{
