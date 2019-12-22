@@ -8,8 +8,12 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="app-mobile-web-app-capable"  content="yes" />
     <link rel="stylesheet" href="../css/common.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../js/index.aio.js"></script>
     <script src="../js/rem.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/constant.js"></script>
+    <script src="../js/axios.util.js"></script>
 </header>
 <body>
 <div id="content">
@@ -24,7 +28,7 @@
         </li>
 
         <li class="desc detail-block" >
-            <%=obj.content%>
+            <div><%=obj.content%></div>
             <div class="base-info">
                 <p class="title">相关信息</p>
                 <p>志愿团队: 韩城市志愿团队</p>
@@ -47,5 +51,31 @@
     };
     var template1 = document.getElementById('template').innerHTML;
     document.getElementById('content').innerHTML = template(template1,{obj:data});
+
+    ajax_get(api_base_url + '/vActivity/getVActivityById/' + 11, null, function(data) {
+        if (data.code !== '200') {
+            alert(data.msg);
+            return;
+        }
+        console.log(data);
+    });
+
+    ajax_post(api_base_url + '/vUser/appLogin', {account: 'caoke_0011@163.com', passwd: '123456'}, function(data) {
+        if (data.code !== '200') {
+            alert(data.msg);
+            return;
+        }
+        console.log(data);
+    });
+
+    ajax_post(api_base_url + '/vUser/appLogin', null, function(data) {
+        if (data.code !== '200') {
+            alert(data.msg);
+            return;
+        }
+        console.log(data);
+    }, function (data) {
+        alert('执行异常');
+    });
 </script>
 </html>
