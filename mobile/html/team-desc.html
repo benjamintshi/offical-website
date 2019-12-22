@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="../css/common.css" />
     <script src="../js/index.aio.js"></script>
     <script src="../js/rem.js"></script>
+    <!-- 项目依次引入 STR -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/axios.util.js"></script>
+    <script src="../custom-js/constant.js"></script>
+    <script src="../custom-js/common.local.js"></script>
+    <!-- 项目依次引入 END -->
 </header>
 <body>
 <div id="content">
@@ -17,81 +24,64 @@
 </div>
 <script type="text/html" id="template">
     <ul class="detail-content">
-        <li >
-            <p class="detail-title"><%=obj.title%></p>
-            <div class="detail-sub-title">成立日期：2019-09-01 <span>成员：10 人</span></div>
+        <li>
+            <img src="<%:u=obj.teamLogo%>" alt="">
         </li>
-
-        <li class="desc " >
-            <%=obj.content%>
+        <li>
+            <p class="detail-title"><%=obj.teamName%></p>
+            <div class="detail-sub-title">成立日期：<%=date_format(obj.foundingTime)%> <span>成员：<%=obj.serverPeoCnt%> 人</span></div>
         </li>
-        <li class="desc " >
-           <p class="sub-title font400">团队服务记录</p>
+        <li class="desc">
+            <%=obj.declaration%>
+        </li>
+        <li class="desc">
+            <%if (obj.activities) {%>
+            <p class="sub-title font400">团队服务记录</p>
             <hr class="green">
             <div class="scroll-detail">
-                <!--<p>书写国家级文化生态保护区建设的新篇章书写国家级文化生态保护区建设的新篇章书写国家级文化生态保护区建设的新篇章</p>-->
-                <div class="hidden-block">
-
+                <div class="hidden-block"></div>
+                <%for (var i = 0; i< obj.activities.length; i++){%>
+                <div onclick="window.location.href='activity-detail.html?id=<%=obj.activities[i].id%>';">
+                    <p><%=obj.activities[i].activityName%></p>
+                    <p>总服务时长:<%=obj.activities[i].activityActualTime%>小时</p>
+                    <p><%=date_format(obj.activities[i].createDatetime)%></p>
                 </div>
-                <% for(var i =0; i< data.list.length; i++ ){ %>
-                <div>
-                    <p><%=data.list[i].title%></p>
-                    <p>总服务时长:<%=data.list[i].timeRange%>小时</p>
-                    <p><%=data.list[i].time%></p>
-                </div>
-                <% } %>
+                <%}%>
             </div>
             <div class="split-line"></div>
+            <%}%>
+            <%if (obj.training) {%>
             <p class="sub-title font400">团队组织培训记录</p>
             <hr class="blue">
             <div class="scroll-detail">
-                <!--<p>书写国家级文化生态保护区建设的新篇章书写国家级文化生态保护区建设的新篇章书写国家级文化生态保护区建设的新篇章</p>-->
-                <div class="hidden-block">
-
+                <div class="hidden-block"></div>
+                <%for (var i =0; i< obj.training.length; i++) {%>
+                <div onclick="window.location.href='train-detail.html?id=<%=obj.training[i].id%>';">
+                    <p><%=obj.training[i].trainingName%></p>
+                    <p>总服务时长:<%=obj.training[i].trainingSumHour%>小时</p>
+                    <p><%=date_format(obj.training[i].createDatetime)%></p>
                 </div>
-                <% for(var i =0; i< data.list.length; i++ ){ %>
-                <div>
-                    <p><%=data.list[i].title%></p>
-                    <p>总服务时长:<%=data.list[i].timeRange%>小时</p>
-                    <p><%=data.list[i].time%></p>
-                </div>
-                <% } %>
+                <%}%>
             </div>
+            <%}%>
         </li>
     </ul>
 </script>
 </body>
 
 <script>
-    var data = {
-        title:"书写国家级文化生态保护区建设的新篇章",
-        time:"2019.04.25",
-        content:"自我评价：本人性格开朗、稳重、有活力，待人热情、真诚；工作认真负责，积极主动，能吃苦耐劳，用于承受压力，勇于创新；有很强的组织能力和团队协作精神，具有较强的适应能力；纪律性强，工作积极配合；意志坚强，具有较强的无私奉献精神。",
-        list:[
-            {
-                title:"xxx志愿服务主题活动",
-                timeRange:"100",
-                time:"2019.10.20"
-            },
-            {
-                title:"xxx志愿服务主题活动",
-                timeRange:"100",
-                time:"2019.10.20"
-            },
-            {
-                title:"xxx志愿服务主题活动",
-                timeRange:"100",
-                time:"2019.10.20"
-            },
-            {
-                title:"xxx志愿服务主题活动",
-                timeRange:"100",
-                time:"2019.10.20"
-            },
-        ]
+    function render_page(data) {
+        template.registerFunction('date_format', date_format);// 通过方法注册提高运算速度
+        let template1 = document.getElementById('template').innerHTML;
+        document.getElementById('content').innerHTML = template(template1,{obj:data});
+    }
 
-    };
-    var template1 = document.getElementById('template').innerHTML;
-    document.getElementById('content').innerHTML = template(template1,{obj:data});
+    ajax_get(api_base_url + '/vTeam/getTeamAllDetailById/' + url_variable('id'), null, function (data) {
+        if (data.code !== '200') {
+            alert(data.message);
+            return;
+        }
+        render_page(data.data);
+    });
 </script>
 </html>
