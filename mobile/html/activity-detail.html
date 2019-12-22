@@ -12,9 +12,9 @@
     <script src="../js/index.aio.js"></script>
     <script src="../js/rem.js"></script>
     <script src="../js/common.js"></script>
+    <script src="../js/axios.util.js"></script>
     <script src="../custom-js/constant.js"></script>
     <script src="../custom-js/common.local.js"></script>
-    <script src="../js/axios.util.js"></script>
 </header>
 <body>
 <div id="content">
@@ -45,13 +45,12 @@
 
 <script>
     function render_page(data) {
-        console.log(data);
         template.registerFunction('date_format', date_format);// 通过方法注册提高运算速度
-        var template1 = document.getElementById('template').innerHTML;
+        let template1 = document.getElementById('template').innerHTML;
         document.getElementById('content').innerHTML = template(template1, {obj: data});
     }
 
-    ajax_get(api_base_url + '/vActivity/getVActivityById/' + 11, null, function(data) {
+    ajax_get(api_base_url + '/vActivity/getVActivityById/' + url_variable('id'), null, function (data) {
         if (data.code !== '200') {
             alert(data.msg);
             return;
