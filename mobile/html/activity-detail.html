@@ -54,7 +54,7 @@
 
     ajax_get(api_base_url + '/vActivity/getVActivityById/' + url_variable('id'), null, function (data) {
         if (data.code !== '200') {
-            alert(data.msg);
+            alert(data.message);
             return;
         }
         render_page(data.data);
