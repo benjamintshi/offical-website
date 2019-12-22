@@ -12,12 +12,15 @@
         </p>
 
       </i-col>
-      <i-col span="8" class="a-hover-style">
-        <img src="static/images/top/info-search.png" alt="">
-        <p class="title">
-          志愿者信息查询<br/>
-          <span>查询志愿者个人信息等。</span>
-        </p>
+      <i-col span="8" class="a-hover-style" >
+        <div @click="toQuery">
+          <img src="static/images/top/info-search.png" alt="">
+          <p class="title">
+            志愿者信息查询<br/>
+            <span>查询志愿者个人信息等。</span>
+          </p>
+        </div>
+
       </i-col>
       <i-col span="8" class="a-hover-style">
         <img src="static/images/top/email.png" alt="">

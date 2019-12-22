@@ -119,9 +119,12 @@ export default {
 
   },
   mounted(){
+    debugger
     let activeMenu = localStorage.getItem("activeMenu");
     if(activeMenu){
       this.activeMenu = activeMenu;
+    }else{
+      this.activeMenu = ""
     }
     let activeAreaName = localStorage.getItem("activeAreaName");
     if(activeAreaName){

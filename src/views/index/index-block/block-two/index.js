@@ -124,6 +124,23 @@ export default {
         this.teamCnt = item.teamCnt;
 
       })
-    }
+    },
+    toMore(){
+
+      localStorage.setItem("activeMenu","brandProject");
+      this.$router.push('brandProject');
+    },
+    toMoret(){
+      localStorage.setItem("activeMenu","activityRecruit");
+      this.$router.push('activityRecruit');
+    },
+    toDetail(item){
+      localStorage.setItem("activeMenu","activityRecruit");
+      this.$router.push({
+        name:"volunteerRecruitDetail",
+        query:{'itemId':item.id}
+      })
+
+    },
   }
 }

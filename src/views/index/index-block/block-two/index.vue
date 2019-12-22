@@ -25,12 +25,12 @@
               <MenuItem name="2">
                 地方品牌项目
               </MenuItem>
-              <span class="more a-hover-style"> 更多</span>
+              <span class="more a-hover-style" @click="toMore"> 更多</span>
             </Menu>
               <p class="sub-menu a-hover-style">
                 <span :class="selected==item.id ? 'active':''" v-for="(item,index) in subMenu" :key="index">{{item.name}}</span>
               </p>
-            <p class="news-list" v-for="(item,index) in newsList1" :key="index">
+            <p class="news-list a-hover-style" v-for="(item,index) in newsList1" :key="index">
               <span class="circle-dot"> </span>
               <span class="title text-ellipsis">{{item.title}} </span>
               <span class="time"> {{item.time}}</span>
@@ -41,8 +41,9 @@
                 <MenuItem name="1">
                   活动招募
                 </MenuItem>
+                <span class="more a-hover-style" @click="toMoret"> 更多</span>
               </Menu>
-              <p class="news-list" v-for="(item,index) in newsList2" :key="index">
+              <p class="news-list a-hover-style" v-for="(item,index) in newsList2" :key="index" @click="toDetail(item)">
                 <span class="circle-dot"> </span>
                 <span class="title text-ellipsis">{{item.title}} </span>
                 <span v-if="item.status==1" class="start"> 招募中</span>
