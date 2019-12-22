@@ -42,6 +42,7 @@ body{
     font-size:0.36rem;
     color: #262626;
     font-weight:900;
+    line-height: 0.5rem;
 }
 .detail-content .desc .sub-title{
     color:#262626;
