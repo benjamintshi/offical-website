@@ -96,6 +96,13 @@ export default {
   methods:{
     toDetail(item){
       this.$router.push({
+        name:"literatureDetail",
+        query:{'itemId':item.id}
+      })
+
+    },
+    toculDetail(item){
+      this.$router.push({
         name:"cultivateDetail",
         query:{'itemId':item.id}
       })

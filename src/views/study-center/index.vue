@@ -5,7 +5,7 @@
           <template>
             <Carousel autoplay v-model="value1" loop>
               <CarouselItem v-for="(item,index) in topList" :key="index">
-                <div class="demo-carousel"><img :src="item.img" alt=""></div>
+                <div class="demo-carousel"  @click="toculDetail(item)"><img :src="item.img" alt=""></div>
               </CarouselItem>
 
             </Carousel>
