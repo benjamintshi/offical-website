@@ -12,7 +12,8 @@
     <script src="../js/index.aio.js"></script>
     <script src="../js/rem.js"></script>
     <script src="../js/common.js"></script>
-    <script src="../js/constant.js"></script>
+    <script src="../custom-js/constant.js"></script>
+    <script src="../custom-js/common.local.js"></script>
     <script src="../js/axios.util.js"></script>
 </header>
 <body>
@@ -22,19 +23,19 @@
 <script type="text/html" id="template">
     <ul class="detail-content white-bg">
         <li >
-            <p class="detail-title"><%=obj.title%></p>
-            <div class="detail-time">出台日期：<%=obj.time%></div>
+            <p class="detail-title"><%=obj.activityName%></p>
+            <div class="detail-time">出台日期：<%=date_format(obj.createDatetime)%></div>
 
         </li>
 
         <li class="desc detail-block" >
-            <div><%=obj.content%></div>
+            <div><%:=obj.activityDes%></div>
             <div class="base-info">
                 <p class="title">相关信息</p>
-                <p>志愿团队: 韩城市志愿团队</p>
-                <p>服务日期: 2019.04.23 - 2019.06.17</p>
-                <p>服务时间: 10:30 - 13:30</p>
-                <p>服务地址: <span>河北省保定市阜平县 <img src="../images/map.png" alt=""></span>
+                <p>志愿团队: <%=obj.teamName%></p>
+                <p>服务日期: <%=date_format(obj.activityStartDate)%> - <%=date_format(obj.activityEndDate)%></p>
+                <p>服务时间: <%=obj.activityTimeBucket%></p>
+                <p>服务地址: <span><%=obj.activityAddr%> <img src="../images/map.png" alt=""></span>
                  </p>
             </div>
         </li>
@@ -43,39 +44,19 @@
 </body>
 
 <script>
-    var data = {
-        title:"书写国家级文化生态保护区建设的新篇章",
-        time:"2019.04.25",
-        content:"自我评价：本人性格开朗、稳重、有活力，待人热情、真诚；工作认真负责，积极主动，能吃苦耐劳，用于承受压力，勇于创新；有很强的组织能力和团队协作精神，具有较强的适应能力；纪律性强，工作积极配合；意志坚强，具有较强的无私奉献精神。"
-
-    };
-    var template1 = document.getElementById('template').innerHTML;
-    document.getElementById('content').innerHTML = template(template1,{obj:data});
+    function render_page(data) {
+        console.log(data);
+        template.registerFunction('date_format', date_format);// 通过方法注册提高运算速度
+        var template1 = document.getElementById('template').innerHTML;
+        document.getElementById('content').innerHTML = template(template1, {obj: data});
+    }
 
     ajax_get(api_base_url + '/vActivity/getVActivityById/' + 11, null, function(data) {
         if (data.code !== '200') {
             alert(data.msg);
             return;
         }
-        console.log(data);
-    });
-
-    ajax_post(api_base_url + '/vUser/appLogin', {account: 'caoke_0011@163.com', passwd: '123456'}, function(data) {
-        if (data.code !== '200') {
-            alert(data.msg);
-            return;
-        }
-        console.log(data);
-    });
-
-    ajax_post(api_base_url + '/vUser/appLogin', null, function(data) {
-        if (data.code !== '200') {
-            alert(data.msg);
-            return;
-        }
-        console.log(data);
-    }, function (data) {
-        alert('执行异常');
+        render_page(data.data);
     });
 </script>
 </html>
