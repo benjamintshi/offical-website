@@ -113,7 +113,8 @@ export default {
   methods:{
     // 首页切换志愿快讯和政策文件，name为菜单名字
     swtichOne(name){
-
+      debugger
+      this.selected = name;
     },
     getIndexStatistics(){
       this.http.get('/contentStatistic/getIndexStatistics/'+this.pCode).then(res=>{

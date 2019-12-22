@@ -18,23 +18,26 @@
 
             </i-col>
             <i-col span="9" style="padding-left:20px;">
-            <Menu mode="horizontal" theme="light" active-name="1" on-select="swtichOne">
-              <MenuItem name="1">
+            <Menu mode="horizontal" theme="light" active-name="1" @on-select="swtichOne">
+              <MenuItem name="1" >
                 国家示范项目
               </MenuItem>
-              <MenuItem name="2">
+              <MenuItem name="2" >
                 地方品牌项目
               </MenuItem>
               <span class="more a-hover-style" @click="toMore"> 更多</span>
             </Menu>
-              <p class="sub-menu a-hover-style">
+              <p class="sub-menu a-hover-style" v-show="selected =='1'">
                 <span :class="selected==item.id ? 'active':''" v-for="(item,index) in subMenu" :key="index">{{item.name}}</span>
               </p>
-            <p class="news-list a-hover-style" v-for="(item,index) in newsList1" :key="index">
-              <span class="circle-dot"> </span>
-              <span class="title text-ellipsis">{{item.title}} </span>
-              <span class="time"> {{item.time}}</span>
-            </p>
+
+                <p  class="news-list a-hover-style" v-for="(item,index) in newsList1" :key="index">
+                  <span class="circle-dot"> </span>
+                  <span class="title text-ellipsis">{{item.title}} </span>
+                  <span class="time"> {{item.time}}</span>
+                </p>
+
+
           </i-col>
             <i-col span="9" style="padding-left:20px;">
               <Menu mode="horizontal" theme="light"  >

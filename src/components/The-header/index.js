@@ -119,7 +119,6 @@ export default {
 
   },
   mounted(){
-    debugger
     let activeMenu = localStorage.getItem("activeMenu");
     if(activeMenu){
       this.activeMenu = activeMenu;
