@@ -11,13 +11,17 @@
 
         </tr>
         <tr v-for="(item,index) in list" :key="index">
-          <td>{{item.time}}</td>
+          <td>{{item.createDatetime}}</td>
           <td>{{item.project}}</td>
-          <td>{{item.teamName }}</td>
-          <td>{{item.content ||"待回复"}}</td>
+          <td>{{item.content }}</td>
+          <td v-if="item.replyStatus==0">待回复</td>
+          <td v-if="item.replyStatus==1">已回复</td>
 
         </tr>
       </table>
+    <div style="float: right;margin-top:-1em; ">
+      <a class="loadMore" v-if="!isMost" @click="loadMore">查看更多...</a>
+    </div>
   </div>
 </template>
 

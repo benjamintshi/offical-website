@@ -29,7 +29,7 @@
               <span class="right-40" style="font-weight: 500">|</span>
               <router-link to="login" class="right-40">登陆</router-link>
               <router-link to="personalInfo" v-if="isLogin">
-                {{userInfo.name}}
+                {{userInfo.userName}}
                 <span><Icon type="md-arrow-dropdown" size="16"/></span>
               </router-link>
               <router-link to="register" v-else>免费注册</router-link>
