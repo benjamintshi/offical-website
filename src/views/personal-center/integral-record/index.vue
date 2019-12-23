@@ -8,13 +8,17 @@
           <th>累计积分</th>
         </tr>
         <tr v-for="(item,index) in list" :key="index">
-          <td>{{item.time}}</td>
-          <td>{{item.desc}}</td>
-          <td>{{item.type }}</td>
-          <td > {{item.integral}}  </td>
+          <td>{{item.createDatetime}}</td>
+          <td>{{item.des}}</td>
+          <td v-if="item.itemType==1">志愿活动</td>
+          <td v-if="item.itemType==2">培训</td>
+          <td > {{item.coin}}  </td>
 
         </tr>
       </table>
+    <div style="float: right;">
+      <a class="loadMore" v-if="!isMost" @click="loadMore">查看更多...</a>
+    </div>
   </div>
 </template>
 

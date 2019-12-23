@@ -1,37 +1,68 @@
+import axios from "axios";
+
 export default {
   data() {
     return {
-        list:[
-          {
-            time:"2019-09-01 10：10",
-            content:"",
-            project:"xxx志愿服务项目",
-            teamName:"xxx志愿服务总队",
-
-          },
-          {
-            time:"2019-09-01 10：10",
-            content:"积极认真",
-            project:"xxx志愿服务项目",
-            teamName:"xxx志愿服务总队",
-
-          },
-          {
-            time:"2019-09-01 10：10",
-            content:"",
-            project:"xxx志愿服务项目",
-            teamName:"xxx志愿服务总队",
-
-          }
-        ]
+      pageNum:1,
+      pageSize:1,
+      totalNum: '',
+      n:1,
+      list:[],
+      isMost: false,
+      userInfo:{},
     }
 
   },
   mounted(){
-
+    this. getUserInfo();
   },
   methods:{
-
+    getUserInfo() {
+      axios.get('http://zyz.liyue.com/socket/api/vUser/getSessionUserInfo', {
+      })
+        .then(response => {
+          this.userInfo = response.data.data;
+          this.getlist();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    getlist: function () {
+      axios.get('http://zyz.liyue.com/socket/api/vFeedback/getMyFeedbackList', {
+        params: {
+          pageNum: this.pageNum,
+          pageSize: this.pageSize,
+        }
+      })
+        .then(response => {
+          this.list = response.data.data.list;
+          this.pageSize = response.data.data.pageSize;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    loadMore: function () {
+      this.n = this.n + 1;
+      var temp = this.n
+      axios.get('http://zyz.liyue.com/socket/api/vFeedback/getMyFeedbackList', {
+        params: {
+          pageNum: 1,
+          pageSize: this.pageSize * temp
+        }
+      })
+        .then(response => {
+          this.list = response.data.data.list;
+          this.totalNum = response.data.data.size;
+          if (this.totalNum == response.data.data.total) {
+            this.isMost = true
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
 
   },
   filters:{

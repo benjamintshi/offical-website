@@ -13,8 +13,9 @@
         <li class="center " v-if="loginByAccount">
           <div class="account-login">
             <input type="text" placeholder="请输入手机号/身份证号/邮箱" v-model="login.account">
-            <input type="password" placeholder="请输入密码" v-model="login.password">
-            <button @click="login">登录</button>
+            <input type="password" placeholder="请输入密码" v-model="login.passwd">
+            <button @click="toLogin">登录</button>
+            <span v-if="errInfo !=null && errInfo != ''" style="color: red">*{{errInfo}}</span>
             <router-link to="forgetPassword">忘记密码</router-link>
           </div>
         </li>

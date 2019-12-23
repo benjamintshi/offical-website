@@ -11,14 +11,17 @@
           <th>表彰奖励颁发者</th>
         </tr>
         <tr v-for="(item,index) in list" :key="index">
-          <td>{{item.time}}</td>
-          <td>{{item.project}}</td>
-          <td>{{item.teamName }}</td>
-          <td>{{item.timeRange}}</td>
-          <td > 查看详情  </td>
-
+          <td>{{item.createDatetime}}</td>
+          <td>{{item.honorName}}</td>
+          <td v-if="item.type==1">个人</td>
+          <td v-if="item.type==2">团体</td>
+          <td>{{item.honorNo}}</td>
+          <td><a @click="queryDetails(item.honorCover)"> 查看详情  </a></td>
         </tr>
       </table>
+    <div style="float: right;">
+      <a class="loadMore" v-if="!isMost" @click="loadMore">查看更多...</a>
+    </div>
   </div>
 </template>
 

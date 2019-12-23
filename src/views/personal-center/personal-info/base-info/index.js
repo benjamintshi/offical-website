@@ -1,24 +1,53 @@
+import axios from "axios";
 
 export default {
   data() {
     return {
-      isVolunteer:true,
-      info:{
-        zsUrl:"static/images/common/zs.jpg"//证书的url
+      userInfo: {
+        volunteer:{}
       },
-      projectName:"证书"//下载证书图片生成的名字
+      serviceArea: '',
+      isVolunteer: true,
+      info: {
+        zsUrl: "static/images/common/zs.jpg"//证书的url
+      },
+      projectName: "证书"//下载证书图片生成的名字
     }
 
   },
-  mounted(){
-
+  mounted() {
+    this.getUserInfo();
   },
-  methods:{
-
-    modifyInfo(){
+  methods: {
+    modifyInfo() {
       this.$emit('modify');
     },
-
+    getServiceArea(){
+      axios.get('http://zyz.liyue.com/socket/api/vArea/getAreas/0', {
+      })
+        .then(response => {
+          for(var i=0; i<response.data.data.length; i++){
+            if(this.userInfo.volunteer.serviceProvinceCode == response.data.data[i].areaCode) {
+              this.serviceArea=response.data.data[i].areaName
+              break;
+            }
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    getUserInfo() {
+        axios.get('http://zyz.liyue.com/socket/api/vUser/getSessionUserInfo', {
+        })
+          .then(response => {
+            this.userInfo = response.data.data;
+            this.getServiceArea();
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    },
     downloadCodeImg() {
       const image = new Image();
       image.setAttribute("crossOrigin", "anonymous");

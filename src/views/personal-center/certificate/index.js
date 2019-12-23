@@ -1,15 +1,30 @@
+import axios from "axios";
+
 export default {
   data() {
     return {
-      info:{
-        img:"static/images/common/zs.jpg",
-        isOverdue:true
-      },
-      projectName:"证书"
+       list:[],
+       projectName:"证书"
     }
   },
-  methods:{
 
+    mounted(){
+      this. getCertificate();
+    },
+  methods:{
+    getCertificate: function () {
+      axios.get('http://zyz.liyue.com/socket/api/vUser/myVolunteerCertificate', {
+        params: {
+        }
+      })
+        .then(response => {
+          this.list= response.data.data;
+          this.pageSize = response.data.data.pageSize;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
     downloadCodeImg() {
         const image = new Image();
         image.setAttribute("crossOrigin", "anonymous");

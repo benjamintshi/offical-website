@@ -3,14 +3,14 @@
     <!-- 志愿者介绍 -->
         <ul class="base-info" v-if="!noDesc && !modify">
               <li class="base-info-left">
-                <img :src="info.img" alt="">
+                <img :src="userInfo.avatar" alt="">
               </li>
             <li class="base-info-right">
                 <p class="title">
-                  {{info.name}}
+                  {{userInfo.userName}}
                   <span @click="modify = true" class="a-hover-style">编辑</span>
                 </p>
-                <div v-html="info.content"></div>
+                <div v-html="userInfo.volunteer.declaration"></div>
             </li>
         </ul>
 
@@ -22,18 +22,18 @@
           <hr>
         </li>
         <li>
-          姓名：{{info.name}}
+          姓名：{{userInfo.userName}}
         </li>
         <li>
           封面：
           <div class="upload">
             <!-- 控件相关配置见 https://www.iviewui.com/components/upload -->
             <Upload
-              action="//jsonplaceholder.typicode.com/posts/"
+              action="http://cultrual.bbwhm.com:8087/api/upload/uploadFiles"
               :format="['jpg','jpeg','png']"
               :max-size="2048"
             >
-              <img :src="info.img" alt="" v-if="info.img">
+              <img :src="userInfo.avatar" alt="" v-if="info.img">
               <div class="upload-cover"  v-if="info.img">
                 更换
               </div>
@@ -44,7 +44,7 @@
         </li>
         <li>
           个人介绍内容：
-          <textarea v-model="info.content"></textarea>
+          <textarea v-model="userInfo.volunteer.declaration"></textarea>
         </li>
         <button class="common-btn" @click="submit">
           保存
