@@ -56,6 +56,7 @@ export default {
 
   },
   mounted(){
+    this.getPageVTrainingNews();
   },
   methods:{
     changeFilter(index){
@@ -64,8 +65,9 @@ export default {
     changeType(index){
       this.selectedIndex = index;
     },
-    changePage(){
-
+    changePage(page){
+      this.pageNum = page;
+      this.getPageVTrainingNews();
     },
     toNewsDetail(item){
       this.$router.push({
@@ -73,5 +75,25 @@ export default {
         query:{'itemId':item.id}
       })
     },
+    getPageVTrainingNews(){
+      var params ={
+        'pageNum':this.pageNum,
+        'pageSize':this.pageSize
+      }
+      this.http.get('/vTrainingNews/getPageVTrainingNews',params).then(res=>{
+        this.newslist= [];
+        this.total = res.data.data.total;
+        console.log(res.data.data)
+        res.data.data.list.forEach(item => {
+          var news ={};
+          news.id = item.id;
+          news.title = item.title;
+          news.content = item.content;
+          news.tag = item.provinceName + item.cityName + item.countyName;
+          news.img = item.cover;
+          this.newslist.push(news);
+        })
+      })
+    }
   }
 }
