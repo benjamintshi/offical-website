@@ -24,8 +24,18 @@
       </Select>
     </p>
     <div class="local-project">
-      <img src="static/images/villageStar/pic1.jpg" alt="">
-      <router-link to="villageStar"> <img src="static/images/villageStar/pic2.jpg" alt=""></router-link>
+      <router-link to="villageStar">
+        <img src="static/images/villageStar/top4.png" alt="" style="height: 276px;">
+        <div class="word-bg">
+          <p>春晚</p>
+        </div>
+      </router-link>
+      <router-link to="villageStar">
+        <img src="static/images/villageStar/top4.png" alt="" style="height: 276px;">
+        <div class="word-bg">
+           <p>村宝</p>
+        </div>
+      </router-link>
     </div>
 
   </div>
