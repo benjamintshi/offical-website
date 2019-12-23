@@ -118,6 +118,8 @@ export default {
     changeType(item) {
       this.selectType = item.value;
       //this.newslist = [];
+      this.$refs.myPolicyFiles.changeType(this.selectType);
+      this.$refs.myPolicyFiles.getPagePolicyByCate();
     },
     changePage() {
 

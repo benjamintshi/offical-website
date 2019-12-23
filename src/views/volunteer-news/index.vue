@@ -20,11 +20,11 @@
       <li>
         <Row>
           <!--活动快讯-->
-          <ServiceInfo v-if="selectedIndex == 0 "> </ServiceInfo>
+          <ServiceInfo v-show="selectedIndex == 0 "> </ServiceInfo>
           <!-- 政策文件 -->
-          <PolicyFiles v-else-if="selectedIndex == 1"> </PolicyFiles>
+          <PolicyFiles v-show="selectedIndex == 1" ref="myPolicyFiles"> </PolicyFiles>
           <!--培训资讯-->
-          <TrainNews v-else></TrainNews>
+          <TrainNews v-show = "selectedIndex == 2"></TrainNews>
 
           <i-col span="8">
                 <div class="hot-news">
