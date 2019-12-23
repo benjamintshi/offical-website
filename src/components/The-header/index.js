@@ -1,3 +1,5 @@
+import util from '../../utils/http.js';
+import axios from "axios";
 
 export default {
   inject:['reload'],
@@ -111,14 +113,15 @@ export default {
       activeAreaName:"站点切换",
       showArea:false,
       hoverMenu:"",
-      isLogin:true,
+      isLogin:false,
       userInfo:{
-        name:"小丽"
       },
     }
 
   },
   mounted(){
+    this.getUserInfo();
+    let myName=JSON.parse(sessionStorage.getItem("loginInfo"));
     let activeMenu = localStorage.getItem("activeMenu");
     if(activeMenu){
       this.activeMenu = activeMenu;
@@ -136,6 +139,18 @@ export default {
     this.getProvinces();
   },
   methods:{
+    getUserInfo(){
+      axios.get('http://zyz.liyue.com/socket/api/vUser/getSessionUserInfo', {
+      })
+        .then(response => {
+          this.userInfo = response.data.data;
+          this.isLogin=true,
+          sessionStorage.setItem("userInfo",this.userInfo);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
     swtichArea (item) {
       this.activeArea = item.value;
       this.activeAreaName = item.name;
