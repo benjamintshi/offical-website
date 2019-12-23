@@ -30,9 +30,9 @@ export default {
     });
   },
   methods:{
-    // 首页切换志愿快讯和政策文件，name为菜单名字
-    swtichOne(name){
-
+    toQuery(){
+      localStorage.setItem("activeMenu","");
+      this.$router.push('queryInfo');
     },
     // 编写自定义函数,创建标注
     addMarker(map,point){

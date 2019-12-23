@@ -113,7 +113,8 @@ export default {
   methods:{
     // 首页切换志愿快讯和政策文件，name为菜单名字
     swtichOne(name){
-
+      debugger
+      this.selected = name;
     },
     getIndexStatistics(){
       this.http.get('/contentStatistic/getIndexStatistics/'+this.pCode).then(res=>{
@@ -124,6 +125,23 @@ export default {
         this.teamCnt = item.teamCnt;
 
       })
-    }
+    },
+    toMore(){
+
+      localStorage.setItem("activeMenu","brandProject");
+      this.$router.push('brandProject');
+    },
+    toMoret(){
+      localStorage.setItem("activeMenu","activityRecruit");
+      this.$router.push('activityRecruit');
+    },
+    toDetail(item){
+      localStorage.setItem("activeMenu","activityRecruit");
+      this.$router.push({
+        name:"volunteerRecruitDetail",
+        query:{'itemId':item.id}
+      })
+
+    },
   }
 }

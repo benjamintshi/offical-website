@@ -99,6 +99,9 @@ export default{
     },
     changePage(){
 
+    },
+    swtichMenu(item){
+      this.activeMenu = item.id;
     }
   }
 }

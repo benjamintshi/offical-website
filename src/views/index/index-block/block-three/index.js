@@ -139,6 +139,37 @@ export default {
     // 首页切换志愿快讯和政策文件，name为菜单名字
     swtichOne(name){
 
-    }
+    },
+    // 活动信息
+    toMore(){
+
+      localStorage.setItem("activeMenu","activityInfo");
+      this.$router.push('activityInfo');
+    },
+    // 活动信息
+    toDetail(item){
+      localStorage.setItem("activeMenu","activityInfo");
+      this.$router.push({
+        name:"activityDetail",
+        query:{'itemId':item.id}
+      })
+
+    },
+    // 志愿团队
+    toMoreTeam(){
+
+      localStorage.setItem("activeMenu","activityInfo");
+      this.$router.push('volunteerTeam');
+    },
+    // 志愿团队
+    toDetailTeam(item){
+      debugger
+      localStorage.setItem("activeMenu","activityInfo");
+      this.$router.push({
+        name:"volunteerTeamDetail",
+        query:{'itemId':item.id}
+      })
+
+    },
   }
 }

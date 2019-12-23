@@ -43,9 +43,36 @@ export default {
 
   },
   methods:{
-    // 首页切换志愿快讯和政策文件，name为菜单名字
-    swtichOne(name){
 
-    }
+    // 线下培训
+    toMore(){
+
+      localStorage.setItem("activeMenu","studyCenter");
+      this.$router.push('cultivateList');
+    },
+    // 线下培训
+    toDetail(item){
+      localStorage.setItem("activeMenu","studyCenter");
+      this.$router.push({
+        name:"cultivateDetail",
+        query:{'itemId':item.id}
+      })
+
+    },
+    // 理论文献
+    toMoreL(){
+
+      localStorage.setItem("activeMenu","studyCenter");
+      this.$router.push('literatureLst');
+    },
+    // 理论文献
+    toDetailL(item){
+      localStorage.setItem("activeMenu","studyCenter");
+      this.$router.push({
+        name:"literatureDetail",
+        query:{'itemId':item.id}
+      })
+
+    },
   }
 }

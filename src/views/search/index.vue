@@ -12,7 +12,9 @@
           </div>
           <p>
             可能感兴趣：
-            <span v-for="(item,index) in adviceList" :key="index">{{item}}</span>
+            <span v-for="(item,index) in adviceList" :key="index"
+                  class="a-hover-style" @click="inputValue = item">{{item}}
+            </span>
           </p>
         </div>
       </li>
@@ -23,7 +25,7 @@
         <div v-if="seachValue">
           <p>关于“<span class="tag">{{seachValue}}</span>”的搜索结果 </p>
           <p class="menu">
-            <span v-for="(item,index) in menu" :key="index" :class="activeMenu == item.id?'active':''">
+            <span v-for="(item,index) in menu" :key="index" :class="activeMenu == item.id?'active':''" @click="swtichMenu(item)">
                 {{item.name}}
             </span>
           </p>
