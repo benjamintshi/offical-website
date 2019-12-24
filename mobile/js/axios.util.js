@@ -1,6 +1,6 @@
 // 前提：已经引入了
 // <script src="../js/common.js"></script>
-// <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+// <script src="https://cdn.bootcss.com/axios/0.19.0/axios.min.js"></script>
 
 /**
  * AJAX GET请求
