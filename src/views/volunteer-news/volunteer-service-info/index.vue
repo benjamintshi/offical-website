@@ -6,7 +6,7 @@
               <div>
                 <p class="title text-ellipsis">{{item.title}}</p>
                 <p class="tag">{{item.tag}}</p>
-                <p class="content">{{item.content}}</p>
+                <p class="content" v-html="item.content"></p>
                </div>
 
             </li>
