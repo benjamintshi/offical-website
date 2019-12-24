@@ -50,7 +50,7 @@
               <p class="title">{{item.title}}</p>
 
               <p class="time">开讲日期  {{item.timeStart}} - {{item.timeEnd}}</p>
-              <p class="address"> <sec class="right30">距结束：{{item.endTime}}天</sec>  已报名：{{item.realNum}} 人</p>
+              <p class="address"> <section class="right30">距结束：{{item.endTime}}天</section>  已报名：{{item.realNum}} 人</p>
             </div>
 
           </i-col>
