@@ -104,7 +104,11 @@ export default {
   },
   methods: {
     changeFilter(index) {
-      this.selectedIndex = index;
+      // this.selectedIndex = index;
+      this.$router.push({
+        name:"volunteerNews",
+        query:{'id':index}
+      })
     },
     initData() {
       if (this.$route.query.id) {
@@ -113,11 +117,13 @@ export default {
         this.selectedIndex = '0';
       }
       this.queryId = this.$route.query.id;
-      console.log(this.selectedIndex)
+      // console.log(this.selectedIndex)
     },
     changeType(item) {
       this.selectType = item.value;
       //this.newslist = [];
+      this.$refs.myPolicyFiles.changeType(this.selectType);
+      this.$refs.myPolicyFiles.getPagePolicyByCate();
     },
     changePage() {
 
@@ -132,6 +138,7 @@ export default {
           name :'全部',
           value: ''
         };
+        this.selectType = type3.value;
         this.typeList.push(type3);
         res.data.data.forEach(item => {
           var type ={};
@@ -170,7 +177,7 @@ export default {
       this.http.get('/news/getGoodNews',params).then(res=>{
         this.recommend= [];
         this.total = res.data.data.total;
-        console.log(res.data.data)
+        // console.log(res.data.data)
         res.data.data.forEach(item => {
           var news ={};
           news.id = item.newsId;

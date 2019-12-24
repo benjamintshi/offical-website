@@ -1,4 +1,4 @@
-
+import format from '@/utils/format.js'
 export default {
 
   data(){
@@ -134,35 +134,35 @@ export default {
           value:"9"
         }
       ],
-      cityCode:"all",
+      cityCode:"",
       showAll:true,
       states:[
         {
           name:"全部",
-          value:"all"
+          value:""
         },
         {
           name:"待开始",
-          value:"b"
+          value:"1"
         },
         {
           name:"进行中",
-          value:"c"
+          value:"2"
         },
         {
           name:"已结束",
-          value:"d"
+          value:"3"
         },
         {
           name:"可报名",
-          value:"e"
+          value:"4"
         }
       ],
-      currentState:"all",
+      currentState:"",
       service:[
         {
           name:"全部",
-          value:"all"
+          value:""
         },
         {
           name:"老人",
@@ -182,7 +182,17 @@ export default {
     }
   },
   mounted(){
-
+    let activeAreaName = localStorage.getItem("activeAreaName");
+    if(activeAreaName){
+      // this.activeAreaName = activeAreaName;
+      let activeArea = localStorage.getItem("activeArea");
+      if(activeArea){
+        this.cityCode = activeArea;
+      }
+    }
+    this.getProvinces();
+    this.showAll = false;
+    this.getPageVActivity();
   },
   methods:{
     swtichCity(item){
@@ -194,8 +204,64 @@ export default {
     swtichService(item){
       this.selecteService = item.value;
     },
-    changePage(){
-
+    changePage(page){
+      this.pageNum = page;
+      this.getPageVActivity();
+    },
+    getProvinces(){
+      this.http.get('/vArea/getProvinces/1').then(res=>{
+        this.areaList = [];
+        // console.log(res.data.data)
+        res.data.data.forEach(item => {
+          var area = {};
+          area.value = item.areaCode;
+          area.name = item.areaName;
+          this.areaList.push(area);
+        })
+      })
+    },
+    getPageVActivity(){
+      var canCrowdAttend = ''
+      if(this.currentState == '4'){
+        canCrowdAttend = '1'
+        this.currentState = '';
+      }
+      var params ={
+        'pageNum':this.pageNum,
+        'pageSize':this.pageSize,
+        'recruitStatus':this.currentState,
+        // 'canCrowdAttend':canCrowdAttend,
+        'selecteService': this.selecteService,
+        'activityProvinceCode':this.cityCode
+      }
+      this.http.get('/vActivity/getPageVActivity',params).then(res=>{
+        console.log(res.data.data);
+        this.trainList= [];
+        this.total = res.data.data.total;
+        res.data.data.list.forEach(item => {
+          var train ={};
+          train.id = item.newsId;
+          train.title = item.activityName;
+          train.status = item.newsContent;
+          train.address = item.activityProvinceName + item.activityCityName + item.activityCountyName;
+          train.endTime = item.canCrowdAttend;
+          train.realNum = item.readyNum;
+          train.timeStart = format(item.activityStartDate,'YYYY.MM.DD');
+          train.timeEnd = format(item.activityEndDate,'YYYY.MM.DD')
+          train.img = item.activityCover;
+          if(!train.img){
+            train.img = 'http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'
+          }
+          if(!train.realNum){
+            train.realNum = 0;
+          }
+          train.timeShow = true;
+          if(!train.timeStart){
+            train.timeShow = false;
+          }
+          this.trainList.push(train);
+        })
+      })
     },
     toDetail(item){
       this.$router.push({

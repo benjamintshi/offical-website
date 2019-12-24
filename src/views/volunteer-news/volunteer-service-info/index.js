@@ -79,19 +79,22 @@ export default {
     var params ={
       'pageNum':this.pageNum,
       'pageSize':this.pageSize,
-      'newsType':1
+      // 'newsType':1
     }
-    this.http.get('/news/getPageNews',params).then(res=>{
+    this.http.get('/vActivityNews/getPageVActivityNews',params).then(res=>{
       this.newslist0= [];
       // console.log(res.data.data);
       this.total = res.data.data.total;
       res.data.data.list.forEach(item => {
         var news ={};
-        news.id = item.newsId;
-        news.title = item.newsTitle;
-        news.content = item.newsContent;
-        news.tag = "陕西省渭南市韩城市";
-        news.img = item.newsCover;
+        news.id = item.id;
+        news.title = item.title;
+        news.content = item.content;
+        news.tag = item.provinceName + item.cityName + item.countyName;
+        news.img = item.cover;
+        if(!news.img){
+          news.img = 'http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg';
+        }
         this.newslist0.push(news);
       })
     })
