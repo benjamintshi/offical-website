@@ -1,3 +1,5 @@
+import crypto from 'crypto'
+
 /**
  * 获取页面路径中的参数值，获取失败返回false
  * 例如：
@@ -32,4 +34,14 @@ function empty(str) {
   return ret;
 }
 
-export {url_variable, empty}
+/**
+ * MD5字符串加密
+ * @param str: 要加密的字符串
+ * @returns {string}
+ */
+function md5(str) {
+  const md5 = crypto.createHash('md5');
+  return md5.update(str).digest('hex');
+}
+
+export {url_variable, empty, md5}
