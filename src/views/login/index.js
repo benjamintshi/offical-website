@@ -37,7 +37,7 @@ export default {
       const that = this;
       ajax_get(constant.api_base_url + '/vQrCodeLogin/checkLoginStatus', null, function (data) {
         if (data.code !== '200') {
-          if (data.message === '请先进行PC登陆二维码生成') {
+          if (data.message !== '用户未扫码确认') {
             alert(data.message);
           } else {
             that.check_qr_code_for_login_timer = setTimeout(that.check_qr_code_for_login, 3000);// 继续检测
