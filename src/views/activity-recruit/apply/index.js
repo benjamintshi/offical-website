@@ -29,6 +29,17 @@ export default {
   },
   methods:{
     nextStep(){
+      if(this.formData.name == null|| this.formData.name== ''){
+          alert("请输入姓名");
+          return;
+      }
+      else if(this.formData.cardNum == null|| this.formData.cardNum== ''){
+        alert("请输入身份证号码");
+        return;
+      }else{
+
+      }
+
       this.show = "second";
     },
     confirmInfo(){
