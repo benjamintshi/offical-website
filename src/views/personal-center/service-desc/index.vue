@@ -29,15 +29,15 @@
           <div class="upload">
             <!-- 控件相关配置见 https://www.iviewui.com/components/upload -->
             <Upload
-              action="http://cultrual.bbwhm.com:8087/api/upload/uploadFiles"
+              :on-success="onUploadSuccess"
+              :action="upload.url"
               :format="['jpg','jpeg','png']"
               :max-size="2048"
             >
-              <img :src="userInfo.avatar" alt="" v-if="info.img">
-              <div class="upload-cover"  v-if="info.img">
+              <img :src="userInfo.avatar" alt="">
+              <div class="upload-cover">
                 更换
               </div>
-              <img src="static/images/common/upload.png" alt="" v-else>
             </Upload>
 
           </div>
