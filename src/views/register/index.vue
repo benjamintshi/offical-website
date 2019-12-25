@@ -1,6 +1,5 @@
 <template>
-
-   <div class="register-content" >
+   <div class="register-content" ref="BaseInfo">
       <p class="title-tip" v-show="!show.fourStep">
         注册
         <span>已有账号？</span>
@@ -13,13 +12,13 @@
           <p ><span style="margin-right:28px;">账</span>号：</p>
          </i-col>
          <i-col span="19">
-           <input type="text" placeholder="身份证/手机号/邮箱号" v-model="formData.account">
+           <input type="text" placeholder="身份证/手机号/邮箱号" v-model="account">
          </i-col>
        </Row>
        <!--验证码-->
        <Row class="vertify-code">
          <i-col span="17">
-           <input type="text" v-model="formData.code">
+           <input type="text" v-model="code">
          </i-col>
          <i-col span="7" >
           <button class="a-hover-style" @click="sendCode">
@@ -34,7 +33,7 @@
            设置密码：
          </i-col>
          <i-col span="19">
-           <input type="text" v-model="formData.secret">
+           <input type="text" v-model="passwd">
            <p class="tips">请设置不少于8位的密码，必须包含字母、数字</p>
          </i-col>
        </Row>
@@ -56,10 +55,6 @@
        <router-link to="/">返回首页</router-link>
      </div>
    </div>
-
-
-
-
 </template>
 
 
