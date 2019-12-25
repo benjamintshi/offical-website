@@ -9,13 +9,16 @@
           <th>操作</th>
         </tr>
         <tr v-for="(item,index) in list" :key="index">
-          <td>{{item.time}}</td>
-          <td>{{item.project}}</td>
+          <td>{{item.activityStartDate}}</td>
+          <td>{{item.activityName}}</td>
           <td>{{item.teamName }}</td>
-          <td>{{item.timeRange}}</td>
-          <td class="blue" @click="toDetail"> 查看详情  </td>
+          <td>{{item.serviceTime}}小时</td>
+          <td class="blue" @click="toDetail(item)"> 查看详情  </td>
         </tr>
       </table>
+    <div style="float: right;margin-top:-1em; ">
+      <a class="loadMore" v-if="!isMost" @click="loadMore">查看更多...</a>
+    </div>
   </div>
 </template>
 
