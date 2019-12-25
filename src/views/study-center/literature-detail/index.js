@@ -1,49 +1,52 @@
 import format from '@/utils/format.js'
+import axios from "axios";
 export default {
   data() {
     return {
       newsInfo:{},//this.route.params
       content:"<p> ",
-      recommend:[
-        {
-          name:"民族舞《春天中国》 培训班培训班培训班培训班",
-          id:"1"
-        },
-        {
-          name:"民族舞《春天中国》 培训班培",
-          id:"2"
-        },
-        {
-          name:"民族舞《春天中国》 培训班培训班培训班培训班",
-          id:"3"
-        },
-        {
-          name:"民族舞《春天中国》 培训班培训班",
-          id:"4"
-        }
-      ]
+      pageSize:5,
+      pageNum:1,
+      recommend:[]
     }
   },
   mounted(){
-    this.newsInfo.projectId = this.$route.query.itemId;
+
+    this.newsInfo.id = this.$route.query.itemId;
     this.getVProjectAchieveById();
   },
   methods:{
+    //显示推荐列表
+    getRecommendList(){
+      axios.get('http://zyz.liyue.com/socket/api/vLiterature/getPageVLiterature', {
+        params: {
+          pageNum: this.pageNum,
+          pageSize: this.pageSize,
+        }
+      })
+        .then(response => {
+          this.recommend = response.data.data.list;
+          this.total = response.data.data.total;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
     // 点击推荐链接
     toRecommend(item){
-      this.newsInfo.projectId = item.id;
+      this.newsInfo.id = item.id;
       this.getVProjectAchieveById();
     },
     getVProjectAchieveById(){
-      this.http.get('/vProjectAchieve/getVProjectAchieveById/'+ this.newsInfo.projectId).then(res=>{
+        this.http.get('http://zyz.liyue.com/socket/api/vLiterature/getVLiteratureById/'+ this.newsInfo.id).then(res=>{
         this.newsInfo.title = res.data.data.projectName;
-        this.content = res.data.data.projectInfo;
-        this.newsInfo.time = format(res.data.data.createDate,'YYYY/MM/DD HH:mm');
+        this.content = res.data.data.content;
+        this.newsInfo.time = format(res.data.data.createDatetime,'YYYY/MM/DD HH:mm');
         console.log(this.newsInfo);
-        this.getGoodVolunteerShows();
+        this.getRecommendList();
       })
     },
-    getGoodVolunteerShows(){
+    /*getGoodVolunteerShows(){
       var params ={
         'pageNum':1,
         'pageSize':5
@@ -62,7 +65,7 @@ export default {
         })
         console.log(this.recommend);
       })
-    }
+    }*/
   }
 
 }
