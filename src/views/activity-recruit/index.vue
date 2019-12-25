@@ -45,11 +45,15 @@
               <div class="tag">
                 <img src="static/images/common/waiting.png" alt="" v-if="item.status == '1'">
                 <img src="static/images/common/starting.png" alt="" v-else-if="item.status =='2'">
-                <img src="static/images/common/end.png" alt="" v-else>
+                <img src="static/images/common/end.png" alt="" v-else-if="item.status =='3'">
               </div>
               <p class="title">{{item.title}}</p>
               <p class="time"  :class=" item.timeShow ? '':'hidden-content'" >开讲日期  {{item.timeStart}} - {{item.timeEnd}}</p>
-              <p class="address"> <section class="right30" style="display: inline-block">距结束：{{item.endTime}}天</section>  已报名：{{item.realNum}} 人</p>
+              <p class="address">
+                <section class="right30" style="display: inline-block" v-show="item.endTime > 0">距结束：{{item.endTime}}天</section>
+                <section class="right30" style="display: inline-block" v-show="item.endTime <= 0">已结束</section>
+                已报名：{{item.realNum}} 人
+              </p>
             </div>
 
           </i-col>

@@ -166,18 +166,18 @@ export default {
         },
         {
           name:"老人",
-          value:"a"
+          value:"老人"
         },
         {
           name:"儿童",
-          value:"b"
+          value:"儿童"
         },
         {
           name:"青少年",
-          value:"c"
+          value:"青少年"
         }
       ],
-      selecteService:"all"
+      selecteService:""
 
     }
   },
@@ -197,12 +197,15 @@ export default {
   methods:{
     swtichCity(item){
       this.cityCode = item.value;
+      this.getPageVActivity();
     },
     swtichStatus(item){
       this.currentState = item.value;
+      this.getPageVActivity();
     },
     swtichService(item){
       this.selecteService = item.value;
+      this.getPageVActivity();
     },
     changePage(page){
       this.pageNum = page;
@@ -221,31 +224,33 @@ export default {
       })
     },
     getPageVActivity(){
-      var canCrowdAttend = ''
+      var recruitType = ''
+      var currentState = this.currentState;
       if(this.currentState == '4'){
-        canCrowdAttend = '1'
-        this.currentState = '';
+        recruitType = '1'
+        currentState = '2';
       }
       var params ={
         'pageNum':this.pageNum,
         'pageSize':this.pageSize,
-        'recruitStatus':this.currentState,
-        // 'canCrowdAttend':canCrowdAttend,
-        'selecteService': this.selecteService,
+        'recruitStatus':currentState,
+        'recruitType':recruitType,
+        'serviceCrowd': this.selecteService,
         'activityProvinceCode':this.cityCode
       }
+      // console.log(params);
+      var nowDate = new Date();    //结束时间
       this.http.get('/vActivity/getPageVActivity',params).then(res=>{
         console.log(res.data.data);
         this.trainList= [];
         this.total = res.data.data.total;
         res.data.data.list.forEach(item => {
           var train ={};
-          train.id = item.newsId;
+          train.id = item.id;
           train.title = item.activityName;
-          train.status = item.newsContent;
+
           train.address = item.activityProvinceName + item.activityCityName + item.activityCountyName;
-          train.endTime = item.canCrowdAttend;
-          train.realNum = item.readyNum;
+          train.realNum = item.applyNum;
           train.timeStart = format(item.activityStartDate,'YYYY.MM.DD');
           train.timeEnd = format(item.activityEndDate,'YYYY.MM.DD')
           train.img = item.activityCover;
@@ -258,6 +263,26 @@ export default {
           train.timeShow = true;
           if(!train.timeStart){
             train.timeShow = false;
+          }
+          if(item.activityEndDate){
+            var date3 =  new Date(item.activityEndDate).getTime() - nowDate;   //时间差的毫秒数
+            train.endTime = Math.floor(date3/(24*3600*1000))
+          }else{
+            train.endTime = 0;
+
+          }
+          train.status = '3';
+          if(train.endTime > 0){
+            // 标记：
+            if(item.recruitType == '0' || nowDate.getTime() > new Date(item.recruitEndDate).getTime()){
+              train.status = '';  // 招募标识不表示，的前提
+            }else if(item.recruitType == '1'){
+              if(nowDate.getTime() < new Date(item.recruitStartDate).getTime()){
+                train.status = '1';
+              }else if(nowDate.getTime()  <= new Date(item.recruitEndDate).getTime()){
+                train.status = '2';
+              }
+            }
           }
           this.trainList.push(train);
         })
