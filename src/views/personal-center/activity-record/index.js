@@ -1,44 +1,69 @@
+import axios from "axios";
+
 export default {
   data() {
     return {
-        list:[
-          {
-            time:"2019.09.01 - 2019.09.10",
-            project:"xxx志愿服务项目",
-            teamName:"xxx志愿服务总队",
-            status:1
-          },
-          {
-            time:"2019.09.01 - 2019.09.10",
-            project:"xxx志愿服务项目",
-            teamName:"xxx志愿服务总队",
-            status:2
-          },
-          {
-            time:"2019.09.01 - 2019.09.10",
-            project:"xxx志愿服务项目",
-            teamName:"xxx志愿服务总队",
-            status:3
-          }
-        ],
-      isVolunteer:false // 是否是志愿者
+      pageNum:1,
+      pageSize:1,
+      totalNum: '',
+      n:1,
+      newslist:[],
+      isMost: false,
+      list:[],
+      isVolunteer:true // 是否是志愿者
     }
 
   },
   mounted(){
-
+      this.getlist();
   },
   methods:{
+    getlist: function () {
+      axios.get('http://zyz.liyue.com/socket/api/vActivity/getMyParticipateActivities', {
+        params: {
+          pageNum: this.pageNum,
+          pageSize: this.pageSize,
+        }
+      })
+        .then(response => {
+          this.list = response.data.data.list;
+          this.pageSize = response.data.data.pageSize;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
     toDetail(item){
       this.$router.push({
         name:"activityDetail",
         query:{'itemId':item.id}
       })
 
+    },
+    loadMore: function () {
+      this.n = this.n + 1;
+      var temp = this.n
+      axios.get('http://zyz.liyue.com/socket/api/vActivity/getMyParticipateActivities', {
+        params: {
+          pageNum: 1,
+          pageSize: this.pageSize * temp
+        }
+      })
+        .then(response => {
+          this.list = response.data.data.list;
+          this.totalNum = response.data.data.size;
+          if (this.totalNum == response.data.data.total) {
+            this.isMost = true
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
 
+
   },
-  filters:{
+  /*filters:{
     exchangeStatus(item){
       debugger
       switch(item){
@@ -75,5 +100,5 @@ export default {
           break;
       }
     }
-  }
+  }*/
 }
