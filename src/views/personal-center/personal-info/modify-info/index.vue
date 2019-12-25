@@ -157,19 +157,18 @@
       </div>
       <div class="radioList">
         <p>可提供服务时间</p>
-        <RadioGroup v-model="userInfo.volunteer.serviceTime" style="height: 50px;line-height: 50px;">
-          <Radio label="每天" style="margin-right: 90px">
+        <RadioGroup v-model="spevialServiceTime" style="height: 50px;line-height: 50px;">
+          <Radio label="1" style="margin-right: 90px">
             <span>每天</span>
           </Radio>
-          <Radio label="周六日" style="margin-right: 90px">
+          <Radio label="2" style="margin-right: 90px">
             <span>周六日</span>
           </Radio>
-          <Radio label="特定时间" >
+          <Radio label="3" >
             <span>特定时间</span>
-
           </Radio>
         </RadioGroup>
-        <input type="text" v-model="userInfo.volunteer.serviceTime">
+        <span v-if="userInfo.volunteer.serviceTime!='每天'&& userInfo.volunteer.serviceTime!='周六日'"><input type="text" v-model="userInfo.volunteer.serviceTime"></span>
       </div>
       <div class="radioList">
         <p style="margin-bottom: 20px;">可提供服务时间段</p>
