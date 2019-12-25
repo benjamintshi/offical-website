@@ -10,7 +10,7 @@
             {{item}}
           </span>
         </div>
-        <p class="tool" v-if="selectedIndex === 1"> 分<span style="margin-left: 30px;"></span> 类：
+        <p class="tool" v-if="selectedIndex == 1"> 分<span style="margin-left: 30px;"></span> 类：
           <span v-for="(item,index) in typeList" :key="index" @click="changeType(item)"
                 :class="selectType ==item.value?'active a-hover-style':'a-hover-style'" >
             {{item.name}}
@@ -20,22 +20,22 @@
       <li>
         <Row>
           <!--活动快讯-->
-          <ServiceInfo v-if="selectedIndex === 0 "> </ServiceInfo>
+          <ServiceInfo v-show="selectedIndex == 0 "> </ServiceInfo>
           <!-- 政策文件 -->
-          <PolicyFiles v-else-if="selectedIndex === 1"> </PolicyFiles>
+          <PolicyFiles v-show="selectedIndex == 1" ref="myPolicyFiles"> </PolicyFiles>
           <!--培训资讯-->
-          <TrainNews v-else></TrainNews>
+          <TrainNews v-show = "selectedIndex == 2"></TrainNews>
 
           <i-col span="8">
                 <div class="hot-news">
                   <p class="title">24小时热文</p>
                   <ul>
                     <li class="two-news a-hover-style" v-for="(item1,index1) in newslist.slice(0,2)" :key="index1+10">
-                      <img :src="item1.img" alt="">
+                      <img :src="item1.img" alt="" onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'">
                       <p>{{item1.title}}</p>
                     </li>
-                    <li class="after-news a-hover-style" v-for="(item2,index2) in newslist.slice(3,6)" :key="index2+20">
-                      <img :src="item2.img" alt="">
+                    <li class="after-news a-hover-style" v-for="(item2,index2) in newslist.slice(2,5)" :key="index2+20">
+                      <img :src="item2.img" alt="" onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'">
                       <p>{{item2.title}}</p>
                     </li>
                   </ul>

@@ -67,7 +67,7 @@ export default {
 
 
       ],
-
+      cate:"",
       pageNum:1,//当前页码
       pageSize:6,
       total:16,// 超过16时显示页码
@@ -76,11 +76,12 @@ export default {
 
   },
   mounted(){
-
+    this.getPagePolicyByCate();
   },
   methods:{
-    changePage(){
-
+    changePage(page){
+      this.pageNum = page;
+      this.getPagePolicyByCate();
     },
     toNewsDetail(item){
       this.$router.push({
@@ -88,5 +89,30 @@ export default {
         query:{'itemId':item.id}
       })
     },
+    changeType(cate) {
+      this.cate = cate;
+    },
+    getPagePolicyByCate(){
+      var params ={
+        'pageNum':this.pageNum,
+        'pageSize':this.pageSize,
+        'cate':this.cate
+      }
+      this.http.get('/vPolicy/getPagePolicyByCate',params).then(res=>{
+        this.newslist= [];
+        this.total = res.data.data.total;
+        // console.log(res.data.data)
+        res.data.data.list.forEach(item => {
+          var news ={};
+          news.id = item.id;
+          news.title = item.policyName;
+          news.time = item.policyDate;
+          news.office = item.policyAuthor;
+          // news.tag = "陕西省渭南市韩城市";
+          // news.img = item.newsCover;
+          this.newslist.push(news);
+        })
+      })
+    }
   }
 }

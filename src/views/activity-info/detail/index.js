@@ -23,7 +23,7 @@ export default {
       let point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
       this.addMarker(map,point);
     }
-    
+
   },
   methods:{
     // 编写自定义函数,创建标注

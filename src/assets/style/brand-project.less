@@ -62,5 +62,34 @@
         margin-left: 20px;
       }
     }
+    a{
+      position: relative;
+      &:last-child{
+        margin-left: 20px;
+      }
+    }
+    .word-bg{
+      line-height: 350px;
+        position: absolute;
+        z-index: 100;
+        //display: block;
+        left: 0px;
+
+        display: inline-block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 490px;
+        height: 200px;
+        //line-height: 193px;
+        text-indent: 15px;
+        background: linear-gradient(rgba(0,0,0,0) ,rgba(0,0,0,0.4) );
+        left: 0px;
+      font-size:20px;
+      font-family:PingFang SC;
+      font-weight:600;
+      color:rgba(231,202,101,1);
+      bottom:3px;
+    }
   }
 }

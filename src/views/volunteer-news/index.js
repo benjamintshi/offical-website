@@ -9,7 +9,7 @@ export default {
       selectedIndex: 0,
       newslist: [
         {
-          title: "“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
+          title: "“心旅益行0”乡村少年文化体验活动走进联合国教科文组织世",
           content: "来自双阳区城中小学来自双阳区城中小学、长春市红领巾宣讲团的26名小学生在吉林外国语大学26名大学生志愿者的陪同下，走进联合国教科文组织世走进联合国教科文组织世走进联合国教科文组织世",
           tag: "陕西省渭南市韩城市",
           img: "static/images/villageStar/zhiyuan.jpg",
@@ -98,10 +98,17 @@ export default {
   },
   mounted() {
     this.initData();
+    this.getListPolicy();
+    this.getHotNews();
+    this.getGoodNews();
   },
   methods: {
     changeFilter(index) {
-      this.selectedIndex = index;
+      // this.selectedIndex = index;
+      this.$router.push({
+        name:"volunteerNews",
+        query:{'id':index}
+      })
     },
     initData() {
       if (this.$route.query.id) {
@@ -110,17 +117,77 @@ export default {
         this.selectedIndex = '0';
       }
       this.queryId = this.$route.query.id;
-      console.log(this.selectedIndex)
+      // console.log(this.selectedIndex)
     },
     changeType(item) {
       this.selectType = item.value;
       //this.newslist = [];
+      this.$refs.myPolicyFiles.changeType(this.selectType);
+      this.$refs.myPolicyFiles.getPagePolicyByCate();
     },
     changePage() {
 
     },
     toRecommend() {
 
+    },
+    getListPolicy(){
+      this.http.get('/vPolicy/getListPolicy').then(res=>{
+        this.typeList = [];
+        var type3 ={
+          name :'全部',
+          value: ''
+        };
+        this.selectType = type3.value;
+        this.typeList.push(type3);
+        res.data.data.forEach(item => {
+          var type ={};
+          type.name = item;
+          type.value = item
+          this.typeList.push(type);
+        })
+      })
+    },
+    getHotNews(){
+      var params ={
+        'pageNum':this.pageNum,
+        'pageSize':this.pageSize,
+        'newsType':1
+      }
+      this.http.get('/news/getHotNews',params).then(res=>{
+        this.newslist= [];
+        this.total = res.data.data.total;
+        res.data.data.forEach(item => {
+          var news ={};
+          news.id = item.newsId;
+          news.title = item.newsTitle;
+          news.content = item.newsContent;
+          news.tag = "陕西省渭南市韩城市";
+          news.img = item.newsCover;
+          this.newslist.push(news);
+        })
+      })
+    }
+    , getGoodNews(){
+      var params ={
+        'pageNum':this.pageNum,
+        'pageSize':this.pageSize,
+        'newsType':1
+      }
+      this.http.get('/news/getGoodNews',params).then(res=>{
+        this.recommend= [];
+        this.total = res.data.data.total;
+        // console.log(res.data.data)
+        res.data.data.forEach(item => {
+          var news ={};
+          news.id = item.newsId;
+          news.name = item.newsTitle;
+          // news.content = item.newsContent;
+          // news.tag = "陕西省渭南市韩城市";
+          // news.img = item.newsCover;
+          this.recommend.push(news);
+        })
+      })
     }
   },
   watch: {

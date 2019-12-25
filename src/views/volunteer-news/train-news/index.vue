@@ -6,11 +6,11 @@
               <div>
                 <p class="title text-ellipsis">{{item.title}}</p>
                 <p class="tag">{{item.tag}}</p>
-                <p class="content">{{item.content}}</p>
+                <p class="content" v-html="item.content"></p>
                </div>
 
             </li>
-            <Page v-if="total>6" :total="total" :pageSize="pageSize" prev-text="上一页" next-text="下一页" :current="pageNum" @on-change="changePage"/>
+            <Page v-if="total>pageSize" :total="total" :pageSize="pageSize" prev-text="上一页" next-text="下一页" :current="pageNum" @on-change="changePage"/>
 
           </ul>
       </i-col>

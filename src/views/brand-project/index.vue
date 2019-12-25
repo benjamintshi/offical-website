@@ -5,7 +5,7 @@
     <div class="project">
       <Row>
         <i-col span="8" v-for="(item,index) in projectList" :key="index">
-          <div >
+          <div class="a-hover-style">
             <div class="icon">
               <img :src="'static/images/villageStar/icon'+(index+1)+'.png'" alt="">
             </div>
@@ -24,8 +24,18 @@
       </Select>
     </p>
     <div class="local-project">
-      <img src="static/images/villageStar/pic1.jpg" alt="">
-      <router-link to="villageStar"> <img src="static/images/villageStar/pic2.jpg" alt=""></router-link>
+      <router-link to="villageStar">
+        <img src="static/images/common/test1.png" alt="" style="height: 276px;">
+        <div class="word-bg">
+          <p>春晚</p>
+        </div>
+      </router-link>
+      <router-link to="villageStar">
+        <img src="static/images/common/test.png" alt="" style="height: 276px;">
+        <div class="word-bg">
+           <p>村宝</p>
+        </div>
+      </router-link>
     </div>
 
   </div>

@@ -3,10 +3,10 @@
     <div class="login-content">
       <ul class="login-content-info">
         <li class="top">
-          <p v-if="loginByAccount"> 扫码登录
+          <p v-if="loginByAccount"> 密码登录
             <span @click="loginByAccount=false" class="a-hover-style"> <img src="static/images/scanIcon.png" alt=""></span>
           </p>
-          <p v-else> 密码登录
+          <p v-else> 扫码登录
             <span @click="loginByAccount=true" class="a-hover-style">密码登录 </span>
           </p>
         </li>
@@ -21,7 +21,7 @@
         </li>
         <li class="center " v-else>
           <div class="scan-login">
-            <img src="static/images/scan.png" alt="">
+            <img v-bind:src="qr_code_src" alt="">
             <p style="letter-spacing: 1.7px;">使用<span>文化和旅游志愿服</span></p>
             <p  style="letter-spacing:0.2px;"><span>务</span>APP或小程序扫码登录</p>
           </div>
