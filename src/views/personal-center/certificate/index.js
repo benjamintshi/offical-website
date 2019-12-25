@@ -7,7 +7,6 @@ export default {
        projectName:"证书"
     }
   },
-
     mounted(){
       this. getCertificate();
     },

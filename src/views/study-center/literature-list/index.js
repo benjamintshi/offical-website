@@ -1,109 +1,57 @@
+import axios from "axios";
 
 export default {
   data() {
     return {
       filterList:["活动快讯","政策文件","培训快讯"],
       selectedIndex:0,
-      newslist:[
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          id:"1",
-          time:"2019-05-31",
-          office:"文化和旅游部公共服务司"
-        },
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          id:"1",
-          time:"2019-05-31",
-          office:"文化和旅游部公共服务司"
-        },
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          id:"1",
-          time:"2019-05-31",
-          office:"文化和旅游部公共服务司"
-        },
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          id:"1",
-          time:"2019-05-31",
-          office:""
-        },
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          id:"1",
-          time:"2019-05-31",
-          office:""
-        },
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          id:"1",
-          time:"2019-05-31",
-          office:""
-        },
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          id:"1",
-          time:"2019-05-31",
-          office:""
-        },
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          id:"1",
-          time:"2019-05-31",
-          office:""
-        },
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          id:"1",
-          time:"2019-05-31",
-          office:""
-        },
-        {
-          title:"“心旅益行”乡村少年文化体验活动走进联合国教科文组织世",
-          id:"1",
-          time:"2019-05-31",
-          office:""
-        },
-
-
-      ],
+      newslist:[],
       pageNum:1,//当前页码
-      pageSize:6,
-      total:16,// 超过16时显示页码
-      recommend:[
-        {
-          name:"民族舞《春天中国》 培训班培训班培训班培训班",
-          id:"1"
-        },
-        {
-          name:"民族舞《春天中国》 培训班培",
-          id:"2"
-        },
-        {
-          name:"民族舞《春天中国》 培训班培训班培训班培训班",
-          id:"3"
-        },
-        {
-          name:"民族舞《春天中国》 培训班培训班",
-          id:"4"
-        }
-      ],
+      pageSize:1,
+      total:''  ,// 超过16时显示页码
+      recommend:[],
     }
 
   },
   mounted(){
-
+      this.getlist();
   },
   methods:{
-    changePage(){
-
+    getlist: function () {
+      axios.get('http://zyz.liyue.com/socket/api/vLiterature/getPageVLiterature', {
+        params: {
+          pageNum: this.pageNum,
+          pageSize: this.pageSize,
+        }
+      })
+        .then(response => {
+          this.newslist = response.data.data.list;
+          this.total = response.data.data.total;
+          this.getRecomendlist();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     },
-    toRecommend(){
-
+    getRecomendlist: function () {
+      axios.get('http://zyz.liyue.com/socket/api/vLiterature/getPageGoodLiterature', {
+        params: {
+          pageNum: this.pageNum,
+          pageSize: 5,
+        }
+      })
+        .then(response => {
+          this.recommend = response.data.data.list;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    changePage(val){
+      this.pageNum=val;
+      this.getlist();
     },
     toDetail(item){
-
       this.$router.push({
         name:"literatureDetail",
         query:{'itemId':item.id}

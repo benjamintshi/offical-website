@@ -82,7 +82,7 @@ export default {
         url: 'http://zyz.liyue.com/socket/api/vUser/appLogin',
         data: {
           account: this.login.account,
-          passwd: this.login.passwd
+          passwd: md5(this.login.passwd)
         },
         transformRequest: util.data().transformRequest,
         headers: util.data().headers

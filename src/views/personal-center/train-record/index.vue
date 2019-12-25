@@ -17,13 +17,16 @@
           <th>操作</th>
         </tr>
         <tr v-for="(item,index) in list" :key="index">
-          <td>{{item.time}}</td>
-          <td>{{item.project}}</td>
+          <td>{{item.trainingStartDate}}-{{item.trainingEndDate}}</td>
+          <td>{{item.trainingName}}</td>
           <td>{{item.teamName }}</td>
-          <td>{{item.timeRange}}</td>
-          <td>{{item.timeRange}}</td>
-          <td>{{item.timeRange}}</td>
-          <td>{{item.timeRange}}</td>
+          <td v-if="item.joinStatus==0">待审核</td>
+          <td v-if="item.joinStatus==1">审核通过</td>
+          <td v-if="item.joinStatus==2">直接加入</td>
+          <td v-if="item.joinStatus==3">未通过</td>
+          <td v-if="item.joinStatus==4">放弃加入</td>
+          <td>{{item.trainingApplyStartDate}}</td>
+          <td>{{item.trainingStartDate}}</td>
           <td >
             <span class="red" v-if="item.status ==1" @click="quit(item)"> 申请退出</span>
             <span class="yellow" v-else-if="item.status ==2" @click="quit(item)"> 放弃申请</span>

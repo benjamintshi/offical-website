@@ -16,7 +16,7 @@ export default {
   },
   methods:{
     getlist: function () {
-      axios.get('http://127.0.0.1:8080/api/vHonor/getMyVHonor', {
+      axios.get('http://zyz.liyue.com/socket/api/vHonor/getMyVHonor', {
         params: {
           pageNum: 1,
           pageSize: this.pageSize
@@ -33,7 +33,7 @@ export default {
     loadMore: function () {
       this.n=this.n+1;
       var temp=this.n
-      axios.get('http://127.0.0.1:8080/api/vHonor/getMyVHonor', {
+      axios.get('http://zyz.liyue.com/socket/api/vHonor/getMyVHonor', {
         params: {
           pageNum: 1,
           pageSize: this.pageSize*temp

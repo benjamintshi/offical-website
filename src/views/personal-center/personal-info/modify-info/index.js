@@ -11,8 +11,8 @@ export default {
       cardInfo: {},
       pInfo: [],
       cInfo: [],
-      serviceCInfo: [],
       xInfo: [],
+      serviceCInfo: [],
       serviceXInfo: [],
       pCode: 0,
       pName: 0,
@@ -26,33 +26,10 @@ export default {
       serviceCName: 0,
       serviceXCode: 0,
       serviceXName: 0,
-      serviceTime: [],
       modifySuccess: false,
-      formData: {
-        name: "",
-        cardType: "1",
-        cardNum: "",
-        hobby: "sing",
-        volunteerType: "1",
-        project: "1",
-        serviceType: "1",
-        serviceTime: "1",
-        serviceAppointTime: "",//指定的服务时间
-        timeStart: "", //服务时间段开始时间
-        timeEnd: "",//服务时间段结束时间
-        servieRange: {
-          privince: "",
-          city: "",
-          county: ""
-        },
-        addressInfo: {
-          privince: "",
-          city: "",
-          county: "",
-          address: ""
-
-        }
-      },
+      serviceTimeType:'',
+      spevialServiceTime:'',
+      serviceTime:[],
       cardList: [
         {
           name: "身份证",
@@ -62,7 +39,6 @@ export default {
           name: "护照",
           id: 1
         }
-
       ],
 
     }
@@ -95,6 +71,15 @@ export default {
     },
     serviceXCode(val, oldVal) {
       this.saveServiceXInfo();
+    },
+    spevialServiceTime(val, oldVal) {
+      if(val==1){
+        this.userInfo.volunteer.serviceTime='每天'
+      }else if(val==2){
+        this.userInfo.volunteer.serviceTime='周六日'
+      }else{
+        this.userInfo.volunteer.serviceTime=''
+      }
     }
   },
   methods: {
@@ -105,6 +90,14 @@ export default {
           //将服务时间拆分
           this.serviceTime = this.userInfo.volunteer.servicePeriod.split("~");
           this.userInfo.volunteer.platformType = this.userInfo.volunteer.platformType.toString()
+          if(this.userInfo.volunteer.serviceTime=='每天'){
+            this.spevialServiceTime='1'
+          }else if(this.userInfo.volunteer.serviceTime=='周六日'){
+            this.spevialServiceTime="2"
+            alert(this.spevialServiceTime)
+          }else{
+            this.spevialServiceTime='3'
+          }
           this.getpInfo();
           this.getServicePInfo();
         })

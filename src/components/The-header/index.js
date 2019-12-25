@@ -143,9 +143,11 @@ export default {
       axios.get('http://zyz.liyue.com/socket/api/vUser/getSessionUserInfo', {
       })
         .then(response => {
-          this.userInfo = response.data.data;
-          this.isLogin=true,
-          sessionStorage.setItem("userInfo",this.userInfo);
+          if(response.data.code==200){
+            this.userInfo = response.data.data;
+            this.isLogin=true,
+            sessionStorage.setItem("userInfo",this.userInfo);
+          }
         })
         .catch(function (error) {
           console.log(error);
