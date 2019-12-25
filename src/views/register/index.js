@@ -1,6 +1,7 @@
 import BaseInfo from "./input-base-info/index.vue";
 import axios from "axios";
 import util from "../../utils/postRequest";
+import {md5} from "../../utils/common";
 export default {
   components: {
     BaseInfo
@@ -140,7 +141,7 @@ export default {
         data: {
           phoneOrEmail: this.account,
           code: this.code,
-          passWord: this.passwd,
+          passWord: md5(this.passwd),
           userName: this.child.userName,
           identification: this.child.cardNum,
           cardType: this.child.cardType,
