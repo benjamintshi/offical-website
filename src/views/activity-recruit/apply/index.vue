@@ -1,4 +1,4 @@
-<template>
+  <template>
  <div class="apply-content">
    <p class="detail-nav"> <span @click="$router.push('activityRecruit')"> 活动招募</span> >
      <span @click="$router.back(-1)">招募详情</span>  > 加入申请</p>
@@ -87,7 +87,7 @@
         <button class="send" @click="nextStep">下一步</button>
       </section>
       <section v-else-if="show =='second'" class="base-info">
-        <p>姓	   名：孙嘉慧</p>
+        <p>姓	   名：坤坤</p>
         <p>居住区域：北京市  朝阳区</p>
         <p>详细地址：北京市 朝阳区 大屯路xxxx</p>
         <p>特	   长：唱、跳、篮球、rap</p>

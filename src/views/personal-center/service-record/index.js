@@ -9,29 +9,7 @@ export default {
       totalNum: '',
       n: 1,
       isMost: false,
-      /* list:[
-         {
-           time:"2019-09-01 10：10",
-           timeRange:20,
-           project:"xxx志愿服务项目",
-           teamName:"xxx志愿服务总队",
 
-         },
-         {
-           time:"2019-09-01 10：10",
-           timeRange:20,
-           project:"xxx志愿服务项目",
-           teamName:"xxx志愿服务总队",
-
-         },
-         {
-           time:"2019-09-01 10：10",
-           timeRange:20,
-           project:"xxx志愿服务项目",
-           teamName:"xxx志愿服务总队",
-
-         }
-       ]*/
     }
 
   },
@@ -51,11 +29,10 @@ export default {
         });
     },
     getlist: function () {
-      axios.get('http://zyz.liyue.com/socket/api/vActivityMember/getPageMyActivityList', {
+      axios.get('http://zyz.liyue.com/socket/api/vActivity/getMyJoinActivities', {
         params: {
           pageNum: 1,
           pageSize: this.pageSize,
-          userId:this.userInfo.userId
         }
       })
         .then(response => {
@@ -69,7 +46,7 @@ export default {
     loadMore: function () {
       this.n = this.n + 1;
       var temp = this.n
-      axios.get('http://127.0.0.1:8080/api//vCoinLog/getMyVCoinLogs', {
+      axios.get('http://zyz.liyue.com/socket/api/vActivity/getMyJoinActivities', {
         params: {
           pageNum: 1,
           pageSize: this.pageSize * temp
@@ -95,7 +72,7 @@ export default {
     }
 
   },
-  filters: {
+  /*filters: {
     exchangeStatus(item) {
       debugger
       switch (item) {
@@ -132,5 +109,5 @@ export default {
           break;
       }
     }
-  }
+  }*/
 }

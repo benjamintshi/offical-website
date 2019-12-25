@@ -8,7 +8,7 @@
           <p style="line-height: 40px;">账号类型：</p>
         </i-col>
         <i-col span="19">
-          <Select v-model=" selectType " style="width:100%;" @on-change="changeType">
+          <Select v-model=" selectType " style="width:100%;">
             <Option v-for="item in accountType" :value="item.id" :key="item.value">{{ item.name }}</Option>
           </Select>
         </i-col>
@@ -66,7 +66,7 @@
           <p>重置密码：</p>
         </i-col>
         <i-col span="19">
-          <input type="text" v-model="accountInfo.account">
+          <input type="text" v-model="accountInfo.passwd">
 
         </i-col>
       </Row>
@@ -75,7 +75,7 @@
           <p>确认密码：</p>
         </i-col>
         <i-col span="19">
-          <input type="text" v-model="accountInfo.account">
+          <input type="text" v-model="accountInfo.passwd2">
 
         </i-col>
       </Row>

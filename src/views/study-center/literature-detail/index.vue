@@ -17,7 +17,7 @@
       <p>精选推荐</p>
       <li v-for="(item,index) in recommend" :key="index" @click="toRecommend(item)">
         <span></span>
-        {{item.name}}
+        {{item.title}}
       </li>
     </ul>
   </div>

@@ -1,50 +1,60 @@
+import axios from "axios";
+
 export default {
   data() {
     return {
-        list:[
-          {
-            time:"2019-09-01 10：10",
-            timeRange:20,
-            project:"xxx志愿服务项目",
-            teamName:"xxx志愿服务总队",
-            status:1,
-            id:1
-
-          },
-          {
-            time:"2019-09-01 10：10",
-            timeRange:20,
-            project:"xxx志愿服务项目",
-            teamName:"xxx志愿服务总队",
-            status:2,
-            id:1
-
-          },
-          {
-            time:"2019-09-01 10：10",
-            timeRange:20,
-            project:"xxx志愿服务项目",
-            teamName:"xxx志愿服务总队",
-            status:3,
-            id:1
-
-          }
-        ]
+        list:[],
+      pageNum:1,
+      pageSize:1,
+      totalNum: '',
+      n:1,
+      newslist:[],
+      isMost: false,
     }
 
   },
   mounted(){
-
+      this.getlist();
   },
   methods:{
+    getlist: function () {
+      axios.get('http://zyz.liyue.com/socket/api/vTraining/getMyJoinTrainingList', {
+        params: {
+          pageNum: this.pageNum,
+          pageSize: this.pageSize,
+        }
+      })
+        .then(response => {
+          this.list = response.data.data.list;
+          this.pageSize = response.data.data.pageSize;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    loadMore: function () {
+      this.n = this.n + 1;
+      var temp = this.n
+      axios.get('http://zyz.liyue.com/socket/api/vTraining/getMyJoinTrainingList', {
+        params: {
+          pageNum: 1,
+          pageSize: this.pageSize * temp
+        }
+      })
+        .then(response => {
+          this.list = response.data.data.list;
+          this.totalNum = response.data.data.size;
+          if (this.totalNum == response.data.data.total) {
+            this.isMost = true
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
     quit(item){
-
     },
     toDetail(item){
-      // this.$router.push({
-      //   name:"activityDetail",
-      //   query:{'itemId':item.id}
-      // })
       this.$router.push({
         name:"cultivateDetail",
         query:{'itemId':item.id}
