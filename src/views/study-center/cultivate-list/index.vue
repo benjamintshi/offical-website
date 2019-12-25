@@ -43,7 +43,8 @@
             <div @click="toDetail(item)" class="a-hover-style">
               <img :src="item.img" alt="">
               <p class="title">{{item.title}}</p>
-              <p class="address">{{item.address}}
+              <p class="address">
+                <span class="text-ellipsis">{{item.address}}</span>
                 <span class="wait" v-if="item.status == '1'">待开始</span>
                 <span class="prograss" v-else-if="item.status =='2'">进行中</span>
                 <span class="apply" v-else-if="item.status =='3'">可报名</span>

@@ -43,9 +43,9 @@
             <div class="a-hover-style" @click="toDetail(item)">
               <img :src="item.img" alt="">
               <p class="title">{{item.title}}</p>
-              <p :class=" item.address ? 'address':'hidden-content'" >{{item.address}}
+              <p :class=" item.address ? 'address':'hidden-content'" >
+                <span class="text-ellipsis">{{item.address}}</span>
                 <span class="prograss" v-if="item.status =='2'">招募中</span>
-
               </p>
             </div>
 

@@ -14,7 +14,8 @@
                 <p class="title">
                   {{item.title}}
                 </p>
-                <p class="address">{{item.address}}
+                <p class="address">
+                  <span class="text-ellipsis">{{item.address}}</span>
                   <span :class="item.status ==1?'wait' :'prograss'">{{item.status==1?'待开始':'进行中'}}</span>
                 </p>
                 <p class="time">招募时间：{{item.time}}  </p>
