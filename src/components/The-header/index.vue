@@ -4,7 +4,7 @@
         <div class="top-link">
 
           <ul class="top-link-nav">
-            <li @click="showArea=true;" :class="showArea?'swtich-area-btn':''">
+            <li @click="showArea=true" :class="showArea?'swtich-area-btn':''">
               {{activeAreaName}}
 
               <Icon type="ios-arrow-up" v-if="showArea"/>
