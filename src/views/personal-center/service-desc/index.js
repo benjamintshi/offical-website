@@ -26,6 +26,10 @@ export default {
     },
     getUserInfo() {
       ajax_get(constant.api_base_url + '/vUser/getSessionUserInfo', null, data => {
+        if (data.code === '2') {
+          window.location.href = './';
+          return;
+        }
         if (data.code !== '200') {
           alert(data.message);
           return;
