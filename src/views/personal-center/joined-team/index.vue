@@ -14,7 +14,9 @@
           <td v-else-if="item.volunteerAuditStatus ==1"  > 已加入  </td>
           <td v-else-if="item.volunteerAuditStatus ==2"  > 已驳回  </td>
           <td v-if="item.volunteerAuditStatus ==0" > <a class="yellow">放弃申请</a>  </td>
-          <td v-if="item.volunteerAuditStatus ==1" > <a class="red">退出申请 </a> </td>
+          <td v-if="item.volunteerAuditStatus ==1" @click="leaveTeam(item)">
+            <a class="red"  >退出申请 </a>
+          </td>
           <td v-if="item.volunteerAuditStatus ==2" > <a class="blue">- </a> </td>
         </tr>
       </table>

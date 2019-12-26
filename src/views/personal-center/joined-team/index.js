@@ -51,6 +51,21 @@ export default {
           console.log(error);
         });
     },
+    leaveTeam: function (item) {
+      var msg="确定要退出该团队吗？";
+      if (confirm(msg)==true){
+        axios.post('http://zyz.liyue.com/socket/api/vTeam/applyQuitTeam/'+item.teamId, {
+          params: {
+          }
+        })
+          .then(response => {
+            this.getlist();
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
 
+    },
   }
 }
