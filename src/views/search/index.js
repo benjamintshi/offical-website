@@ -1,107 +1,155 @@
-export default{
-  data(){
-    return{
-      adviceList:["学雷锋活动","河南省","基层活动","阳光工程"],
-      menu:[
-          {
-            name:"资讯",
-            id:"a"
-          },
-          {
-            name:"项目",
-            id:"b"
-          },
-          {
-            name:"团队",
-            id:"c"
-          },
-        ],
-      activeMenu:"a",
-      resultList:[
-        {
-          title:"河南省文化和旅游志愿者走进新疆",
-          status:"3",
-          to:"/",
-          address:"安徽省黄山市歙县文化馆",
-          endTime:10,
-          realNum:100,
-          timeStart:"2019.08.01",
-          timeEnd:"2019.09.01",
-          img:"static/images/villageStar/zhiyuan.jpg",
-        },
-        {
-          title:"河南省文化和旅游志愿者走进新疆",
-          status:"1",
-          to:"/",
-          address:"安徽省黄山市歙县文化馆",
-          endTime:10,
-          realNum:100,
+import constant from "../../utils/constant";
+import {ajax_post, ajax_get} from "../../utils/axios.util";
 
-          timeStart:"2019.08.01",
-          timeEnd:"2019.09.01",
-          img:"static/images/villageStar/zhiyuan.jpg",
+export default {
+  data() {
+    return {
+      adviceList: [],
+      menu: [
+        {
+          name: "资讯",
+          id: "a"
         },
         {
-          title:"河南省文化和旅游志愿者走进新疆",
-          status:"2",
-          to:"/",
-          address:"安徽省黄山市歙县文化馆",
-          timeStart:"2019.08.01",
-          timeEnd:"2019.09.01",
-          img:"static/images/villageStar/zhiyuan.jpg",
-          endTime:10,
-          realNum:100,
+          name: "项目",
+          id: "b"
         },
         {
-          title:"河南省文化和旅游志愿者走进新疆",
-          status:"3",
-          to:"/",
-          address:"安徽省黄山市歙县文化馆",
-          endTime:10,
-          realNum:100,
-          timeStart:"2019.08.01",
-          timeEnd:"2019.09.01",
-          img:"static/images/villageStar/zhiyuan.jpg",
+          name: "团队",
+          id: "c"
         },
+      ],
+      activeMenu: "a",
+      resultList: [],
+      newsList: [
         {
-          title:"河南省文化和旅游志愿者走进新疆",
-          status:"1",
-          to:"/",
-          address:"安徽省黄山市歙县文化馆",
-          endTime:10,
-          realNum:100,
-          timeStart:"2019.08.01",
-          timeEnd:"2019.09.01",
-          img:"static/images/villageStar/zhiyuan.jpg",
-        },
-        {
-          title:"河南省文化和旅游志愿者走进新疆",
-          status:"4",
-          to:"/",
-          address:"安徽省黄山市歙县文化馆",
-          timeStart:"2019.08.01",
-          timeEnd:"2019.09.01",
-          img:"static/images/villageStar/zhiyuan.jpg",
-          endTime:10,
-          realNum:100,
+          newsCover: '',
+          newsTitle: ''
         }
       ],
-      inputValue:"河南",
-      seachValue:"河南",
-      pageNum:1,//当前页码
-      pageSize:20,
-      total:20,
+      activityList: [
+        {
+        activityCover: '',
+        activityName: ''
+        }
+      ],
+      teamList: [
+        {
+          teamId: 0,
+          teamLogo: '',
+          teamName: ''
+        }
+      ],
+      inputValue: '',
+      searchValue: '',
+      pageNum: 1,//当前页码
+      pageSize: 12,
+      total: 12,
     }
   },
-  methods:{
-    search(){
-      this.seachValue = this.inputValue;
+  mounted() {
+    this.getAdviceList();
+  },
+  methods: {
+    searchByHotWord(word) {
+      this.pageNum = 1;
+      this.inputValue = word;
+      this.search();
     },
-    changePage(){
-
+    search() {
+      this.searchValue = this.inputValue;
+      if (this.activeMenu === "a") {
+        this.getNewsList();
+      }
+      if (this.activeMenu === "b") {
+        this.getActivityList();
+      }
+      if (this.activeMenu === "c") {
+        this.getTeamList();
+      }
     },
-    swtichMenu(item){
+    changePage(page) {
+      this.pageNum = page;
+      this.search();
+    },
+    switchMenu(item) {
       this.activeMenu = item.id;
+      this.pageNum = 1;
+      this.search();
+    },
+    getAdviceList() {
+      ajax_post(constant.api_base_url + '/vSearchWord/queryVSearchWordList', {
+        "enableStatus": 1
+      }, data => {
+        if (data.code !== '200') {
+          alert(data.message);
+          return;
+        }
+        this.adviceList = data.data;
+      });
+    },
+    getNewsList() {
+      ajax_get(constant.api_base_url + '/news/getPageNewsByKey', {
+        "pageNum": this.pageNum,
+        "pageSize": 12,
+        "key": this.inputValue
+      }, data => {
+        if (data.code !== '200') {
+          alert(data.message);
+          return;
+        }
+        this.total = data.data.total;
+        this.newsList = data.data.list;
+      });
+    },
+    getActivityList() {
+      ajax_get(constant.api_base_url + '/vActivity/getPageVActivityByKey', {
+        "pageNum": this.pageNum,
+        "pageSize": 12,
+        "key": this.inputValue
+      }, data => {
+        if (data.code !== '200') {
+          alert(data.message);
+          return;
+        }
+        this.total = data.data.total;
+        this.activityList = data.data.list;
+      });
+    },
+    getTeamList() {
+      ajax_get(constant.api_base_url + '/vTeam/getTeamList', {
+        "pageNum": this.pageNum,
+        "pageSize": 12,
+        "teamName": this.inputValue
+      }, data => {
+        if (data.code !== '200') {
+          alert(data.message);
+          return;
+        }
+        this.total = data.data.total;
+        this.teamList = data.data.list;
+      });
+    },
+    toNewsDetail(item){
+      this.$router.push({
+        name:"trainDetail",
+        query: {
+          'newsId':item.newsId,
+          'newsType':item.newsType
+        }
+      });
+    },
+    toActivityDetail(item){
+      this.$router.push({
+        name:"activityDetail",
+        query:{'id':item.id}
+      });
+    },
+    toTeamDetail(item){
+         this.$router.push({
+         name:"volunteerTeamDetail",
+         query:{'teamId':item.teamId}
+       });
     }
   }
 }
