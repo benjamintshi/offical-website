@@ -1,46 +1,27 @@
+import constant from "../../utils/constant";
+import {ajax_post} from "../../utils/axios.util";
 
 export default {
   data (){
     return{
-
-      areaList:[
-        {
-          name:"北京",
-          value:"1"
-        },
-        {
-          name:"天津",
-          value:"2"
-        },{
-          name:"河北",
-          value:"3"
-        },
-        {
-          name:"山西",
-          value:"4"
-        },
-        {
-          name:"全部",
-          value:"5"
-        },
-        {
-          name:"北京",
-          value:"6"
-        },
-        {
-          name:"天津",
-          value:"7"
-        },{
-          name:"河北",
-          value:"8"
-        },
-        {
-          name:"山西",
-          value:"9"
-        }
-      ]
-
+      linkList:[]
     }
+  },
+  mounted(){
+    this.getLinklist();
+  },
+  methods:{
+    getLinklist(){
+      console.log("页面开始检索。。。");
+      ajax_post(constant.api_base_url + '/vLink/queryVLinkList', {
+        "enableStatus":1
+      }, data => {
+        if (data.code !== '200') {
+          alert(data.message);
+          return;
+        }
+        this.linkList = data.data;
+      });
+    },
   }
-
 }
