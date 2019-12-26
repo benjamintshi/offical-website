@@ -3,7 +3,7 @@
     <ul class="The-footer-link">
        <li class="area">
          <p>友情链接</p>
-         <router-link to="/" v-for="(item,index) in areaList" :key="index"> {{item.name}}</router-link>
+         <a v-bind:href="item.url" v-for="(item,index) in linkList" :key="index" target="_blank"> {{item.name}}</a>
        </li>
         <li class="area-line"></li>
         <li class = "about">
