@@ -6,7 +6,7 @@
                   v-for="(item,index) in menuList" :key="index" @click="selected =item.value ">
               {{item.name}}
             </span>
-      <span class="a-hover-style active-link" @click="$router.push('volunteerApply')">立即加入</span>
+      <span class="a-hover-style active-link" @click="$router.push({name:'volunteerApply',query:{'itemId':teamId,type:2}})">立即加入</span>
     </p>
     <img style="height: 6px;width: 100%;" src="static/images/villageStar/line.png" alt="">
     <section v-if=" selected == 'a'">

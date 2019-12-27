@@ -1,11 +1,11 @@
 export default {
-
   data() {
     return {//详情介绍
-      baseInfo:{
-        trainInfo:"<p>" +
-        "1. 主要负责管理图书馆秩序、规则；<br/>" +
-        "2. 帮助参与活动的亲子完成诵读活动 </p>",
+      activityId: '',
+      baseInfo: {
+        trainInfo: "<p>" +
+          "1. 主要负责管理图书馆秩序、规则；<br/>" +
+          "2. 帮助参与活动的亲子完成诵读活动 </p>",
       },
       columns1: [
         {
@@ -44,13 +44,26 @@ export default {
           date: '2016-10-04'
         }
       ],
-      agreement:{
-        content:"用户须知用户须知用户须知",
-        show:false
+      agreement: {
+        content: "用户须知用户须知用户须知",
+        show: false
       }
     }
   },
-  methods:{
+  mounted() {
+    let id = this.$route.query.itemId
+    this.activityId = id
+  },
+  methods: {
+    joinAtonce() {
+      this.$router.push({
+        name: 'volunteerApply',
+        query: {
+          'itemId': this.activityId,
+          'type': 1
+        }
+      })
+    }
 
   }
 }
