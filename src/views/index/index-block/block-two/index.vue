@@ -28,16 +28,28 @@
               <span class="more a-hover-style" @click="toMore"> 更多</span>
             </Menu>
               <p class="sub-menu a-hover-style" v-show="selected =='1'">
-                <span :class="selected==item.id ? 'active':''" v-for="(item,index) in subMenu" :key="index">{{item.name}}</span>
+                <span :class="selected2==item.id ? 'active':''" v-for="(item,index) in subMenu" :key="index" @click="toSelect(item.id)">{{item.name}}</span>
               </p>
-
-                <p  class="news-list a-hover-style" v-for="(item,index) in newsList1" :key="index">
-                  <span class="circle-dot"> </span>
-                  <span class="title text-ellipsis">{{item.title}} </span>
-                  <span class="time"> {{item.time}}</span>
-                </p>
-
-
+              <p  v-show="selected2 == 1  && selected == 1" class="news-list a-hover-style" v-for="(item,index) in newsList1" :key="'inof1'+ index">
+                <span class="circle-dot"> </span>
+                <span class="title text-ellipsis">{{item.title}} </span>
+                <span class="time"> {{item.time}}</span>
+              </p>
+              <p  v-show="selected2 == 2  && selected == 1" class="news-list a-hover-style" v-for="(item,index) in newsList12" :key="'inof2'+ index">
+                <span class="circle-dot"> </span>
+                <span class="title text-ellipsis">{{item.title}} </span>
+                <span class="time"> {{item.time}}</span>
+              </p>
+              <p  v-show="selected2 == 3 && selected == 1" class="news-list a-hover-style" v-for="(item,index) in newsList13" :key="'inof3'+ index">
+                <span class="circle-dot"> </span>
+                <span class="title text-ellipsis">{{item.title}} </span>
+                <span class="time"> {{item.time}}</span>
+              </p>
+              <p  v-show="selected == 2" class="news-list a-hover-style" v-for="(item,index) in newsList14" :key="'inof4'+ index">
+                <span class="circle-dot"> </span>
+                <span class="title text-ellipsis">{{item.title}} </span>
+                <span class="time"> {{item.time}}</span>
+              </p>
           </i-col>
             <i-col span="9" style="padding-left:20px;">
               <Menu mode="horizontal" theme="light"  >

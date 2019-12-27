@@ -98,7 +98,7 @@ export default {
           news.time = format(item.policyDate,'YYYY.MM.DD');;
           this.right.newsList2.push(news);
         })
-        console.log(this.right.newsList2)
+        // console.log(this.right.newsList2)
       })
     }
   }
