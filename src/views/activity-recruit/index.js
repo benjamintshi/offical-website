@@ -269,7 +269,6 @@ export default {
             train.endTime = Math.floor(date3/(24*3600*1000))
           }else{
             train.endTime = 0;
-
           }
           train.status = '3';
           if(train.endTime > 0){

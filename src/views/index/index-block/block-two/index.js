@@ -115,6 +115,7 @@ export default {
     }
     this.getIndexStatistics();
     this.getChunYuProjects();
+    this.getPageVActivity();
   },
   methods:{
     // 首页切换志愿快讯和政策文件，name为菜单名字
@@ -224,6 +225,46 @@ export default {
           this.newsList14.push(news);
         })
       })
-    }
+    },
+    getPageVActivity(){
+      var params = {
+        pageNum:'1',
+        recruitType:'1',
+        pageSize:7
+      }
+      var nowDate = new Date();    //结束时间
+      this.http.get('/vActivity/getPageVActivity',params).then(res=>{
+        this.total = res.data.data.total;
+        this.newsList2 = [];
+        console.log(res.data.data)
+        res.data.data.list.forEach(item => {
+          var news ={};
+          news.id = item.id;
+          news.title = item.activityName;
+          news.time = format(item.createDatetime,'YYYY.MM.DD');
+          if(item.activityEndDate){
+            var date3 =  new Date(item.activityEndDate).getTime() - nowDate;   //时间差的毫秒数
+            news.endTime = Math.floor(date3/(24*3600*1000))
+          }else{
+            news.endTime = 0;
+          }
+          news.status = '3'; // 已结束
+          if(news.endTime > 0){
+            // 标记：
+            if(item.recruitType == '0' || nowDate.getTime() > new Date(item.recruitEndDate).getTime()){
+              news.status = '';  // 招募标识不表示，的前提
+            }else if(item.recruitType == '1'){ // 待招募标识
+              if(nowDate.getTime() < new Date(item.recruitStartDate).getTime()){ // 招募中
+                news.status = '1';
+              }else if(nowDate.getTime()  <= new Date(item.recruitEndDate).getTime()){
+                news.status = '2';
+              }
+            }
+          }
+          this.newsList2.push(news);
+        })
+      })
+  },
+
   }
 }
