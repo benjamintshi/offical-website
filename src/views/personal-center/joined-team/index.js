@@ -1,4 +1,5 @@
-import axios from "axios";
+import {ajax_get, ajax_post} from '../../../utils/axios.util';
+import constant from '../../../utils/constant'
 
 export default {
   data() {
@@ -16,56 +17,53 @@ export default {
   },
   methods:{
     getlist: function () {
-      axios.get('http://zyz.liyue.com/socket/api/vTeam/getMyTeams', {
-        params: {
-
+      ajax_get(constant.api_base_url + '/vTeam/getMyTeams',
+        {
           pageNum: 1,
           pageSize: this.pageSize
+        }, data => {
+          if (data.code === "200") {
+            this.list = data.data.list;
+            this.pageSize = data.data.pageSize;
+          }else {
+            alert(data.message)
+          }
         }
-      })
-        .then(response => {
-          this.list = response.data.data.list;
-          this.pageSize = response.data.data.pageSize;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      )
     },
     loadMore: function () {
       this.n=this.n+1;
-      var temp=this.n
-      axios.get('http://zyz.liyue.com/socket/api/vTeam/getMyTeams', {
-        params: {
+      let temp=this.n;
+      ajax_get(constant.api_base_url + '/vTeam/getMyTeams',
+        {
           pageNum: 1,
-          pageSize: this.pageSize*temp
-        }
-      })
-        .then(response => {
-          this.list = response.data.data.list;
-          this.totalNum = response.data.data.size;
-          if(this.totalNum==response.data.data.total){
-            this.isMost=true
+          pageSize: this.pageSize * temp
+        }, data => {
+          if (data.code === "200") {
+            this.list = data.data.list;
+            this.totalNum = data.data.size;
+            if(this.totalNum===data.data.total){
+              this.isMost=true
+            }
+          }else {
+            alert(data.message)
           }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        }
+      )
     },
     leaveTeam: function (item) {
-      var msg="确定要退出该团队吗？";
-      if (confirm(msg)==true){
-        axios.post('http://zyz.liyue.com/socket/api/vTeam/applyQuitTeam/'+item.teamId, {
-          params: {
+      let msg="确定要退出该团队吗？";
+      if (confirm(msg)===true){
+        ajax_get(constant.api_base_url + '/vTeam/applyQuitTeam'+item.teamId,
+          null, data => {
+            if (data.code === "200") {
+              this.getlist();
+            }else {
+              alert(data.message)
+            }
           }
-        })
-          .then(response => {
-            this.getlist();
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        )
       }
-
     },
   }
 }

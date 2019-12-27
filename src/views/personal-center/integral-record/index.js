@@ -1,4 +1,5 @@
-import axios from 'axios'
+import {ajax_get, ajax_post} from '../../../utils/axios.util';
+import constant from '../../../utils/constant'
 export default {
   data() {
     return {
@@ -16,39 +17,39 @@ export default {
   },
   methods:{
     getlist: function () {
-      axios.get('http://zyz.liyue.com/socket/api/vCoinLog/getMyVCoinLogs', {
-        params: {
+      ajax_get(constant.api_base_url + '/vCoinLog/getMyVCoinLogs',
+        {
           pageNum: 1,
           pageSize: this.pageSize
+        }, data => {
+          if (data.code === "200") {
+            this.list = data.data.list;
+            this.pageSize = data.data.pageSize;
+          }else {
+            alert(data.message)
+          }
         }
-      })
-        .then(response => {
-          this.list = response.data.data.list;
-          this.pageSize = response.data.data.pageSize;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      )
     },
     loadMore: function () {
       this.n=this.n+1;
-      var temp=this.n
-      axios.get('http://zyz.liyue.com/socket/api/vCoinLog/getMyVCoinLogs', {
-        params: {
+      let temp = this.n;
+      ajax_get(constant.api_base_url + '/vCoinLog/getMyVCoinLogs',
+        {
           pageNum: 1,
           pageSize: this.pageSize*temp
-        }
-      })
-        .then(response => {
-          this.list = response.data.data.list;
-          this.totalNum = response.data.data.size;
-          if(this.totalNum==response.data.data.total){
-            this.isMost=true
+        }, data => {
+          if (data.code === "200") {
+            this.list = data.data.list;
+            this.totalNum = data.data.size;
+            if(this.totalNum===data.data.total){
+              this.isMost=true
+            }
+          }else {
+            alert(data.message)
           }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        }
+      )
     }
   }
 }

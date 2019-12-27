@@ -1,4 +1,5 @@
-import axios from "axios";
+import {ajax_get, ajax_post} from '../../../utils/axios.util';
+import constant from '../../../utils/constant'
 
 export default {
   data() {
@@ -12,17 +13,17 @@ export default {
     },
   methods:{
     getCertificate: function () {
-      axios.get('http://zyz.liyue.com/socket/api/vUser/myVolunteerCertificate', {
-        params: {
+      ajax_get(constant.api_base_url + '/vUser/myVolunteerCertificate',
+        null, data => {
+          if (data.code === "200") {
+            this.list= data.data;
+            this.pageSize = data.data.pageSize;
+          }else {
+            alert(data.message)
+          }
         }
-      })
-        .then(response => {
-          this.list= response.data.data;
-          this.pageSize = response.data.data.pageSize;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      )
+
     },
     downloadCodeImg() {
         const image = new Image();

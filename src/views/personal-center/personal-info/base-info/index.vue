@@ -5,10 +5,7 @@
         <li v-if="isVolunteer">
           <p class="base-info">
             <span class="title font26">{{userInfo.userName}}</span>
-            <span class="tag" v-if="userInfo.volunteer.platformType==0">文化志愿者</span>
-            <span class="tag" v-if="userInfo.volunteer.platformType==1">阳光工程</span>
-            <span class="tag" v-if="userInfo.volunteer.platformType==2">圆梦工程</span>
-            <span class="tag" v-if="userInfo.volunteer.platformType==3">旅游志愿者</span>
+            <span class="tag">{{userInfo.volunteer.platformType|volunteerTypeName}}</span>
             <span class="modify right" @click="modifyInfo ">修改</span>
            <span class="integral">{{userInfo.volunteer.coin}}积分</span>
           </p>

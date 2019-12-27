@@ -20,13 +20,10 @@
           <td>{{item.trainingStartDate}}-{{item.trainingEndDate}}</td>
           <td>{{item.trainingName}}</td>
           <td>{{item.teamName }}</td>
-          <td v-if="item.joinStatus==0">待审核</td>
-          <td v-if="item.joinStatus==1">审核通过</td>
-          <td v-if="item.joinStatus==2">直接加入</td>
-          <td v-if="item.joinStatus==3">未通过</td>
-          <td v-if="item.joinStatus==4">放弃加入</td>
+          <td>{{item.joinStatus|exchangeStatus}}</td>
           <td>{{item.trainingApplyStartDate}}</td>
           <td>{{item.trainingStartDate}}</td>
+          <td>{{item.trainingSumHour}}</td>
           <td >
             <span class="red" v-if="item.status ==1" @click="quit(item)"> 申请退出</span>
             <span class="yellow" v-else-if="item.status ==2" @click="quit(item)"> 放弃申请</span>
