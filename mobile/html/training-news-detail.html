@@ -1,0 +1,54 @@
+<!--资讯详情-->
+<html>
+<header>
+    <meta charset="utf-8" >
+    <meta http-equiv="content-type" content="text/html" >
+    <meta   HTTP-EQUIV="Pragma"   CONTENT="no-cache">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="app-mobile-web-app-capable"  content="yes" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <script src="../js/index.aio.js"></script>
+    <script src="../js/rem.js"></script>
+    <!-- 项目依次引入 STR -->
+    <script src="https://cdn.bootcss.com/axios/0.19.0/axios.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/axios.util.js"></script>
+    <script src="../custom-js/constant.js"></script>
+    <script src="../custom-js/common.local.js"></script>
+    <!-- 项目依次引入 END -->
+</header>
+<body>
+<div id="content">
+
+</div>
+<script type="text/html" id="template">
+    <ul class="detail-content white-bg">
+        <li >
+            <p class="detail-title"><%=obj.title%></p>
+            <div class="detail-time">发布日期:<%=date_format(obj.createDatetime)%></div>
+        </li>
+
+        <li class="desc detail-block" >
+            <%:=obj.content%>
+        </li>
+    </ul>
+</script>
+</body>
+
+<script>
+    function render_page(data) {
+        template.registerFunction('date_format', date_format);// 通过方法注册提高运算速度
+        let template1 = document.getElementById('template').innerHTML;
+        document.getElementById('content').innerHTML = template(template1, {obj: data});
+    }
+
+    ajax_get(api_base_url + '/vTrainingNews/getVTrainingNewsById/' + url_variable('id'), null, function (data) {
+        if (data.code !== '200') {
+            alert(data.message);
+            return;
+        }
+        render_page(data.data);
+    });
+</script>
+</html>
