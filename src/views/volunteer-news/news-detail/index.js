@@ -39,7 +39,7 @@ export default {
         this.newsInfo.title = res.data.data.projectName;
         this.content = res.data.data.projectInfo;
         this.newsInfo.time = format(res.data.data.createDate,'YYYY/MM/DD HH:mm');
-        console.log(this.newsInfo);
+        // console.log(this.newsInfo);
         this.getGoodVolunteerShows();
       })
     },

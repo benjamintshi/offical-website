@@ -6,18 +6,18 @@
       </p>
       <Row>
         <i-col span="12" class="block1">
-          <img src="static/images/villageStar/zhiyuan.jpg" alt="">
+          <img :src="detail.activityCover" alt="">
         </i-col>
         <i-col span="12" class="block2">
-          <div class="title">【123231】韩城市司马迁图书馆举办亲子诵读经典活动</div>
-          <p>服务主题：学雷锋活动</p>
-          <p>项目时间：2019.03.01 - 2019.06.01</p>
-          <p>服务时间：9:00 - 12:00    15:00 - 17:00</p>
-          <p>培训对象：亲子</p>
-          <p>服务方式：线下</p>
-          <p>服务区域：陕西省 韩城市</p>
-          <p>服务详细地点：韩城市太史大街文化馆</p>
-          <p>计划服务人次：10万人次
+          <div class="title">{{detail.activityName}}</div>
+          <p>服务主题：{{detail.theme}}</p>
+          <p>项目时间：{{detail.activityStartDate}} - {{detail.activityEndDate}}</p>
+          <p>服务时间：{{detail.activityTimeBucket}}</p>
+          <p>培训对象：{{detail.trainingCrowd}}</p>
+          <p>服务方式：{{detail.activityModeName}}</p>
+          <p>服务区域：{{detail.activityProvinceName}} {{detail.activityCityName}}</p>
+          <p>服务详细地点：{{detail.activityAddr}}</p>
+          <p>计划服务人次：{{detail.activityPlanNum}}
             <span class="active-link a-hover-style" style="float: right" @click="agreement.show = true;">志愿服务须知</span>
           </p>
         </i-col>
@@ -32,30 +32,30 @@
           <img style="height: 6px;width: 100%;" src="static/images/villageStar/line.png" alt="">
           <div class="content">
             <div class="title">招聘岗位</div>
-            <p>志愿者</p>
+            <p>{{detail.recruitJob}}</p>
           </div>
           <div class="content">
             <div class="title">招聘日期</div>
-            <p class="time">2019.03.01 - 2019.06.01</p>
+            <p class="time">{{detail.recruitStartDate}} - {{detail.recruitEndDate}}</p>
           </div>
           <div class="content">
             <div class="title">岗位描述</div>
-            <div v-html="baseInfo.trainInfo"></div>
+            <div v-html="detail.recruitJobDes"></div>
           </div>
           <div class="content">
             <div class="title">志愿保障</div>
-            <p>专项培训     其他</p>
+            <p>{{detail.recruitSecurity}}</p>
           </div>
           <div class="content">
             <div class="title">岗位要求</div>
-            <div v-html="baseInfo.trainInfo"></div>
+            <div v-html="detail.recruitJobRequire"></div>
           </div>
         </i-col>
         <i-col span="12" class="block4">
           <p class="block-title" >最新报名
-            <span >报备：20人</span>
-            <span class="right30">计划招募：100人</span>
-            <span class="right30">已报名：  100人</span>
+            <span >报备：{{detail.readyNum}}人</span>
+            <span class="right30">计划招募：{{detail.recruitPlanNum}}人</span>
+            <span class="right30">已报名： {{detail.applyNum}}人</span>
 
           </p>
           <img style="height: 6px;width: 100%;" src="static/images/villageStar/line.png" alt="">
@@ -69,13 +69,13 @@
               <img style="height: 6px;width: 100%;" src="static/images/villageStar/line.png" alt="">
             </li>
             <li class="content">
-              <p class="title">中国旅游志愿者大连中山支队</p>
-              <p>地址：辽宁省大连市中山区一德街83号</p>
+              <p class="title">{{detail.teamName}}</p>
+              <p>地址：{{detail.teamAddr}}</p>
             </li>
             <li class="content">
-              <p class="title">栾胜刚</p>
-              <p>手机：13940938832</p>
-              <p> 邮箱：luanshenggang@126.com</p>
+              <p class="title">{{detail.activityContactName}}</p>
+              <p>手机：{{detail.activityContactPhone}}</p>
+              <p> 邮箱：{{detail.activityContactEmail}}</p>
             </li>
           </ul>
 
