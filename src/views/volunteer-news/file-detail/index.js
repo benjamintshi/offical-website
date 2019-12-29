@@ -56,9 +56,14 @@ export default {
         // this.newsInfo.title = res.data.data.projectName;
         // this.content = res.data.data.projectInfo;
         // this.newsInfo.time = format(res.data.data.createDate,'YYYY/MM/DD HH:mm');
+        // console.log(res.data.data);
+        this.newsInfo = res.data.data;
         this.newsInfo.title = res.data.data.policyName;
         this.newsInfo.time = format(res.data.data.creatDate,'YYYY/MM/DD HH:mm');
-        this.content = res.data.data.policyContent;
+        this.newsInfo.policyDate = format(res.data.data.policyDate,'YYYY年MM月DD日');
+        if(!this.newsInfo.policyNo){
+          this.newsInfo.policyNo = '无'
+        }
         this.appendix = []
         var fileTmp = {}
         if(res.data.data.uploadPath){

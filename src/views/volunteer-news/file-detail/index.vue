@@ -18,7 +18,7 @@
                   索 引 号：
                 </i-col>
                 <i-col span="16">
-                  000014348/2019-00083
+                  {{newsInfo.indexNo}}
                 </i-col>
               </Row>
               <Row>
@@ -26,7 +26,7 @@
                   发布机构：
                 </i-col>
                 <i-col span="16">
-                  市场管理司
+                  {{newsInfo.policyAuthor}}
                 </i-col>
               </Row>
               <Row>
@@ -42,7 +42,7 @@
                   文     号：
                 </i-col>
                 <i-col span="16">
-                  无
+                  {{newsInfo.policyNo}}
                 </i-col>
               </Row>
             </i-col>
@@ -53,7 +53,7 @@
                   分     类：
                 </i-col>
                 <i-col span="16">
-                  规范性文件、通知
+                  {{newsInfo.cate}}
                 </i-col>
               </Row>
               <Row>
@@ -61,7 +61,7 @@
                   发文日期：
                 </i-col>
                 <i-col span="16">
-                  2019年11月08日
+                  {{newsInfo.policyDate}}
                 </i-col>
               </Row>
               <Row>
@@ -69,7 +69,7 @@
                   时间有效性：
                 </i-col>
                 <i-col span="14">
-
+                  {{newsInfo.timeEfficiency}}
                 </i-col>
               </Row>
               <Row>
@@ -77,7 +77,7 @@
                   主 题 词：
                 </i-col>
                 <i-col span="16">
-                  在线旅游经营服务
+                  {{newsInfo.themeWord}}
                 </i-col>
               </Row>
             </i-col>

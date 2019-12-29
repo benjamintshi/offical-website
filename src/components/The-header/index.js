@@ -120,7 +120,7 @@ export default {
 
   },
   mounted(){
-    this.getUserInfo();
+    // this.getUserInfo();
     let myName=JSON.parse(sessionStorage.getItem("loginInfo"));
     let activeMenu = localStorage.getItem("activeMenu");
     if(activeMenu){

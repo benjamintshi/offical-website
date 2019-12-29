@@ -319,7 +319,7 @@ export default {
         this.total = res.data.data.total;
         res.data.data.list.forEach(item => {
           var train ={};
-          train.id = item.id;
+          train.id = item.teamId;
           train.title = item.teamName;
           train.address = item.address;
           // train.timeStart = item.id;
