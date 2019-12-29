@@ -71,7 +71,7 @@ export default {
     },
     toNewsDetail(item){
       this.$router.push({
-        name:"trainDetail",
+        name:"newsDetail",
         query:{'itemId':item.id}
       })
     },

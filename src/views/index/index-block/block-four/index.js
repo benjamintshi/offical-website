@@ -29,12 +29,12 @@ export default {
         pageSize:10
       }
       this.http.get('/vActivity/getActivityMap',params).then(res=>{
-        console.log(res.data.data)
+        // console.log(res.data.data)
         let map = new BMap.Map("allmap");
         var isfirst = true;
         res.data.data.forEach(item => {
             if(item.activityLongitude && item.activityLatitude){
-                console.log(item.activityLongitude + " - "+ item.activityLatitude)
+                // console.log(item.activityLongitude + " - "+ item.activityLatitude)
                 let point = new BMap.Point(item.activityLongitude, item.activityLatitude);
                 if(isfirst){
                   map.centerAndZoom(point, 15);

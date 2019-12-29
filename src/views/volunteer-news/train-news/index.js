@@ -83,7 +83,7 @@ export default {
       this.http.get('/vTrainingNews/getPageVTrainingNews',params).then(res=>{
         this.newslist= [];
         this.total = res.data.data.total;
-        console.log(res.data.data)
+        // console.log(res.data.data)
         res.data.data.list.forEach(item => {
           var news ={};
           news.id = item.id;

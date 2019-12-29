@@ -59,7 +59,7 @@ export default {
         this.recommend = [];
         res.data.data.list.forEach(item => {
           var volunteer ={};
-          console.log(item);
+          // console.log(item);
           volunteer.id = item.projectId;
           volunteer.name = item.projectName;
           volunteer.time = format(item.createDate,'YYYY.MM.DD');
