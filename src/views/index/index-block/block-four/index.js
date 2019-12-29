@@ -10,24 +10,7 @@ export default {
 
   },
   mounted(){
-    let map = new BMap.Map("allmap");
-    let point = new BMap.Point(116.404, 39.915);
-    map.centerAndZoom(point, 15);
-    map.enableScrollWheelZoom();
-    // 随机向地图添加25个标注
-    let bounds = map.getBounds();
-    let sw = bounds.getSouthWest();
-    let ne = bounds.getNorthEast();
-    let lngSpan = Math.abs(sw.lng - ne.lng);
-    let latSpan = Math.abs(ne.lat - sw.lat);
-    for (var i = 0; i < 25; i ++) {
-      let point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
-      this.addMarker(map,point);
-    }
-    const that = this;
-    map.addEventListener("click", function(){
-      that.$router.push('map')
-    });
+    this.getActivityMap()
   },
   methods:{
     toQuery(){
@@ -39,6 +22,33 @@ export default {
       // debugger
       let marker = new BMap.Marker(point);
       map.addOverlay(marker);
-    }
+    },
+    getActivityMap(){
+      var params = {
+        pageNum:'1',
+        pageSize:10
+      }
+      this.http.get('/vActivity/getActivityMap',params).then(res=>{
+        console.log(res.data.data)
+        let map = new BMap.Map("allmap");
+        var isfirst = true;
+        res.data.data.forEach(item => {
+            if(item.activityLongitude && item.activityLatitude){
+                console.log(item.activityLongitude + " - "+ item.activityLatitude)
+                let point = new BMap.Point(item.activityLongitude, item.activityLatitude);
+                if(isfirst){
+                  map.centerAndZoom(point, 15);
+                  map.enableScrollWheelZoom();
+                  isfirst = false;
+                }
+                this.addMarker(map,point);
+            }
+        })
+        const that = this;
+        map.addEventListener("click", function(){
+          that.$router.push('map')
+        });
+      })
+    },
   }
 }
