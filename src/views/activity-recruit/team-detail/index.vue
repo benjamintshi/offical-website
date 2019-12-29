@@ -37,13 +37,13 @@
               <img style="height: 6px;width: 100%;" src="static/images/villageStar/line.png" alt="">
             </li>
             <li class="content">
-              <p class="title">中国旅游志愿者大连中山支队</p>
-              <p>地址：辽宁省大连市中山区一德街83号</p>
+              <p class="title">{{detail.teamName}}</p>
+              <p>地址：{{detail.teamAddr}}</p>
             </li>
             <li class="content">
-              <p class="title">栾胜刚</p>
-              <p>手机：13940938832</p>
-              <p> 邮箱：luanshenggang@126.com</p>
+              <p class="title">{{detail.activityContactName}}</p>
+              <p>手机：{{detail.activityContactPhone}}</p>
+              <p> 邮箱：{{detail.activityContactEmail}}</p>
             </li>
           </ul>
 
