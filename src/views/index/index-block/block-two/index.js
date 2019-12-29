@@ -236,7 +236,7 @@ export default {
       this.http.get('/vActivity/getPageVActivity',params).then(res=>{
         this.total = res.data.data.total;
         this.newsList2 = [];
-        console.log(res.data.data)
+        // console.log(res.data.data)
         res.data.data.list.forEach(item => {
           var news ={};
           news.id = item.id;
