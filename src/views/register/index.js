@@ -60,13 +60,17 @@ export default {
       }, 1000);
     },
     submitFirst(){
-
+      let reg = new RegExp(/^(?![^a-zA-Z]+$)(?!\D+$)/);
       if(this.code==null || this.code==='') {
         alert('请填写验证码！')
       }
       else if(this.passwd==null || this.passwd===''){
         alert('请输入密码！')
       }
+      else if (reg.test(this.passwd)==false || this.passwd.length<8){
+        alert('密码不符合规范!')
+      }
+
       else {
         ajax_post(constant.api_base_url + '/sms/checkPhoneOrEmailCodeForRegister',
           {
