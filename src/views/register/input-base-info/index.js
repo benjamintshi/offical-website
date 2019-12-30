@@ -93,7 +93,7 @@ export default {
     },
     getcInfo() {
       //获取所有市信息
-      ajax_get(constant.api_base_url + '/vArea/getAreas'+ this.userInfo.pCode,
+      ajax_get(constant.api_base_url + '/vArea/getAreas/'+ this.userInfo.pCode,
         null, data => {
           if (data.code === "200") {
             this.userInfo.cInfo = data.data;
@@ -103,7 +103,7 @@ export default {
     },
     getxInfo() {
       //获取所有县信息
-      ajax_get(constant.api_base_url + '/vArea/getAreas'+ this.userInfo.cCode,
+      ajax_get(constant.api_base_url + '/vArea/getAreas/'+ this.userInfo.cCode,
         null, data => {
           if (data.code === "200") {
             this.userInfo.xInfo = data.data;
@@ -117,7 +117,7 @@ export default {
     },
     getServiceCInfo() {
       //获取所有服务市信息
-      ajax_get(constant.api_base_url + '/vArea/getAreas'+ this.userInfo.servicePCode,
+      ajax_get(constant.api_base_url + '/vArea/getAreas/'+ this.userInfo.servicePCode,
         null, data => {
           if (data.code === "200") {
             this.userInfo.serviceCInfo = data.data;
@@ -127,7 +127,7 @@ export default {
       )
     },
     getServiceXInfo() {
-      ajax_get(constant.api_base_url + '/vArea/getAreas'+ this.userInfo.serviceCCode,
+      ajax_get(constant.api_base_url + '/vArea/getAreas/'+ this.userInfo.serviceCCode,
         null, data => {
           if (data.code === "200") {
             this.userInfo.serviceXInfo = data.data;

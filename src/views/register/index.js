@@ -89,7 +89,7 @@ export default {
     },
   //
     next(){
-      if(this.role===2){
+      if(this.role==="2"){
         this.show.secondStep = false;
         this.show.thirdStep = true;
       }else{

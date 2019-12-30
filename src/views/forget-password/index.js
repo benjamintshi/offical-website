@@ -1,5 +1,6 @@
 import {ajax_post, ajax_get} from "../../utils/axios.util";
 import constant from "../../utils/constant";
+import {md5} from "../../utils/common";
 
 export default {
   data() {
@@ -62,7 +63,7 @@ export default {
       }, 1000);
     },
     nextStep() {
-      if (this.selectType === 1) {
+      if (this.selectType === "1") {
         ajax_post(constant.api_base_url + '/sms/checkPhoneOrEmailCodeForLost',
           {
             phoneOrEmail: this.accountInfo.account,
@@ -70,6 +71,8 @@ export default {
           }, data => {
             if (data.code === "200") {
               this.firstStep = false;
+            }else {
+              alert(data.message)
             }
           }
         )
@@ -92,7 +95,7 @@ export default {
       if (this.accountInfo.passwd === this.accountInfo.passwd2) {
         ajax_post(constant.api_base_url + '/sms/updatePwdForLost',
           {
-            newPassword: this.accountInfo.passwd
+            newPassword: md5(this.accountInfo.passwd)
           }, data => {
             if (data.code === "200") {
               alert('修改成功');

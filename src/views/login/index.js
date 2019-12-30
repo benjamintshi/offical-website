@@ -80,8 +80,10 @@ export default {
           account: this.login.account,
           passwd: md5(this.login.passwd)
         }, data => {
-          if (data.code !== "200" &&data.data.userId!=null) {
-            window.location.href = constant.api_base_url+'/view';
+          if (data.code === "200" &&  data.data.userId!=null) {
+            this.$router.push({
+              name:"index",
+            })
           }else {
             this.errInfo = '账号或密码错误'
           }
