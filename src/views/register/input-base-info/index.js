@@ -93,7 +93,6 @@ export default {
     },
     getcInfo() {
       //获取所有市信息
-<<<<<<< Updated upstream
       ajax_get(constant.api_base_url + '/vArea/getAreas'+ this.userInfo.pCode,
         null, data => {
           if (data.code === "200") {
@@ -111,25 +110,6 @@ export default {
           }
         }
       )
-=======
-      axios.get('http://zyz.liyue.com/socket/api/vArea/getAreas/' + this.userInfo.pCode)
-        .then(response => {
-          this.userInfo.cInfo = response.data.data;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
-    getxInfo() {
-      //获取所有县信息
-      axios.get('http://zyz.liyue.com/socket/api/vArea/getAreas/' + this.userInfo.cCode)
-        .then(response => {
-          this.userInfo.xInfo = response.data.data;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
->>>>>>> Stashed changes
     },
     //获取服务区域的省份列表
     getServicePInfo() {
@@ -137,7 +117,6 @@ export default {
     },
     getServiceCInfo() {
       //获取所有服务市信息
-<<<<<<< Updated upstream
       ajax_get(constant.api_base_url + '/vArea/getAreas'+ this.userInfo.servicePCode,
         null, data => {
           if (data.code === "200") {
@@ -155,25 +134,6 @@ export default {
           }
         }
       )
-=======
-      axios.get('http://zyz.liyue.com/socket/api/vArea/getAreas/' + this.userInfo.servicePCode)
-        .then(response => {
-          this.userInfo.serviceCInfo = response.data.data;
-          this.getServiceXInfo();
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
-    getServiceXInfo() {
-      axios.get('http://zyz.liyue.com/socket/api/vArea/getAreas/' + this.userInfo.serviceCCode)
-        .then(response => {
-          this.userInfo.serviceXInfo = response.data.data;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
->>>>>>> Stashed changes
     },
     submit() {
       // 提交成功后通知父组件
