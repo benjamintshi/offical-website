@@ -97,7 +97,7 @@ export default {
           {
             phoneOrEmail: this.account,
             code:this.code,
-            password:this.passwd,
+            password:md5(this.passwd),
           }, data => {
             if (data.code === "200") {
               this.show.firstStep = false;
@@ -143,6 +143,7 @@ export default {
           }
         }
       )
+
     }
   }
 }
