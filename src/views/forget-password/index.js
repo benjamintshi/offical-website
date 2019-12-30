@@ -92,6 +92,13 @@ export default {
       }
     },
     setPsd() {
+      let reg = new RegExp(/^(?![^a-zA-Z]+$)(?!\D+$)/);
+      if (this.accountInfo.passwd == null || this.accountInfo.passwd === '') {
+        alert('请输入密码！')
+      } else if (reg.test(this.accountInfo.passwd) == false || this.accountInfo.passwd.length < 8) {
+        alert('密码长度至少为8位并且必须包含字母和数字!')
+      }
+      else {
       if (this.accountInfo.passwd === this.accountInfo.passwd2) {
         ajax_post(constant.api_base_url + '/sms/updatePwdForLost',
           {
@@ -108,6 +115,7 @@ export default {
       } else {
         alert('密码不一致')
       }
+    }
     },
 
   }
