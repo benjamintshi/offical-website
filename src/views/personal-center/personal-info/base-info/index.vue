@@ -5,9 +5,9 @@
         <li v-if="isVolunteer">
           <p class="base-info">
             <span class="title font26">{{userInfo.userName}}</span>
-            <span class="tag">{{userInfo.volunteer.platformType|volunteerTypeName}}</span>
+            <span v-if="userInfo.identity!==1 &&userInfo.identity!=0" class="tag">{{userInfo.volunteer.platformType|volunteerTypeName}}</span>
             <span class="modify right" @click="modifyInfo ">修改</span>
-           <span class="integral">{{userInfo.volunteer.coin}}积分</span>
+           <span class="integral">{{userInfo.volunteer.coin}}积分</span>ggit
           </p>
 
           <Row>
@@ -46,14 +46,6 @@
             <i-col span="5" >可提供服务时间</i-col>
             <i-col span="7">{{userInfo.volunteer.servicePeriod}}</i-col>
           </Row>
-        </li>
-        <li v-else>
-          <p class="base-info">
-            <span class="title font26">王菲菲</span>
-            <span class="modify" style="margin-left: 24px;" @click="$router.push('volunteerApply')"> 成为志愿者</span>
-            <span class="modify right" @click="modifyInfo">修改</span>
-            <span class="integral">200积分</span>
-          </p>
         </li>
         <!-- 个人信息 -->
         <li >

@@ -24,11 +24,7 @@ export default {
       this.$emit('modify');
     },
     getServiceArea(){
-      ajax_get(constant.api_base_url + '/vArea/getAreas/0',
-        {
-          pageNum: 1,
-          pageSize: this.pageSize
-        }, data => {
+      ajax_get(constant.api_base_url + '/vArea/getAreas/0', null, data => {
           if (data.code === "200") {
             for(var i=0; i< data.data.length; i++){
               if(this.userInfo.volunteer.serviceProvinceCode === data.data[i].areaCode) {

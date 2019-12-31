@@ -168,6 +168,7 @@
             <span>特定时间</span>
           </Radio>
         </RadioGroup>
+
         <span v-if="userInfo.volunteer.serviceTime!='每天'&& userInfo.volunteer.serviceTime!='周六日'"><input type="text" v-model="userInfo.volunteer.serviceTime"></span>
       </div>
       <div class="radioList">

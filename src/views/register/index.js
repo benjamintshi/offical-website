@@ -97,11 +97,15 @@ export default {
           {
             phoneOrEmail: this.account,
             code:this.code,
-            password:this.passwd,
+            password: md5(this.passwd),
           }, data => {
             if (data.code === "200") {
+              alert(data.message)
               this.show.firstStep = false;
               this.show.secondStep = true;
+              this.$router.push({
+                name:"index",
+              })
             }else{
               alert(data.message)
             }
@@ -122,7 +126,7 @@ export default {
         provinceCode: this.child.servicePCode,
         cityCode: this.child.serviceCCode,
         countyCode: this.child.serviceXCode,
-        adress: this.child.address,
+        address: this.child.address,
         serviceProvinceCode: this.child.pCode,
         serviceCityCode: this.child.cCode,
         serviceCountyCode: this.child.xCode,
