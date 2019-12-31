@@ -54,7 +54,7 @@ export default {
     leaveTeam: function (item) {
       let msg="确定要退出该团队吗？";
       if (confirm(msg)===true){
-        ajax_get(constant.api_base_url + '/vTeam/applyQuitTeam'+item.teamId,
+        ajax_post(constant.api_base_url + '/vTeam/applyQuitTeam/'+item.teamId,
           null, data => {
             if (data.code === "200") {
               this.getlist();

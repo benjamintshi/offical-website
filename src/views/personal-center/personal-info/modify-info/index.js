@@ -30,6 +30,8 @@ export default {
       serviceTimeType:'',
       spevialServiceTime:'',
       serviceTimeCache:'',
+      artSpetialityCache:'',
+      volunteerArtSpetiality:'',
       serviceTime:[],
       cardList: [
         {
@@ -75,12 +77,25 @@ export default {
     serviceXCode(val, oldVal) {
       this.saveServiceXInfo();
     },
+    volunteerArtSpetiality(val, oldVal) {
+      if(val==="1"){
+        this.userInfo.volunteer.artSpetiality='唱歌'
+        this.artSpetialityCache=''
+      }else if(val==="2"){
+        this.userInfo.volunteer.artSpetiality='跳舞'
+        this.artSpetialityCache=''
+      }else if (val==="3" && (oldVal==="1" ||oldVal==="2")){
+        this.userInfo.volunteer.artSpetiality=this.artSpetialityCache
+      }
+    },
     spevialServiceTime(val, oldVal) {
-      if(val==1){
+      if(val==="1"){
+        this.serviceTimeCache=''
         this.userInfo.volunteer.serviceTime='每天'
-      }else if(val==2){
+      }else if(val==="2"){
+        this.serviceTimeCache=''
         this.userInfo.volunteer.serviceTime='周六日'
-      }else{
+      }else if (val==="3" && (oldVal==="1" ||oldVal==="2")){
         this.userInfo.volunteer.serviceTime=this.serviceTimeCache
       }
     }
@@ -90,17 +105,28 @@ export default {
       axios.get('http://zyz.liyue.com/socket/api/vUser/getSessionUserInfo', {})
         .then(response => {
           this.userInfo = response.data.data;
+          //给特定时间加个缓存，方便保存
+          this.serviceTimeCache=this.userInfo.volunteer.serviceTime;
+          //其他爱好同理
+          this.artSpetialityCache=this.userInfo.volunteer.artSpetiality;
+
           if (response.data.data.identity === 1) {
             this.userInfo.volunteer.platformType = '';
           }
-
           //将服务时间拆分
           if(this.userInfo.volunteer.servicePeriod!=null && this.userInfo.volunteer.servicePeriod!=''){
             this.serviceTime = this.userInfo.volunteer.servicePeriod.split("~");
           }
           this.userInfo.volunteer.platformType = this.userInfo.volunteer.platformType.toString();
-          //给特定时间加个缓存，方便保存
-          this.serviceTimeCache=this.userInfo.volunteer.serviceTime;
+          if(this.userInfo.volunteer.artSpetiality=='唱歌'){
+            this.volunteerArtSpetiality='1'
+          }else if(this.userInfo.volunteer.artSpetiality=='跳舞'){
+            this.volunteerArtSpetiality="2"
+          }else if(this.userInfo.volunteer.artSpetiality==null){
+            this.volunteerArtSpetiality= ''
+          }else{
+            this.volunteerArtSpetiality= "3"
+          }
           if(this.userInfo.volunteer.serviceTime=='每天'){
             this.spevialServiceTime='1'
           }else if(this.userInfo.volunteer.serviceTime=='周六日'){

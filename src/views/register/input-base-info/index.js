@@ -8,7 +8,7 @@ export default {
         userName: '',
         cardType: "1",
         cardNum: "",
-        hobby: "sing",
+        hobby: "",
         volunteerType: "1",
         project: "1",
         serviceType: "1",

@@ -80,7 +80,7 @@ export default {
           account: this.login.account,
           passwd: md5(this.login.passwd)
         }, data => {
-          if (data.code === "200" &&  data.data.userId!=null) {
+          if (data.code === "200" && data.data.userId != null && data.data.loginStatus === 1) {
             this.$router.push({
               name:"index",
             })
