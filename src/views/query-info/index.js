@@ -1,4 +1,5 @@
-import axios from "axios";
+import {ajax_get, ajax_post} from '../../utils/axios.util';
+import constant from '../../utils/constant'
 
 export default {
   data() {
@@ -21,65 +22,58 @@ export default {
       this.volunteerResult = "";
     },
     query() {
-      if (this.activeMenu == 1) {
-        axios.get('http://zyz.liyue.com/socket/api/vUser/getUserInfoByIdCard', {
-          params: {
+      if (this.activeMenu === 1) {
+        ajax_get(constant.api_base_url + '/vUser/getUserInfoByIdCard',
+          {
             name: this.name,
             idNo: this.number,
-          }
-        })
-          .then(response => {
-            if (response.data.code ==200) {
+          }, data => {
+            if (data.code === "200") {
               this.volunteerResult = true;
+              this.userInfo = data.data;
+              this.getServiceArea();
             }
-            this.userInfo = response.data.data;
-            this.getServiceArea();
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+          }
+        )
       }else{
-        axios.get('http://zyz.liyue.com/socket/api/vUser/myVolunteerCertificate', {
-        })
-          .then(response => {
-            if (response.data.code ==200) {
+        ajax_get(constant.api_base_url + '/vUser/myVolunteerCertificate',
+          null, data => {
+            if (data.code === "200") {
               this.certificateResult = true;
+              this.userInfo = data.data;
             }
-            this.userInfo = response.data.data;
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+          }
+        )
       }
     },
-    getServiceArea(val) {
-      axios.get('http://zyz.liyue.com/socket/api/vArea/getAreas/0', {})
-        .then(response => {
-          for (var i = 0; i < response.data.data.length; i++) {
-            if (this.userInfo.volunteer.serviceProvinceCode == response.data.data[i].areaCode) {
-              this.pName = response.data.data[i].areaName;
-              break;
+    getServiceArea() {
+      ajax_get(constant.api_base_url + '/vArea/getAreas/0',
+        null, data => {
+          if (data.code === "200") {
+            for (var i = 0; i < data.data.length; i++) {
+              if (this.userInfo.volunteer.serviceProvinceCode === data.data[i].areaCode) {
+                this.pName = data.data[i].areaName;
+                break;
+              }
             }
+            this.getServiceCity();
           }
-          this.getServiceCity();
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        }
+      )
     },
     getServiceCity() {
-      axios.get('http://zyz.liyue.com/socket/api/vArea/getAreas/' + this.userInfo.volunteer.serviceProvinceCode, {})
-        .then(response => {
-          for (var i = 0; i < response.data.data.length; i++) {
-            if (this.userInfo.volunteer.serviceCityCode == response.data.data[i].areaCode) {
-              this.cName = response.data.data[i].areaName;
-              break;
+      ajax_get(constant.api_base_url + '/vArea/getAreas'+ this.userInfo.volunteer.serviceProvinceCode,
+        null, data => {
+          if (data.code === "200") {
+            for (var i = 0; i < data.data.length; i++) {
+              if (this.userInfo.volunteer.serviceCityCode === response.data.data[i].areaCode) {
+                this.cName = data.data[i].areaName;
+                break;
+              }
             }
           }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        }
+      )
     },
   }
 }

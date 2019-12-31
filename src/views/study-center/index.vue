@@ -35,7 +35,7 @@
       <li >
         <Row>
           <i-col span="8" v-for="(item,index) in trainList" :key="index" class="block-list" >
-            <div  @click="toDetail(item)" class="a-hover-style">
+            <div  @click="toculDetail(item)" class="a-hover-style">
               <img :src="item.img" alt="">
               <p class="title">{{item.title}}</p>
               <p class="address">

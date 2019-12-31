@@ -1,5 +1,6 @@
-import axios from "axios";
-import util from "../../utils/postRequest";
+import {ajax_post, ajax_get} from "../../utils/axios.util";
+import constant from "../../utils/constant";
+import {md5} from "../../utils/common";
 
 export default {
   data() {
@@ -39,20 +40,15 @@ export default {
   methods: {
     sendCode() {
       if (!this.canSend) return;
-      axios({
-        method: 'post',
-        url: 'http://zyz.liyue.com/socket/api/sms/sendPhoneOrEmailCode',
-        data: {
+      ajax_post(constant.api_base_url + '/sms/sendPhoneOrEmailCode',
+        {
           phoneOrEmail: this.accountInfo.account,
-        },
-        transformRequest: util.data().transformRequest,
-        headers: util.data().headers
-      })
-        .then(response => {
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        }, data => {
+          if (data.code !== "200") {
+            alert(data.message)
+          }
+        }
+      );
       const that = this;
       let time = 5;
       this.t = setInterval(() => {
@@ -67,73 +63,59 @@ export default {
       }, 1000);
     },
     nextStep() {
-      if(this.selectType==1){
-      axios({
-        method: 'post',
-        url: 'http://zyz.liyue.com/socket/api/sms/checkPhoneOrEmailCodeForLost',
-        data: {
-          phoneOrEmail: this.accountInfo.account,
-          code: this.accountInfo.code
-        },
-        transformRequest: util.data().transformRequest,
-        headers: util.data().headers
-      })
-        .then(response => {
-          if(response.data.code==200){
-            this.firstStep = false;
+      if (this.selectType === "1") {
+        ajax_post(constant.api_base_url + '/sms/checkPhoneOrEmailCodeForLost',
+          {
+            phoneOrEmail: this.accountInfo.account,
+            code: this.accountInfo.code
+          }, data => {
+            if (data.code === "200") {
+              this.firstStep = false;
+            }else {
+              alert(data.message)
+            }
           }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      }else{
-        axios({
-          method: 'post',
-          url: 'http://zyz.liyue.com/socket/api/sms/checkIdCardForLost',
-          data: {
+        )
+      } else {
+        ajax_post(constant.api_base_url + '/sms/checkIdCardForLost',
+          {
             name: this.identifierInfo.name,
             idNo: this.identifierInfo.number
-          },
-          transformRequest: util.data().transformRequest,
-          headers: util.data().headers
-        })
-          .then(response => {
-            if(response.data.code==200){
+          }, data => {
+            if (data.code === "200") {
               this.firstStep = false;
+            } else {
+              alert(data.message);
             }
-            else if(response.data.code==0){
-              alert('用户不存在')
-            }
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+          }
+        )
       }
     },
     setPsd() {
-        if(this.accountInfo.passwd==this.accountInfo.passwd2){
-          axios({
-            method: 'post',
-            url: 'http://zyz.liyue.com/socket/api/sms/updatePwdForLost',
-            data: {
-              newPassword: this.accountInfo.passwd
-            },
-            transformRequest: util.data().transformRequest,
-            headers: util.data().headers
-          })
-            .then(response => {
-              if(response.data.code==200){
-                alert('修改成功')
-                window.location.href = 'http://zyz.liyue.com/view/#/login';
-              }
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        }
-        else{
-          alert('密码不一致')
-        }
+      let reg = new RegExp(/^(?![^a-zA-Z]+$)(?!\D+$)/);
+      if (this.accountInfo.passwd == null || this.accountInfo.passwd === '') {
+        alert('请输入密码！')
+      } else if (reg.test(this.accountInfo.passwd) == false || this.accountInfo.passwd.length < 8) {
+        alert('密码长度至少为8位并且必须包含字母和数字!')
+      }
+      else {
+      if (this.accountInfo.passwd === this.accountInfo.passwd2) {
+        ajax_post(constant.api_base_url + '/sms/updatePwdForLost',
+          {
+            newPassword: md5(this.accountInfo.passwd)
+          }, data => {
+            if (data.code === "200") {
+              alert('修改成功');
+              window.location.href = 'http://zyz.liyue.com/view/#/login';
+            } else {
+              alert(data.message);
+            }
+          }
+        )
+      } else {
+        alert('密码不一致')
+      }
+    }
     },
 
   }

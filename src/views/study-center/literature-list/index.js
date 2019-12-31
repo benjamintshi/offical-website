@@ -7,7 +7,7 @@ export default {
       selectedIndex:0,
       newslist:[],
       pageNum:1,//当前页码
-      pageSize:1,
+      pageSize:8,
       total:''  ,// 超过16时显示页码
       recommend:[],
     }
@@ -36,8 +36,8 @@ export default {
     getRecomendlist: function () {
       axios.get('http://zyz.liyue.com/socket/api/vLiterature/getPageGoodLiterature', {
         params: {
-          pageNum: this.pageNum,
-          pageSize: 5,
+          pageNum: 1,
+          pageSize: 8,
         }
       })
         .then(response => {

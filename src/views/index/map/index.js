@@ -88,7 +88,7 @@ export default {
     search(item){
       this.showResult = true;
       //将位置坐标传入
-      debugger
+      // debugger
       // let opts = {
       //   width : 200,     // 信息窗口宽度
       //   height:1,
@@ -116,7 +116,7 @@ export default {
         class:""
       };
       for (let i = 0; i < 5; i ++) {
-        debugger
+        // debugger
         let point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
         let marker = new BMap.Marker(point);
         let content = '测试数据'+i;

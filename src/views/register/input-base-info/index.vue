@@ -138,7 +138,7 @@
         <Radio label="2" style="margin-right: 90px">
           <span>知识普及</span>
         </Radio>
-        <Radio label="2" style="margin-right: 90px">
+        <Radio label="3" style="margin-right: 90px">
           <span>非遗传承</span>
         </Radio>
 

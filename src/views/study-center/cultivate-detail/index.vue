@@ -23,7 +23,7 @@
       </Row>
       <Row>
         <i-col span="12" class="block3">
-          <p class="block-title" >详情介绍 <span class="a-hover-style">立即报名</span></p>
+          <p class="block-title" >详情介绍<span class="a-hover-style" @click="$router.push({name:'volunteerApply',query:{'itemId':trainningId,type:3}})">立即报名</span></p>
           <img style="height: 6px;width: 100%;" src="static/images/villageStar/line.png" alt="">
           <div class="content">
             <div class="title">培训详情</div>

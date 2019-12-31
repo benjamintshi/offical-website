@@ -1,7 +1,9 @@
 export default {
 
   data() {
-    return {//详情介绍
+    return {
+      trainningId:'3',//培训活动id，还未获取到，先写死
+      //详情介绍
       baseInfo:{
         trainInfo:"<p>" +
         "1. 主要负责管理图书馆秩序、规则；<br/>" +

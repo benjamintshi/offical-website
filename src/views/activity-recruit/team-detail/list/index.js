@@ -2,6 +2,7 @@ export default {
 
   data() {
     return {
+      teamId: '22',//团队Id通过url获取，先写死
       teamDesc:"<p>志愿者团队团结、有爱、积极向上，每个人都充满对生活和工作的热情，也希望更多的人参与参加进来成为团队的一份子，让志愿活动越来越好。</p>",
       menuList:[
         {

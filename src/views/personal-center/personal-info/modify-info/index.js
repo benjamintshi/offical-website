@@ -29,6 +29,9 @@ export default {
       modifySuccess: false,
       serviceTimeType:'',
       spevialServiceTime:'',
+      serviceTimeCache:'',
+      artSpetialityCache:'',
+      volunteerArtSpetiality:'',
       serviceTime:[],
       cardList: [
         {
@@ -45,40 +48,55 @@ export default {
   },
   mounted() {
     this.getUserInfo();
-    this.getcInfo();
-    this.getxInfo();
   },
   watch: {
     //居住区域
     pCode(val, oldVal) {
-      this.getcInfo();
-      this.xCode = ''
+        this.getcInfo();
+        this.xCode = ''
     },
     cCode(val, oldVal) {
-      this.getxInfo();
+      if(this.cCode!=null && this.cCode!='' ){
+        this.getxInfo();
+      }
     },
     xCode(val, oldVal) {
       this.savexInfo();
     },
     //服务区域
     servicePCode(val, oldVal) {
-      this.getServiceCInfo();
-      this.serviceXCode = '';
+        this.getServiceCInfo();
+        this.serviceXCode = '';
     },
     serviceCCode(val, oldVal) {
-      this.getServiceXInfo();
-      this.serviceXCode = '';
+
+        this.getServiceXInfo();
+        this.serviceXCode = '';
+
     },
     serviceXCode(val, oldVal) {
       this.saveServiceXInfo();
     },
+    volunteerArtSpetiality(val, oldVal) {
+      if(val==="1"){
+        this.userInfo.volunteer.artSpetiality='唱歌'
+        this.artSpetialityCache=''
+      }else if(val==="2"){
+        this.userInfo.volunteer.artSpetiality='跳舞'
+        this.artSpetialityCache=''
+      }else if (val==="3" && (oldVal==="1" ||oldVal==="2")){
+        this.userInfo.volunteer.artSpetiality=this.artSpetialityCache
+      }
+    },
     spevialServiceTime(val, oldVal) {
-      if(val==1){
+      if(val==="1"){
+        this.serviceTimeCache=''
         this.userInfo.volunteer.serviceTime='每天'
-      }else if(val==2){
+      }else if(val==="2"){
+        this.serviceTimeCache=''
         this.userInfo.volunteer.serviceTime='周六日'
-      }else{
-        this.userInfo.volunteer.serviceTime=''
+      }else if (val==="3" && (oldVal==="1" ||oldVal==="2")){
+        this.userInfo.volunteer.serviceTime=this.serviceTimeCache
       }
     }
   },
@@ -87,16 +105,36 @@ export default {
       axios.get('http://zyz.liyue.com/socket/api/vUser/getSessionUserInfo', {})
         .then(response => {
           this.userInfo = response.data.data;
+          //给特定时间加个缓存，方便保存
+          this.serviceTimeCache=this.userInfo.volunteer.serviceTime;
+          //其他爱好同理
+          this.artSpetialityCache=this.userInfo.volunteer.artSpetiality;
+
+          if (response.data.data.identity === 1) {
+            this.userInfo.volunteer.platformType = '';
+          }
           //将服务时间拆分
-          this.serviceTime = this.userInfo.volunteer.servicePeriod.split("~");
-          this.userInfo.volunteer.platformType = this.userInfo.volunteer.platformType.toString()
+          if(this.userInfo.volunteer.servicePeriod!=null && this.userInfo.volunteer.servicePeriod!=''){
+            this.serviceTime = this.userInfo.volunteer.servicePeriod.split("~");
+          }
+          this.userInfo.volunteer.platformType = this.userInfo.volunteer.platformType.toString();
+          if(this.userInfo.volunteer.artSpetiality=='唱歌'){
+            this.volunteerArtSpetiality='1'
+          }else if(this.userInfo.volunteer.artSpetiality=='跳舞'){
+            this.volunteerArtSpetiality="2"
+          }else if(this.userInfo.volunteer.artSpetiality==null){
+            this.volunteerArtSpetiality= ''
+          }else{
+            this.volunteerArtSpetiality= "3"
+          }
           if(this.userInfo.volunteer.serviceTime=='每天'){
             this.spevialServiceTime='1'
           }else if(this.userInfo.volunteer.serviceTime=='周六日'){
             this.spevialServiceTime="2"
-            alert(this.spevialServiceTime)
+          }else if(this.userInfo.volunteer.serviceTime==null){
+            this.spevialServiceTime= ''
           }else{
-            this.spevialServiceTime='3'
+            this.spevialServiceTime= "3"
           }
           this.getpInfo();
           this.getServicePInfo();
@@ -106,18 +144,23 @@ export default {
         });
     },
     getpInfo() {
-      axios.get('http://zyz.liyue.com/socket/api/vArea/getAreas/0', {})
+      axios.get('http://zyz.liyue.com/socket/api/vArea/getAreas/0')
         .then(response => {
           this.pInfo = response.data.data
-          //获取用户信息里的省code
-          this.pCode = this.userInfo.provinceCode;
-          //省code值和所有省的code值相等 把对应省name取出来
-          for (var i = 0; i < this.pInfo.length; i++) {
-            if (this.pCode == this.pInfo[i].areaCode) {
-              this.pName = this.pInfo[i].areaName
-              break;
+          console.log(this.pInfo)
+          if(this.userInfo.provinceCode!=null && this.userInfo.provinceCode!=''){
+            //获取用户信息里的省code
+            this.pCode = this.userInfo.provinceCode;
+            //省code值和所有省的code值相等 把对应省name取出来
+            for (var i = 0; i < this.pInfo.length; i++) {
+              if (this.pCode == this.pInfo[i].areaCode) {
+                this.pName = this.pInfo[i].areaName
+                break;
+              }
             }
+            this.getcInfo();
           }
+
         })
         .catch(function (error) {
           console.log(error);
@@ -172,30 +215,34 @@ export default {
     //获取服务区域的省份列表
     getServicePInfo() {
       this.servicePCode = this.userInfo.volunteer.serviceProvinceCode;
-      //省code值和所有省的code值相等 把对应省name取出来
-      for (var i = 0; i < this.pInfo.length; i++) {
-        if (this.servicePCode == this.pInfo[i].areaCode) {
-          this.servicePName = this.pInfo[i].areaName
-          break;
+      if (this.userInfo.volunteer.serviceProvinceCode != null && this.userInfo.volunteer.serviceProvinceCode != '') {
+        //省code值和所有省的code值相等 把对应省name取出来
+        for (var i = 0; i < this.pInfo.length; i++) {
+          if (this.servicePCode == this.pInfo[i].areaCode) {
+            this.servicePName = this.pInfo[i].areaName
+            break;
+          }
+          this.getServiceCInfo();
         }
       }
-      this.getServiceCInfo();
     },
     getServiceCInfo() {
       //获取所有服务市信息
       axios.get('http://127.0.0.1:8080/api/vArea/getAreas/' + this.servicePCode)
         .then(response => {
           this.serviceCInfo = response.data.data;
-          //获取用户信息里的市code
-          this.serviceCCode = this.userInfo.volunteer.serviceCityCode;
-          //服务市code值和所有服务市的code值相等 把对应服务市name取出来
-          for (var i = 0; i < this.serviceCInfo.length; i++) {
-            if (this.serviceCCode == this.serviceCInfo[i].areaCode) {
-              this.serviceCName = this.serviceCInfo[i].areaName
-              break;
+          if (this.userInfo.volunteer.serviceCityCode != null && this.userInfo.volunteer.serviceCityCode != '') {
+              //获取用户信息里的市code
+            this.serviceCCode = this.userInfo.volunteer.serviceCityCode;
+            //服务市code值和所有服务市的code值相等 把对应服务市name取出来
+            for (var i = 0; i < this.serviceCInfo.length; i++) {
+              if (this.serviceCCode == this.serviceCInfo[i].areaCode) {
+                this.serviceCName = this.serviceCInfo[i].areaName
+                break;
+              }
             }
+            this.getServiceXInfo();
           }
-          this.getServiceXInfo();
 
         })
         .catch(function (error) {
@@ -229,7 +276,6 @@ export default {
       }
     },
     submit() {
-
       axios({
         method: 'post',
         url: 'http://zyz.liyue.com/socket/api/vUser/applyToBeVolunteer',
@@ -241,7 +287,7 @@ export default {
           provinceCode: this.pCode,
           cityCode: this.cCode,
           countyCode: this.xCode,
-          adress: this.userInfo.address,
+          address: this.userInfo.address,
           serviceProvinceCode: this.servicePCode,
           serviceCityCode: this.serviceCCode,
           serviceCountyCode: this.serviceXCode,

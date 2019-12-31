@@ -39,7 +39,7 @@ export default {
         this.newsInfo.title = res.data.data.projectName;
         this.content = res.data.data.projectInfo;
         this.newsInfo.time = format(res.data.data.createDate,'YYYY/MM/DD HH:mm');
-        console.log(this.newsInfo);
+        // console.log(this.newsInfo);
         this.getGoodVolunteerShows();
       })
     },
@@ -59,7 +59,7 @@ export default {
         this.recommend = [];
         res.data.data.list.forEach(item => {
           var volunteer ={};
-          console.log(item);
+          // console.log(item);
           volunteer.id = item.projectId;
           volunteer.name = item.projectName;
           volunteer.time = format(item.createDate,'YYYY.MM.DD');

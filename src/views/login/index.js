@@ -1,5 +1,3 @@
-import util from '../../utils/postRequest.js';
-import axios from "axios";
 import {ajax_get, ajax_post} from '../../utils/axios.util';
 import constant from '../../utils/constant'
 import {md5} from "../../utils/common";
@@ -77,27 +75,20 @@ export default {
       this.loginByAccount = isLoginByAccount;
     },
     toLogin() {
-      axios({
-        method: 'post',
-        url: 'http://zyz.liyue.com/socket/api/vUser/appLogin',
-        data: {
+      ajax_post(constant.api_base_url + '/vUser/appLogin',
+        {
           account: this.login.account,
           passwd: md5(this.login.passwd)
-        },
-        transformRequest: util.data().transformRequest,
-        headers: util.data().headers
-      })
-        .then(response => {
-          console.log(response);
-          if (response.data.data.userId != null) {
-            window.location.href = 'http://zyz.liyue.com/view';
-          } else {
+        }, data => {
+          if (data.code === "200" && data.data.userId != null && data.data.loginStatus === 1) {
+            this.$router.push({
+              name:"index",
+            })
+          }else {
             this.errInfo = '账号或密码错误'
           }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        }
+      )
     }
   }
 }

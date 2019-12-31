@@ -5,7 +5,7 @@
     </div>
     <ul class="volunteer-info-left">
       <li class="base-info">
-        <p>{{newsInfo.title}}</p><br/>
+        <p>{{newsInfo.title}} </p><br/>
         <span class="time">发布时间：{{newsInfo.time}}</span>
       </li>
       <img style="height: 6px;width: 100%" src="static/images/villageStar/line.png" alt="">
@@ -18,7 +18,7 @@
                   索 引 号：
                 </i-col>
                 <i-col span="16">
-                  000014348/2019-00083
+                  {{newsInfo.indexNo}}
                 </i-col>
               </Row>
               <Row>
@@ -26,7 +26,7 @@
                   发布机构：
                 </i-col>
                 <i-col span="16">
-                  市场管理司
+                  {{newsInfo.policyAuthor}}
                 </i-col>
               </Row>
               <Row>
@@ -34,9 +34,7 @@
                   名     称：
                 </i-col>
                 <i-col span="16" style="font-size: 12px;">
-                  文化和旅游部关于《在线旅游经营服务
-                  管理暂行规定（征求意见稿）》公开征
-                  求意见的通知
+                  {{newsInfo.title}}
                 </i-col>
               </Row>
               <Row>
@@ -44,7 +42,7 @@
                   文     号：
                 </i-col>
                 <i-col span="16">
-                  无
+                  {{newsInfo.policyNo}}
                 </i-col>
               </Row>
             </i-col>
@@ -55,7 +53,7 @@
                   分     类：
                 </i-col>
                 <i-col span="16">
-                  规范性文件、通知
+                  {{newsInfo.cate}}
                 </i-col>
               </Row>
               <Row>
@@ -63,7 +61,7 @@
                   发文日期：
                 </i-col>
                 <i-col span="16">
-                  2019年11月08日
+                  {{newsInfo.policyDate}}
                 </i-col>
               </Row>
               <Row>
@@ -71,7 +69,7 @@
                   时间有效性：
                 </i-col>
                 <i-col span="14">
-
+                  {{newsInfo.timeEfficiency}}
                 </i-col>
               </Row>
               <Row>
@@ -79,7 +77,7 @@
                   主 题 词：
                 </i-col>
                 <i-col span="16">
-                  在线旅游经营服务
+                  {{newsInfo.themeWord}}
                 </i-col>
               </Row>
             </i-col>
@@ -96,7 +94,7 @@
           <i-col span="22">
             <p v-for="(item,index) in appendix" :key="index" style="color: #B1B2B3" class="a-hover-style">
               {{item.name}}
-              <a :href="item.url" @click="item.url">下载</a>
+              <a :href="item.url"  target="_blank">下载</a>
             </p>
           </i-col>
         </Row>

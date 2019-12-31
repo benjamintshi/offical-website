@@ -3,7 +3,7 @@
       <p class="title-tip" v-show="!show.fourStep">
         注册
         <span>已有账号？</span>
-        <span class="a-hover-style">去登陆</span>
+        <span class="a-hover-style" @click="toLogin">去登陆</span>
       </p>
      <div class="first-step" v-if="show.firstStep">
        <!--账号-->

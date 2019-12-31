@@ -1,4 +1,5 @@
-import axios from "axios";
+import {ajax_get, ajax_post} from '../../../utils/axios.util';
+import constant from '../../../utils/constant'
 
 export default {
   data() {
@@ -7,7 +8,7 @@ export default {
         userName: '',
         cardType: "1",
         cardNum: "",
-        hobby: "sing",
+        hobby: "",
         volunteerType: "1",
         project: "1",
         serviceType: "1",
@@ -53,26 +54,26 @@ export default {
   },
   watch: {
     //居住区域
-    'userInfo.pCode'(val, oldVal) {
+    'userInfo.pCode'() {
       this.getcInfo();
       this.xCode = ''
     },
-    'userInfo.cCode'(val, oldVal) {
+    'userInfo.cCode'() {
       this.getxInfo();
     },
     //服务区域
-    'userInfo.servicePCode'(val, oldVal) {
+    'userInfo.servicePCode'() {
       this.getServiceCInfo();
       this.serviceXCode = '';
     },
-    'userInfo.serviceCCode'(val, oldVal) {
+    'userInfo.serviceCCode'() {
       this.getServiceXInfo();
       this.serviceXCode = '';
     },
-    'userInfo.serviceTime'(val, oldVal) {
-      if (val == "1") {
+    'userInfo.serviceTime'(val, ) {
+      if (val === "1") {
         this.serviceAppointTime = '每天'
-      } else if (val == "2") {
+      } else if (val === "2") {
         this.serviceAppointTime = '周六日'
       } else {
         this.serviceAppointTime = ''
@@ -81,34 +82,34 @@ export default {
   },
   methods: {
     getpInfo() {
-      axios.get('http://zyz.liyue.com/socket/api/vArea/getAreas/0', {})
-        .then(response => {
-          this.userInfo.pInfo = response.data.data
-          //获取用户信息里的省code
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      ajax_get(constant.api_base_url + '/vArea/getAreas/0',
+        null, data => {
+          if (data.code === "200") {
+            this.userInfo.pInfo = data.data
+            //获取用户信息里的省code
+          }
+        }
+      )
     },
     getcInfo() {
       //获取所有市信息
-      axios.get('http://127.0.0.1:8080/api/vArea/getAreas/' + this.userInfo.pCode)
-        .then(response => {
-          this.userInfo.cInfo = response.data.data;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      ajax_get(constant.api_base_url + '/vArea/getAreas/'+ this.userInfo.pCode,
+        null, data => {
+          if (data.code === "200") {
+            this.userInfo.cInfo = data.data;
+          }
+        }
+      )
     },
     getxInfo() {
       //获取所有县信息
-      axios.get('http://127.0.0.1:8080/api/vArea/getAreas/' + this.userInfo.cCode)
-        .then(response => {
-          this.userInfo.xInfo = response.data.data;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      ajax_get(constant.api_base_url + '/vArea/getAreas/'+ this.userInfo.cCode,
+        null, data => {
+          if (data.code === "200") {
+            this.userInfo.xInfo = data.data;
+          }
+        }
+      )
     },
     //获取服务区域的省份列表
     getServicePInfo() {
@@ -116,23 +117,23 @@ export default {
     },
     getServiceCInfo() {
       //获取所有服务市信息
-      axios.get('http://127.0.0.1:8080/api/vArea/getAreas/' + this.userInfo.servicePCode)
-        .then(response => {
-          this.userInfo.serviceCInfo = response.data.data;
-          this.getServiceXInfo();
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      ajax_get(constant.api_base_url + '/vArea/getAreas/'+ this.userInfo.servicePCode,
+        null, data => {
+          if (data.code === "200") {
+            this.userInfo.serviceCInfo = data.data;
+            this.getServiceXInfo();
+          }
+        }
+      )
     },
     getServiceXInfo() {
-      axios.get('http://127.0.0.1:8080/api/vArea/getAreas/' + this.userInfo.serviceCCode)
-        .then(response => {
-          this.userInfo.serviceXInfo = response.data.data;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      ajax_get(constant.api_base_url + '/vArea/getAreas/'+ this.userInfo.serviceCCode,
+        null, data => {
+          if (data.code === "200") {
+            this.userInfo.serviceXInfo = data.data;
+          }
+        }
+      )
     },
     submit() {
       // 提交成功后通知父组件

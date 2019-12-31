@@ -40,21 +40,39 @@ export default {
   },
   mounted(){
     this.newsInfo.projectId = this.$route.query.itemId;
-    this.getVProjectAchieveById();
+    this.getVPolicyById();
+    this.getGoodNews();
   },
   methods:{
     // 点击推荐链接
     toRecommend(item){
-      this.newsInfo.projectId = item.id;
-      this.getVProjectAchieveById();
+      this.$router.push({
+        name:"newsDetail",
+        query:{'itemId':item.id}
+      })
     },
-    getVProjectAchieveById(){
-      this.http.get('/vProjectAchieve/getVProjectAchieveById/'+ this.newsInfo.projectId).then(res=>{
-        this.newsInfo.title = res.data.data.projectName;
-        this.content = res.data.data.projectInfo;
-        this.newsInfo.time = format(res.data.data.createDate,'YYYY/MM/DD HH:mm');
-        console.log(this.newsInfo);
-        this.getGoodVolunteerShows();
+    getVPolicyById(){
+      this.http.get('/vPolicy/getVPolicyById/'+ this.newsInfo.projectId).then(res=>{
+        // this.newsInfo.title = res.data.data.projectName;
+        // this.content = res.data.data.projectInfo;
+        // this.newsInfo.time = format(res.data.data.createDate,'YYYY/MM/DD HH:mm');
+        // console.log(res.data.data);
+        this.newsInfo = res.data.data;
+        this.newsInfo.title = res.data.data.policyName;
+        this.newsInfo.time = format(res.data.data.creatDate,'YYYY/MM/DD HH:mm');
+        this.newsInfo.policyDate = format(res.data.data.policyDate,'YYYY年MM月DD日');
+        if(!this.newsInfo.policyNo){
+          this.newsInfo.policyNo = '无'
+        }
+        this.appendix = []
+        var fileTmp = {}
+        if(res.data.data.uploadPath){
+          var arrTmp = res.data.data.uploadPath.split('/');
+          fileTmp.name = arrTmp[arrTmp.length-1];
+          fileTmp.url = res.data.data.uploadPath;
+          this.appendix.push(fileTmp)
+        }
+        // console.log(this.newsInfo);
       })
     },
     vlounteerDetail(item){
@@ -63,24 +81,21 @@ export default {
       //   query:{'projectId':item.id}
       // })
     },
-    getGoodVolunteerShows(){
+    getGoodNews(){
       var params ={
         'pageNum':1,
         'pageSize':5
       }
-      this.newsList= [];
-      this.http.get('/vProjectAchieve/getGoodVolunteerShows/41',params).then(res=>{
+      this.http.get('/news/getGoodNews',params).then(res=>{
         this.recommend = [];
-        res.data.data.list.forEach(item => {
+        // console.log(res.data.data);
+        res.data.data.forEach(item => {
           var volunteer ={};
-          console.log(item);
-          volunteer.id = item.projectId;
-          volunteer.name = item.projectName;
-          volunteer.time = format(item.createDate,'YYYY.MM.DD');
-
+          volunteer.id = item.newsId;
+          volunteer.name = item.newsTitle;
           this.recommend.push(volunteer);
         })
-        console.log(this.recommend);
+        // console.log(this.recommend);
       })
     }
   }

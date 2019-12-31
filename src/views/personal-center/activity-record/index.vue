@@ -13,9 +13,7 @@
           <td>{{item.activityStartDate}}-{{item.activityEndDate}}</td>
           <td>{{item.activityName}}</td>
           <td>
-            <span v-if="item.auditStatus ==0">待审核</span>
-            <span v-if="item.auditStatus ==1">已通过</span>
-            <span v-if="item.auditStatus ==2">已驳回</span>
+            <span>{{item.auditStatus|exchangeStatus}}</span>
           </td>
           <td class="blue" @click="toDetail(item)"> 查看详情  </td>
         </tr>

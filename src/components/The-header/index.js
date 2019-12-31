@@ -1,5 +1,7 @@
 import util from '../../utils/http.js';
 import axios from "axios";
+import {ajax_get} from "../../utils/axios.util";
+import constant from "../../utils/constant";
 
 export default {
   inject:['reload'],
@@ -120,7 +122,7 @@ export default {
 
   },
   mounted(){
-    this.getUserInfo();
+     this.getUserInfo();
     let myName=JSON.parse(sessionStorage.getItem("loginInfo"));
     let activeMenu = localStorage.getItem("activeMenu");
     if(activeMenu){
@@ -140,18 +142,15 @@ export default {
   },
   methods:{
     getUserInfo(){
-      axios.get('http://zyz.liyue.com/socket/api/vUser/getSessionUserInfo', {
-      })
-        .then(response => {
-          if(response.data.code==200){
-            this.userInfo = response.data.data;
-            this.isLogin=true,
-            sessionStorage.setItem("userInfo",this.userInfo);
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      ajax_get(constant.api_base_url + '/vUser/getSessionUserInfo', null,  data =>  {
+        if (data.code === "200") {
+          this.userInfo = data.data;
+          this.isLogin=true;
+          sessionStorage.setItem("userInfo",this.userInfo);
+        }else{
+          alert(data.message)
+        }
+      });
     },
     swtichArea (item) {
       this.activeArea = item.value;

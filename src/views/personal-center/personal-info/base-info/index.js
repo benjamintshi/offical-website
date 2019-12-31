@@ -1,4 +1,5 @@
-import axios from "axios";
+import {ajax_get, ajax_post} from '../../../../utils/axios.util';
+import constant from '../../../../utils/constant'
 
 export default {
   data() {
@@ -23,30 +24,27 @@ export default {
       this.$emit('modify');
     },
     getServiceArea(){
-      axios.get('http://zyz.liyue.com/socket/api/vArea/getAreas/0', {
-      })
-        .then(response => {
-          for(var i=0; i<response.data.data.length; i++){
-            if(this.userInfo.volunteer.serviceProvinceCode == response.data.data[i].areaCode) {
-              this.serviceArea=response.data.data[i].areaName
-              break;
+      ajax_get(constant.api_base_url + '/vArea/getAreas/0', null, data => {
+          if (data.code === "200") {
+            for(var i=0; i< data.data.length; i++){
+              if(this.userInfo.volunteer.serviceProvinceCode === data.data[i].areaCode) {
+                this.serviceArea=data.data[i].areaName
+                break;
+              }
             }
           }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        }
+      )
     },
     getUserInfo() {
-        axios.get('http://zyz.liyue.com/socket/api/vUser/getSessionUserInfo', {
-        })
-          .then(response => {
-            this.userInfo = response.data.data;
+      ajax_get(constant.api_base_url + '/vUser/getSessionUserInfo',
+       null, data => {
+          if (data.code === "200") {
+            this.userInfo = data.data;
             this.getServiceArea();
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+          }
+        }
+      )
     },
     downloadCodeImg() {
       const image = new Image();
@@ -67,6 +65,19 @@ export default {
       };
       image.src = this.info.zsUrl;
     }
+  },
+  filters: {
+    volunteerTypeName(item) {
+      switch (item) {
+        case 0:
+          return "文化志愿者";
+        case 1:
+          return "阳光工程";
+        case 2:
+          return "圆梦工程";
+        case 3:
+          return "旅游志愿者";
+      }
+    }
   }
-
 }

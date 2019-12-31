@@ -83,17 +83,18 @@
           <p ><span style="letter-spacing: 50px;">特</span>长</p>
         </i-col>
         <i-col span="20">
-          <RadioGroup v-model="userInfo.volunteer.artSpetiality" style="height: 50px;line-height: 50px;">
-            <Radio label="sing" style="margin-right: 100px">
+          <RadioGroup v-model="volunteerArtSpetiality" style="height: 50px;line-height: 50px;">
+            <Radio label="1" style="margin-right: 100px">
               <span>唱歌</span>
             </Radio>
-            <Radio label="dance" style="margin-right: 100px">
+            <Radio label="2" style="margin-right: 100px">
               <span>跳舞</span>
             </Radio>
-            <Radio label="other">
+            <Radio label="3">
               <span>其他</span>
             </Radio>
           </RadioGroup>
+          <span v-if="userInfo.volunteer.artSpetiality!=='唱歌'&&userInfo.volunteer.artSpetiality!=='跳舞'"><input type="text" v-model="userInfo.volunteer.artSpetiality"></span>
         </i-col>
       </Row>
       <Row>
@@ -168,6 +169,7 @@
             <span>特定时间</span>
           </Radio>
         </RadioGroup>
+
         <span v-if="userInfo.volunteer.serviceTime!='每天'&& userInfo.volunteer.serviceTime!='周六日'"><input type="text" v-model="userInfo.volunteer.serviceTime"></span>
       </div>
       <div class="radioList">
