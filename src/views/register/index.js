@@ -117,6 +117,13 @@ export default {
         )
       }
     },
+    toLogin(){
+      this.$router.push({
+        name:"login",
+        query:{}
+      })
+
+    },
     submitSuccess(val){
       //子组件的对象赋值给父组件对象
       this.child=val
