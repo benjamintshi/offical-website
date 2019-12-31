@@ -7,7 +7,7 @@
             <span class="title font26">{{userInfo.userName}}</span>
             <span v-if="userInfo.identity!==1 &&userInfo.identity!=0" class="tag">{{userInfo.volunteer.platformType|volunteerTypeName}}</span>
             <span class="modify right" @click="modifyInfo ">修改</span>
-           <span class="integral">{{userInfo.volunteer.coin}}积分</span>ggit
+           <span class="integral">{{userInfo.volunteer.coin}}积分</span>
           </p>
 
           <Row>
