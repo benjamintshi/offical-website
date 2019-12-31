@@ -29,6 +29,7 @@ export default {
       modifySuccess: false,
       serviceTimeType:'',
       spevialServiceTime:'',
+      volunteerArtSpetiality:'',
       serviceTime:[],
       cardList: [
         {
@@ -71,6 +72,15 @@ export default {
     },
     serviceXCode(val, oldVal) {
       this.saveServiceXInfo();
+    },
+    volunteerArtSpetiality(val, oldVal) {
+      if(val==1){
+        this.userInfo.volunteer.artSpetiality='唱歌'
+      }else if(val==2){
+        this.userInfo.volunteer.artSpetiality='跳舞'
+      }else{
+        this.userInfo.volunteer.artSpetiality=''
+      }
     },
     spevialServiceTime(val, oldVal) {
       if(val==1){
