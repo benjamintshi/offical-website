@@ -147,8 +147,6 @@ export default {
           this.userInfo = data.data;
           this.isLogin=true;
           sessionStorage.setItem("userInfo",this.userInfo);
-        }else{
-          alert(data.message)
         }
       });
     },
