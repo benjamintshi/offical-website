@@ -8,7 +8,9 @@ export default {
         pageSize: '1',
         totalNum: '',
         n:1,
-        isMost: false
+        isMost: false,
+        volunteerAuditStatus:'',
+        joinTime:'',
     }
 
   },
@@ -57,13 +59,27 @@ export default {
         ajax_post(constant.api_base_url + '/vTeam/applyQuitTeam/'+item.teamId,
           null, data => {
             if (data.code === "200") {
-              this.getlist();
+              item.volunteerAuditStatus=4;
             }else {
               alert(data.message)
             }
           }
         )
       }
-    },
+    }
+  },
+  filters: {
+    teamStatus(item) {
+      switch (item) {
+        case 0:
+          return "申请中";
+        case 1:
+          return "已加入";
+        case 2:
+          return "已驳回";
+        case 4:
+          return "已退出";
+      }
+    }
   }
 }
