@@ -4,7 +4,7 @@
     <Row class="personal-center-content">
       <i-col span="6">
         <ul class="personal-center-menu">
-            <li v-for="(item,index) in menuList" :key="index"
+            <li v-for="(item,index) in tempMeun" :key="index"
                 :class="activeMenu==item.to?'active':''" @click="swtichMenu(item)">
               {{item.name}}
             </li>
