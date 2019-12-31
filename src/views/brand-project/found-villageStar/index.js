@@ -188,7 +188,7 @@ export default {
       //最震撼村宝
       var params = {
         'pageNum': 1,
-        'pageSize': 3,
+        'pageSize': 100,
         'type': 1,
       }
       var indexArr = ['一','二','三'];
@@ -209,7 +209,7 @@ export default {
       // 最出彩
       var params2 = {
         'pageNum': 1,
-        'pageSize': 3,
+        'pageSize': 100,
         'type': 2,
       }
       this.http.get('/vCunbaoVolunteer/getPageVCunbaoVolunteerByType',params2).then(res => {
@@ -228,7 +228,7 @@ export default {
       // 最感动
       var params3 = {
         'pageNum': 1,
-        'pageSize': 3,
+        'pageSize': 100,
         'type': 3,
       }
       this.http.get('/vCunbaoVolunteer/getPageVCunbaoVolunteerByType',params3).then(res => {
