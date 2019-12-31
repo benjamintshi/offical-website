@@ -94,7 +94,7 @@
               <span>其他</span>
             </Radio>
           </RadioGroup>
-          <span v-if="userInfo.volunteer.artSpetiality!=='唱歌'&&userInfo.volunteer.artSpetiality!=='跳舞'"><input type="text" v-model="userInfo.volunteer.artSpetiality"></span>
+          <span v-if="volunteerArtSpetiality!='1'&& volunteerArtSpetiality!='2'"><input type="text" v-model="userInfo.volunteer.artSpetiality"></span>
         </i-col>
       </Row>
       <Row>
@@ -170,7 +170,7 @@
           </Radio>
         </RadioGroup>
 
-        <span v-if="userInfo.volunteer.serviceTime!='每天'&& userInfo.volunteer.serviceTime!='周六日'"><input type="text" v-model="userInfo.volunteer.serviceTime"></span>
+        <span v-if="spevialServiceTime!='1'&& spevialServiceTime!='2'"><input type="text" v-model="userInfo.volunteer.serviceTime"></span>
       </div>
       <div class="radioList">
         <p style="margin-bottom: 20px;">可提供服务时间段</p>
