@@ -10,7 +10,7 @@
                   {{userInfo.userName}}
                   <span @click="modify = true" class="a-hover-style">编辑</span>
                 </p>
-                <div v-html="userInfo.volunteer.declaration"></div>
+                <div v-html="userInfo.volunteer.introduce"></div>
             </li>
         </ul>
 
@@ -44,7 +44,7 @@
         </li>
         <li>
           个人介绍内容：
-          <textarea v-model="userInfo.volunteer.declaration"></textarea>
+          <textarea v-model="userInfo.volunteer.introduce"></textarea>
         </li>
         <button class="common-btn" @click="submit">
           保存

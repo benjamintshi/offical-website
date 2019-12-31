@@ -44,7 +44,7 @@ export default {
       ajax_post(constant.api_base_url + '/vUser/updateUser', {
           userId: this.userInfo.userId,
           avatar: this.userInfo.avatar,
-          declaration: this.userInfo.volunteer.declaration
+          introduce: this.userInfo.volunteer.introduce
       }, data => {
         if (data.code !== '200') {
           alert(data.message);
