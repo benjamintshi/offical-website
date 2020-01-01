@@ -42,7 +42,7 @@ export default {
   },
   mounted(){
     this.getPageVTraining();
-    this.getPageContentStatistic();
+    this.getPageVLiterature();
   },
   methods:{
 
@@ -94,22 +94,22 @@ export default {
         })
       })
     },
-    getPageContentStatistic(){
+    getPageVLiterature(){
       var params = {
         pageNum:'1',
         pageSize:6
       }
-      this.http.get('/contentStatistic/getPageContentStatistic',params).then(res=>{
+      this.http.get('/vLiterature/getPageVLiterature',params).then(res=>{
         // this.total = res.data.data.total;
         this.newsList2 = [];
-        console.log(res.data.data)
-        // res.data.data.list.forEach(item => {
-        //   var news ={};
-        //   news.id = item.id;
-        //   news.title = item.trainingName;
-        //   news.time = format(item.createDatetime,'YYYY.MM.DD');;
-        //   this.newsList2.push(news);
-        // })
+        // console.log(res.data.data)
+        res.data.data.list.forEach(item => {
+          var news ={};
+          news.id = item.id;
+          news.title = item.title;
+          news.time = format(item.createDatetime,'YYYY.MM.DD');;
+          this.newsList2.push(news);
+        })
       })
     },
   }

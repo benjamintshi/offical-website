@@ -265,7 +265,7 @@ export default {
             train.timeShow = false;
           }
           if(item.activityEndDate){
-            var date3 =  new Date(item.activityEndDate).getTime() - nowDate;   //时间差的毫秒数
+            var date3 =  new Date(item.activityEndDate).getTime() - nowDate.getTime();   //时间差的毫秒数
             train.endTime = Math.floor(date3/(24*3600*1000))
           }else{
             train.endTime = 0;

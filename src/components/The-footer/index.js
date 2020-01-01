@@ -12,7 +12,7 @@ export default {
   },
   methods:{
     getLinklist(){
-      console.log("页面开始检索。。。");
+      // console.log("页面开始检索。。。");
       ajax_post(constant.api_base_url + '/vLink/queryVLinkList', {
         "enableStatus":1
       }, data => {
