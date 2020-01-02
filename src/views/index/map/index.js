@@ -4,12 +4,18 @@ export default {
       address_detail: null, //详细地址
       userlocation: {lng: "", lat: ""},
       inputValue:"",
-      searchResult:{
-        title:"",
-        time:"",
-        content:"本活动专门为义工朋友举办的长期活动，希望可以坚持锻炼\n" +
-        "目前都是人群缺少锻炼就会沦为亚健康，一人健康幸福三代人，和我们一起来太极吧！宝安新桥义工-艺术组有专人教授太极拳，无论你基础如何，相信自己, 坚持学习就会有意想不到的收获。"
-      },
+      searchResult:[
+        {
+          name:"北京市昌平区文化旅游志愿服务活动",
+          city:"北京市",
+          pri:"北苑"
+        },
+        {
+          name:"北京市昌平区文化旅游志愿服务活动",
+          city:"北京市",
+          pri:"北苑"
+        }
+      ],
       showResult:false,
       data: [{
         value: 'beijing',
@@ -57,7 +63,9 @@ export default {
             ]
           }
         ],
-      }]
+
+      }],
+      markerList:[]
     }
   },
   mounted(){
@@ -108,25 +116,63 @@ export default {
       let ne = bounds.getNorthEast();
       let lngSpan = Math.abs(sw.lng - ne.lng);
       let latSpan = Math.abs(ne.lat - sw.lat);
-      let opts = {
-        width : 200,     // 信息窗口宽度
-        height:1,
-        title : "" , // 信息窗口标题
-        enableMessage:true,//设置允许信息窗发送短息
-        class:""
+      window.toDetail = function (index){
+        localStorage.setItem("activeMenu","activityInfo");
+          const item = that.searchResult[index];
+
+          that.$router.push({
+            name:"activityDetail",
+            query:{"itemId":""}
+          })
       };
-      for (let i = 0; i < 5; i ++) {
+      this.lastInfoBox = null;
+
+      for (let i = 0; i < this.searchResult.length; i ++) {
+        let item = this.searchResult[i];
         // debugger
         let point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
         let marker = new BMap.Marker(point);
-        let content = '测试数据'+i;
-        let infoWindow = new BMap.InfoWindow("<p class='info-content'>"+content +"</p>", opts);  // 创建信息窗口对象
+
+        let content = '详情'+i;
+        let time ="2019.04.13 - 2019.08.29";
+
+        let html = "<div class='marker-detail'><p class='title'>"+ item.name +"</p><p class='time'>"+ time +
+          "</p><p class='content text-ellipsis'>"+ content + "</p><p class='toDetail' onclick='toDetail(\""+ i +"\")'> 查看详情</p></div>";
+        let infoBox = new BMapLib.InfoBox(that.map,html, {
+          boxStyle: {
+            // background: "#333333",
+            width: "499px",
+            height: "273px"
+          }
+        });
+        this.markerList.push({
+          marker:marker,
+          infoBox:infoBox,
+          point:point
+        });
         marker.addEventListener("click", function(){
-          that.map.openInfoWindow(infoWindow,point); //开启信息窗口
+          // that.map.openInfoWindow(infoWindow,point); //开启信息窗口
+          that.markerDetail(this,infoBox,point);
         });
         that.map.addOverlay(marker);
+
       }
+
     },
+    detail(item,index){
+      let markerObj = this.markerList[index];
+      this.markerDetail(markerObj.marker,markerObj.infoBox,markerObj.point);
+    },
+    markerDetail(marker,infoBox,point){
+      const that = this;
+      if(that.lastInfoBox){
+        //判断上一个窗体是否存在，若存在则执行close
+        that.lastInfoBox.close();
+      }
+      that.lastInfoBox = infoBox;
+      infoBox.open(marker);
+      that.map.centerAndZoom(point,15);
+    }
 
   }
 }
