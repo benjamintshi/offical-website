@@ -43,7 +43,7 @@ export default {
       this.getCunbaoNewses();
     },
     getCunbaoNewses(){
-      console.log("页面开始检索。。。");
+      // console.log("页面开始检索。。。");
       var params ={
         'pageNum':this.pageNum ,
         'pageSize':6,

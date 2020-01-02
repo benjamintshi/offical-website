@@ -5,6 +5,7 @@ export default {
   data() {
     return {//详情介绍
       teamId:'',
+      detail:'',
       agreement:{
         content:"用户须知用户须知用户须知",
         show:false
