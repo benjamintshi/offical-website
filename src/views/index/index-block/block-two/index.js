@@ -265,6 +265,9 @@ export default {
         })
       })
   },
+    toBrandDetail(item){
+        
+    }
 
   }
 }

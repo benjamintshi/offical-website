@@ -45,7 +45,7 @@
                 <span class="title text-ellipsis">{{item.title}} </span>
                 <span class="time"> {{item.time}}</span>
               </p>
-              <p  v-show="selected == 2" class="news-list a-hover-style" v-for="(item,index) in newsList14" :key="'inof4'+ index">
+              <p  v-show="selected == 2" class="news-list a-hover-style" v-for="(item,index) in newsList14" :key="'inof4'+ index" @click="toBrandDetail(item)">
                 <span class="circle-dot"> </span>
                 <span class="title text-ellipsis">{{item.title}} </span>
                 <span class="time"> {{item.time}}</span>

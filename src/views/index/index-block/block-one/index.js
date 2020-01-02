@@ -100,6 +100,20 @@ export default {
         })
         // console.log(this.right.newsList2)
       })
-    }
+    },
+    toFileDetail(item){
+      localStorage.setItem("activeMenu","volunteerNews");
+      this.$router.push({
+        name:"policyFileDetail",
+        query:{'itemId':item.id}
+      })
+    },
+    toNewsDetail(item){
+      localStorage.setItem("activeMenu","volunteerNews");
+      this.$router.push({
+        name:"newsDetail",
+        query:{'itemId':item.id}
+      })
+    },
   }
 }
