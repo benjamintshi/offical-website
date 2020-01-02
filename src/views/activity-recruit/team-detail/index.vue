@@ -25,7 +25,7 @@
       </Row>
       <Row>
         <i-col span="12" class="block3">
-          <Infodesc></Infodesc>
+          <Infodesc :team-detail="detail"></Infodesc>
 
         </i-col>
         <i-col span="12" class="block4">

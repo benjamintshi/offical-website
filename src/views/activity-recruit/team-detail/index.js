@@ -21,7 +21,7 @@ export default {
   methods:{
     getTeamAllDetailById(){
       this.http.get('/vTeam/getTeamAllDetailById/'+ this.teamId).then(res=>{
-        console.log(res.data)
+        // console.log(res.data)
         var rdata = res.data.data;
         if(rdata){
           this.detail = rdata;
