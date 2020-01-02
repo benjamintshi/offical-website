@@ -11,12 +11,23 @@
                 <Icon type="ios-search" color="#ffffff" size="25" @click="search"/>
               </span>
               </i-input>
-              <div class="search-result" v-if="showResult">
+              <div class="search-result" v-if="showResult" >
                 <p class="title">
-                  北京市昌平区文化旅游志愿服务活动
+                  搜索"<span>{{inputValue}}</span> "相关地区及活动
                 </p>
-                <p class="time">2019.04.13 - 2019.08.29</p>
-                <div class="search-result-content" v-html="searchResult.content">
+                <div class="search-result-list" >
+                 <Row v-for="(item,index) in searchResult" :key="index" class="a-hover-style">
+                   <div @click="detail(item,index)" >
+                     <i-col span="22">
+                       <p class="name">{{item.name}}</p>
+                       <p class="address">{{item.city}} <span>{{item.pri}}</span></p>
+
+                     </i-col>
+                     <i-col span="2" >
+                       <Icon type="ios-arrow-forward" size="30" color="#CACBCC" style="margin-top: 15px;"/>
+                     </i-col>
+                   </div>
+                 </Row>
                 </div>
               </div>
             </div>
