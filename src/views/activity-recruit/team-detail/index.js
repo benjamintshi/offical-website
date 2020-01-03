@@ -21,20 +21,21 @@ export default {
   methods:{
     getTeamAllDetailById(){
       this.http.get('/vTeam/getTeamAllDetailById/'+ this.teamId).then(res=>{
-        // console.log(res.data)
+        console.log(res.data)
         var rdata = res.data.data;
         if(rdata){
           this.detail = rdata;
-          this.detail.activityStartDate = format(rdata.activityStartDate,'YYYY.MM.DD');
-          this.detail.activityEndDate = format(rdata.activityEndDate,'YYYY.MM.DD');
-          this.detail.recruitStartDate = format(rdata.recruitStartDate,'YYYY.MM.DD');
-          this.detail.recruitEndDate = format(rdata.recruitEndDate,'YYYY.MM.DD');
+          this.detail.foundingTime = format(rdata.foundingTime,'YYYY.MM.DD');
           // 服务方式 0：现场 1：线上
-          if(rdata.activityMode == '0'){
-            this.detail.activityModeName = '现场'
+          if(rdata.serviceMode == '0'){
+            this.detail.serviceModeName = '现场'
           }else{
-            this.detail.activityModeName = '线上'
+            this.detail.serviceModeName = '线上'
           }
+          if(!this.detail.teamNum){
+            this.detail.teamNum = 0;
+          }
+
         }
 
       })

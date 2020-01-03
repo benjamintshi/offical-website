@@ -2,7 +2,7 @@
   <section>
     <p class="block-title" >
 
-            <span :class="selected ==item.value? 'a-hover-style right30 active':'a-hover-style right30'"
+            <span :class="selected ==item.value? 'a-hover-style rightTeam active':'a-hover-style rightTeam'"
                   v-for="(item,index) in menuList" :key="index" @click="selected =item.value ">
               {{item.name}}
             </span>
@@ -10,7 +10,7 @@
     </p>
     <img style="height: 6px;width: 100%;" src="static/images/villageStar/line.png" alt="">
     <section v-if=" selected == 'a'">
-      <div class="content" v-html="teamDesc">
+      <div class="content" v-html="detail.teamDesc">
 
       </div>
     </section>
@@ -60,3 +60,8 @@
 <script src="./index.js">
 
 </script>
+<style>
+  .rightTeam{
+    margin-right: 70px;
+  }
+</style>

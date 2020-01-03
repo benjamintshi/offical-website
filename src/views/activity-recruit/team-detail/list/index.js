@@ -12,10 +12,6 @@ export default {
           value:"a"
         },
         {
-          name:"招募要求",
-          value:"b"
-        },
-        {
           name:"培训历程",
           value:"c"
         },
