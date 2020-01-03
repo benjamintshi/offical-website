@@ -1,9 +1,11 @@
+import format from '@/utils/format.js'
 export default {
   data(){
     return {
       address_detail: null, //详细地址
       userlocation: {lng: "", lat: ""},
       inputValue:"",
+      inputValue2:"",
       valueArea:[],
       searchResult:[
         {
@@ -18,79 +20,23 @@ export default {
         }
       ],
       showResult:false,
-      data: [{
-        value: 'beijing',
-        label: '北京',
-        children: [
-          {
-            value: 'gugong',
-            label: '故宫'
-          },
-          {
-            value: 'tiantan',
-            label: '天坛'
-          },
-          {
-            value: 'wangfujing',
-            label: '王府井'
-          }
-        ]
-      }, {
-        value: 'jiangsu',
-        label: '江苏',
-        children: [
-          {
-            value: 'nanjing',
-            label: '南京',
-            children: [
-              {
-                value: 'fuzimiao',
-                label: '夫子庙',
-              }
-            ]
-          },
-          {
-            value: 'suzhou',
-            label: '苏州',
-            children: [
-              {
-                value: 'zhuozhengyuan',
-                label: '拙政园',
-              },
-              {
-                value: 'shizilin',
-                label: '狮子林',
-              }
-            ]
-          }
-        ],
-
-      }],
+      data: [],
       markerList:[]
     }
   },
   mounted(){
-    this.$nextTick(function () {
-      const  that = this;
-      // 创建Map实例
-      this.map = new BMap.Map("allmap");
-      // 初始化地图,设置中心点坐标，
-      var point = new BMap.Point(121.160724,31.173277); // 创建点坐标，汉得公司的经纬度坐标
-      this.map.centerAndZoom(point, 15);
-      this.map.enableScrollWheelZoom();
-
-      this.map.addEventListener("click", function(){
-        that.showResult = false;
-      });
-     this.addPoint();
-    })
+    this.getPageVActivity();
   },
   created() {
     this.getFirstData();//请求加载第一层数据
   },
   methods:{
     changeCity(value,selectedData){
-      this.valueArea = selectedData;
+      if(selectedData.length < 3){
+        this.valueArea = []
+      }else {
+        this.valueArea = selectedData;
+      }
       // console.log(this.valueArea);
       // console.log(selectedData);
     },
@@ -110,6 +56,52 @@ export default {
             this.data.push(area);
           })
         })
+    },
+    getPageVActivity() { //APP分页根据关键字查询活动列表
+      var params ={
+        activityName:this.inputValue,
+        pageNum:'1',
+        pageSize:10
+      }
+      // console.log(this.valueArea)
+      // console.log(this.valueArea.length)
+      if(this.valueArea.length > 1){
+          params.activityProvinceCode = this.valueArea[0].value
+          params.activityCityCode = this.valueArea[1].value
+          params.activityCountyCode =this.valueArea[2].value
+      }
+      this.http.get('/vActivity/getPageVActivity',params).then(res=>{
+        // console.log(res.data.data)
+        this.searchResult = []
+        res.data.data.list.forEach(item => {
+          var area ={};
+          area.name = item.activityName;
+          area.city = item.activityProvinceName + item.activityCityName;
+          area.pri = item.activityCountyName + item.activityAddr;
+          area.id = item.id;
+          area.activityDes = item.activityDes;
+          area.activityStartDate = format(item.activityStartDate,'YYYY.MM.DD HH:mm');
+          area.activityEndDate = format(item.activityEndDate,'YYYY.MM.DD HH:mm');
+          area.activityLongitude = item.activityLongitude;
+          area.activityLatitude = item.activityLatitude;
+          this.searchResult.push(area);
+        })
+        console.log(this.searchResult[0])
+        this.$nextTick(function () {
+          const  that = this;
+          // 创建Map实例
+          this.map = new BMap.Map("allmap");
+          // 初始化地图,设置中心点坐标，
+          var point = new BMap.Point(this.searchResult[0].activityLongitude,this.searchResult[0].activityLatitude); // 创建点坐标，汉得公司的经纬度坐标
+          this.map.centerAndZoom(point, 15);
+          this.map.enableScrollWheelZoom();
+
+          this.map.addEventListener("click", function(){
+            that.showResult = false;
+          });
+          this.addPoint();
+        })
+      })
     },
     loadData(item, callback){//异步加载子项
       item.loading = true;
@@ -136,6 +128,12 @@ export default {
       return labels[index];
     },
     search(item){
+      if(!this.inputValue){
+        this.showResult = false;
+        return;
+      }
+      this.inputValue2 = this.inputValue;
+      this.getPageVActivity();
       this.showResult = true;
       //将位置坐标传入
       // debugger
@@ -161,22 +159,21 @@ export default {
       window.toDetail = function (index){
         localStorage.setItem("activeMenu","activityInfo");
           const item = that.searchResult[index];
-
           that.$router.push({
             name:"activityDetail",
-            query:{"itemId":""}
+            query:{"itemId":item.id}
           })
       };
       this.lastInfoBox = null;
-
+      // console.log(this.searchResult.length)
       for (let i = 0; i < this.searchResult.length; i ++) {
         let item = this.searchResult[i];
         // debugger
-        let point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+        let point = new BMap.Point(item.activityLongitude, item.activityLatitude);
         let marker = new BMap.Marker(point);
 
-        let content = '详情'+i;
-        let time ="2019.04.13 - 2019.08.29";
+        let content = item.activityDes;
+        let time =item.activityStartDate + " - " + item.activityEndDate;
 
         let html = "<div class='marker-detail'><p class='title'>"+ item.name +"</p><p class='time'>"+ time +
           "</p><p class='content text-ellipsis'>"+ content + "</p><p class='toDetail' onclick='toDetail(\""+ i +"\")'> 查看详情</p></div>";

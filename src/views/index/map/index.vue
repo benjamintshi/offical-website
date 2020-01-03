@@ -13,7 +13,7 @@
               </i-input>
               <div class="search-result" v-if="showResult" >
                 <p class="title">
-                  搜索"<span>{{inputValue}}</span> "相关地区及活动
+                  搜索"<span>{{inputValue2}}</span> "相关地区及活动
                 </p>
                 <div class="search-result-list" >
                  <Row v-for="(item,index) in searchResult" :key="index" class="a-hover-style">
