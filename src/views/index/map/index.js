@@ -166,6 +166,7 @@ export default {
       };
       this.lastInfoBox = null;
       // console.log(this.searchResult.length)
+      this.markerList = [];
       for (let i = 0; i < this.searchResult.length; i ++) {
         let item = this.searchResult[i];
         // debugger
@@ -173,7 +174,7 @@ export default {
         let marker = new BMap.Marker(point);
 
         let content = item.activityDes;
-        debugger
+        // debugger
         let time =item.activityStartDate + " - " + item.activityEndDate;
 
         let html = "<div class='marker-detail'><p class='title'>"+ item.name +"</p> <p class='time'>"+ time +
@@ -200,6 +201,7 @@ export default {
 
     },
     detail(item,index){
+      console.log(this.markerList)
       let markerObj = this.markerList[index];
       this.markerDetail(markerObj.marker,markerObj.infoBox,markerObj.point);
     },
