@@ -28,6 +28,9 @@
           this.isRouterAlive = true;         //再打开
         })
       }
+    },
+    mounted(){
+      localStorage.setItem("activeMenu","index");
     }
   }
 </script>

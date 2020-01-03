@@ -266,7 +266,7 @@ export default {
       })
   },
     toBrandDetail(item){
-        
+
     }
 
   }

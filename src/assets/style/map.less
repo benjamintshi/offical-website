@@ -48,7 +48,7 @@
       padding:20px;
       margin: 10px auto;
       box-shadow: 0px 1px 16px 0px rgba(6, 13, 46, 0.2);
-
+      overflow-y: auto;
       text-align: left;
       .title{
         font-size:20px;
@@ -177,6 +177,21 @@
       width:100%;
       height: 100%;
       padding:30px;
+      p:nth-child(3){
+        font-size:18px;
+        font-family:PingFang SC;
+        font-weight:300;
+        color:rgba(101,101,102,1);
+        width:100%;
+        height: 110px;
+        text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
       .title{
         font-size:20px;
         font-family:PingFang SC;
@@ -188,14 +203,7 @@
         font-weight:300;
         color:rgba(177,178,179,1);
       }
-      .content{
-        font-size:18px;
-        font-family:PingFang SC;
-        font-weight:300;
-        color:rgba(101,101,102,1);
-        width:100%;
-        height: 100px;
-      }
+
       .toDetail{
         text-align: center;
         color: #fff;

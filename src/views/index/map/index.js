@@ -173,10 +173,11 @@ export default {
         let marker = new BMap.Marker(point);
 
         let content = item.activityDes;
+        debugger
         let time =item.activityStartDate + " - " + item.activityEndDate;
 
-        let html = "<div class='marker-detail'><p class='title'>"+ item.name +"</p><p class='time'>"+ time +
-          "</p><p class='content text-ellipsis'>"+ content + "</p><p class='toDetail' onclick='toDetail(\""+ i +"\")'> 查看详情</p></div>";
+        let html = "<div class='marker-detail'><p class='title'>"+ item.name +"</p> <p class='time'>"+ time +
+          "</p>"+ content + "<p class='toDetail' onclick='toDetail(\""+ i +"\")'> 查看详情</p></div>";
         let infoBox = new BMapLib.InfoBox(that.map,html, {
           boxStyle: {
             // background: "#333333",
