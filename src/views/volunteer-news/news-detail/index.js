@@ -3,6 +3,7 @@ export default {
   data() {
     return {
       newsInfo:{},//this.route.params
+      params:{},
       content:"<p> ",
       recommend:[
         {
@@ -25,20 +26,27 @@ export default {
     }
   },
   mounted(){
-    this.newsInfo.projectId = this.$route.query.itemId;
-    this.getVProjectAchieveById();
+    this.params.newsId = this.$route.query.itemId;
+    this.params.newsType = this.$route.query.newsType;
+    if(!this.params.newsType){
+      this.params.newsType = '1'
+    }
+    this.params.type = '1';
+    this.getNewsDetail();
   },
   methods:{
     // 点击推荐链接
     toRecommend(item){
-      this.newsInfo.projectId = item.id;
-      this.getVProjectAchieveById();
+      this.params.newsId = item.id;
+      this.params.newsType = item.newsType;
+      this.getNewsDetail();
     },
-    getVProjectAchieveById(){
-      this.http.get('/vProjectAchieve/getVProjectAchieveById/'+ this.newsInfo.projectId).then(res=>{
-        this.newsInfo.title = res.data.data.projectName;
-        this.content = res.data.data.projectInfo;
-        this.newsInfo.time = format(res.data.data.createDate,'YYYY/MM/DD HH:mm');
+    getNewsDetail(){
+      this.http.get('/news/getNewsDetail',this.params).then(res=>{
+        // console.log(res.data);
+        this.newsInfo.title = res.data.data.newsTitle;
+        this.content = res.data.data.newsContent;
+        this.newsInfo.time = format(res.data.data.publishDate,'YYYY/MM/DD HH:mm');
         // console.log(this.newsInfo);
         this.getGoodVolunteerShows();
       })
@@ -55,18 +63,19 @@ export default {
         'pageSize':5
       }
       this.newsList= [];
-      this.http.get('/vProjectAchieve/getGoodVolunteerShows/41',params).then(res=>{
+      this.http.get('/news/getGoodNews',params).then(res=>{
         this.recommend = [];
-        res.data.data.list.forEach(item => {
+        // console.log(res.data);
+        res.data.data.forEach(item => {
           var volunteer ={};
           // console.log(item);
-          volunteer.id = item.projectId;
-          volunteer.name = item.projectName;
-          volunteer.time = format(item.createDate,'YYYY.MM.DD');
-
+          volunteer.id = item.newsId;
+          volunteer.newsType = item.newsType;
+          volunteer.name = item.newsTitle;
+          volunteer.time = format(item.newsTitle,'YYYY.MM.DD');
           this.recommend.push(volunteer);
         })
-        console.log(this.recommend);
+        // console.log(this.recommend);
       })
     }
   }
