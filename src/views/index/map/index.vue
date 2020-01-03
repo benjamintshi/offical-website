@@ -33,6 +33,7 @@
             </div>
     </div>
     <Cascader :data="data" @on-change="changeCity"
+              :load-data="loadData"
               :clearable = "false"  :render-format="format"
               class="address-select"></Cascader>
   </div>

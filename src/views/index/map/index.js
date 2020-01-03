@@ -4,6 +4,7 @@ export default {
       address_detail: null, //详细地址
       userlocation: {lng: "", lat: ""},
       inputValue:"",
+      valueArea:[],
       searchResult:[
         {
           name:"北京市昌平区文化旅游志愿服务活动",
@@ -83,11 +84,52 @@ export default {
       });
      this.addPoint();
     })
-
+  },
+  created() {
+    this.getFirstData();//请求加载第一层数据
   },
   methods:{
     changeCity(value,selectedData){
-
+      this.valueArea = selectedData;
+      // console.log(this.valueArea);
+      // console.log(selectedData);
+    },
+    getFirstData() { //请求加载第一层数据
+        this.http.get('/vArea/getProvinces/1').then(res=>{
+          // console.log(res.data.data)
+          this.data = []
+          res.data.data.forEach(item => {
+            var area ={};
+            area.value = item.areaCode;
+            area.level = 1;
+            area.label = item.areaName;
+            if( area.value != '0'){
+              area.children = [];
+              area.loading = false;
+            }
+            this.data.push(area);
+          })
+        })
+    },
+    loadData(item, callback){//异步加载子项
+      item.loading = true;
+      this.http.get('/vArea/getAllAreas/'+ item.value).then(res=>{
+        // console.log(res.data.data)
+        item.children =[];
+        item.loading = false;
+        res.data.data.forEach(item2 => {
+          var area ={};
+          area.value = item2.areaCode;
+          area.label = item2.areaName;
+          area.level = item.level + 1;
+          if(item.level < 2){
+            area.children = [];
+            area.loading = false;
+          }
+          item.children.push(area);
+        })
+        callback();
+      })
     },
     format (labels, selectedData) {
       const index = labels.length - 1;
