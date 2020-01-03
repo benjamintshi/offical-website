@@ -74,6 +74,7 @@ export default {
           var news ={};
           news.id = item.newsId;
           news.title = item.newsTitle;
+          news.newsType = item.newsType;
           news.time = format(item.publishDate,'YYYY.MM.DD');;
           if(this.right.newsList.length < 5){
             this.right.newsList.push(news);
@@ -112,7 +113,7 @@ export default {
       localStorage.setItem("activeMenu","volunteerNews");
       this.$router.push({
         name:"newsDetail",
-        query:{'itemId':item.id}
+        query:{'itemId':item.id,'newsType':item.newsType}
       })
     },
   }

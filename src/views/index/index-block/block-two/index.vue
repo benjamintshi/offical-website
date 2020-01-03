@@ -52,7 +52,7 @@
               </p>
           </i-col>
             <i-col span="9" style="padding-left:20px;">
-              <Menu mode="horizontal" theme="light"  >
+              <Menu mode="horizontal" active-name="1" theme="light"  >
                 <MenuItem name="1">
                   活动招募
                 </MenuItem>
