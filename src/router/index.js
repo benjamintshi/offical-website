@@ -364,8 +364,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'hash',
-   // base: process.env.VUE_APP_BASE_URL,
+  mode: 'history',
+  base: process.env.VUE_APP_BASE_URL,
   routes,
   scrollBehavior(to, from, savedPosition) {
     // keep-alive 返回缓存页面后记录浏览位置
@@ -380,5 +380,5 @@ const router = new VueRouter({
     });
   }
 });
-console.log('test:'+ process.env.VUE_APP_BASE_URL);
+// console.log('test:'+ process.env.VUE_APP_BASE_URL);
 export default router

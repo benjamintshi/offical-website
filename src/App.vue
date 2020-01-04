@@ -30,7 +30,10 @@
       }
     },
     mounted(){
-      localStorage.setItem("activeMenu","index");
+      if(!this.$route.name == "/" || !localStorage.getItem("activeMenu")){
+        localStorage.setItem("activeMenu","index");
+      }
+
     }
   }
 </script>

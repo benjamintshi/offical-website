@@ -92,7 +92,7 @@ export default {
           // 创建Map实例
           this.map = new BMap.Map("allmap");
           // 初始化地图,设置中心点坐标，
-          var point = new BMap.Point(this.searchResult[0].activityLongitude,this.searchResult[0].activityLatitude); // 创建点坐标，汉得公司的经纬度坐标
+          var point = new BMap.Point(this.searchResult[0].activityLongitude,this.searchResult[0].activityLatitude);
           this.map.centerAndZoom(point, 15);
           this.map.enableScrollWheelZoom();
 
