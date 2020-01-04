@@ -5,7 +5,7 @@
     <div class="project">
       <Row>
         <i-col span="8" v-for="(item,index) in projectList" :key="index">
-          <div class="a-hover-style">
+          <div class="a-hover-style" @click="toLink(item)">
             <div class="icon">
               <img :src="'static/images/villageStar/icon'+(index+1)+'.png'" alt="">
             </div>

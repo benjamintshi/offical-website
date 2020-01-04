@@ -267,6 +267,23 @@ export default {
   },
     toBrandDetail(item){
 
+    },
+    toLinkDetail(item){
+      switch(this.selected2){
+        case "1":
+          window.open("http://zhiyuanzhe.culturedc.cn:180/home_show#/home_show/chunyu_show/"+item.id);
+          break;
+        case "2":
+          window.open("http://zhiyuanzhe.culturedc.cn:180/home_show#/home_show/sunshine_show/"+item.id);
+          break;
+        case "3":
+          window.open("http://zhiyuanzhe.culturedc.cn:180/home_show#/home_show/dream_show/"+item.id);
+          break;
+        default:
+          window.open("http://zhiyuanzhe.culturedc.cn:180/home_show#/home_show/chunyu_show/"+item.id);
+          break;
+
+      }
     }
 
   }
