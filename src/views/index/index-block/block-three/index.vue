@@ -11,16 +11,19 @@
               <img style="height: 6px" src="static/images/villageStar/line.png" alt="">
               <div class="recruit a-hover-style" v-for="(item,index) in recruitList" :key="index" @click="toDetail(item)">
                 <img :src="item.img" alt="">
-                <p class="title">
-                  {{item.title}}
-                </p>
-                <p class="address">
-                  <span class="text-ellipsis">{{item.address}}</span>
-                  <span class="wait" v-if="item.status == '1'">待开始</span>
-                  <span class="prograss" v-else-if="item.status == '2'">进行中</span>
-                  <span class="wait" v-else-if="item.status == '3'">已结束 </span>
-                </p>
-                <p class="time">招募时间：{{item.time}}  </p>
+                <div class="desc">
+                  <p class="title">
+                    {{item.title}}
+                  </p>
+                  <p class="address">
+                    <span class="text-ellipsis">{{item.address}}</span>
+                    <span class="wait" v-if="item.status == '1'">待开始</span>
+                    <span class="prograss" v-else-if="item.status == '2'">进行中</span>
+                    <span class="wait" v-else-if="item.status == '3'">已结束 </span>
+                  </p>
+                  <p class="time">招募时间：{{item.time}}  </p>
+                </div>
+
               </div>
               <div class="news-content">
                 <p class="news-list a-hover-style" v-for="(item,index) in newsList1" :key="index" @click="toDetail(item)">
