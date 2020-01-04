@@ -15,12 +15,12 @@
                   政策文件
                 </MenuItem>
               </Menu>
-                <p v-show="right.showLeft" class="news-list" v-for="(item,index) in right.newsList" :key="index">
+                <p v-show="right.showLeft" class="news-list a-hover-style" v-for="(item,index) in right.newsList" :key="index" @click="toNewsDetail(item)">
                   <span class="circle-dot"> </span>
                   <span class="title text-ellipsis">{{item.title}} </span>
                   <span class="time"> {{item.time}}</span>
                 </p>
-                <p v-show="right.showLeft == false" class="news-list" v-for="(item,index) in right.newsList2" :key="'info2-' + index">
+                <p v-show="right.showLeft == false" class="news-list a-hover-style" v-for="(item,index) in right.newsList2" :key="'info2-' + index" @click="toFileDetail(item)">
                   <span class="circle-dot"> </span>
                   <span class="title text-ellipsis">{{item.title}} </span>
                   <span class="time"> {{item.time}}</span>

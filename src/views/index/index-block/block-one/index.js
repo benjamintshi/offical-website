@@ -74,6 +74,7 @@ export default {
           var news ={};
           news.id = item.newsId;
           news.title = item.newsTitle;
+          news.newsType = item.newsType;
           news.time = format(item.publishDate,'YYYY.MM.DD');;
           if(this.right.newsList.length < 5){
             this.right.newsList.push(news);
@@ -100,6 +101,20 @@ export default {
         })
         // console.log(this.right.newsList2)
       })
-    }
+    },
+    toFileDetail(item){
+      localStorage.setItem("activeMenu","volunteerNews");
+      this.$router.push({
+        name:"policyFileDetail",
+        query:{'itemId':item.id}
+      })
+    },
+    toNewsDetail(item){
+      localStorage.setItem("activeMenu","volunteerNews");
+      this.$router.push({
+        name:"newsDetail",
+        query:{'itemId':item.id,'newsType':item.newsType}
+      })
+    },
   }
 }

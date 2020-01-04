@@ -3,29 +3,28 @@
     <div class="train-detail-content">
       <p class="detail-nav">
         <span @click="$router.push('activityRecruit')"> 活动招募 </span> >
-        <span @click="$router.push('volunteerTeam')"> 志愿团队 </span> > 招募详情
+        <span @click="$router.push('volunteerTeam')"> 志愿团队 </span> > 团队详情
       </p>
       <Row>
         <i-col span="12" class="block1">
           <img :src="detail.teamLogo" alt="">
         </i-col>
         <i-col span="12" class="block2">
-          <div class="title">{{detail.teamName}}</div>
-          <p>服务主题：{{detail.theme}}</p>
-          <p>项目时间：{{detail.activityStartDate}} - {{detail.activityEndDate}}</p>
-          <p>服务时间：{{detail.activityTimeBucket}}</p>
-          <p>培训对象：{{detail.trainingCrowd}}</p>
-          <p>服务方式：{{detail.activityModeName}}</p>
-          <p>服务区域：{{detail.activityProvinceName}} {{detail.activityCityName}}</p>
-          <p>服务详细地点：{{detail.activityAddr}}</p>
-          <p>计划服务人次：{{detail.activityPlanNum}}
-            <span class="active-link a-hover-style" style="float: right" @click="agreement.show = true;">志愿服务须知</span>
+          <div class="title"><strong>{{detail.teamName}}</strong></div>
+          <p>成立日期：{{detail.foundingTime}}</p>
+          <p>团队成员：{{detail.teamNum}}人</p>
+          <p>上级团队：{{detail.superTeam}}</p>
+          <p>服务方式：{{detail.serviceModeName}}</p>
+          <p>服务区域：{{detail.provinceName}} {{detail.cityName}}</p>
+          <p>服务详细地点：{{detail.address}}</p>
+          <p>
+            <span class="active-link a-hover-style" style="float: left" @click="agreement.show = true;">志愿服务须知</span>
           </p>
         </i-col>
       </Row>
       <Row>
         <i-col span="12" class="block3">
-          <Infodesc></Infodesc>
+          <Infodesc :team-detail="detail"></Infodesc>
 
         </i-col>
         <i-col span="12" class="block4">
@@ -38,12 +37,12 @@
             </li>
             <li class="content">
               <p class="title">{{detail.teamName}}</p>
-              <p>地址：{{detail.teamAddr}}</p>
+              <p>地址：{{detail.address}}</p>
             </li>
             <li class="content">
-              <p class="title">{{detail.activityContactName}}</p>
-              <p>手机：{{detail.activityContactPhone}}</p>
-              <p> 邮箱：{{detail.activityContactEmail}}</p>
+              <p class="title">{{detail.teamContactName}}</p>
+              <p>手机：{{detail.teamContactPhone}}</p>
+              <p> 邮箱：{{detail.teamContactEmail}}</p>
             </li>
           </ul>
 

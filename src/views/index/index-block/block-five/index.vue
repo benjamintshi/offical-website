@@ -26,7 +26,7 @@
               <img style="height: 6px" src="static/images/villageStar/line.png" alt="">
 
               <div class="news-content">
-                <p class="news-list a-hover-style" v-for="(item,index) in newsList1" :key="'info' + index" @click="toDetailL(item)">
+                <p class="news-list a-hover-style" v-for="(item,index) in newsList2" :key="'info2' + index" @click="toDetailL(item)">
                   <span class="circle-dot"> </span>
                   <span class="title text-ellipsis">{{item.title}} </span>
                   <span class="time"> {{item.time}}</span>

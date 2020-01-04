@@ -28,6 +28,12 @@
           this.isRouterAlive = true;         //再打开
         })
       }
+    },
+    mounted(){
+      if(!this.$route.name == "/" || !localStorage.getItem("activeMenu")){
+        localStorage.setItem("activeMenu","index");
+      }
+
     }
   }
 </script>

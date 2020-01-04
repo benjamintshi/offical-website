@@ -16,7 +16,9 @@
                 </p>
                 <p class="address">
                   <span class="text-ellipsis">{{item.address}}</span>
-                  <span :class="item.status ==1?'wait' :'prograss'">{{item.status==1?'待开始':'进行中'}}</span>
+                  <span class="wait" v-if="item.status == '1'">待开始</span>
+                  <span class="prograss" v-else-if="item.status == '2'">进行中</span>
+                  <span class="wait" v-else-if="item.status == '3'">已结束 </span>
                 </p>
                 <p class="time">招募时间：{{item.time}}  </p>
               </div>
@@ -41,7 +43,7 @@
                      <img :src="item.img" alt="" >
                      <p class="title text-ellipsis">{{item.title}}</p>
                      <p class="desc">
-                       <span>服务类型</span>
+                       <span>{{item.serviceModeName}}</span>
                        <span>{{item.style}}</span>
                        <span>{{item.number}}人</span>
                      </p>

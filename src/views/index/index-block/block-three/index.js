@@ -179,6 +179,7 @@ export default {
         pageNum:'1',
         pageSize:8
       }
+      var nowDate = new Date();
       this.http.get('/vActivity/getPageVActivity',params).then(res=>{
         this.total = res.data.data.total;
         this.recruitList = [];
@@ -203,6 +204,15 @@ export default {
             }else{
               // news.time = "-";
             }
+            if(nowDate.getTime() < new Date(item.activityStartDate).getTime()){
+              news.status = '1' // 待开始
+            }else if(nowDate.getTime() >= new Date(item.activityStartDate).getTime() &&
+              nowDate.getTime() >= new Date(item.activityEndDate).getTime()){
+              news.status = '2' // 进行中
+            }else{
+              news.status = '3'  // 已結束
+            }
+
             if(!news.img){
               news.img ='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg';
             }
@@ -236,9 +246,17 @@ export default {
             news.img = item.teamLogo;
             news.address = item.address;
             news.num = item.teamNum
+            if(!news.num){
+              news.num = 0;
+            }
             // news.address = news.address.replace('null','')
             if(!news.img){
               news.img ='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg';
+            }
+            if(item.serviceMode == '0'){
+              news.serviceModeName = '现场服务'
+            }else{
+              news.serviceModeName = '远程服务'
             }
             this.serviceList.push(news);
           }
