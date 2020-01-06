@@ -1,6 +1,12 @@
 <template>
   <div class="brand-project">
-    <img src="static/images/villageStar/top4.png" alt="">
+    <!--<img src="static/images/villageStar/top4.png" alt="">-->
+    <Carousel autoplay v-model="value1" loop class="img-list">
+      <CarouselItem v-for="(item,index) in topList" :key="index">
+        <div class="demo-carousel"  @click="toculDetail(item)"><img :src="item.img" alt=""></div>
+      </CarouselItem>
+
+    </Carousel>
     <p>国家级示范项目</p>
     <div class="project">
       <Row>

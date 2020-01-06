@@ -24,12 +24,23 @@ export default {
           areaName:"河南"
         }
       ],
-      area:"1"
+      area:"1",
+      topList:[
+        {
+          img:"static/images/villageStar/top4.png"
+        },
+        {
+          img:"static/images/villageStar/top4.png"
+        }
+      ]
     }
   },
   methods:{
     toLink(item){
       window.open(item.url);
+    },
+    toculDetail(item){
+
     }
   }
 }
