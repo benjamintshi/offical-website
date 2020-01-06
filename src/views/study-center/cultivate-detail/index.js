@@ -1,14 +1,11 @@
-export default {
+import {ajax_get} from "../../../utils/axios.util";
+import constant from "../../../utils/constant";
+import dataFormat from "../../../utils/format";
 
+export default {
   data() {
     return {
-      trainningId:'3',//培训活动id，还未获取到，先写死
-      //详情介绍
-      baseInfo:{
-        trainInfo:"<p>" +
-        "1. 主要负责管理图书馆秩序、规则；<br/>" +
-        "2. 帮助参与活动的亲子完成诵读活动 </p>",
-      },
+      trainInfo:{},
       columns1: [
         {
           title: '姓名',
@@ -19,36 +16,56 @@ export default {
           key: 'title'
         },
         {
-          title: '服务时间',
+          title: '申请时间',
           key: 'date'
         }
       ],
-      data1: [
-        {
-          name: 'John Brown',
-
-          title: '志愿者',
-          date: '2016-10-03'
-        },
-        {
-          name: 'Jim Green',
-          title: '志愿者',
-          date: '2016-10-01'
-        },
-        {
-          name: 'Joe Black',
-          title: '志愿者',
-          date: '2016-10-02'
-        },
-        {
-          name: 'Jon Snow',
-          title: '志愿者',
-          date: '2016-10-04'
-        }
-      ]
+      data1: []
     }
   },
+  mounted(){
+    this.getDetails();
+    this.getApplyPerson();
+  },
   methods:{
-
+      getDetails(){
+        ajax_get(constant.api_base_url + '/vTraining/getVTrainingById/'+this.$route.query.itemId, null
+          , data => {
+            if (data.code === "200") {
+              this.trainInfo=data.data;
+              this.trainInfo.trainingStartDate=this.date_format(data.data.trainingStartDate);
+              this.trainInfo.trainingEndDate=this.date_format(data.data.trainingEndDate)
+              this.trainInfo.trainingApplyStartDate=this.date_format(data.data.trainingApplyStartDate)
+              this.trainInfo.trainingApplyEndDate=this.date_format(data.data.trainingApplyEndDate)
+            }
+          }
+        )
+      },
+    getApplyPerson(){
+      ajax_get(constant.api_base_url + '/vTrainingCrowd/getPageNormalTrainingCrowd/', {
+        pageSize:7,
+        pageNum:1,
+        trainingId:this.$route.query.itemId,
+        }
+        , data => {
+          if (data.code === "200") {
+              for(let i=0;i<data.data.list.length;i++){
+                let a={
+                  name:data.data.list[i].userName,
+                  title: '学员',
+                  date: data.data.list[i].applyDate,
+                }
+                this.data1.push(a)
+              }
+          }
+        }
+      )
+    },
+    date_format(date_str) {
+      if (date_str==null || date_str=='') {
+        return '';
+      }
+      return date_str.split(' ')[0].replace(/-/g, '.');
+    },
   }
 }

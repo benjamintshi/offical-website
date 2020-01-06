@@ -36,22 +36,22 @@
         <Row>
           <i-col span="8" v-for="(item,index) in trainList" :key="index" class="block-list" >
             <div  @click="toculDetail(item)" class="a-hover-style">
-              <img :src="item.img" alt="">
-              <p class="title">{{item.title}}</p>
+              <img :src="item.trainingCover" alt="">
+              <p class="title">{{item.trainingName}}</p>
               <p class="address">
-                <span class="text-ellipsis">{{item.address}}</span>
                 <span class="wait" v-if="item.status == '1'">待开始</span>
                 <span class="prograss" v-else-if="item.status =='2'">进行中</span>
+                <span class="apply" v-else-if="item.status =='3'">已结束</span>
                 <span  v-else>已结束</span>
               </p>
-              <p class="time">开讲日期  {{item.timeStart}} - {{item.timeEnd}}</p>
+              <p class="time">开讲日期  {{item.trainingStartDate}} - {{item.trainingStartDate}}</p>
             </div>
 
           </i-col>
         </Row>
       </li>
     </ul>
-    <!--服务技能提升-->
+    <!--&lt;!&ndash;服务技能提升&ndash;&gt;
     <ul >
       <p class="sub-title">服务技能提升</p>
       <li >
@@ -73,7 +73,7 @@
           </i-col>
         </Row>
       </li>
-    </ul>
+    </ul>-->
   </div>
 </template>
 <script src="./index.js">

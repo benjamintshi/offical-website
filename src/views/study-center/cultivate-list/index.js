@@ -1,195 +1,154 @@
+import {ajax_get} from "../../../utils/axios.util";
+import constant from "../../../utils/constant";
+import dataFormat from "../../../utils/format";
 
 export default {
 
   data(){
     return{
-      trainList:[
-        {
-          title:"河南省文化和旅游志愿者走进新疆",
-          status:"3",
-          to:"/",
-          address:"安徽省黄山市歙县文化馆",
-
-          timeStart:"2019.08.01",
-          timeEnd:"2019.09.01",
-          img:"static/images/villageStar/zhiyuan.jpg",
-        },
-        {
-          title:"河南省文化和旅游志愿者走进新疆",
-          status:"1",
-          to:"/",
-          address:"安徽省黄山市歙县文化馆",
-
-          timeStart:"2019.08.01",
-          timeEnd:"2019.09.01",
-          img:"static/images/villageStar/zhiyuan.jpg",
-        },
-        {
-          title:"河南省文化和旅游志愿者走进新疆",
-          status:"2",
-          to:"/",
-          address:"安徽省黄山市歙县文化馆",
-          timeStart:"2019.08.01",
-          timeEnd:"2019.09.01",
-          img:"static/images/villageStar/zhiyuan.jpg",
-        },
-        {
-          title:"河南省文化和旅游志愿者走进新疆",
-          status:"3",
-          to:"/",
-          address:"安徽省黄山市歙县文化馆",
-
-          timeStart:"2019.08.01",
-          timeEnd:"2019.09.01",
-          img:"static/images/villageStar/zhiyuan.jpg",
-        },
-        {
-          title:"河南省文化和旅游志愿者走进新疆",
-          status:"1",
-          to:"/",
-          address:"安徽省黄山市歙县文化馆",
-
-          timeStart:"2019.08.01",
-          timeEnd:"2019.09.01",
-          img:"static/images/villageStar/zhiyuan.jpg",
-        },
-        {
-          title:"河南省文化和旅游志愿者走进新疆",
-          status:"4",
-          to:"/",
-          address:"安徽省黄山市歙县文化馆",
-          timeStart:"2019.08.01",
-          timeEnd:"2019.09.01",
-          img:"static/images/villageStar/zhiyuan.jpg",
-        }
-      ],
+      trainList:[],
       pageNum:1,//当前页码
       pageSize:9,
-      total:16,// 超过16时显示页码
-      areaList:[
-        {
-          name:"全部",
-          value:"all"
-        },
-        {
-          name:"北京",
-          value:"1"
-        },
-        {
-          name:"天津",
-          value:"2"
-        },{
-          name:"河北",
-          value:"3"
-        },
-        {
-          name:"山西",
-          value:"4"
-        },
-        {
-          name:"全部",
-          value:"5"
-        },
-        {
-          name:"北京",
-          value:"6"
-        },
-        {
-          name:"广东省",
-          value:"7"
-        },{
-          name:"西藏自治区",
-          value:"8"
-        },
-        {
-          name:"宁夏回族自治区",
-          value:"9"
-        },
-        {
-          name:"湖南省",
-          value:"5"
-        },
-        {
-          name:"北京",
-          value:"6"
-        },
-        {
-          name:"天津",
-          value:"7"
-        },{
-          name:"河北",
-          value:"8"
-        },
-        {
-          name:"青海省",
-          value:"9"
-        }
-      ],
-      cityCode:"all",
+      total:'',// 超过16时显示页码
+      areaList:[],
+      pCode:0,
       showAll:true,
       states:[
         {
           name:"全部",
-          value:"all"
+          value:0
         },
         {
           name:"待开始",
-          value:"b"
+          value:1
         },
         {
           name:"进行中",
-          value:"c"
+          value:2
         },
         {
           name:"已结束",
-          value:"d"
-        },
-        {
-          name:"可报名",
-          value:"e"
+          value:3
         }
       ],
       number:[
         {
           name:"全部",
-          value:"all"
+          planNumStart:0,
+          planNumEnd: 0,
+          value:0,
         },
         {
-          name:"0",
-          value:"b"
-        },
-        {
-          name:"0 - 100",
-          value:"c"
+          name:"1 - 100",
+          planNumStart:1,
+          planNumEnd: 100,
+          value:1,
         },
         {
           name:"101 - 200",
-          value:"d"
+          planNumStart:101,
+          planNumEnd: 200,
+          value:2,
         },
         {
           name:"201 - 500",
-          value:"e"
-        }
+          planNumStart:201,
+          planNumEnd: 500,
+          value:3,
+        },
+        {
+          name:"501 - 1000",
+          planNumStart:501,
+          planNumEnd: 10000,
+          value:4,
+        },
+        {
+          name:"1000以上",
+          planNumStart:1000,
+          planNumEnd: null,
+          value:5,
+        },
       ],
-      currentState:"all",
-      selectNumber:"all"
+      currentState:0,
+      planNumStart:0,
+      planNumEnd:0,
+      selectNumber: 0,
+
     }
   },
   mounted(){
-
+    this.getAreaList();
+    this.getList();
   },
   methods:{
+    getAreaList() {
+      ajax_get(constant.api_base_url + '/vArea/getAreas/0', null, data => {
+          if (data.code === "200") {
+            this.areaList = data.data;
+            let areaAll = {areaCode: 0, areaName: "全部"}
+            this.areaList.unshift(areaAll)
+          }
+        }
+      )
+    },
+    getList() {
+      ajax_get(constant.api_base_url + '/vTraining/getPageVTraining', {
+          pageNum: this.pageNum,
+          pageSize: this.pageSize,
+          status: this.currentState,
+          trainingProvinceCode: this.pCode,
+          planNumStart: this.planNumStart,
+          planNumEnd:this.planNumEnd,
+        }, data => {
+          if (data.code === "200") {
+            this.trainList=data.data.list;
+            this.total=data.data.total;
+            let nowTime =  dataFormat(new Date(),"YYYY-MM-DD HH:mm:ss");
+            for (let i=0;i < data.data.list.length ;i++){
+              if(data.data.list[i].trainingStartDate > nowTime ){
+                this.trainList[i].status=1;
+                this.trainList[i].trainingStartDate=this.date_format(this.trainList[i].trainingStartDate);
+                this.trainList[i].trainingEndDate=this.date_format(this.trainList[i].trainingEndDate);
+              }
+              else if(data.data.list[i].trainingStartDate <= nowTime && data.data.list[i].trainingEndDate >=nowTime  ){
+                this.trainList[i].status=2;
+                this.trainList[i].trainingStartDate=this.date_format(this.trainList[i].trainingStartDate);
+                this.trainList[i].trainingEndDate=this.date_format(this.trainList[i].trainingEndDate);
+              }
+              else{
+                this.trainList[i].status=3;
+                this.trainList[i].trainingStartDate=this.date_format(this.trainList[i].trainingStartDate);
+                this.trainList[i].trainingEndDate=this.date_format(this.trainList[i].trainingEndDate);
+              }
+            }
+          }
+
+        }
+      )
+    },
+    date_format(date_str) {
+      if (date_str==null || date_str=='') {
+        return '';
+      }
+      return date_str.split(' ')[0].replace(/-/g, '.');
+    },
     swtichCity(item){
-      this.cityCode = item.value;
+      this.pCode = item.areaCode;
+      this.getList();
     },
     swtichStatus(item){
       this.currentState = item.value;
+      this.getList();
     },
     swtichNumber(item){
-      this.selectNumber = item.value;
+      this.selectNumber=item.value;
+      this.planNumStart = item.planNumStart;
+      this.planNumEnd = item.planNumEnd;
+      this.getList();
     },
-    changePage(){
-
+    changePage(val){
+      this.pageNum=val;
+      this.getList();
     },
     toDetail(item){
       this.$router.push({

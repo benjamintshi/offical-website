@@ -83,7 +83,7 @@
             <div class="desc"  v-for="(item,index) in villageTreasure1" :key="index" >
               <img :src="item.avatarUrl"  onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'"  alt="">
               <div>
-                <p>第{{item.indexNum}}名  {{item.name}}</p>
+                <p>{{item.name}}</p>
                 <span @click="watchVill(item)" >点击详情</span>
               </div>
             </div>
@@ -93,7 +93,7 @@
             <div class="desc"  v-for="(item,index) in villageTreasure2" :key="index" >
               <img :src="item.avatarUrl"  onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'"  alt="">
               <div>
-                <p>第{{item.indexNum}}名  {{item.name}}</p>
+                <p>{{item.name}}</p>
                 <span @click="watchVill(item)" >点击详情</span>
               </div>
             </div>
@@ -103,7 +103,7 @@
             <div class="desc"  v-for="(item,index) in villageTreasure3" :key="index" >
               <img :src="item.avatarUrl"  onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'"  alt="">
               <div>
-                <p>第{{item.indexNum}}名  {{item.name}}</p>
+                <p>{{item.name}}</p>
                 <span @click="watchVill(item)" >点击详情</span>
               </div>
             </div>

@@ -7,18 +7,18 @@
       </p>
       <Row>
         <i-col span="12" class="block1">
-          <img src="static/images/villageStar/zhiyuan.jpg" alt="">
+          <img :src="trainInfo.trainingCover" alt="">
         </i-col>
         <i-col span="12" class="block2">
           <div class="title">培训主题</div>
-          <p>培训类型：岗位培训</p>
-          <p>培训方式：面授培训</p>
-          <p>开课时间：2019.03.01 - 2019.06.01   共60学时</p>
-          <p>培训对象：亲子</p>
-          <p>培训讲师：讲师姓名</p>
-          <p>培训区域：陕西省 韩城市</p>
-          <p>培训详细地点：韩城市太史大街文化馆</p>
-          <p>计划培训人数：100人</p>
+          <p>培训类型：{{trainInfo.trainingType}}</p>
+          <p>培训方式：{{trainInfo.trainingMode}}</p>
+          <p>开课时间：{{trainInfo.trainingStartDate}} - {{trainInfo.trainingEndDate}}    共{{trainInfo.trainingSumHour}}学时</p>
+          <p>培训对象：{{trainInfo.trainingCrowd}}</p>
+          <p>培训讲师：{{trainInfo.trainingTeacher}}</p>
+          <p>培训区域：{{trainInfo.trainingProvinceName}} {{trainInfo.trainingCityName}}</p>
+          <p>培训详细地点：{{trainInfo.trainingAddr}}</p>
+          <p>计划培训人数：{{trainInfo.trainingPlanNum}}</p>
         </i-col>
       </Row>
       <Row>
@@ -27,16 +27,16 @@
           <img style="height: 6px;width: 100%;" src="static/images/villageStar/line.png" alt="">
           <div class="content">
             <div class="title">培训详情</div>
-            <div v-html="baseInfo.trainInfo">
+            <div v-html="trainInfo.trainingDes">
             </div>
           </div>
           <div class="content">
             <div class="title">报名日期</div>
-              <p class="time">2019.03.01 - 2019.06.01</p>
+              <p class="time">{{trainInfo.trainingApplyStartDate}} - {{trainInfo.trainingApplyEndDate}}</p>
           </div>
           <div class="content">
             <div class="title">报名要求</div>
-            <div v-html="baseInfo.trainInfo">
+            <div v-html="trainInfo.trainingApplyDes">
             </div>
           </div>
         </i-col>
@@ -56,13 +56,14 @@
                 <img style="height: 6px;width: 100%;" src="static/images/villageStar/line.png" alt="">
               </li>
               <li class="content">
-                <p class="title">中国旅游志愿者大连中山支队</p>
-                <p>地址：辽宁省大连市中山区一德街83号</p>
+                <p class="title">{{trainInfo.teamName}}</p>
+                <p>地址：{{trainInfo.teamAddr}}</p>
               </li>
               <li class="content">
-                <p class="title">栾胜刚</p>
-                <p>手机：13940938832</p>
-                <p> 邮箱：luanshenggang@126.com</p>
+                <p class="title">{{trainInfo.trainingContactName}}</p>
+                <p>手机：{{trainInfo.trainingContactPhone}}</p>
+                <p> 邮箱：{{trainInfo.trainingContactEmail}}
+                </p>
               </li>
             </ul>
 
@@ -73,7 +74,11 @@
 
   </div>
 </template>
-
+<style>
+  .content img{
+    max-width: 100%;
+  }
+</style>
 <script src="./index.js">
 
 </script>
