@@ -3,9 +3,8 @@
     <!--<img src="static/images/villageStar/top4.png" alt="">-->
     <Carousel autoplay v-model="value1" loop class="img-list">
       <CarouselItem v-for="(item,index) in topList" :key="index">
-        <div class="demo-carousel"  @click="toculDetail(item)"><img :src="item.img" alt=""></div>
+        <div class="demo-carousel"  @click="toculDetail(item)"><img :src="item.url" alt=""></div>
       </CarouselItem>
-
     </Carousel>
     <p>国家级示范项目</p>
     <div class="project">
@@ -26,25 +25,24 @@
     <p>
       地方品牌项目
       <Select  v-model="area" style="width: 100px;display: inline-block;margin-left: 23px;">
-        <Option v-for="item in select01" :value="item.areaCode" :key="item.areaCode">{{ item.areaName }}</Option>
+        <Option v-for="item in select01" :value="item.areaCode" :key="item.areaCode" >{{ item.areaName }}</Option>
       </Select>
     </p>
-    <div class="local-project">
-      <router-link to="villageStar">
-        <img src="static/images/common/test1.png" alt="" style="height: 276px;">
-        <div class="word-bg">
-          <p>春晚</p>
+    <ul>
+      <li>
+        <div class="local-project">
+          <a v-for="(item,index) in bandProjectList" :key="index" @click="toDetail(item)">
+            <img :src="item.bannerUrl" alt="" style="height: 276px;">
+            <div class="word-bg">
+              <p>{{item.brandTitle}}</p>
+            </div>
+          </a>
         </div>
-      </router-link>
-      <router-link to="villageStar">
-        <img src="static/images/common/test.png" alt="" style="height: 276px;">
-        <div class="word-bg">
-           <p>村宝</p>
-        </div>
-      </router-link>
-    </div>
-
+        <Page v-if="total>9" :total="total" :pageSize="pageSize" prev-text="上一页" next-text="下一页" :current="pageNum" @on-change="changePage"/>
+      </li>
+    </ul>
   </div>
+
 </template>
 <script src="./index.js">
 
