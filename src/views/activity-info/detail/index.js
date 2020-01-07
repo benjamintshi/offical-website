@@ -30,13 +30,8 @@ export default {
       console.log(this.info.activityLatitude+":"+this.info.activityLongitude)
       let point = new BMap.Point(this.info.activityLongitude,this.info.activityLatitude);
       map.centerAndZoom(point, 15);
+      debugger
       map.enableScrollWheelZoom();
-      // 随机向地图添加25个标注
-      var bounds = map.getBounds();
-      var sw = bounds.getSouthWest();
-      var ne = bounds.getNorthEast();
-      var lngSpan = Math.abs(sw.lng - ne.lng);
-      var latSpan = Math.abs(ne.lat - sw.lat);
       /*for (var i = 0; i < 2; i ++) {
         let point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));*/
         this.addMarker(map,point);

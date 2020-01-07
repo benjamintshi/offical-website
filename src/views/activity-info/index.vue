@@ -5,15 +5,16 @@
       <li class="filter-tool">
         <div>
           <p> <span style="margin-right: 35px">区</span>域：</p>
-          <div class="selectCity ">
+          <div :class="showAll?'selectCity':'selectCity retract' ">
             <span v-for="(item,index) in areaList" :key="index" @click="swtichCity(item)"
                   :class="pCode ==item.areaCode?'a-hover-style active':'a-hover-style'">
               {{item.areaName}}
             </span>
             <!--收起 展开没有效果-->
-           <!-- <p v-if="showAll"   class="control a-hover-style"  @click="close">收起</p>
-            <p  v-else class="control a-hover-style" @click="open">展开</p>-->
+
           </div>
+          <div class="control a-hover-style" v-if="showAll" @click="showAll = false">收起</div>
+          <div class="control a-hover-style" v-else @click="showAll = true">展开</div>
 
         </div>
         <div>
