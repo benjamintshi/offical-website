@@ -278,7 +278,7 @@ export default {
     submit() {
       axios({
         method: 'post',
-        url: 'http://zyz.liyue.com/socket/api/vUser/applyToBeVolunteer',
+        url: 'http://zyz.liyue.com/socket/api/vUser/updateUser',
         data: {
           userId: this.userInfo.userId,
           userName: this.userInfo.userName,

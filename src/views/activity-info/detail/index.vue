@@ -7,10 +7,10 @@
     <Row>
       <i-col span="13">
         <p class="title">
-          韩城市司马迁图书馆举办亲子诵读经典活动
+          {{info.activityName}}
         </p>
-        <p class="date">项目时间：2019.07.01 - 2019.07.10</p>
-        <div class="content" v-html="info.content">
+        <p class="date">项目时间：{{info.activityStartDate}} - {{info.activityEndDate}}</p>
+        <div class="content" v-html="info.activityDes">
 
         </div>
         <p class="title">服务地点</p>
@@ -19,17 +19,16 @@
       <i-col span="11">
           <div class="base-info">
             <p class="title">相关信息</p>
-            <p>志愿者/团队： 梁建利</p>
-            <p>项目时间：2019.03.01 - 2019.06.01</p>
-            <p>服务对象：亲子</p>
-            <p>服务区域：河北省 保定市</p>
-            <p>服务主题：学雷锋活动</p>
-            <p>服务时间：9:00 - 12:00   14:00 - 16:00</p>
-            <p>服务方式：现场</p>
-            <p>详细地址：河北省保定市阜平县</p>
-
-            <p class="apply a-hover-style" @clicj="showModal = true">我要参加</p>
-            <p class="toDetail a-hover-style">查看招募要求</p>
+            <p>志愿者/团队： {{info.activityContactName}}</p>
+            <p>项目时间：{{info.activityStartDate}} - {{info.activityEndDate}}</p>
+            <p>服务对象：{{info.activityCrowd}}</p>
+            <p>服务区域：{{info.activityProvinceName}} {{info.activityCityName}}</p>
+            <p>服务主题：{{info.theme}}</p>
+            <p>服务时间：{{info.activityTimeBucket}}</p>
+            <p>服务方式：{{info.activityMode}}</p>
+            <p>详细地址：{{info.activityAddr}}</p>
+            <p v-if="info.canCrowdAttend===1 && info.participateFlg!==1 " class="apply a-hover-style" @click="applyActivity">我要参加</p>
+            <p class="toDetail a-hover-style" @click="checkRecruitRequirement ">查看招募要求</p>
           </div>
 
       </i-col>
@@ -46,6 +45,11 @@
     </Modal>
   </ul>
 </template>
+<style>
+  .content img{
+    max-width: 100%;
+  }
+</style>
 <script src="./index.js">
 
 </script>

@@ -1,3 +1,6 @@
+import {ajax_get} from "../../utils/axios.util";
+import constant from "../../utils/constant";
+import dataFormat from "../../utils/format";
 
 export default {
 
@@ -24,39 +27,25 @@ export default {
           id:"3"
         },
       ],
-      literatureList:[  //资讯
-      {
-        title:"河南省文化和旅游志愿者走进新疆河南省文化和旅游志愿者走进新疆",
-        status:"1",
-        to:"/"
-      },
-      {
-        title:"河南省文化和旅游志愿者走进新疆",
-        status:"1",
-        to:"/"
-      },
-      {
-        title:"河南省文化和旅游志愿者走进新疆",
-        status:"3",
-        to:"/"
-      },
-      {
-        title:"河南省文化和旅游志愿者走进新疆",
-        status:"3",
-        to:"/"
-      },
-      {
-        title:"河南省文化和旅游志愿者走进新疆",
-        status:"2",
-        to:"/"
-      },
-      {
-        title:"河南省文化和旅游志愿者走进新疆",
-        status:"2",
-        to:"/"
-      }
-
-    ],
+      states:[
+        {
+          name:"全部",
+          value: 0
+        },
+        {
+          name:"待开始",
+          value: 1
+        },
+        {
+          name:"进行中",
+          value: 2
+        },
+        {
+          name:"已结束",
+          value: 3
+        },
+      ],
+      literatureList:[],
       trainList:[
         {
           title:"河南省文化和旅游志愿者走进新疆",
@@ -91,9 +80,58 @@ export default {
     }
   },
   mounted(){
+    this.getLiteratureList();
+    this.getTrainList();
 
   },
   methods:{
+    getTrainList(){
+      ajax_get(constant.api_base_url + '/vTraining/getPageVTraining/', {
+          pageSize: 6,
+          pageNum:  1,
+        }, data => {
+          if (data.code === "200") {
+            this.trainList=data.data.list;
+            let nowTime =  dataFormat(new Date(),"YYYY-MM-DD HH:mm:ss");
+            console.log(nowTime)
+            for (let i=0;i < data.data.list.length ;i++){
+              if(data.data.list[i].trainingStartDate > nowTime ){
+                this.trainList[i].status=1;
+                this.trainList[i].trainingStartDate=this.date_format(this.trainList[i].trainingStartDate);
+                this.trainList[i].trainingEndDate=this.date_format(this.trainList[i].trainingEndDate);
+              }
+              else if(data.data.list[i].trainingStartDate <= nowTime && data.data.list[i].trainingEndDate >=nowTime  ){
+                this.trainList[i].status=2;
+                this.trainList[i].trainingStartDate=this.date_format(this.trainList[i].trainingStartDate);
+                this.trainList[i].trainingEndDate=this.date_format(this.trainList[i].trainingEndDate);
+              }
+              else{
+                this.trainList[i].status=3;
+                this.trainList[i].trainingStartDate=this.date_format(this.trainList[i].trainingStartDate);
+                this.trainList[i].trainingEndDate=this.date_format(this.trainList[i].trainingEndDate);
+              }
+            }
+          }
+        }
+      )
+    },
+    date_format(date_str) {
+      if (date_str==null || date_str=='') {
+        return '';
+      }
+      return date_str.split(' ')[0].replace(/-/g, '.');
+    },
+    getLiteratureList(){
+      ajax_get(constant.api_base_url + '/vLiterature/getPageVLiterature/', {
+          pageSize: 6,
+          pageNum:  1,
+        }, data => {
+          if (data.code === "200") {
+            this.literatureList=data.data.list;
+          }
+        }
+      )
+    },
     toDetail(item){
       this.$router.push({
         name:"literatureDetail",
