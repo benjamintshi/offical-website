@@ -22,8 +22,8 @@
         <li class="center " v-else>
           <div class="scan-login">
             <img v-bind:src="qr_code_src" alt="">
-            <p style="letter-spacing: 1.7px;">使用<span>文化和旅游志愿服</span></p>
-            <p  style="letter-spacing:0.2px;"><span>务</span>APP或小程序扫码登录</p>
+            <p >使用<span>文旅志愿</span>App扫码登录</p>
+
           </div>
         </li>
         <li class="bottom">

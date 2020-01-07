@@ -20,10 +20,10 @@
       </li>
 
     </ul>
-    <ul class="search-result">
+    <ul class="search-result" v-if="searchValue!='' ">
       <li class="nav">
         <div>
-          <p>关于“<span class="tag">{{searchValue}}</span>”的搜索结果 </p>
+          <p>关于“ <span class="tag">{{searchValue}}</span> ”的搜索结果 </p>
           <p class="menu">
             <span v-for="(item,index) in menu" :key="index" :class="activeMenu == item.id?'active':''"   @click="switchMenu(item)">
                 {{item.name}}

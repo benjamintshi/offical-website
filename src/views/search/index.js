@@ -22,10 +22,7 @@ export default {
       activeMenu: "a",
       resultList: [],
       newsList: [
-        {
-          newsCover: '',
-          newsTitle: ''
-        }
+
       ],
       activityList: [
         {
