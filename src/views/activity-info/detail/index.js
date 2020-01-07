@@ -30,7 +30,6 @@ export default {
       console.log(this.info.activityLatitude+":"+this.info.activityLongitude)
       let point = new BMap.Point(this.info.activityLongitude,this.info.activityLatitude);
       map.centerAndZoom(point, 15);
-      debugger
       map.enableScrollWheelZoom();
       /*for (var i = 0; i < 2; i ++) {
         let point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));*/
@@ -39,7 +38,8 @@ export default {
     },
     // 编写自定义函数,创建标注
     addMarker(map,point){
-      let marker = new BMap.Marker(point);
+      let myIcon = new BMap.Icon("static/images/common/point.png", new BMap.Size(20,33));
+      let marker = new BMap.Marker(point,{icon:myIcon});
       map.addOverlay(marker);
     },
     date_format(date_str) {

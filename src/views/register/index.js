@@ -47,7 +47,7 @@ export default {
         }
       )
       const that = this;
-      let time = 5;
+      let time = 60;
       this.t = setInterval(() => {
         that.canSend = false;
         time--;

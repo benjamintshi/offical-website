@@ -83,8 +83,15 @@
             <div class="desc"  v-for="(item,index) in villageTreasure1" :key="index" >
               <img :src="item.avatarUrl"  onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'"  alt="">
               <div>
-                <p>{{item.name}}</p>
-                <span @click="watchVill(item)" >点击详情</span>
+                <table>
+                  　　<tr>
+                  　　<td style="vertical-align:middle;height:84px;">
+                        <p>{{item.name}}</p>
+                        <span @click="watchVill(item)" >点击详情</span>
+                      </td>
+                  　　</tr>
+                  </table>
+
               </div>
             </div>
           </i-col>

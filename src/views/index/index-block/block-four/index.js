@@ -20,7 +20,9 @@ export default {
     // 编写自定义函数,创建标注
     addMarker(map,point){
       // debugger
-      let marker = new BMap.Marker(point);
+      let myIcon = new BMap.Icon("static/images/common/point.png", new BMap.Size(20,33));
+      let marker = new BMap.Marker(point,{icon:myIcon});
+
       map.addOverlay(marker);
     },
     getActivityMap(){
