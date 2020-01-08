@@ -3,7 +3,7 @@
         <li class="block-one">
           <Row>
             <i-col span="12">
-              <img :src="left.img" alt="">
+              <img :src="left.img" alt="" class="a-hover-style" @click="toDetail">
               <p class="img-title text-ellipsis">{{left.title}}</p>
             </i-col>
             <i-col span="12" style="padding-left:20px;">

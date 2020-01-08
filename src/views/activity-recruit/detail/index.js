@@ -108,6 +108,14 @@ export default {
         })
       })
     },
+    toDetail(){
+      this.$router.push({
+        name:"activityDetail",
+        query:{
+          'itemId':""
+        }
+      })
+    }
   }
 }
 

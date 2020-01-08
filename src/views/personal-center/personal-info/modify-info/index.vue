@@ -16,7 +16,7 @@
           <p ><span style="letter-spacing: 50px;">姓</span>名</p>
         </i-col>
         <i-col span="20">
-          <input type="text" placeholder="" v-model="userInfo.userName">
+          <input type="text" placeholder="" v-model="userInfo.userName" disabled="disabled">
         </i-col>
       </Row>
       <Row>
@@ -24,7 +24,7 @@
           <p ><span style="letter-spacing: 7px;">证件号</span>码</p>
         </i-col>
         <i-col span="20">
-          <input type="text" placeholder="" v-model="userInfo.identification">
+          <input type="text" placeholder="" v-model="userInfo.identification" disabled="disabled">
         </i-col>
       </Row>
       <Row>
@@ -32,8 +32,8 @@
           <p ><span style="letter-spacing: 7px;">证件类</span>型</p>
         </i-col>
         <i-col span="20">
-          <Select v-model="userInfo.cardType" style="width:370px;">
-            <Option v-for="item in cardList" :value="item.id" :key="item.value">{{ item.name }}</Option>
+          <Select disabled="disabled" v-model="userInfo.cardType" style="width:370px;">
+            <Option  v-for="item in cardList" :value="item.id" :key="item.value">{{ item.name }}</Option>
           </Select>
         </i-col>
       </Row>

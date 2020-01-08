@@ -116,5 +116,9 @@ export default {
         query:{'itemId':item.id,'newsType':item.newsType}
       })
     },
+    toDetail(){
+      // 加个参数
+      this.toNewsDetail();
+    }
   }
 }

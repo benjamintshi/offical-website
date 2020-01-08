@@ -29,11 +29,11 @@ export default {
       appendix:[
         {
           name:"在线旅游经营服务管理暂行规定（征求意见稿）",
-          url:"http://106.13.17.103/html/test.docx"
+          url:""
         },
         {
           name:"关于《在线旅游经营服务管理暂行规定（征求意见稿）》",
-          url:"http://106.13.17.103/html/test.docx"
+          url:""
         }
       ]
     }
@@ -97,6 +97,9 @@ export default {
         })
         // console.log(this.recommend);
       })
+    },
+    downLoad(url){
+      window.open(url)
     }
   }
 

@@ -171,8 +171,8 @@ export default {
         let item = this.searchResult[i];
         // debugger
         let point = new BMap.Point(item.activityLongitude, item.activityLatitude);
-        let marker = new BMap.Marker(point);
-
+        let myIcon = new BMap.Icon("static/images/common/point.png", new BMap.Size(20,33));
+        let marker = new BMap.Marker(point,{icon:myIcon});
         let content = item.activityDes;
         // debugger
         let time =item.activityStartDate + " - " + item.activityEndDate;
@@ -195,6 +195,7 @@ export default {
           // that.map.openInfoWindow(infoWindow,point); //开启信息窗口
           that.markerDetail(this,infoBox,point);
         });
+
         that.map.addOverlay(marker);
 
       }

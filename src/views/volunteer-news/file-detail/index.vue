@@ -94,7 +94,7 @@
           <i-col span="22">
             <p v-for="(item,index) in appendix" :key="index" style="color: #B1B2B3" class="a-hover-style">
               {{item.name}}
-              <a :href="item.url"  target="_blank">下载</a>
+              <span  style="color: #2181E0" @click="downLoad(item.url)">下载</span>
             </p>
           </i-col>
         </Row>
