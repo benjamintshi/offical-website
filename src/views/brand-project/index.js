@@ -7,6 +7,7 @@ export default {
       pageNum:1,
       total:0,// 超过16时显示页码
       bandProjectList:[],
+      value1:0,
       projectList:[
         {
           name:"春雨工程",

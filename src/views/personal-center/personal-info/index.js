@@ -4,7 +4,8 @@ export default {
   components:{ BaseInfo , ModifyInfo },
   data() {
     return {
-      modify:false
+      modify:false,
+      userInfo:{}
     }
 
   },
@@ -15,6 +16,9 @@ export default {
 
     login(){
 
+    },
+    getUserInfo(data){
+      this.userInfo = data;
     }
   }
 }
