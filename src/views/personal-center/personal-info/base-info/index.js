@@ -41,6 +41,7 @@ export default {
        null, data => {
           if (data.code === "200") {
             this.userInfo = data.data;
+            this.$emit('userInfo',this.userInfo);
             this.getServiceArea();
           }
         }

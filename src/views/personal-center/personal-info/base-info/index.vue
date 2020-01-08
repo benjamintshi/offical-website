@@ -131,7 +131,7 @@
           <Row>
             <i-col span="5">从业状况</i-col>
             <i-col span="8" v-if="userInfo.volunteer.workStatus==0">离职</i-col>
-            <i-col span="7" v-else-if="userInfo.volunteer.workStatus==1">在职</i-col>
+            <i-col span="8" v-else-if="userInfo.volunteer.workStatus==1">在职</i-col>
             <i-col span="4" >工作年限</i-col>
             <i-col span="7">{{userInfo.volunteer.workYear || "无"}}</i-col>
           </Row>
