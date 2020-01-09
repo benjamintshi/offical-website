@@ -69,7 +69,7 @@ export default {
       areaList:[
         {
           name:"全部",
-          value:"all"
+          value:"0"
         },
         {
           name:"北京",
@@ -208,7 +208,7 @@ export default {
           value:"29"
         },
       ],
-      cityCode:"all",
+      cityCode:"0",
       showAll:false,
       states:[
         {
