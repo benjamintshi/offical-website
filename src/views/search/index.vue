@@ -1,5 +1,5 @@
 <template>
-  <div class="search">
+  <div class="search-pag">
     <ul class="search-top">
       <li class="search-input-content">
         <img class="bg" src="static/images/common/search-bg.png" alt="">

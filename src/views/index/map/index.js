@@ -178,7 +178,7 @@ export default {
         let time =item.activityStartDate + " - " + item.activityEndDate;
 
         let html = "<div class='marker-detail'><p class='title'>"+ item.name +"</p> <p class='time'>"+ time +
-          "</p>"+ content + "<p class='toDetail' onclick='toDetail(\""+ i +"\")'> 查看详情</p></div>";
+          "</p> <div class='content'>"+ content + "</div> <p class='toDetail' onclick='toDetail(\""+ i +"\")'> 查看详情</p></div>";
         let infoBox = new BMapLib.InfoBox(that.map,html, {
           boxStyle: {
             // background: "#333333",
