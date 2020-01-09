@@ -14,6 +14,10 @@
               <Page v-if="total>1" :total="total" :pageSize="pageSize" prev-text="上一页" next-text="下一页" :current="pageNum" @on-change="changePage"/>
 
             </ul>
+            <ul class="policy-files-list empty-content">
+              暂无数据～
+            </ul>
+
 
           </i-col>
           <i-col span="8">

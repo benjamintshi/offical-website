@@ -2,7 +2,7 @@
 
         <li class="block-one">
           <Row>
-            <i-col span="12">
+            <i-col span="12" style="height: 264px; overflow: hidden;">
               <img :src="left.img" alt="" class="a-hover-style" @click="toDetail">
               <p class="img-title text-ellipsis">{{left.title}}</p>
             </i-col>

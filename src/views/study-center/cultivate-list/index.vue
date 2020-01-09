@@ -6,14 +6,15 @@
       <li class="filter-tool">
         <div>
           <p> <span style="margin-right: 35px">区</span>域：</p>
-          <div class="selectCity ">
+          <div :class="showAll?'selectCity':'selectCity retract' ">
             <span v-for="(item,index) in areaList" :key="index" @click="swtichCity(item)"
                   :class="pCode ==item.areaCode?'a-hover-style active':'a-hover-style'">
               {{item.areaName}}
             </span>
-            <!--<p class="control a-hover-style" v-if="showAll">收起</p>
-            <p class="control a-hover-style" v-else>展开</p>-->
+
           </div>
+          <div class="control a-hover-style" v-if="showAll" @click="showAll = false">收起</div>
+          <div class="control a-hover-style" v-else @click="showAll = true">展开</div>
 
         </div>
         <div>
@@ -41,7 +42,9 @@
         <Row>
           <i-col span="8" v-for="(item,index) in trainList" :key="index" class="block-list" >
             <div @click="toDetail(item)" class="a-hover-style">
-              <img :src="item.trainingCover" alt="">
+              <div class="img-contain">
+                  <img :src="item.trainingCover" alt="">
+              </div>
               <p class="title">{{item.trainingName}}</p>
               <p class="address">
                 <span class="text-ellipsis">{{item.address}}</span>

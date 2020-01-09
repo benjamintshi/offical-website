@@ -41,7 +41,10 @@
         <Row>
           <i-col span="8" v-for="(item,index) in trainList" :key="index" class="block-list" >
             <div class="a-hover-style" @click="toDetail(item)">
-              <img :src="item.img" alt="" onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'">
+              <div class="img-contain">
+                <img :src="item.img" alt="" onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'">
+              </div>
+
               <div class="tag">
                 <img src="static/images/common/waiting.png" alt="" v-if="item.status == '1'">
                 <img src="static/images/common/starting.png" alt="" v-else-if="item.status =='2'">

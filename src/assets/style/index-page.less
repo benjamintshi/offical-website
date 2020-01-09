@@ -35,7 +35,6 @@
       color:rgba(76,76,77,1);
       img{
         width: 100%;
-        height: 264px;
 
       }
 
@@ -168,11 +167,17 @@
       p{
         padding:0 10px;
       }
-      img{
+      .img-contain{
         width: 210px;
         height: 117px;
         float: left;
+        overflow: hidden;
+        img{
+          width: 100%;
+
+        }
       }
+
       .desc{
         width: calc(100% - 220px);
         float: left;
@@ -209,10 +214,15 @@
     .ivu-col{
       padding: 10px 5px 10px 10px;
     }
-    img{
+    .img-contain{
       width: 213px;
       height: 132px;
+      overflow: hidden;
+      img{
+        width: 100%;
+      }
     }
+
     .title{
       font-size:16px;
       font-family:PingFang SC;

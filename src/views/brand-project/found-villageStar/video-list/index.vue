@@ -19,7 +19,9 @@
             按时间排序 <img  :class="desc?'transfer180':''" src="static/images/villageStar/filter.png" alt="">
           </p>
           <div  @click="watchVideo(item)" v-for="(item,index) in videos" :key="index" :class="(index+1)%4 !=0 ?'right14':''">
-            <img :src="item.img" alt="">
+            <div class="img-contain">
+              <img :src="item.img" alt="">
+             </div>
             <p>{{item.title}}</p>
             <span>{{item.name}}</span>
             <div class="play-cover">

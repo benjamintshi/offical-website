@@ -2,7 +2,9 @@
       <i-col span="16" >
           <ul class="news-list " v-if="newslist0.length>0">
             <li v-for="(item,index) in newslist0" :key="index" class="a-hover-style" @click="toNewsDetail(item)">
-              <img :src="item.img" alt="">
+              <div class="img-contain">
+                <img :src="item.img" alt="">
+              </div>
               <div>
                 <p class="title text-ellipsis">{{item.title}}</p>
                 <p class="tag">{{item.tag}}</p>

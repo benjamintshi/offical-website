@@ -33,7 +33,9 @@
         <Row>
           <i-col span="8" v-for="(item,index) in trainList" :key="index" class="block-list" >
             <div class="a-hover-style" @click="toDetail(item)">
-              <img :src="item.activityCover" alt="">
+              <div class="img-contain">
+                <img :src="item.activityCover" alt="">
+              </div>
               <p class="title">{{item.activityName}}</p>
               <p class="address">
                 <span class="text-ellipsis">{{item.activityProvinceName}} {{item.activityCityName}} {{item.activityCountyName}}</span>

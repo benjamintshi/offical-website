@@ -31,12 +31,14 @@
     <ul>
       <li>
         <div class="local-project">
-          <a v-for="(item,index) in bandProjectList" :key="index" @click="toDetail(item)">
-            <img :src="item.bannerUrl" alt="" style="height: 276px;">
+          <div v-for="(item,index) in bandProjectList" :key="index" @click="toDetail(item)">
+            <div class="img-contain">
+              <img :src="item.bannerUrl" alt="" >
+            </div>
             <div class="word-bg">
               <p>{{item.brandTitle}}</p>
             </div>
-          </a>
+          </div>
         </div>
         <Page v-if="total>9" :total="total" :pageSize="pageSize" prev-text="上一页" next-text="下一页" :current="pageNum" @on-change="changePage"/>
       </li>

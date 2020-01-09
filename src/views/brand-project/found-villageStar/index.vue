@@ -53,7 +53,9 @@
           <span class="more a-hover-style"  @click="$router.push('/videoList')">更多</span>
         </p>
         <div  v-for="(item,index) in videos" :key="index" @click="watchVideo(item)" class="a-hover-style">
-            <img :src="item.cover" alt="">
+            <div class="img-contain">
+              <img :src="item.cover" alt="">
+            </div>
             <p class="video-title word">{{ item.title}}</p>
             <div class="play-cover">
               <img src="static/images/villageStar/playVideo.png" alt="">
@@ -69,7 +71,9 @@
         </p>
 
         <div  v-for="(item,index) in volunteerList" :key="index" :class="(index+1)%4 !=0 ?'right33':''" @click="vlounteerDetail(item)">
-          <img :src="item.img" alt="" onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'">
+          <div class="img-contain">
+               <img :src="item.img" alt="" onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'">
+          </div>
           <p>{{item.title}}</p>
           <span>{{item.name}}</span>
         </div>

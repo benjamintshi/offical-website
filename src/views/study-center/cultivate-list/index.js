@@ -12,7 +12,7 @@ export default {
       total:'',// 超过16时显示页码
       areaList:[],
       pCode:0,
-      showAll:true,
+      showAll:false,
       states:[
         {
           name:"全部",

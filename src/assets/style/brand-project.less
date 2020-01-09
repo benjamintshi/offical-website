@@ -64,18 +64,23 @@
 
   }
   .local-project{
-    img{
-      width: 490px;
-      &:nth-child(even){
-        margin-left: 20px;
-      }
-    }
-    a{
+    >div{
       position: relative;
+      display: inline-block;
       &:nth-child(even){
         margin-left: 20px;
       }
     }
+    .img-contain{
+      width: 490px;
+      height: 276px;
+      overflow: hidden;
+      img{
+        width: 100%;
+      }
+    }
+
+
     .word-bg{
       line-height: 350px;
         position: absolute;
@@ -97,7 +102,7 @@
       font-family:PingFang SC;
       font-weight:600;
       color:rgba(231,202,101,1);
-      bottom:3px;
+      bottom:0px;
     }
   }
 }

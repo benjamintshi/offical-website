@@ -31,11 +31,15 @@
                   <p class="title">24小时热文</p>
                   <ul>
                     <li class="two-news a-hover-style" v-for="(item1,index1) in newslist.slice(0,2)" :key="index1+10">
-                      <img :src="item1.img" alt="" onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'">
+                      <div class="img-contain">
+                        <img :src="item1.img" alt="" onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'">
+                      </div>
                       <p>{{item1.title}}</p>
                     </li>
                     <li class="after-news a-hover-style" v-for="(item2,index2) in newslist.slice(2,5)" :key="index2+20">
-                      <img :src="item2.img" alt="" onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'">
+                      <div class="img-contain">
+                         <img :src="item2.img" alt="" onerror="this.src='http://zgwhzyz.bjbsh.com:180/show/img/loadingImage.jpg'">
+                      </div>
                       <p>{{item2.title}}</p>
                     </li>
                   </ul>

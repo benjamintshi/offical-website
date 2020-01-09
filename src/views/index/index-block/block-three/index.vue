@@ -10,7 +10,10 @@
               </p>
               <img style="height: 6px" src="static/images/villageStar/line.png" alt="">
               <div class="recruit a-hover-style" v-for="(item,index) in recruitList" :key="index" @click="toDetail(item)">
-                <img :src="item.img" alt="">
+                <div class="img-contain">
+                  <img :src="item.img" alt="">
+                </div>
+
                 <div class="desc">
                   <p class="title">
                     {{item.title}}
@@ -42,8 +45,11 @@
               <img style="height: 6px" src="static/images/villageStar/line.png" alt="">
               <Row class="service-info a-hover-style">
                  <i-col span="12" v-for="(item,index) in serviceList" :key="index">
+
                    <div @click="toDetailTeam(item)">
-                     <img :src="item.img" alt="" >
+                     <div class="img-contain">
+                       <img :src="item.img" alt="" >
+                     </div>
                      <p class="title text-ellipsis">{{item.title}}</p>
                      <p class="desc">
                        <span>{{item.serviceModeName}}</span>

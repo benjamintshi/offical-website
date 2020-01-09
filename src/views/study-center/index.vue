@@ -36,7 +36,9 @@
         <Row>
           <i-col span="8" v-for="(item,index) in trainList" :key="index" class="block-list" >
             <div  @click="toculDetail(item)" class="a-hover-style">
-              <img :src="item.trainingCover" alt="">
+              <div class="img-contain">
+                <img :src="item.trainingCover" alt="">
+              </div>
               <p class="title">{{item.trainingName}}</p>
               <p class="address">
                 <span class="wait" v-if="item.status == '1'">待开始</span>
