@@ -22,6 +22,7 @@ export default {
   methods: {
     modifyInfo() {
       this.$emit('modify');
+      this.$emit('getUserInfo',this.userInfo);
     },
     getServiceArea(){
       ajax_get(constant.api_base_url + '/vArea/getAreas/0', null, data => {
@@ -41,7 +42,6 @@ export default {
        null, data => {
           if (data.code === "200") {
             this.userInfo = data.data;
-            this.$emit('userInfo',this.userInfo);
             this.getServiceArea();
           }
         }

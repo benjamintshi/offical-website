@@ -13,7 +13,7 @@
           <div class="title">培训主题</div>
           <p>培训类型：{{trainInfo.trainingType}}</p>
           <p>培训方式：{{trainInfo.trainingMode}}</p>
-          <p>开课时间：{{trainInfo.trainingStartDate}} - {{trainInfo.trainingEndDate}}    共{{trainInfo.trainingSumHour}}学时</p>
+          <p>开讲时间：{{trainInfo.trainingStartDate}} - {{trainInfo.trainingEndDate}}  </p>
           <p>培训对象：{{trainInfo.trainingCrowd}}</p>
           <p>培训讲师：{{trainInfo.trainingTeacher}}</p>
           <p>培训区域：{{trainInfo.trainingProvinceName}} {{trainInfo.trainingCityName}}</p>

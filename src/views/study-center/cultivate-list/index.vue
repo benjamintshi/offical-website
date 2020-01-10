@@ -47,13 +47,13 @@
               </div>
               <p class="title">{{item.trainingName}}</p>
               <p class="address">
-                <span class="text-ellipsis">{{item.address}}</span>
+                <span class="text-ellipsis">开讲日期  {{item.trainingStartDate}} - {{item.trainingEndDate}}</span>
                 <span class="wait" v-if="item.status == '1'">待开始</span>
                 <span class="prograss" v-else-if="item.status =='2'">进行中</span>
                 <span class="apply" v-else-if="item.status =='3'">已结束</span>
                 <span  v-else>已结束</span>
               </p>
-              <p class="time">开讲日期  {{item.trainingStartDate}} - {{item.trainingEndDate}}</p>
+              <p class="time">{{item.trainingAddr}}</p>
             </div>
 
           </i-col>

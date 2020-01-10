@@ -1,5 +1,5 @@
 <template>
-  <div class="input-base-info" >
+  <div class="input-base-info register-base-info" >
     <p class="title">个人基本信息填写</p>
     <Row>
       <i-col span="4" >

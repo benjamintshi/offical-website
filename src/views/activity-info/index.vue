@@ -44,7 +44,7 @@
                 <span class="apply" v-else-if="item.status =='3'">已结束</span>
                 <span  v-else>已结束</span>
               </p>
-              <p class="time">开讲日期  {{item.activityStartDate}} - {{item.activityEndDate}}</p>
+              <p class="time">服务时间  {{item.activityStartDate}} - {{item.activityEndDate}}</p>
             </div>
           </i-col>
         </Row>

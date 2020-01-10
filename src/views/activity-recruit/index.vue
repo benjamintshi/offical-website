@@ -51,7 +51,7 @@
                 <img src="static/images/common/end.png" alt="" v-else-if="item.status =='3'">
               </div>
               <p class="title">{{item.title}}</p>
-              <p class="time"  :class=" item.timeShow ? '':'hidden-content'" >开讲日期  {{item.timeStart}} - {{item.timeEnd}}</p>
+              <p class="time"  :class=" item.timeShow ? '':'hidden-content'" >招募时间  {{item.timeStart}} - {{item.timeEnd}}</p>
               <p class="address">
                 <section class="right30" style="display: inline-block" v-show="item.endTime > 0">距结束：{{item.endTime}}天</section>
                 <section class="right30" style="display: inline-block" v-show="item.endTime <= 0">已结束</section>

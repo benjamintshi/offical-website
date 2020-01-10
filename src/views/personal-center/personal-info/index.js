@@ -18,7 +18,7 @@ export default {
 
     },
     getUserInfo(data){
-      this.userInfo = data;
+      this.userInfo = data || {};
     }
   }
 }

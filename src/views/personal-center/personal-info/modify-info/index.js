@@ -2,12 +2,7 @@ import axios from "axios";
 import util from "../../../../utils/postRequest";
 
 export default {
-  props:{
-    userData:{
-      type:Object
 
-    }
-  },
   data() {
     return {
       userInfo: {
@@ -52,6 +47,7 @@ export default {
 
     }
   },
+  props:['userData'],
   mounted() {
     this.getUserInfo();
   },

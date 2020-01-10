@@ -102,6 +102,7 @@ export default {
         }, data => {
           if (data.code === "200") {
             this.trainList=data.data.list;
+            debugger
             this.total=data.data.total;
             let nowTime =  dataFormat(new Date(),"YYYY-MM-DD HH:mm:ss");
             for (let i=0;i < data.data.list.length ;i++){
