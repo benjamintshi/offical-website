@@ -7,9 +7,9 @@ export default {
       // 从上往下，模块一
 
         left:{
-          img:"static/images/villageStar/zhiyuan.jpg",
-          title:"山西省文化和旅游志愿者走进新疆",
-          to:""
+          // img:"static/images/villageStar/zhiyuan.jpg",
+          // title:"山西省文化和旅游志愿者走进新疆",
+          // to:""
         },
         right:{
           newsList2:[],
@@ -70,14 +70,24 @@ export default {
       this.http.get('/news/getNews/'+this.pCode).then(res=>{
         this.total = res.data.data.total;
         this.right.newsList = [];
+        let isFirst = true;
+        // console.log(res.data.data)
         res.data.data.forEach(item => {
-          var news ={};
-          news.id = item.newsId;
-          news.title = item.newsTitle;
-          news.newsType = item.newsType;
-          news.time = format(item.publishDate,'YYYY.MM.DD');;
-          if(this.right.newsList.length < 5){
-            this.right.newsList.push(news);
+          if(isFirst){
+            isFirst = false;
+            this.left.id = item.newsId;
+            this.left.img = item.newsCover;
+            this.left.newsType = item.newsType;
+            this.left.title = item.newsTitle;
+          }else{
+            var news ={};
+            news.id = item.newsId;
+            news.title = item.newsTitle;
+            news.newsType = item.newsType;
+            news.time = format(item.publishDate,'YYYY.MM.DD');
+            if(this.right.newsList.length < 5){
+              this.right.newsList.push(news);
+            }
           }
         })
         this. getPageVPolicy();

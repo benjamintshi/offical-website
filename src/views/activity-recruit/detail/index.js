@@ -108,11 +108,11 @@ export default {
         })
       })
     },
-    toDetail(){
+    toDetail(id){
       this.$router.push({
         name:"activityDetail",
         query:{
-          'itemId':""
+          'itemId':id
         }
       })
     }

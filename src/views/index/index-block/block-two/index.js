@@ -211,7 +211,7 @@ export default {
     getAreaBrands(){
       var params = {
         pageNum:'1',
-        pageSize:6
+        pageSize:7
       }
       this.http.get('/vBrand/getAreaBrands',params).then(res=>{
         this.total = res.data.data.total;

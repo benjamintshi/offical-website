@@ -226,7 +226,7 @@ export default {
       // 分页条件查询活动
       var params = {
         pageNum:'1',
-        pageSize:10
+        pageSize:9
       }
       this.http.get('/vTeam/getTeamList',params).then(res=>{
         this.total = res.data.data.total;

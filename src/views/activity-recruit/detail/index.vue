@@ -29,7 +29,7 @@
             <div class="a-hover-style right30" style=" display: inline-block;">招募详情</div>
 
             <span class="a-hover-style active-link" @click="joinAtonce">立即加入</span>
-            <span class="a-hover-style" style="margin-right: 30px" @click="toDetail">查看项目详情</span>
+            <span class="a-hover-style" style="margin-right: 30px" @click="toDetail(detail.id)">查看项目详情</span>
           </div>
           <img style="height: 6px;width: 100%;" src="static/images/villageStar/line.png" alt="">
           <div class="content">
