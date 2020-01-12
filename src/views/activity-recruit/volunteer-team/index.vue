@@ -41,7 +41,9 @@
         <Row>
           <i-col span="8" v-for="(item,index) in trainList" :key="index" class="block-list" >
             <div class="a-hover-style" @click="toDetail(item)">
-              <img :src="item.img" alt="">
+              <div class="img-contain">
+               <img :src="item.img" alt="">
+              </div>
               <p class="title">{{item.title}}</p>
               <p :class=" item.address ? 'address':'hidden-content'" >
                 <span class="text-ellipsis">{{item.address}}</span>

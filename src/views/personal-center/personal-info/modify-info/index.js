@@ -44,7 +44,6 @@ export default {
           id: 1
         }
       ],
-
     }
   },
   props:['userData'],
