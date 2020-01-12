@@ -3,7 +3,7 @@
         <li class="block-one">
           <Row>
             <i-col span="12" style="height: 264px; overflow: hidden;">
-              <img :src="left.img" alt="" class="a-hover-style" @click="toDetail">
+              <img :src="left.img" alt="" class="a-hover-style" @click="toNewsDetail(left)">
               <p class="img-title text-ellipsis">{{left.title}}</p>
             </i-col>
             <i-col span="12" style="padding-left:20px;">
