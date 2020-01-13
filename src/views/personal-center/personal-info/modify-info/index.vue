@@ -17,11 +17,7 @@
           <p ><span style="letter-spacing: 50px;">姓</span>名</p>
         </i-col>
         <i-col span="20">
-<<<<<<< Updated upstream
-          {{userInfo.userName }}
-=======
           <input type="text" placeholder="" v-model="userInfo.userName" disabled="disabled">
->>>>>>> Stashed changes
         </i-col>
       </Row>
       <Row>
@@ -29,25 +25,7 @@
           <p ><span style="letter-spacing: 2px;">志愿者类</span>别</p>
         </i-col>
         <i-col span="20">
-<<<<<<< Updated upstream
-          <RadioGroup v-model="userInfo.volunteer.platformType" style="height: 50px;line-height: 50px;">
-            <Radio label="0" style="margin-right: 58px">
-              <span>文化志愿者</span>
-            </Radio>
-            <Radio label="1" style="margin-right: 58px">
-              <span>旅游志愿者</span>
-            </Radio>
-            <!--<Radio label="2" style="margin-right: 58px" >-->
-              <!--<span>圆梦工程</span>-->
-            <!--</Radio>-->
-            <!--<Radio label="3" style="margin-right: 58px">-->
-              <!--<span>旅游志愿者</span>-->
-            <!--</Radio>-->
-
-          </RadioGroup>
-=======
           <input type="text" placeholder="" v-model="userInfo.identification" disabled="disabled">
->>>>>>> Stashed changes
         </i-col>
       </Row>
       <div class="radioList">
@@ -88,13 +66,9 @@
           <p ><span style="letter-spacing: 50px;">特</span>长</p>
         </i-col>
         <i-col span="20">
-<<<<<<< Updated upstream
-          <input type="text" placeholder="" v-model="userInfo.special" class="line-input">
-=======
           <Select v-model="userInfo.cardType" style="width:370px;" disabled="disabled">
             <Option v-for="item in cardList" :value="item.id" :key="item.value">{{ item.name }}</Option>
           </Select>
->>>>>>> Stashed changes
         </i-col>
       </Row>
       <div class="radioList">
