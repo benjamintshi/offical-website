@@ -147,11 +147,7 @@
             <i-col span="4" >工作单位性质</i-col>
             <i-col span="7">{{userInfo.volunteer.unitProperty || "无"}}</i-col>
           </Row>
-          <Row>
-            <i-col span="5">所属文化单位</i-col>
-            <i-col span="8">{{userInfo.unitName || "无"}}</i-col>
-
-          </Row>
+        
         </li>
       </ul>
 
