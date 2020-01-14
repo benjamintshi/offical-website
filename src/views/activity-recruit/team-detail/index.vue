@@ -9,7 +9,7 @@
         <i-col span="12" class="block1">
           <img :src="detail.teamLogo" alt="">
         </i-col>
-        <i-col span="12" class="block2">
+        <i-col span="12" class="block2 lineh37">
           <div class="title"><strong>{{detail.teamName}}</strong></div>
           <p>成立日期：{{detail.foundingTime}}</p>
           <p>团队成员：{{detail.teamNum}}人</p>
