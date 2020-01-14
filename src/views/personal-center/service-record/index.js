@@ -6,11 +6,9 @@ export default {
     return {
       userInfo:{},
       list: [],
-      pageSize: '1',
-      totalNum: '',
-      n: 1,
-      isMost: false,
-
+      pageNum:1,
+      pageSize: 10,
+      total: '',
     }
 
   },
@@ -31,30 +29,13 @@ export default {
     getlist: function () {
       ajax_get(constant.api_base_url + '/vActivity/getMyJoinActivities',
         {
-          pageNum: 1,
+          pageNum: this.pageNum,
           pageSize: this.pageSize,
         }, data => {
           if (data.code === "200") {
             this.list = data.data.list;
             this.pageSize = data.data.pageSize;
-          }
-        }
-      )
-    },
-    loadMore: function () {
-      this.n = this.n + 1;
-      let temp = this.n
-      ajax_get(constant.api_base_url + '/vActivity/getMyJoinActivities',
-        {
-          pageNum: 1,
-          pageSize: this.pageSize * temp
-        }, data => {
-          if (data.code === "200") {
-            this.list = data.data.list;
-            this.totalNum = data.data.size;
-            if (this.totalNum === data.data.total) {
-              this.isMost = true
-            }
+            this.total=data.data.total;
           }
         }
       )
@@ -64,8 +45,11 @@ export default {
         name: "activityDetail",
         query: {'itemId': item.id}
       })
-
-    }
+    },
+    changePage(val){
+      this.pageNum=val;
+      this.getlist();
+    },
 
   },
 }

@@ -93,7 +93,6 @@ export default {
           if (data.code === "200") {
             this.trainList=data.data.list;
             let nowTime =  dataFormat(new Date(),"YYYY-MM-DD HH:mm:ss");
-            console.log(nowTime)
             for (let i=0;i < data.data.list.length ;i++){
               if(data.data.list[i].trainingStartDate > nowTime ){
                 this.trainList[i].status=1;

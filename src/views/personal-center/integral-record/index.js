@@ -4,11 +4,9 @@ export default {
   data() {
     return {
         list:[],
-        pageSize: '1',
-        totalNum: '',
-        n:1,
-        isMost: false
-
+        pageNum:1,
+        pageSize: 10,
+        total: '',
     };
   },
 
@@ -19,11 +17,12 @@ export default {
     getlist: function () {
       ajax_get(constant.api_base_url + '/vCoinLog/getMyVCoinLogs',
         {
-          pageNum: 1,
+          pageNum: this.pageNum,
           pageSize: this.pageSize
         }, data => {
           if (data.code === "200") {
             this.list = data.data.list;
+            this.total=data.data.total;
             this.pageSize = data.data.pageSize;
           }else {
             alert(data.message)
@@ -31,25 +30,9 @@ export default {
         }
       )
     },
-    loadMore: function () {
-      this.n=this.n+1;
-      let temp = this.n;
-      ajax_get(constant.api_base_url + '/vCoinLog/getMyVCoinLogs',
-        {
-          pageNum: 1,
-          pageSize: this.pageSize*temp
-        }, data => {
-          if (data.code === "200") {
-            this.list = data.data.list;
-            this.totalNum = data.data.size;
-            if(this.totalNum===data.data.total){
-              this.isMost=true
-            }
-          }else {
-            alert(data.message)
-          }
-        }
-      )
-    }
+    changePage(val){
+      this.pageNum=val;
+      this.getlist();
+    },
   }
 }

@@ -29,9 +29,9 @@
             <span class="yellow" v-else-if="item.status ==2" @click="quit(item)"> 放弃申请</span>
             <span class="blue" @click="toDetail(item)">查看详情 </span>
           </td>
-
         </tr>
       </table>
+    <Page v-if="total>10" :total="total" :pageSize="pageSize" prev-text="上一页" next-text="下一页" :current="pageNum" @on-change="changePage"/>
   </div>
 </template>
 

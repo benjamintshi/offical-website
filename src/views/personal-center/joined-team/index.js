@@ -5,10 +5,9 @@ export default {
   data() {
     return {
         list:[],
-        pageSize: '1',
-        totalNum: '',
-        n:1,
-        isMost: false,
+        pageSize: 10,
+        pageNum:1,
+        total: '',
         volunteerAuditStatus:'',
         joinTime:'',
     }
@@ -21,32 +20,13 @@ export default {
     getlist: function () {
       ajax_get(constant.api_base_url + '/vTeam/getMyTeams',
         {
-          pageNum: 1,
+          pageNum: this.pageNum,
           pageSize: this.pageSize
         }, data => {
           if (data.code === "200") {
             this.list = data.data.list;
             this.pageSize = data.data.pageSize;
-          }else {
-            alert(data.message)
-          }
-        }
-      )
-    },
-    loadMore: function () {
-      this.n=this.n+1;
-      let temp=this.n;
-      ajax_get(constant.api_base_url + '/vTeam/getMyTeams',
-        {
-          pageNum: 1,
-          pageSize: this.pageSize * temp
-        }, data => {
-          if (data.code === "200") {
-            this.list = data.data.list;
-            this.totalNum = data.data.size;
-            if(this.totalNum===data.data.total){
-              this.isMost=true
-            }
+            this.total=data.data.total;
           }else {
             alert(data.message)
           }
@@ -66,7 +46,11 @@ export default {
           }
         )
       }
-    }
+    },
+    changePage(val){
+      this.pageNum=val;
+      this.getlist();
+    },
   },
   filters: {
     teamStatus(item) {

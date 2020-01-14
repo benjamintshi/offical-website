@@ -19,9 +19,7 @@
           <td v-if="item.volunteerAuditStatus ===2" > <a class="blue">- </a> </td>
         </tr>
       </table>
-    <div style="float: right;">
-      <a class="loadMore" v-if="!isMost" @click="loadMore">查看更多...</a>
-    </div>
+    <Page v-if="total>10" :total="total" :pageSize="pageSize" prev-text="上一页" next-text="下一页" :current="pageNum" @on-change="changePage"/>
   </div>
 </template>
 

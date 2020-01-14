@@ -28,7 +28,7 @@
             <p>服务方式：{{info.activityMode}}</p>
             <p>详细地址：{{info.activityAddr}}</p>
             <p v-if="info.canCrowdAttend===1 && info.participateFlg!==1 " class="apply a-hover-style" @click="applyActivity">我要参加</p>
-            <p class="toDetail a-hover-style" @click="checkRecruitRequirement ">查看招募要求</p>
+            <p v-if="info.canApplyJoin==1" class="toDetail a-hover-style" @click="checkRecruitRequirement ">查看招募要求</p>
           </div>
 
       </i-col>

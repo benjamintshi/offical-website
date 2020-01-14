@@ -1,7 +1,7 @@
 <template>
   <div class="cultivate-list">
     <ul class="cultivate-list-content">
-      <p class="title">线下培训</p>
+      <p class="title">活动信息</p>
       <li class="filter-tool">
         <div>
           <p> <span style="margin-right: 35px">区</span>域：</p>

@@ -1,6 +1,7 @@
 <template>
-  <ul class="other">
-    <p class="title">个人消息</p>
+  <div>
+    <ul class="other">
+      <p class="title">个人消息</p>
       <li v-for="(item,index) in newslist" :key="index">
         <div v-if="item.status ==1 ">
           <p>{{item.title}}</p>
@@ -27,12 +28,10 @@
 
           <img style="height: 6px;width: 100%" src="static/images/villageStar/line.png" v-if="index != newslist.length-1">
         </div>
-
       </li>
-    <div style="float: right;margin-top:-1em; ">
-      <a class="loadMore" v-if="!isMost" @click="loadMore">查看更多...</a>
-    </div>
-  </ul>
+    </ul>
+    <Page v-if="total>10" :total="total" :pageSize="pageSize" prev-text="上一页" next-text="下一页" :current="pageNum" @on-change="changePage"/>
+  </div>
 </template>
 <script src="./index.js">
 

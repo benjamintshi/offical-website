@@ -4,13 +4,11 @@ import constant from '../../../utils/constant'
 export default {
   data() {
     return {
-        list:[],
+      list:[],
       pageNum:1,
-      pageSize:1,
-      totalNum: '',
-      n:1,
+      pageSize:10,
+      total: '',
       newslist:[],
-      isMost: false,
     }
 
   },
@@ -27,31 +25,16 @@ export default {
           if (data.code === "200") {
             this.list = data.data.list;
             this.pageSize = data.data.pageSize;
+            this.total = data.data.total;
           }else {
             alert(data.message)
           }
         }
       )
     },
-    loadMore: function () {
-      this.n = this.n + 1;
-      let temp = this.n;
-      ajax_get(constant.api_base_url + '/vTraining/getMyJoinTrainingList',
-        {
-          pageNum: 1,
-          pageSize: this.pageSize * temp
-        }, data => {
-          if (data.code === "200") {
-            this.list = data.data.list;
-            this.totalNum = data.data.size;
-            if (this.totalNum === data.data.total) {
-              this.isMost = true
-            }
-          }else {
-            alert(data.message)
-          }
-        }
-      )
+    changePage(val){
+      this.pageNum=val;
+      this.getlist();
     },
     quit(item){
     },
