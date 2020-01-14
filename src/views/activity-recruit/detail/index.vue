@@ -8,7 +8,7 @@
         <i-col span="12" class="block1">
           <img :src="detail.activityCover" alt="">
         </i-col>
-        <i-col span="12" class="block2">
+        <i-col span="12" class="block2 lineh32">
           <div class="title">{{detail.activityName}}</div>
           <p>服务主题：{{detail.theme}}</p>
           <p>项目时间：{{detail.activityStartDate}} - {{detail.activityEndDate}}</p>
