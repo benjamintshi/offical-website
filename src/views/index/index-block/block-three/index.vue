@@ -54,7 +54,7 @@
                      <p class="desc">
                        <span>{{item.serviceModeName}}</span>
                        <span>{{item.style}}</span>
-                       <span>{{item.number}}人</span>
+                       <span>{{item.num}}人</span>
                      </p>
                    </div>
                  </i-col>

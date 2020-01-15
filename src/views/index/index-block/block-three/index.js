@@ -258,6 +258,7 @@ export default {
             }else{
               news.serviceModeName = '远程服务'
             }
+            news.style= item.provinceName + item.cityName + item.countyName;
             this.serviceList.push(news);
           }
         })
